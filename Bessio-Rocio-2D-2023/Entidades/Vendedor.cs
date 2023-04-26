@@ -12,19 +12,23 @@ namespace Entidades
         private int _id;
         private DateTime _fechaIngreso;
         private List<Cliente> _listaClientes;
-        private List<Producto> _listaProducto;
-        private Usuario _usuario;
+        private List<Producto> _listaProducto; 
+
         #endregion
 
         #region PROPIEDADES
         public int ID { get { return this._id; } }
         public List<Cliente> ListaClientes { get { return this._listaClientes; } }
-        public List<Producto> ListaProductos { get { return this._listaProducto; } }
-        public Usuario Usuario { get { return this._usuario; } }
+        public List<Producto> ListaProductos { get { return this._listaProducto; } } 
         public DateTime FechaIngreso { get { return this._fechaIngreso; } }
+
+        /// <summary>
+        /// Hago override de la propiedad abtracta retornando false.
+        /// </summary>
+        public override bool EsCliente { get { return false; } } 
         #endregion
 
-        #region CONSTRUCTOR
+        #region CONSTRUCTOR 
         /// <summary>
         /// Constructor parametrizado de la clase Vendedor.
         /// </summary>
@@ -42,21 +46,26 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos, Usuario user)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
-            this._listaProducto = productos;
-            this._usuario = user;
+            this._listaProducto = productos; 
+        } 
+
+        public Vendedor(string email,string contrasenia)
+            :base(email,contrasenia)
+        {
+            this._listaProducto = new List<Producto>();
+            this._listaClientes = new List<Cliente>();  
         }
         #endregion
 
         #region SOBRECARGA DE OPERADORES
         /// <summary>
-        /// Dos vendedores seran iguales is comparten usuario y contraseña (sobrecarga)
-        /// y si tienen el mismo ID.
+        /// Dos vendedores seran iguales si tienen el mismo ID.
         /// </summary>
         /// <param name="vendedor1"></param>
         /// <param name="vendedor2"></param>
@@ -66,8 +75,7 @@ namespace Entidades
             bool sonIguales = false;
             if (!(vendedor1 is null) && !(vendedor2 is null))
             {
-                sonIguales = (vendedor1._usuario == vendedor2._usuario) &&
-                                (vendedor1._id == vendedor2._id);  
+                sonIguales =  (vendedor1._id == vendedor2._id);  
             }
             return sonIguales;
         }

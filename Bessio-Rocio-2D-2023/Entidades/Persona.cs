@@ -19,6 +19,7 @@ namespace Entidades
 
         //protected string contraseña;
         //protected string mail;
+        protected Usuario usuario;//->Cada persona en nuestro sistema contara con un usuario.
         #endregion
 
         #region PROPIEDADES
@@ -26,6 +27,13 @@ namespace Entidades
         /// Propiedad de lectura que retorna el DNI de la persona.
         /// </summary>
         public string DNI { get { return this.dni; } }
+
+        /// <summary>
+        /// Esta propiedad abstracta, me permite implementarla en las clases derivadas, 
+        /// de esta forma retornara en cliente true y en vendedor false, para poder usarla.
+        /// </summary>
+        public abstract bool EsCliente { get; }
+        public Usuario Usuario { get {  return this.usuario; } }
         #endregion
 
         #region CONTRUCTORES
@@ -41,21 +49,22 @@ namespace Entidades
             this.nacionalidad = Nacionalidad.Argentina;
             this.sexo = Sexo.Femenino;
             this.fechaDeNacimiento = new DateTime();
+            this.usuario = new Usuario("","");
             //this.contraseña = "aaaa";
             //this.mail = "1234";
         }
 
         /// <summary>
         /// Constructor parametrizado que me permite incializar una instancia Persona
-        /// con los parametros nombre y apellido.
+        /// con los parametros email y constrasenia para poder crearles un usuario en el
+        /// login.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
-        protected Persona(string nombre,string apellido)
+        protected Persona(string email,string contrasenia)
             : this()
         {
-            this.nombre = nombre;
-            this.apellido = apellido;
+            this.usuario = new Usuario(email,contrasenia); 
         }
 
         /// <summary>
@@ -72,15 +81,18 @@ namespace Entidades
         /// <param name="contraseña"></param>
         /// <param name="usuario"></param>
         protected Persona(string nombre, string apellido,Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-            string dni,string domicilio) : this(nombre,apellido)
+            string dni,string domicilio) 
         {
             this.sexo = sexo;
             this.nacionalidad = nacionalidad;
             this.fechaDeNacimiento= fechaNacimiento;
             this.dni = dni;
-            //this.domicilio = domicilio;
+            this.domicilio = domicilio;
+            this.apellido = apellido;
+            this.nombre = nombre;
             //this.contraseña = contraseña;
             //this.mail = usuario;
+            this.usuario = new Usuario("","");
         }
         #endregion 
 

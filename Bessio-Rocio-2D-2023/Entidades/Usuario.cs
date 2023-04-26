@@ -18,11 +18,11 @@ namespace Entidades
         /// <summary>
         /// Constructor parametrizado de la clase Usuario.
         /// </summary>
-        /// <param name="usuario"></param>
+        /// <param name="email"></param>
         /// <param name="contrasenia"></param>
-        public Usuario(string usuario, string contrasenia)
+        public Usuario(string email, string contrasenia)
         {
-            this._email = usuario;
+            this._email = email;
             this._contrasenia = contrasenia;
             this._fechaActual = DateTime.Now;
         }
@@ -47,6 +47,15 @@ namespace Entidades
         #endregion
 
         #region POLIMORFISMO
+        /// <summary>
+        /// Sobrecarga del .ToString().
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{this._email}-{this._contrasenia}-{this._fechaActual.ToShortTimeString()}";
+        }
+
         /// <summary>
         /// Compara si el objeto this actual es igual obj del parametro comparando por la sobrecarga del ==
         /// </summary>

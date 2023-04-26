@@ -1,0 +1,21 @@
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Carniceria GUI.exe
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Carniceria GUI.deps.json
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Carniceria GUI.runtimeconfig.json
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Carniceria GUI.dll
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Carniceria GUI.pdb
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Entidades.dll
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\bin\Debug\net6.0-windows\Entidades.pdb
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.csproj.AssemblyReference.cache
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria_GUI.FrmLogin.resources
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.csproj.GenerateResource.cache
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.AssemblyInfoInputs.cache
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.AssemblyInfo.cs
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.csproj.CoreCompileInputs.cache
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.csproj.CopyComplete
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.dll
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\refint\Carniceria GUI.dll
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.pdb
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.genruntimeconfig.cache
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\ref\Carniceria GUI.dll
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria_GUI.Properties.Resources.resources
