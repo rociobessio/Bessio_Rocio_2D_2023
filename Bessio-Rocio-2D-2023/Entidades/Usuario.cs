@@ -14,6 +14,20 @@ namespace Entidades
         private DateTime _fechaActual;
         #endregion
 
+        #region PROPIEDADES
+        /// <summary>
+        /// Esta propiedad de lectura me permitira imprimir en los textboxes
+        /// la contrasenia.
+        /// </summary>
+        public string Contrasenia { get { return this._contrasenia; } }
+
+        /// <summary>
+        /// Esta propiedad de lectura me permitira imprimir en los textboxes
+        /// el email.
+        /// </summary>
+        public string Email { get { return this._email; } }
+        #endregion
+
         #region CONSTRUCTOR
         /// <summary>
         /// Constructor parametrizado de la clase Usuario.
@@ -53,7 +67,7 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{this._email}-{this._contrasenia}-{this._fechaActual.ToShortTimeString()}";
+            return $"{this._email}-{this._contrasenia}-{this._fechaActual.ToShortDateString()}";
         }
 
         /// <summary>

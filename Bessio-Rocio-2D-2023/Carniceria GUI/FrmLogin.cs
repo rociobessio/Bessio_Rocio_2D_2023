@@ -9,8 +9,12 @@ namespace Carniceria_GUI
     {
         #region ATRIBUTOS 
         private List<Cliente> clientes;
+        private Cliente cliente;
         private List<Vendedor> vendedores;
+        private Vendedor vendedor;
         private Persona ingresante;
+
+        private FrmHeladera frmHeladera;
         #endregion
 
 
@@ -18,6 +22,30 @@ namespace Carniceria_GUI
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+
+            #region INSTANCIO CLIENTES
+            clientes = new List<Cliente>();
+            cliente = new Cliente("rocibessio@gmail.com", "123");
+            clientes.Add(cliente);
+            #endregion
+
+            #region INSTANCIO VENDEDORES
+            vendedores = new List<Vendedor>();
+            vendedor = new Vendedor("felipe@hotmail.com", "123");
+            vendedores.Add(vendedor);//-->Asi lo puedo enviar al formulario si presiona el boton.
+            vendedores.Add(new Vendedor("Lucas@yahoo.com.ar", "123"));
+            #endregion
+
+            #region INSTANCIO FORMULARIOS
+            //frmHeladera = new FrmHeladera(vendedor);//-->Le paso a Felipe
+            #endregion
+
+            #region CREO LA AYUDA
+            StringBuilder textoAyuda = new StringBuilder();
+            textoAyuda.AppendLine("Podrás iniciar sesión ingresando tu email y contraseña ");
+            textoAyuda.AppendLine("o directamente presionando alguno de los botones de Vendedor o Cliente para agilizar el proceso");
+            FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
+            #endregion
         }
 
         /// <summary>
@@ -28,24 +56,6 @@ namespace Carniceria_GUI
         private void Form1_Load(object sender, EventArgs e)
         {
             this.Text = "App Carnicería";
-
-            #region INSTANCIO CLIENTES
-            clientes = new List<Cliente>();
-            clientes.Add(new Cliente("rocibessio@gmail.com", "123"));
-            #endregion
-
-            #region INSTANCIO VENDEDORES
-            vendedores = new List<Vendedor>();
-            vendedores.Add(new Vendedor("felipe@hotmail.com", "123"));
-            vendedores.Add(new Vendedor("Lucas@yahoo.com.ar", "123"));
-            #endregion
-
-            #region CREO LA AYUDA
-            StringBuilder textoAyuda = new StringBuilder();
-            textoAyuda.AppendLine("Podra iniciar sesión ingresando su email y contraseña ");
-            textoAyuda.AppendLine("o directamente presionando alguno de los botones de Vendedor o Cliente para agilizar el proceso");
-            FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
-            #endregion
         }
 
         #region VALIDACIONES
@@ -88,7 +98,6 @@ namespace Carniceria_GUI
         /// <returns>Retorna a una persona (la cual puede ser del tipo Vendedor o Cliente), null sino es ninguna</returns>
         private Persona esValidoElUsuario(Usuario usuario)
         {
-
             foreach (Vendedor vendedorAux in vendedores)
             {
                 if (vendedorAux.Usuario == usuario)
@@ -150,11 +159,13 @@ namespace Carniceria_GUI
                 {
                     if (ingresante.EsCliente)//-->Utilizo la propiedad para saber si es Cliente
                     {
-                        MessageBox.Show("Es cliente");
+                        MessageBox.Show("Sos cliente");
                     }
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
-                        MessageBox.Show("Es Vendedor");
+                        MessageBox.Show("Sos Vendedor");
+                        //frmHeladera = new FrmHeladera(ingresante);//-->Le paso a Felipe
+
                     }
                 }
             }
@@ -197,6 +208,28 @@ namespace Carniceria_GUI
         }
         #endregion
 
+        /// <summary>
+        /// Al presionarlo me cargara en el texbox los datos del Vendedor 
+        /// hardcodeado que cree.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVendedor_Click(object sender, EventArgs e)
+        {
+            this.txtContrasenia.Text = this.vendedor.Usuario.Contrasenia;
+            this.txtEmail.Text = this.vendedor.Usuario.Email;
+        }
 
+        /// <summary>
+        /// Al presionarlo me cargara en el texbox los datos del cliente 
+        /// hardcodeado que cree.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCliente_Click(object sender, EventArgs e)
+        {
+            this.txtContrasenia.Text = this.cliente.Usuario.Contrasenia;
+            this.txtEmail.Text = this.cliente.Usuario.Email;
+        }
     }
 }

@@ -19,3 +19,4 @@ C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023
 C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria GUI.genruntimeconfig.cache
 C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\ref\Carniceria GUI.dll
 C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria_GUI.Properties.Resources.resources
+C:\Users\Rocio\Desktop\Primer Parcial 2023\PP_2D_LabII_2023\Bessio-Rocio-2D-2023\Carniceria GUI\obj\Debug\net6.0-windows\Carniceria_GUI.FrmHeladera.resources

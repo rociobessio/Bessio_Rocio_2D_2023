@@ -55,6 +55,13 @@ namespace Entidades
             this._listaProducto = productos; 
         } 
 
+        /// <summary>
+        /// Este constructor me permite tomar el mail y contraseña,
+        /// se lo paso al base, para que no tire warnings instancio
+        /// las listas.
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="contrasenia"></param>
         public Vendedor(string email,string contrasenia)
             :base(email,contrasenia)
         {

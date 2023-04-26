@@ -123,6 +123,7 @@
             btnCliente.TabIndex = 6;
             btnCliente.Text = "Cliente";
             btnCliente.UseVisualStyleBackColor = true;
+            btnCliente.Click += btnCliente_Click;
             // 
             // btnVendedor
             // 
@@ -137,6 +138,7 @@
             btnVendedor.TabIndex = 7;
             btnVendedor.Text = "Vendedor";
             btnVendedor.UseVisualStyleBackColor = true;
+            btnVendedor.Click += btnVendedor_Click;
             // 
             // lblPrintHelp
             // 
