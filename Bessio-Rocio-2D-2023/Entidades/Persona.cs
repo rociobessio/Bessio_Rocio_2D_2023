@@ -16,6 +16,7 @@ namespace Entidades
         protected Nacionalidad nacionalidad;
         protected Sexo sexo;
         protected string domicilio;
+        protected string telefono;
 
         //protected string contraseña;
         //protected string mail;
@@ -50,6 +51,7 @@ namespace Entidades
             this.sexo = Sexo.Femenino;
             this.fechaDeNacimiento = new DateTime();
             this.usuario = new Usuario("","");
+            this.telefono = "000";
             //this.contraseña = "aaaa";
             //this.mail = "1234";
         }
@@ -81,7 +83,7 @@ namespace Entidades
         /// <param name="contraseña"></param>
         /// <param name="usuario"></param>
         protected Persona(string nombre, string apellido,Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-            string dni,string domicilio) 
+            string dni,string domicilio,string telefono) 
         {
             this.sexo = sexo;
             this.nacionalidad = nacionalidad;
@@ -90,6 +92,7 @@ namespace Entidades
             this.domicilio = domicilio;
             this.apellido = apellido;
             this.nombre = nombre;
+            this.telefono= telefono;
             //this.contraseña = contraseña;
             //this.mail = usuario;
             this.usuario = new Usuario("","");

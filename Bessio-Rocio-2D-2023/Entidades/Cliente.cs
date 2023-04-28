@@ -50,8 +50,8 @@ namespace Entidades
         /// <param name="carrito"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Carrito carrito)
-            : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio)
+                       double dineroDebitoDisponible, Carrito carrito,string telefono)
+            : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio, telefono)
         {
             this._dineroDebitoDisponible = dineroDebitoDisponible;
             //this._listaProductos = productos;
@@ -77,8 +77,8 @@ namespace Entidades
         /// <param name="usuario1"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito )
-             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito)
+                       double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito,string telefono )
+             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito, telefono)
         {
             this._tarjetaCredito = tarjeta;
         }

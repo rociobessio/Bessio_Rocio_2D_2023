@@ -36,6 +36,8 @@ namespace Carniceria_GUI
         int indiceViajFrmInformacionDetallada;
         #endregion
 
+        FrmVentaVendedor frmVentaVendedor;
+        Vendedor vendedor1;
         #endregion
 
         public FrmHeladera(Vendedor vendedor)
@@ -44,6 +46,7 @@ namespace Carniceria_GUI
             this.label1.Text = $"Hola {vendedor.Usuario.ToString()}";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Perfil Vendedor";
+            vendedor1 = vendedor;
 
             this.tablaProductos = new DataTable();
             #region INSTANCIO CARNES
@@ -342,6 +345,12 @@ namespace Carniceria_GUI
             {
                 e.Cancel = true;
             }
+        }
+
+        private void btnVender_Click(object sender, EventArgs e)
+        {
+            frmVentaVendedor = new FrmVentaVendedor(vendedor1);
+            frmVentaVendedor.ShowDialog();
         }
     }
 }

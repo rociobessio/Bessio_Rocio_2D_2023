@@ -181,9 +181,9 @@
             // 
             // numericStock
             // 
-            numericStock.Location = new Point(523, 179);
+            numericStock.Location = new Point(467, 179);
             numericStock.Name = "numericStock";
-            numericStock.Size = new Size(94, 37);
+            numericStock.Size = new Size(150, 37);
             numericStock.TabIndex = 17;
             // 
             // cbTipoDeCarneReponer
@@ -210,11 +210,14 @@
             // 
             btnReponer.Cursor = Cursors.Hand;
             btnReponer.FlatStyle = FlatStyle.Popup;
-            btnReponer.Location = new Point(485, 391);
+            btnReponer.Image = (Image)resources.GetObject("btnReponer.Image");
+            btnReponer.ImageAlign = ContentAlignment.MiddleRight;
+            btnReponer.Location = new Point(448, 391);
             btnReponer.Name = "btnReponer";
-            btnReponer.Size = new Size(132, 61);
+            btnReponer.Size = new Size(169, 61);
             btnReponer.TabIndex = 5;
-            btnReponer.Text = "Reponer";
+            btnReponer.Text = "     Reponer";
+            btnReponer.TextAlign = ContentAlignment.MiddleLeft;
             btnReponer.UseVisualStyleBackColor = true;
             btnReponer.Click += btnReponer_Click;
             // 
@@ -318,6 +321,7 @@
             btnVender.TabIndex = 6;
             btnVender.Text = "Vender";
             btnVender.UseVisualStyleBackColor = true;
+            btnVender.Click += btnVender_Click;
             // 
             // lblPrintHelp
             // 

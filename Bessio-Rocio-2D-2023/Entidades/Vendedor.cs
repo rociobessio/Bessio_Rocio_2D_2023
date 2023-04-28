@@ -18,7 +18,7 @@ namespace Entidades
         #region PROPIEDADES
         public int ID { get { return this._id; } }
         public List<Cliente> ListaClientes { get { return this._listaClientes; } }
-        public List<Carne2> ListaProductos { get { return this._listaCarne; } } 
+        public List<Carne2> ListaProductos { get { return this._listaCarne; }  set { this.ListaProductos = value; } } 
         public DateTime FechaIngreso { get { return this._fechaIngreso; } }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne2> productos)
-            : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne2> productos,string telefono)
+            : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
