@@ -12,7 +12,7 @@ namespace Entidades
         private double _dineroDebitoDisponible;
         //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
         private Tarjeta _tarjetaCredito;
-        private Ticket _ticketCompra;
+        private Carrito _CarritoCompra;
         //private Usuario usuario;
         private bool _esConTarjeta;
         #endregion
@@ -21,7 +21,7 @@ namespace Entidades
         public double DineroDebitoDisponible { get { return this._dineroDebitoDisponible; } }
         //public List<Producto> Productos { get { return this._listaProductos; } }
         public Tarjeta TarjetaCredito { get { return this._tarjetaCredito; } }
-        public Ticket TicketCompra { get { return this._ticketCompra; } }
+        public Carrito CarritoCompra { get { return this._CarritoCompra; } }
         public string Nombre { get { return this.nombre; } }
         public string Apellido { get { return this.apellido; } }
         //public string Mail { get { return this.mail; } }    
@@ -47,15 +47,15 @@ namespace Entidades
         /// <param name="dineroDebitoDisponible"></param>
         /// <param name="productos"></param>
         /// <param name="tarjeta"></param>
-        /// <param name="ticket"></param>
+        /// <param name="carrito"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Ticket ticket)
+                       double dineroDebitoDisponible, Carrito carrito)
             : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio)
         {
             this._dineroDebitoDisponible = dineroDebitoDisponible;
             //this._listaProductos = productos;
-            this._ticketCompra = ticket;
+            this._CarritoCompra = carrito;
             //this.usuario = usuario1;
         }
 
@@ -73,12 +73,12 @@ namespace Entidades
         /// <param name="dineroDebitoDisponible"></param>
         /// <param name="productos"></param>
         /// <param name="tarjeta"></param>
-        /// <param name="ticket"></param>
+        /// <param name="carrito"></param>
         /// <param name="usuario1"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Tarjeta tarjeta, Ticket ticket )
-             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,ticket)
+                       double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito )
+             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito)
         {
             this._tarjetaCredito = tarjeta;
         }
@@ -126,7 +126,7 @@ namespace Entidades
         public override string ToString()
         {
             return $"{base.ToString()}-${this._dineroDebitoDisponible:f}-{this._tarjetaCredito.ToString()}" +
-                $"-{this._ticketCompra.ToString()}";
+                $"-{this._CarritoCompra.ToString()}";
         }
 
         /// <summary>

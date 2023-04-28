@@ -1,4 +1,4 @@
-﻿public enum TipoCorte
+﻿public enum Corte
 {
     Lomo,
     Solomillo,
@@ -6,5 +6,9 @@
     Bife,
     Filette,
     Vacio,
-    Nalga
+    Nalga,
+    Costilla,
+    Pechuga,
+    Suprema,
+
 }

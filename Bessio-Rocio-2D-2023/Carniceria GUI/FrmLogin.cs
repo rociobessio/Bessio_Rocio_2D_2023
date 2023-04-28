@@ -164,8 +164,9 @@ namespace Carniceria_GUI
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
                         MessageBox.Show("Sos Vendedor");
-                        //frmHeladera = new FrmHeladera(ingresante);//-->Le paso a Felipe
-
+                        frmHeladera = new FrmHeladera(vendedor);//-->Le paso a Felipe
+                        frmHeladera.ShowDialog();
+                        this.Hide();
                     }
                 }
             }

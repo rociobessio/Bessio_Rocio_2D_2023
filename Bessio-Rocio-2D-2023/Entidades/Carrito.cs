@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class Ticket
+    public class Carrito
     {
         #region ATRIBUTOS
         private DateTime _fechaCompra;
         private double _precioTotal;
         private double _precioConRecargo;
         private bool _conTarjeta;
-        private List<Producto> _listaDeProductos;
+        private List<Carne2> _listaDeProductos;
 
         private static readonly double precioIVA = 5;
         #endregion
@@ -23,7 +23,7 @@ namespace Entidades
         public double PrecioTotal { get { return this._precioTotal; } }
         public double Recargo { get { return this.AplicarRecargo(this._precioTotal); } set { this._precioConRecargo = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } }
-        public List<Producto> Productos { get { return this._listaDeProductos; } }
+        public List<Carne2> Productos { get { return this._listaDeProductos; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -35,7 +35,7 @@ namespace Entidades
         /// <param name="precioTotal"></param>
         /// <param name="descuento"></param>
         /// <param name="productos"></param>
-        public Ticket(DateTime compra, double precioTotal, double descuento, List<Producto> productos,bool tarjeta)
+        public Carrito(DateTime compra, double precioTotal, double descuento, List<Carne2> productos,bool tarjeta)
         {
             this._conTarjeta = tarjeta;
             this._fechaCompra = compra; 
@@ -80,7 +80,7 @@ namespace Entidades
                 sb.AppendLine($"- ${this._precioConRecargo}");
             }
 
-            foreach (Producto producto in this._listaDeProductos)
+            foreach (Carne2 producto in this._listaDeProductos)
             {
                 if(this._listaDeProductos.Count > 0)
                 {

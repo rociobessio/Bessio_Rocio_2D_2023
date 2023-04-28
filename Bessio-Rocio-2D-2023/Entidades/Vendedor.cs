@@ -12,14 +12,13 @@ namespace Entidades
         private int _id;
         private DateTime _fechaIngreso;
         private List<Cliente> _listaClientes;
-        private List<Producto> _listaProducto; 
-
+        private List<Carne2> _listaCarne;  
         #endregion
 
         #region PROPIEDADES
         public int ID { get { return this._id; } }
         public List<Cliente> ListaClientes { get { return this._listaClientes; } }
-        public List<Producto> ListaProductos { get { return this._listaProducto; } } 
+        public List<Carne2> ListaProductos { get { return this._listaCarne; } } 
         public DateTime FechaIngreso { get { return this._fechaIngreso; } }
 
         /// <summary>
@@ -46,13 +45,13 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne2> productos)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
-            this._listaProducto = productos; 
+            this._listaCarne = productos; 
         } 
 
         /// <summary>
@@ -65,7 +64,7 @@ namespace Entidades
         public Vendedor(string email,string contrasenia)
             :base(email,contrasenia)
         {
-            this._listaProducto = new List<Producto>();
+            this._listaCarne = new List<Carne2>();
             this._listaClientes = new List<Cliente>();  
         }
         #endregion

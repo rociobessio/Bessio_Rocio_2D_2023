@@ -142,6 +142,7 @@
             // 
             // lblPrintHelp
             // 
+            lblPrintHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
