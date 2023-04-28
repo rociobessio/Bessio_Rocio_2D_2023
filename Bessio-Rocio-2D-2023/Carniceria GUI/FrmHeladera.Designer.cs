@@ -34,6 +34,8 @@
             dataGridViewProductos = new DataGridView();
             label2 = new Label();
             groupBoxReponer = new GroupBox();
+            label11 = new Label();
+            txtPrecioCompra = new TextBox();
             label10 = new Label();
             txtProveedor = new TextBox();
             label9 = new Label();
@@ -105,6 +107,8 @@
             // 
             // groupBoxReponer
             // 
+            groupBoxReponer.Controls.Add(label11);
+            groupBoxReponer.Controls.Add(txtPrecioCompra);
             groupBoxReponer.Controls.Add(label10);
             groupBoxReponer.Controls.Add(txtProveedor);
             groupBoxReponer.Controls.Add(label9);
@@ -131,11 +135,28 @@
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Reponer Carne";
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(15, 308);
+            label11.Name = "label11";
+            label11.Size = new Size(170, 56);
+            label11.TabIndex = 22;
+            label11.Text = "Precio de compra \r\ndel Frigorifico:";
+            // 
+            // txtPrecioCompra
+            // 
+            txtPrecioCompra.Location = new Point(168, 327);
+            txtPrecioCompra.Name = "txtPrecioCompra";
+            txtPrecioCompra.Size = new Size(182, 37);
+            txtPrecioCompra.TabIndex = 21;
+            // 
             // label10
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(61, 260);
+            label10.Location = new Point(30, 265);
             label10.Name = "label10";
             label10.Size = new Size(107, 28);
             label10.TabIndex = 20;
@@ -143,7 +164,7 @@
             // 
             // txtProveedor
             // 
-            txtProveedor.Location = new Point(185, 256);
+            txtProveedor.Location = new Point(168, 261);
             txtProveedor.Name = "txtProveedor";
             txtProveedor.Size = new Size(182, 37);
             txtProveedor.TabIndex = 19;
@@ -169,7 +190,7 @@
             // 
             cbTipoDeCarneReponer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbTipoDeCarneReponer.FormattingEnabled = true;
-            cbTipoDeCarneReponer.Location = new Point(185, 37);
+            cbTipoDeCarneReponer.Location = new Point(168, 38);
             cbTipoDeCarneReponer.Name = "cbTipoDeCarneReponer";
             cbTipoDeCarneReponer.Size = new Size(182, 36);
             cbTipoDeCarneReponer.TabIndex = 16;
@@ -179,7 +200,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(42, 40);
+            label8.Location = new Point(15, 39);
             label8.Name = "label8";
             label8.Size = new Size(137, 28);
             label8.TabIndex = 15;
@@ -201,7 +222,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(161, 326);
+            label7.Location = new Point(391, 278);
             label7.Name = "label7";
             label7.Size = new Size(206, 28);
             label7.TabIndex = 14;
@@ -209,20 +230,20 @@
             // 
             // dtpFechaVencimiento
             // 
-            dtpFechaVencimiento.Location = new Point(388, 320);
+            dtpFechaVencimiento.Location = new Point(391, 325);
             dtpFechaVencimiento.Name = "dtpFechaVencimiento";
-            dtpFechaVencimiento.Size = new Size(235, 37);
+            dtpFechaVencimiento.Size = new Size(226, 37);
             dtpFechaVencimiento.TabIndex = 13;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(391, 116);
+            label6.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(359, 103);
             label6.Name = "label6";
-            label6.Size = new Size(70, 28);
+            label6.Size = new Size(102, 42);
             label6.TabIndex = 12;
-            label6.Text = "Precio:";
+            label6.Text = "Precio Venta \r\nPara Clientes:";
             // 
             // txtPrecio
             // 
@@ -252,7 +273,7 @@
             // 
             cbTexturaCarne.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbTexturaCarne.FormattingEnabled = true;
-            cbTexturaCarne.Location = new Point(185, 179);
+            cbTexturaCarne.Location = new Point(168, 182);
             cbTexturaCarne.Name = "cbTexturaCarne";
             cbTexturaCarne.Size = new Size(182, 36);
             cbTexturaCarne.TabIndex = 8;
@@ -261,7 +282,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(74, 187);
+            label4.Location = new Point(48, 182);
             label4.Name = "label4";
             label4.Size = new Size(78, 28);
             label4.TabIndex = 7;
@@ -271,7 +292,7 @@
             // 
             cbCorteCarne.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbCorteCarne.FormattingEnabled = true;
-            cbCorteCarne.Location = new Point(185, 108);
+            cbCorteCarne.Location = new Point(168, 108);
             cbCorteCarne.Name = "cbCorteCarne";
             cbCorteCarne.Size = new Size(182, 36);
             cbCorteCarne.TabIndex = 6;
@@ -280,7 +301,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(74, 116);
+            label3.Location = new Point(48, 112);
             label3.Name = "label3";
             label3.Size = new Size(64, 28);
             label3.TabIndex = 5;
@@ -378,5 +399,7 @@
         private Button btnVender;
         private Label lblPrintHelp;
         private GroupBox groupBox1;
+        private Label label11;
+        private TextBox txtPrecioCompra;
     }
 }

@@ -48,9 +48,9 @@ namespace Carniceria_GUI
             this.tablaProductos = new DataTable();
             #region INSTANCIO CARNES
             this.listaCarnesDisponibles = new List<Carne2>();
-            this.listaCarnesDisponibles.Add(new Carne2(Corte.Lomo, 1900, Textura.Tierno, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne, 10));
-            this.listaCarnesDisponibles.Add(new Carne2(Corte.Pechuga, 700, Textura.Firme, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 10));
-            this.listaCarnesDisponibles.Add(new Carne2(Corte.Filette, 1900, Textura.Sin_Espinas, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Pescado, 10));
+            this.listaCarnesDisponibles.Add(new Carne2(Corte.Lomo, 1900, Textura.Tierno, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne, 10, 90));
+            this.listaCarnesDisponibles.Add(new Carne2(Corte.Pechuga, 700, Textura.Firme, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 10, 90));
+            this.listaCarnesDisponibles.Add(new Carne2(Corte.Costilla, 1900, Textura.Grasoso, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 10, 90));
             #endregion
 
             //#region INSTANCIO PRODUCTOS
@@ -89,6 +89,7 @@ namespace Carniceria_GUI
             this.tablaProductos.Columns.Add("Precio C/ Unidad");
             this.tablaProductos.Columns.Add("Vencimiento");
             this.tablaProductos.Columns.Add("Proveedor");
+            this.tablaProductos.Columns.Add("Precio compra Frigorifico");
 
             //this.dataGridViewProductos.DataSource = listaProductos;
 
@@ -207,16 +208,6 @@ namespace Carniceria_GUI
                 this.cbTexturaCarne.Items.Add(Textura.Grasoso);
                 this.cbTexturaCarne.SelectedIndex = 0;
             }
-            else if (this.cbTipoDeCarneReponer.SelectedItem.ToString() == Tipo.Pescado.ToString())
-            {
-                this.cbCorteCarne.Items.Add(Corte.Filette);
-                this.cbCorteCarne.Items.Add(Corte.Suprema);
-                this.cbCorteCarne.Items.Add(Corte.Lomo);
-                this.cbCorteCarne.SelectedIndex = 0;
-                this.cbTexturaCarne.Items.Add(Textura.Con_Espinas);
-                this.cbTexturaCarne.Items.Add(Textura.Sin_Espinas);
-                this.cbTexturaCarne.SelectedIndex = 0;
-            }
             else if (this.cbTipoDeCarneReponer.SelectedItem.ToString() == Tipo.Pollo.ToString())
             {
                 this.cbCorteCarne.Items.Add(Corte.Pechuga);
@@ -264,9 +255,10 @@ namespace Carniceria_GUI
                 auxFilaProduc[2] = $"{carnes.Textura}";
                 auxFilaProduc[3] = $"{carnes.Peso}";
                 auxFilaProduc[4] = $"{carnes.Stock}";
-                auxFilaProduc[5] = $"{carnes.Precio}";
+                auxFilaProduc[5] = $"{carnes.PrecioVenta}";
                 auxFilaProduc[6] = $"{carnes.Vencimiento}";
                 auxFilaProduc[7] = $"{carnes.Proveedor}";
+                auxFilaProduc[8] = $"{carnes.PrecioCompra}";
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
@@ -282,8 +274,11 @@ namespace Carniceria_GUI
             bool esValido = true;
             double peso;
             double precio;
+            double precioCompra;
             double.TryParse(this.txtPrecio.Text, out precio);
             double.TryParse(this.txtPesoCarne.Text, out peso);
+            double.TryParse(this.txtPrecioCompra.Text, out precioCompra);
+
 
             if (string.IsNullOrEmpty(this.txtProveedor.Text) ||
                 string.IsNullOrEmpty(this.txtPrecio.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
@@ -296,7 +291,7 @@ namespace Carniceria_GUI
 
             //--->Valido los numeros
             if (peso <= 0 || precio <= 0 ||
-                this.numericStock.Value <= 0)
+                this.numericStock.Value <= 0 || precioCompra <= 0)
             {
                 esValido = false;//-->Si alguno de los valores ingresado es menor o igual a 0, no lo dejo.
             }
@@ -327,7 +322,8 @@ namespace Carniceria_GUI
                 texturaCarne = Enum.Parse<Textura>(this.cbTexturaCarne.SelectedItem.ToString());
                 carneIngreso = new Carne2(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
                     texturaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecio.Text),
-                    this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()), (int)this.numericStock.Value);
+                    this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()), (int)this.numericStock.Value,
+                    double.Parse(this.txtPrecioCompra.Text));
                 this.listaCarnesDisponibles.Add(carneIngreso);
                 this.CargarProductos();//-->Actualizo el dataGrid
             }

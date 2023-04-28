@@ -17,7 +17,8 @@ namespace Entidades
         private string _proveedor;
         private double _peso;
         private DateTime _vencimiento;
-        private double _precio;
+        private double _precioVenta;//--->Precio por el cual lo voy a vender
+        private double _precioCompra;//--->Precio por el cual compre en un frigorifico
         private static int ultimoCodigo;
         #endregion
 
@@ -28,9 +29,10 @@ namespace Entidades
         public double Peso { get { return this._peso; } }
         public Textura Textura { get { return this._texturaCarne; } }
         public DateTime Vencimiento { get { return this._vencimiento; } }
-        public double Precio { get { return this._precio; } }
+        public double PrecioVenta { get { return this._precioVenta; } }
         public int Stock { get { return this._stockActual; } }
         public string Proveedor { get { return this._proveedor; } }
+        public double PrecioCompra { get { return this._precioCompra; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -53,14 +55,15 @@ namespace Entidades
         /// <param name="texturaCarne"></param>
         /// <param name="vencimiento"></param>
         public Carne2(Corte corteCarne, double peso, Textura texturaCarne, DateTime vencimiento, double precio,
-            string proveedor, Tipo tipoCarne, int stock)
+            string proveedor, Tipo tipoCarne, int stock,double precioCompra)
         {
+            this._precioCompra = precioCompra;
             this._tipoCarne = tipoCarne;
             this._corteCarne = corteCarne;
             this._peso = peso;
             this._texturaCarne = texturaCarne;
             this._vencimiento = vencimiento;
-            this._precio = precio;
+            this._precioVenta = precio;
             this._proveedor = proveedor;
             this._stockActual = stock; 
             this._codigo = ultimoCodigo;
@@ -76,7 +79,8 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{this._corteCarne}-{this._peso}-{this._texturaCarne}-{this._vencimiento}-{this._precio}";
+            return $"{this._corteCarne}-{this._peso}-{this._texturaCarne}-{this._vencimiento}-${this._precioVenta}" +
+                $"-${this._precioCompra}";
         }
         #endregion
     }

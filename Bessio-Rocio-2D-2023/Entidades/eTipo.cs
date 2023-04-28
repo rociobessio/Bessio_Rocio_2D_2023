@@ -1,6 +1,5 @@
 ﻿public enum Tipo {
     Carne,
-    Pollo,
-    Pescado,
+    Pollo, 
     Cerdo
 }
