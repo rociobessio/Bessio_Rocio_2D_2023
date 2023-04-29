@@ -10,7 +10,7 @@ namespace Entidades
     {
         #region ATRIBUTOS
         private Tipo _tipoCarne;
-        private Textura _texturaCarne;
+        private CategoriaBovina _texturaCarne;
         private Corte _corteCarne;
         private int _codigo;
         private int _stockActual;
@@ -26,23 +26,30 @@ namespace Entidades
         public int Codigo { get { return this._codigo; } }
         public Tipo Tipo { get { return this._tipoCarne; } }
         public Corte Corte { get { return this._corteCarne; } }
-        public double Peso { get { return this._peso; } }
-        public Textura Textura { get { return this._texturaCarne; } }
+        public double Peso { get { return this._peso; } set { this._peso = value; } }
+        public CategoriaBovina Textura { get { return this._texturaCarne; } }
         public DateTime Vencimiento { get { return this._vencimiento; } }
         public double PrecioVenta { get { return this._precioVenta; } }
-        public int Stock { get { return this._stockActual; } }
+        public int Stock { get { return this._stockActual; } set { this._stockActual = value; } }
         public string Proveedor { get { return this._proveedor; } }
         public double PrecioCompra { get { return this._precioCompra; } }
         #endregion
 
         #region CONSTRUCTOR
         /// <summary>
-        /// Este constructor lo que hara es setear el ultimo codigo como 100, 
-        /// luego ira en incrementandose en los demas constructores.
+        /// Sera mi constructor por defecto.
         /// </summary>
-        private Carne2()
+        public Carne2()
         {
-            ultimoCodigo = 100; 
+            _tipoCarne = Tipo.Carne_Vacuna;
+            _texturaCarne = CategoriaBovina.Novillito;
+            _corteCarne = Corte.Lomo;
+            _stockActual = 0;
+            _proveedor = "";
+            _peso = 0;
+            _vencimiento = DateTime.Now;
+            _precioVenta = 0;
+            _precioCompra = 0;
         }
 
         /// <summary>
@@ -54,7 +61,7 @@ namespace Entidades
         /// <param name="peso"></param>
         /// <param name="texturaCarne"></param>
         /// <param name="vencimiento"></param>
-        public Carne2(Corte corteCarne, double peso, Textura texturaCarne, DateTime vencimiento, double precio,
+        public Carne2(Corte corteCarne, double peso, CategoriaBovina texturaCarne, DateTime vencimiento, double precio,
             string proveedor, Tipo tipoCarne, int stock,double precioCompra)
         {
             this._precioCompra = precioCompra;
@@ -65,9 +72,33 @@ namespace Entidades
             this._vencimiento = vencimiento;
             this._precioVenta = precio;
             this._proveedor = proveedor;
-            this._stockActual = stock; 
+            this._stockActual = stock;
             this._codigo = ultimoCodigo;
             ultimoCodigo++;//POr cada instancia incrementa el numero del ultcodigo
+        }
+        #endregion
+
+        #region SOBRECARGA
+        /// <summary>
+        /// Compara si el codigo de un objeto Carne es igual al int
+        /// que recibe.
+        /// </summary>
+        /// <param name="carne1"></param>
+        /// <param name="codigo"></param>
+        /// <returns>Retorna true si coinciden,false sino</returns>
+        public static bool operator ==(Carne2 carne1,int codigo)
+        {
+            bool sonIguales = false;
+            if (!(carne1 is null) && codigo >= 0)
+            {
+                sonIguales = carne1._codigo == codigo; 
+            }
+            return sonIguales;
+        }
+
+        public static bool operator !=(Carne2 carne1, int codigo)
+        {
+            return !(carne1 == codigo);
         }
         #endregion
 

@@ -11,7 +11,7 @@ namespace Entidades
         #region ATRIBUTOS
         private Corte _corteCarne;
         private double _peso;
-        private Textura _texturaCarne;
+        private CategoriaBovina _texturaCarne;
         private DateTime _vencimiento;
         private double _precio;
         #endregion
@@ -19,7 +19,7 @@ namespace Entidades
         #region 
         public Corte Corte { get { return this._corteCarne;} }
         public double Peso { get { return this._peso;} }
-        public Textura Textura { get { return this._texturaCarne;} } 
+        public CategoriaBovina Textura { get { return this._texturaCarne;} } 
         public DateTime Vencimiento { get { return this._vencimiento;} }
         public double Precio { get { return this._precio; } }
         #endregion 
@@ -34,7 +34,7 @@ namespace Entidades
         /// <param name="peso"></param>
         /// <param name="texturaCarne"></param>
         /// <param name="vencimiento"></param>
-        public Carnes( Corte corteCarne, double peso, Textura texturaCarne,DateTime vencimiento,double precio)
+        public Carnes( Corte corteCarne, double peso, CategoriaBovina texturaCarne,DateTime vencimiento,double precio)
         {
             this._corteCarne = corteCarne;
             this._peso = peso;

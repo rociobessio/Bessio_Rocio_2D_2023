@@ -11,7 +11,7 @@ namespace Entidades
         #region ATRIBUTOS
         private DateTime _fechaCompra;
         private double _precioTotal;
-        private double _precioConRecargo;
+        //private double _precioConRecargo;
         private bool _conTarjeta;
         private List<Carne2> _listaDeProductos;
 
@@ -20,13 +20,25 @@ namespace Entidades
 
         #region PROPIEDADES
         public DateTime FechaCompra { get { return this._fechaCompra; } }
-        public double PrecioTotal { get { return this._precioTotal; } }
-        public double Recargo { get { return this.AplicarRecargo(this._precioTotal); } set { this._precioConRecargo = value; } }
+        public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
+        //public double Recargo { get { return this.AplicarRecargo(this._precioTotal); } set { this._precioConRecargo = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } }
         public List<Carne2> Productos { get { return this._listaDeProductos; } }
         #endregion
 
         #region CONSTRUCTOR
+        /// <summary>
+        /// Este constructor inicializa todos los parametros
+        /// </summary>
+        public Carrito()
+        {
+            this._conTarjeta = false;
+            this._fechaCompra = DateTime.Now;
+            this._precioTotal = 00;
+            //this._precioConRecargo = 11;
+            this._listaDeProductos = new List<Carne2>();
+        }
+
         /// <summary>
         /// Constructor de la clase Ticket que me permite crear una instacia del objeto
         /// parametrizado. 
@@ -40,29 +52,29 @@ namespace Entidades
             this._conTarjeta = tarjeta;
             this._fechaCompra = compra; 
             this._precioTotal = precioTotal;
-            this._precioConRecargo = descuento;
+            //this._precioConRecargo = descuento;
             this._listaDeProductos = productos;
         }
         #endregion
 
         #region METODO
-        /// <summary>
-        /// El metodo AplicarRecargo aplica un recargo (IVA)
-        /// si el cliente decidio abonar con tarjeta de credito.
-        /// </summary>
-        /// <param name="precio"></param>
-        /// <returns></returns>
-        private double AplicarRecargo(double precio)
-        {
-            double retorno = 0;
-            if (this._conTarjeta && precio > 0)
-            {
-                double totalSinImpuestos = precio;
-                double impuestos = totalSinImpuestos * precioIVA / 100;
-                retorno = totalSinImpuestos + impuestos; 
-            } 
-            return retorno; 
-        }
+        ///// <summary>
+        ///// El metodo AplicarRecargo aplica un recargo (IVA)
+        ///// si el cliente decidio abonar con tarjeta de credito.
+        ///// </summary>
+        ///// <param name="precio"></param>
+        ///// <returns></returns>
+        //private double AplicarRecargo(double precio)
+        //{
+        //    double retorno = 0;
+        //    if (this._conTarjeta && precio > 0)
+        //    {
+        //        double totalSinImpuestos = precio;
+        //        double impuestos = totalSinImpuestos * precioIVA / 100;
+        //        retorno = totalSinImpuestos + impuestos; 
+        //    } 
+        //    return retorno; 
+        //}
         #endregion
 
         #region POLIMORFISMO
@@ -75,10 +87,10 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"{this._fechaCompra.ToShortTimeString()}-${this._precioTotal:f}");
 
-            if( this._conTarjeta)//Si pago con tarjeta muestro el recargo
-            {
-                sb.AppendLine($"- ${this._precioConRecargo}");
-            }
+            //if( this._conTarjeta)//Si pago con tarjeta muestro el recargo
+            //{
+            //    sb.AppendLine($"- ${this._precioConRecargo}");
+            //}
 
             foreach (Carne2 producto in this._listaDeProductos)
             {

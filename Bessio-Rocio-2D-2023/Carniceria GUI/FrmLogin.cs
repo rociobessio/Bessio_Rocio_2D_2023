@@ -25,15 +25,15 @@ namespace Carniceria_GUI
 
             #region INSTANCIO CLIENTES
             clientes = new List<Cliente>();
-            cliente = new Cliente("rocibessio@gmail.com", "123");
+            cliente = new Cliente(new Usuario("rocibessio@gmail.com","123"));
             clientes.Add(cliente);
             #endregion
 
             #region INSTANCIO VENDEDORES
             vendedores = new List<Vendedor>();
-            vendedor = new Vendedor("felipe@hotmail.com", "123");
+            vendedor = new Vendedor(new Usuario("felipe@hotmail.com", "123"));
             vendedores.Add(vendedor);//-->Asi lo puedo enviar al formulario si presiona el boton.
-            vendedores.Add(new Vendedor("Lucas@yahoo.com.ar", "123"));
+            vendedores.Add(new Vendedor(new Usuario("Lucas@yahoo.com.ar", "123")));
             #endregion
 
             #region INSTANCIO FORMULARIOS

@@ -12,18 +12,15 @@ namespace Entidades
         private double _dineroDebitoDisponible;
         //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
         private Tarjeta _tarjetaCredito;
-        private Carrito _CarritoCompra;
-        //private Usuario usuario;
+        private Carrito _CarritoCompra; 
         private bool _esConTarjeta;
         #endregion
 
         #region PROPIEDADES
-        public double DineroDebitoDisponible { get { return this._dineroDebitoDisponible; } }
+        public double DineroDebitoDisponible { get { return this._dineroDebitoDisponible; } set { this._dineroDebitoDisponible = value; } }
         //public List<Producto> Productos { get { return this._listaProductos; } }
         public Tarjeta TarjetaCredito { get { return this._tarjetaCredito; } }
         public Carrito CarritoCompra { get { return this._CarritoCompra; } }
-        public string Nombre { get { return this.nombre; } }
-        public string Apellido { get { return this.apellido; } }
         //public string Mail { get { return this.mail; } }    
         //public string Contraseña { get { return this.contraseña; } }
         public bool ConTarjeta { get { return this._esConTarjeta; } }
@@ -36,6 +33,7 @@ namespace Entidades
         #region CONSTRUCTORES
         /// <summary>
         /// Constructor que inicializar con valores validos el objeto que va a ser creado
+        /// En este constructor no esta el parametro Tarjeta, solo paga con debito
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -44,19 +42,17 @@ namespace Entidades
         /// <param name="fechaNacimiento"></param>
         /// <param name="dni"></param>
         /// <param name="domicilio"></param> 
-        /// <param name="dineroDebitoDisponible"></param>
-        /// <param name="productos"></param>
+        /// <param name="dineroDebitoDisponible"></param> 
         /// <param name="tarjeta"></param>
         /// <param name="carrito"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Carrito carrito,string telefono)
-            : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio, telefono)
+                       double dineroDebitoDisponible, Carrito carrito,string telefono,Usuario user,bool tarjeta)
+            : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio, telefono, user)
         {
-            this._dineroDebitoDisponible = dineroDebitoDisponible;
-            //this._listaProductos = productos;
-            this._CarritoCompra = carrito;
-            //this.usuario = usuario1;
+            this._dineroDebitoDisponible = dineroDebitoDisponible; 
+            this._CarritoCompra = carrito; 
+            this._esConTarjeta = tarjeta;
         }
 
         /// <summary>
@@ -70,22 +66,20 @@ namespace Entidades
         /// <param name="fechaNacimiento"></param>
         /// <param name="dni"></param>
         /// <param name="domicilio"></param>
-        /// <param name="dineroDebitoDisponible"></param>
-        /// <param name="productos"></param>
+        /// <param name="dineroDebitoDisponible"></param> 
         /// <param name="tarjeta"></param>
-        /// <param name="carrito"></param>
-        /// <param name="usuario1"></param>
+        /// <param name="carrito"></param> 
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito,string telefono )
-             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito, telefono)
+                       double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito,string telefono,Usuario user, bool escontarjeta)
+             : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito, telefono, user, escontarjeta)
         {
             this._tarjetaCredito = tarjeta;
         }
 
-        public Cliente(string email, string contrasenia)
-              : base(email, contrasenia)
-        { 
+        public Cliente(Usuario user)
+              : base(user)
+        {
 
         }
         #endregion 

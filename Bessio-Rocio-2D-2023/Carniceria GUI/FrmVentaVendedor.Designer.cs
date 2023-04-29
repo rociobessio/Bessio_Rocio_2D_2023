@@ -43,7 +43,12 @@
             label3 = new Label();
             cbClientes = new ComboBox();
             groupBox2 = new GroupBox();
-            label8 = new Label();
+            txtPesoTotalStock = new TextBox();
+            label13 = new Label();
+            txtStockActual = new TextBox();
+            label12 = new Label();
+            label11 = new Label();
+            txtPrecioPorUnidad = new TextBox();
             numericCantidadCompra = new NumericUpDown();
             dataGridViewProductos = new DataGridView();
             btnVender = new Button();
@@ -56,18 +61,23 @@
             btnCancelar = new Button();
             lblPrintHelp = new Label();
             pictureBox1 = new PictureBox();
-            label9 = new Label();
             txtPesoEspecificado = new TextBox();
+            label9 = new Label();
+            label8 = new Label();
+            groupBox4 = new GroupBox();
+            btnCalcularCosto = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericCantidadCompra).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(txtApellido);
             groupBox1.Controls.Add(label6);
@@ -191,51 +201,107 @@
             cbClientes.Name = "cbClientes";
             cbClientes.Size = new Size(194, 38);
             cbClientes.TabIndex = 8;
+            cbClientes.SelectedIndexChanged += cbClientes_SelectedIndexChanged;
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(txtPesoEspecificado);
-            groupBox2.Controls.Add(label9);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(numericCantidadCompra);
+            groupBox2.Anchor = AnchorStyles.None;
+            groupBox2.Controls.Add(txtPesoTotalStock);
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(txtStockActual);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(label11);
+            groupBox2.Controls.Add(txtPrecioPorUnidad);
             groupBox2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(577, 22);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(412, 513);
+            groupBox2.Size = new Size(412, 288);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Producto ";
             // 
-            // label8
+            // txtPesoTotalStock
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(209, 144);
-            label8.Name = "label8";
-            label8.Size = new Size(95, 28);
-            label8.TabIndex = 20;
-            label8.Text = "Cantidad:";
+            txtPesoTotalStock.Location = new Point(231, 212);
+            txtPesoTotalStock.Name = "txtPesoTotalStock";
+            txtPesoTotalStock.Size = new Size(150, 37);
+            txtPesoTotalStock.TabIndex = 28;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(80, 203);
+            label13.Name = "label13";
+            label13.Size = new Size(101, 56);
+            label13.TabIndex = 27;
+            label13.Text = "Peso total\r\n del Stock:";
+            // 
+            // txtStockActual
+            // 
+            txtStockActual.Location = new Point(231, 146);
+            txtStockActual.Name = "txtStockActual";
+            txtStockActual.Size = new Size(150, 37);
+            txtStockActual.TabIndex = 26;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(70, 150);
+            label12.Name = "label12";
+            label12.Size = new Size(121, 28);
+            label12.TabIndex = 25;
+            label12.Text = "Stock actual:";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(80, 67);
+            label11.Name = "label11";
+            label11.Size = new Size(102, 56);
+            label11.TabIndex = 24;
+            label11.Text = "Precio por\r\nUnidad:";
+            // 
+            // txtPrecioPorUnidad
+            // 
+            txtPrecioPorUnidad.Location = new Point(231, 77);
+            txtPrecioPorUnidad.Name = "txtPrecioPorUnidad";
+            txtPrecioPorUnidad.Size = new Size(150, 37);
+            txtPrecioPorUnidad.TabIndex = 23;
             // 
             // numericCantidadCompra
             // 
-            numericCantidadCompra.Location = new Point(324, 141);
+            numericCantidadCompra.Location = new Point(229, 52);
             numericCantidadCompra.Name = "numericCantidadCompra";
-            numericCantidadCompra.Size = new Size(61, 37);
+            numericCantidadCompra.Size = new Size(150, 37);
             numericCantidadCompra.TabIndex = 0;
+            numericCantidadCompra.ValueChanged += numericCantidadCompra_ValueChanged;
             // 
             // dataGridViewProductos
             // 
+            dataGridViewProductos.AllowUserToAddRows = false;
+            dataGridViewProductos.AllowUserToDeleteRows = false;
+            dataGridViewProductos.AllowUserToResizeColumns = false;
+            dataGridViewProductos.AllowUserToResizeRows = false;
+            dataGridViewProductos.Anchor = AnchorStyles.None;
+            dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProductos.Location = new Point(12, 607);
             dataGridViewProductos.Name = "dataGridViewProductos";
+            dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
             dataGridViewProductos.Size = new Size(977, 189);
             dataGridViewProductos.TabIndex = 2;
+            dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
             // 
             // btnVender
             // 
+            btnVender.Anchor = AnchorStyles.Bottom;
             btnVender.Cursor = Cursors.Hand;
             btnVender.FlatStyle = FlatStyle.Popup;
             btnVender.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -249,6 +315,7 @@
             btnVender.Text = "      Vender";
             btnVender.TextAlign = ContentAlignment.MiddleLeft;
             btnVender.UseVisualStyleBackColor = true;
+            btnVender.Click += btnVender_Click;
             // 
             // ckbTarjeta
             // 
@@ -265,7 +332,7 @@
             // 
             ckbEfectivo.AutoSize = true;
             ckbEfectivo.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            ckbEfectivo.Location = new Point(278, 46);
+            ckbEfectivo.Location = new Point(223, 46);
             ckbEfectivo.Name = "ckbEfectivo";
             ckbEfectivo.Size = new Size(100, 29);
             ckbEfectivo.TabIndex = 11;
@@ -274,6 +341,8 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = AnchorStyles.None;
+            groupBox3.Controls.Add(btnCalcularCosto);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(ckbEfectivo);
             groupBox3.Controls.Add(txtTotalAPagar);
@@ -291,7 +360,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(198, 94);
+            label10.Location = new Point(26, 97);
             label10.Name = "label10";
             label10.Size = new Size(127, 28);
             label10.TabIndex = 21;
@@ -299,13 +368,14 @@
             // 
             // txtTotalAPagar
             // 
-            txtTotalAPagar.Location = new Point(342, 90);
+            txtTotalAPagar.Location = new Point(173, 93);
             txtTotalAPagar.Name = "txtTotalAPagar";
             txtTotalAPagar.Size = new Size(150, 37);
             txtTotalAPagar.TabIndex = 0;
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
@@ -317,6 +387,7 @@
             // 
             // btnCancelar
             // 
+            btnCancelar.Anchor = AnchorStyles.Bottom;
             btnCancelar.Cursor = Cursors.Hand;
             btnCancelar.FlatStyle = FlatStyle.Popup;
             btnCancelar.ForeColor = Color.White;
@@ -329,7 +400,7 @@
             // 
             // lblPrintHelp
             // 
-            lblPrintHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblPrintHelp.Anchor = AnchorStyles.Bottom;
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
@@ -350,22 +421,63 @@
             pictureBox1.TabIndex = 12;
             pictureBox1.TabStop = false;
             // 
+            // txtPesoEspecificado
+            // 
+            txtPesoEspecificado.Location = new Point(229, 108);
+            txtPesoEspecificado.Name = "txtPesoEspecificado";
+            txtPesoEspecificado.Size = new Size(150, 37);
+            txtPesoEspecificado.TabIndex = 25;
+            txtPesoEspecificado.TextChanged += txtPesoEspecificado_TextChanged;
+            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(145, 216);
+            label9.Location = new Point(77, 117);
             label9.Name = "label9";
-            label9.Size = new Size(240, 28);
-            label9.TabIndex = 21;
-            label9.Text = "Peso (Pordra especificarlo)";
+            label9.Size = new Size(97, 28);
+            label9.TabIndex = 24;
+            label9.Text = "Peso (Kg):";
             // 
-            // txtPesoEspecificado
+            // label8
             // 
-            txtPesoEspecificado.Location = new Point(235, 256);
-            txtPesoEspecificado.Name = "txtPesoEspecificado";
-            txtPesoEspecificado.Size = new Size(150, 37);
-            txtPesoEspecificado.TabIndex = 22;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(61, 55);
+            label8.Name = "label8";
+            label8.Size = new Size(95, 28);
+            label8.TabIndex = 23;
+            label8.Text = "Cantidad:";
+            // 
+            // groupBox4
+            // 
+            groupBox4.Anchor = AnchorStyles.None;
+            groupBox4.Controls.Add(numericCantidadCompra);
+            groupBox4.Controls.Add(txtPesoEspecificado);
+            groupBox4.Controls.Add(label8);
+            groupBox4.Controls.Add(label9);
+            groupBox4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox4.ForeColor = Color.White;
+            groupBox4.Location = new Point(570, 339);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(419, 196);
+            groupBox4.TabIndex = 22;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Vender";
+            // 
+            // btnCalcularCosto
+            // 
+            btnCalcularCosto.Anchor = AnchorStyles.Bottom;
+            btnCalcularCosto.Cursor = Cursors.Hand;
+            btnCalcularCosto.FlatStyle = FlatStyle.Popup;
+            btnCalcularCosto.ForeColor = Color.White;
+            btnCalcularCosto.Location = new Point(356, 88);
+            btnCalcularCosto.Name = "btnCalcularCosto";
+            btnCalcularCosto.Size = new Size(130, 42);
+            btnCalcularCosto.TabIndex = 22;
+            btnCalcularCosto.Text = "Calcular";
+            btnCalcularCosto.UseVisualStyleBackColor = true;
+            btnCalcularCosto.Click += btnCalcularCosto_Click;
             // 
             // FrmVentaVendedor
             // 
@@ -373,6 +485,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkRed;
             ClientSize = new Size(1001, 871);
+            Controls.Add(groupBox4);
             Controls.Add(pictureBox1);
             Controls.Add(lblPrintHelp);
             Controls.Add(btnCancelar);
@@ -395,6 +508,8 @@
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            groupBox4.ResumeLayout(false);
+            groupBox4.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -423,12 +538,20 @@
         private TextBox txtApellido;
         private Label label6;
         private TextBox txtNombre;
-        private Label label8;
         private NumericUpDown numericCantidadCompra;
         private Button btnCancelar;
         private Label lblPrintHelp;
         private PictureBox pictureBox1;
+        private Label label11;
+        private TextBox txtPrecioPorUnidad;
+        private TextBox txtStockActual;
+        private Label label12;
+        private TextBox txtPesoTotalStock;
+        private Label label13;
         private TextBox txtPesoEspecificado;
         private Label label9;
+        private Label label8;
+        private GroupBox groupBox4;
+        private Button btnCalcularCosto;
     }
 }

@@ -17,8 +17,8 @@ namespace Entidades
 
         #region PROPIEDADES
         public int ID { get { return this._id; } }
-        public List<Cliente> ListaClientes { get { return this._listaClientes; } }
-        public List<Carne2> ListaProductos { get { return this._listaCarne; }  set { this.ListaProductos = value; } } 
+        public List<Cliente> ListaClientes { get { return this._listaClientes; } set { this._listaClientes = value; } }
+        public List<Carne2> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
         public DateTime FechaIngreso { get { return this._fechaIngreso; } }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne2> productos,string telefono)
-            : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne2> productos,string telefono,Usuario user)
+            : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
@@ -61,12 +61,14 @@ namespace Entidades
         /// </summary>
         /// <param name="email"></param>
         /// <param name="contrasenia"></param>
-        public Vendedor(string email,string contrasenia)
-            :base(email,contrasenia)
+        public Vendedor(Usuario user)
+            :base(user)
         {
             this._listaCarne = new List<Carne2>();
             this._listaClientes = new List<Cliente>();  
         }
+
+       // public 
         #endregion
 
         #region SOBRECARGA DE OPERADORES

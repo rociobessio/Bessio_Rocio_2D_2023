@@ -35,6 +35,10 @@ namespace Entidades
         /// </summary>
         public abstract bool EsCliente { get; }
         public Usuario Usuario { get {  return this.usuario; } }
+        public string Nombre { get { return this.nombre; } }
+        public string Apellido { get { return this.apellido; } }
+        public string Telefono { get { return this.telefono; } }    
+        public string Domicilio { get { return this.domicilio; } }
         #endregion
 
         #region CONTRUCTORES
@@ -63,10 +67,10 @@ namespace Entidades
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
-        protected Persona(string email,string contrasenia)
+        protected Persona(Usuario user)
             : this()
         {
-            this.usuario = new Usuario(email,contrasenia); 
+            this.usuario = user; 
         }
 
         /// <summary>
@@ -79,11 +83,10 @@ namespace Entidades
         /// <param name="nacionalidad"></param>
         /// <param name="fechaNacimiento"></param>
         /// <param name="dni"></param>
-        /// <param name="domicilio"></param>
-        /// <param name="contraseña"></param>
-        /// <param name="usuario"></param>
+        /// <param name="domicilio"></param> 
         protected Persona(string nombre, string apellido,Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-            string dni,string domicilio,string telefono) 
+            string dni,string domicilio,string telefono,Usuario user) 
+            : this(user)//--->Sobrecarga
         {
             this.sexo = sexo;
             this.nacionalidad = nacionalidad;
@@ -93,11 +96,19 @@ namespace Entidades
             this.apellido = apellido;
             this.nombre = nombre;
             this.telefono= telefono;
-            //this.contraseña = contraseña;
-            //this.mail = usuario;
-            this.usuario = new Usuario("","");
         }
-        #endregion 
+        #endregion
+
+        #region SOBRECARGA
+        /// <summary>
+        /// Operador explicito que me devuelve el email de la persona.
+        /// </summary>
+        /// <param name="persona"></param>
+        public static explicit operator string(Persona persona)
+        {
+            return persona.Usuario.Email;
+        }
+        #endregion
 
         #region POLIMORFISMO
         /// <summary>

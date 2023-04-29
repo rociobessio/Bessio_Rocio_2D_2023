@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmHeladera));
-            label1 = new Label();
-            pictureBox1 = new PictureBox();
+            lblVendedorEmail = new Label();
+            pictureBoxVendedor = new PictureBox();
             dataGridViewProductos = new DataGridView();
             label2 = new Label();
             groupBoxReponer = new GroupBox();
@@ -56,38 +56,47 @@
             btnVender = new Button();
             lblPrintHelp = new Label();
             groupBox1 = new GroupBox();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericStock).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
-            // label1
+            // lblVendedorEmail
             // 
-            label1.AutoSize = true;
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(27, 208);
-            label1.Name = "label1";
-            label1.Size = new Size(59, 25);
-            label1.TabIndex = 0;
-            label1.Text = "label1";
+            lblVendedorEmail.Anchor = AnchorStyles.None;
+            lblVendedorEmail.AutoSize = true;
+            lblVendedorEmail.ForeColor = Color.White;
+            lblVendedorEmail.Location = new Point(27, 208);
+            lblVendedorEmail.Name = "lblVendedorEmail";
+            lblVendedorEmail.Size = new Size(59, 25);
+            lblVendedorEmail.TabIndex = 0;
+            lblVendedorEmail.Text = "label1";
             // 
-            // pictureBox1
+            // pictureBoxVendedor
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(27, 17);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(165, 188);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 1;
-            pictureBox1.TabStop = false;
+            pictureBoxVendedor.Anchor = AnchorStyles.None;
+            pictureBoxVendedor.Image = (Image)resources.GetObject("pictureBoxVendedor.Image");
+            pictureBoxVendedor.Location = new Point(27, 17);
+            pictureBoxVendedor.Name = "pictureBoxVendedor";
+            pictureBoxVendedor.Size = new Size(165, 188);
+            pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxVendedor.TabIndex = 1;
+            pictureBoxVendedor.TabStop = false;
             // 
             // dataGridViewProductos
             // 
+            dataGridViewProductos.AllowUserToAddRows = false;
+            dataGridViewProductos.AllowUserToDeleteRows = false;
+            dataGridViewProductos.AllowUserToResizeColumns = false;
+            dataGridViewProductos.Anchor = AnchorStyles.Bottom;
+            dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProductos.Location = new Point(17, 608);
             dataGridViewProductos.Name = "dataGridViewProductos";
+            dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
             dataGridViewProductos.Size = new Size(1147, 225);
@@ -96,6 +105,7 @@
             // 
             // label2
             // 
+            label2.Anchor = AnchorStyles.Bottom;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
@@ -107,6 +117,7 @@
             // 
             // groupBoxReponer
             // 
+            groupBoxReponer.Anchor = AnchorStyles.None;
             groupBoxReponer.Controls.Add(label11);
             groupBoxReponer.Controls.Add(txtPrecioCompra);
             groupBoxReponer.Controls.Add(label10);
@@ -147,9 +158,9 @@
             // 
             // txtPrecioCompra
             // 
-            txtPrecioCompra.Location = new Point(168, 327);
+            txtPrecioCompra.Location = new Point(191, 327);
             txtPrecioCompra.Name = "txtPrecioCompra";
-            txtPrecioCompra.Size = new Size(182, 37);
+            txtPrecioCompra.Size = new Size(159, 37);
             txtPrecioCompra.TabIndex = 21;
             // 
             // label10
@@ -325,7 +336,7 @@
             // 
             // lblPrintHelp
             // 
-            lblPrintHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblPrintHelp.Anchor = AnchorStyles.None;
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
@@ -338,6 +349,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.Controls.Add(btnVender);
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
@@ -359,14 +371,14 @@
             Controls.Add(groupBoxReponer);
             Controls.Add(label2);
             Controls.Add(dataGridViewProductos);
-            Controls.Add(pictureBox1);
-            Controls.Add(label1);
+            Controls.Add(pictureBoxVendedor);
+            Controls.Add(lblVendedorEmail);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmHeladera";
             Text = "FrmHeladera";
             FormClosing += FrmHeladera_FormClosing;
             Load += FrmHeladera_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             groupBoxReponer.ResumeLayout(false);
             groupBoxReponer.PerformLayout();
@@ -378,8 +390,8 @@
 
         #endregion
 
-        private Label label1;
-        private PictureBox pictureBox1;
+        private Label lblVendedorEmail;
+        private PictureBox pictureBoxVendedor;
         private DataGridView dataGridViewProductos;
         private Label label2;
         private GroupBox groupBoxReponer;

@@ -24,7 +24,7 @@ namespace Entidades
         public string EntidadEmisora { get { return this._entidadEmisora; } }
         public string TItular { get { return this._titular; } }
         public double Saldo { get { return this._saldoDisponible; } set { this._saldoDisponible = value; } }
-        #endregion
+        #endregion 
 
         #region CONSTRUCTOR
         /// <summary>
@@ -73,7 +73,31 @@ namespace Entidades
 
             return esValida;
         }
-        #endregion 
+        #endregion
+
+        #region SOBRECARGA
+        /// <summary>
+        /// Dos tarjetas seran iguales si tienen el mismo numero y titular.
+        /// </summary>
+        /// <param name="tarjeta1"></param>
+        /// <param name="tarjeta2"></param>
+        /// <returns></returns>
+        public static bool operator ==(Tarjeta tarjeta1, Tarjeta tarjeta2)
+        {
+            bool sonIguales = false;
+            if (!(tarjeta1 is null) && !(tarjeta2 is null))
+            {
+                sonIguales = (tarjeta1._titular == tarjeta2._titular) &&
+                             (tarjeta1._numeroTarjeta == tarjeta2._numeroTarjeta);
+            }
+            return sonIguales;
+        }
+
+        public static bool operator !=(Tarjeta tarjeta1, Tarjeta tarjeta2)
+        {
+            return !(tarjeta1 == tarjeta2);
+        }
+        #endregion
 
         #region POLIMORFISMO
         /// <summary>
