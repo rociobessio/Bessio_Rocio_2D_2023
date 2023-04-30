@@ -11,11 +11,13 @@ namespace Carniceria_GUI
         #region ATRIBUTOS 
         private List<Cliente> clientes;
         private Cliente cliente;
+        private Cliente clientePrueba;
         private List<Vendedor> vendedores;
         private Vendedor vendedor;
         private Persona ingresante;
 
         private FrmHeladera frmHeladera;
+        private FrmMetodoDePago frmMetodoDePago;
         static SoundPlayer soundPlayer;
         #endregion
 
@@ -27,7 +29,11 @@ namespace Carniceria_GUI
 
             #region INSTANCIO CLIENTES
             clientes = new List<Cliente>();
-            cliente = new Cliente(new Usuario("rocibessio@gmail.com", "123"));
+            cliente = new Cliente( "Rocio","Bessio",Sexo.Femenino,Nacionalidad.Argentina,new DateTime(2003,08,13),"45013997","Formosa 2680","1138225232",
+                                   new Usuario("rociobessio@gmail.com","123"),new Carrito()); 
+            clientePrueba = new Cliente("Romina","Peréz",Sexo.Femenino,Nacionalidad.Argentina,new DateTime(1992,10,11),
+                                        "30125878","Mitre 198","11890778",new Usuario("romipp@gmail.com","123"),new Carrito());
+            clientes.Add(clientePrueba);
             clientes.Add(cliente);
             #endregion
 
@@ -40,7 +46,7 @@ namespace Carniceria_GUI
 
             #region INSTANCIO SOUNDPLAYER
             FrmLogin.soundPlayer = new SoundPlayer();
-            FrmLogin.soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\CompraSonido.wav";
+            FrmLogin.soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\LoginUnlocked.wav";
             #endregion
 
             #region CREO LA AYUDA
@@ -149,6 +155,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void button1_Click(object sender, EventArgs e)
         {
+            //-->Creo un usuario con los datos del textboxes
             Usuario usuario = new Usuario(this.txtEmail.Text, this.txtContrasenia.Text);
             bool ingresaraONo = this.PuedeSeguir(usuario);
 
@@ -160,16 +167,18 @@ namespace Carniceria_GUI
                 }
                 else
                 {
-                    if (ingresante.EsCliente)//-->Utilizo la propiedad para saber si es Cliente
+                    if (ingresante.EsCliente)//-->Utilizo la propiedad abstracta para saber si es Cliente
                     {
                         soundPlayer.Play();
-                        MessageBox.Show("Sos cliente");
+                        MessageBox.Show("Sos Cliente");
+                        frmMetodoDePago = new FrmMetodoDePago((Cliente)ingresante);//-->Casteo Persona a Cliente
+                        frmMetodoDePago.ShowDialog();
                     }
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
                         soundPlayer.Play();
                         MessageBox.Show("Sos Vendedor");
-                        frmHeladera = new FrmHeladera(vendedor);//-->Le paso a Felipe
+                        frmHeladera = new FrmHeladera((Vendedor)ingresante);//-->Casteo a Vendedor
                         frmHeladera.ShowDialog();
                         this.Hide();
                     }
@@ -234,8 +243,8 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnCliente_Click(object sender, EventArgs e)
         {
-            this.txtContrasenia.Text = this.cliente.Usuario.Contrasenia;
-            this.txtEmail.Text = this.cliente.Usuario.Email;
+            this.txtContrasenia.Text = this.clientePrueba.Usuario.Contrasenia;
+            this.txtEmail.Text = this.clientePrueba.Usuario.Email;
         }
     }
 }

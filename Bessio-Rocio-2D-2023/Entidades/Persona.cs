@@ -16,10 +16,7 @@ namespace Entidades
         protected Nacionalidad nacionalidad;
         protected Sexo sexo;
         protected string domicilio;
-        protected string telefono;
-
-        //protected string contraseña;
-        //protected string mail;
+        protected string telefono; 
         protected Usuario usuario;//->Cada persona en nuestro sistema contara con un usuario.
         #endregion
 
@@ -55,9 +52,7 @@ namespace Entidades
             this.sexo = Sexo.Femenino;
             this.fechaDeNacimiento = new DateTime();
             this.usuario = new Usuario("","");
-            this.telefono = "000";
-            //this.contraseña = "aaaa";
-            //this.mail = "1234";
+            this.telefono = "000"; 
         }
 
         /// <summary>
@@ -101,7 +96,7 @@ namespace Entidades
 
         #region SOBRECARGA
         /// <summary>
-        /// Operador explicito que me devuelve el email de la persona.
+        /// Operador implicito que me devuelve el email de la persona.
         /// </summary>
         /// <param name="persona"></param>
         public static implicit operator string(Persona persona)

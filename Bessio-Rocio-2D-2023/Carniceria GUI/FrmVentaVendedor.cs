@@ -291,10 +291,10 @@ namespace Carniceria_GUI
             bool pudoComprar = false;
             if (cliente.ConTarjeta)
             {
-                if (cliente.TarjetaCredito.Saldo > 0 &&
-                     cliente.TarjetaCredito.Saldo > totalCompra)
+                if (cliente.TarjetaCredito.DineroDisponible > 0 &&
+                     cliente.TarjetaCredito.DineroDisponible > totalCompra)
                 {
-                    cliente.TarjetaCredito.Saldo -= totalCompra;//-->Descuento la plata
+                    cliente.TarjetaCredito.DineroDisponible -= totalCompra;//-->Descuento la plata
                     cliente.CarritoCompra.Productos.Add(carneSeleccionada);//-->Al carrito le añado la carne 
                     cliente.CarritoCompra.PrecioTotal += totalCompra;
 

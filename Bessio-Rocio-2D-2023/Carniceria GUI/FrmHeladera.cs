@@ -32,6 +32,7 @@ namespace Carniceria_GUI
         List<Cliente> listaClientes;
         #endregion
 
+        #region CONSTRUCTOR
         public FrmHeladera(Vendedor vendedor)
         {
             InitializeComponent();
@@ -50,27 +51,25 @@ namespace Carniceria_GUI
 
             #region INSTANCIO CLIENTES
             this.listaClientes = new List<Cliente>();
-            this.listaClientes.Add(new Cliente("Mariana", "Sileveira", Sexo.Femenino, Nacionalidad.Argentina,
-                                    new DateTime(1990, 10, 19), "22312335", "Formosa 2716", 0,
-                                    new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 100000),
-                                    new Carrito(), "77090989", new Usuario("mar@hotmail.com", "123"), true));//-->Utiliza Tarjeta
-
-            this.listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay,
-                                    new DateTime(1978, 12, 09), "20193123", "Rucci 2680", 12000,
-                                    new Carrito(), "77090989", new Usuario("gCasares@yahoo.com.ar", "123"), false));//-->Utiliza Debito
-            #endregion
+            this.listaClientes.Add(new Cliente("Mariana","Silveira",Sexo.Femenino,Nacionalidad.Argentina,new DateTime(1990, 10, 19),
+                                    "22312335","Formosa 2716", "77090989",new Usuario("mar@hotmail.com", "123"),new Carrito(),
+                                    new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 100000,false),true));//-->Utiliza Tarjeta
+            this.listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
+                                    "20193123", "Rucci 2680","11234124",new Usuario("gCasares@yahoo.com.ar", "123"),new Carrito(),12000,false));//-->Utiliza Debito
+           #endregion
 
             vendedor1 = vendedor;
 
-            #region AYUDA
+            #region PRINT AYUDA
             StringBuilder textoAyuda = new StringBuilder();
             textoAyuda.AppendLine("El vendedor podrá reponer los productos, visualizarlos");
             textoAyuda.AppendLine("y también podrá seleccionar a un cliente y venderle un producto.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
-            #endregion      
-
+            #endregion       
         }
+        #endregion
 
+        #region EVENTOS DEL FORM
         private void FrmHeladera_Load(object sender, EventArgs e)
         {
             this.tablaProductos.Columns.Add("Tipo");
@@ -82,12 +81,6 @@ namespace Carniceria_GUI
             this.tablaProductos.Columns.Add("Vencimiento");
             this.tablaProductos.Columns.Add("Proveedor");
             this.tablaProductos.Columns.Add("Precio compra Frigorifico");
-
-            //this.dataGridViewProductos.DataSource = listaProductos;
-
-            //#region AGREGO LAS CARNES A LA LISTA DE PRODUCTOS
-            //this.producto1 += listaCarnes;//Al producto le añado la carne
-            //#endregion
 
             foreach (Tipo tipo in Enum.GetValues(typeof(Tipo)))
             {
@@ -103,74 +96,23 @@ namespace Carniceria_GUI
         }
 
         private void dataGridViewProductos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // Recolecto la celda clickeada de la tabla de viajes, especificamente el primer indice donde
-            // se guarda la matricula y el cuarto indice donde se guarda la fecha de salida
-            // y recorro la lista de cruceros para buscar el match y la lista de viajes para buscar el match.
-            //this.indexTablaProductos = e.RowIndex;
-
-            //// Si el indice es -1 significa que esta clickeando el header de la columna
-            //if (this.indexTablaProductos > -1)
-            //{
-            //    this.indiceViajFrmInformacionDetallada = 0;
-
-            //    this.idSelected = (int)this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value;
-            //}
-
-            //foreach (Producto item in this.listaProductos)
-            //{
-            //    if (item == idSelected)
-            //    {
-            //        foreach (Carnes carnes in item.ListaCarnes)
-            //        {
-            //            //richTextBox1.Text = carnes.ToString();
-            //        }
-            //    }
-            //}
-            //foreach (Producto product in this.listaProductos)
-            //{
-            //    if (product == idSelected)
-            //    {
-            //        // Limpio la lista de pasajeros y muestro los pasajeros del viaje seleccionado
-            //        this.dataGridView1.Rows.Clear();
-
-            //        if (product.ListaCarnes.Count == 0)
-            //        {
-            //            // En caso de no haber pasajeros en la lista se muestra un mensaje aclarandolo
-            //            this.auxFilaCarnes = new();
-            //            this.auxFilaCarnes.CreateCells(this.dataGridView1);
-
-            //            this.auxFilaCarnes.Cells[0].Value = "PRODUCTO SIN CARNE";
-
-            //            this.dataGridView1.Rows.Add(this.auxFilaCarnes);
-            //        }
-            //        else
-            //        {
-            //            // Recorre la lista de pasajeros que tiene el viaje seleccionado
-            //            // Por cada uno crea una fila y rellena cada columna con todos sus datos
-            //            // Por ultimo agrega la fila al DataGridView de Pasajero
-            //            for (int i = 0; i < product.ListaCarnes.Count; i++)
-            //            {
-            //                this.auxFilaCarnes = new();
-            //                this.auxFilaCarnes.CreateCells(this.dataGridView1);
-
-            //                this.auxFilaCarnes.Cells[0].Value = $"{product.ListaCarnes[i].Corte}";
-            //                this.auxFilaCarnes.Cells[1].Value = $"{product.ListaCarnes[i].Textura}";
-            //                this.auxFilaCarnes.Cells[2].Value = $"{product.ListaCarnes[i].Peso}";
-            //                this.auxFilaCarnes.Cells[3].Value = $"{product.ListaCarnes[i].Precio}";
-            //                this.auxFilaCarnes.Cells[4].Value = $"{product.ListaCarnes[i].Vencimiento}";
-
-            //                this.dataGridView1.Rows.Add(this.auxFilaCarnes);
-            //            }
-            //        } 
-            //        break;
-            //    }
-            //    // Guarda el indice viaje seleccionado para poder utilizo por fuera del foreach
-            //    indiceViajFrmInformacionDetallada++;
-
-
+        { 
         }
 
+        /// <summary>
+        /// Le preguntara al usuario si desea realmente cerrar el formulario.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmHeladera_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea salir?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (DialogResult.No == respuesta)
+            {
+                e.Cancel = true;
+            }
+        }
         /// <summary>
         /// Al seleccionar un tipo de carne, se cambiara el tipo de corte y textura que
         /// se pueda seleccionar.
@@ -225,8 +167,9 @@ namespace Carniceria_GUI
                 this.cbTexturaCarne.Enabled = false;
             }
         }
+        #endregion
 
-        #region METODOS DEL FORM
+        #region METODOS/VALIDACIONES DEL FORM
         /// <summary>
         /// Metodo privado que me permite cargar los productos de la lista,
         /// la recorre, uso auxiliares de las filas para poder imprimir los atributos
@@ -304,6 +247,7 @@ namespace Carniceria_GUI
         }
         #endregion
 
+        #region BOTONES
         /// <summary>
         /// Al presionar este boton me permitira guardar un nuevo producto en la lista.
         /// </summary>
@@ -322,22 +266,12 @@ namespace Carniceria_GUI
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
         }
-
+         
         /// <summary>
-        /// Le preguntara al usuario si desea realmente cerrar el formulario.
+        /// Me permite abrir otro formulario para que el vendedor pueda venderle un producto al cliente.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void FrmHeladera_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea salir?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (DialogResult.No == respuesta)
-            {
-                e.Cancel = true;
-            }
-        }
-
         private void btnVender_Click(object sender, EventArgs e)
         {
             vendedor1.ListaProductos = listaCarnesDisponibles;//Le paso la lista de carnes
@@ -345,5 +279,6 @@ namespace Carniceria_GUI
             frmVentaVendedor = new FrmVentaVendedor(vendedor1);
             frmVentaVendedor.ShowDialog();
         }
+        #endregion
     }
 }
