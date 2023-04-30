@@ -1,5 +1,6 @@
 using Entidades;
 using Microsoft.VisualBasic.Logging;
+using System.Media;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
@@ -15,6 +16,7 @@ namespace Carniceria_GUI
         private Persona ingresante;
 
         private FrmHeladera frmHeladera;
+        static SoundPlayer soundPlayer;
         #endregion
 
 
@@ -25,7 +27,7 @@ namespace Carniceria_GUI
 
             #region INSTANCIO CLIENTES
             clientes = new List<Cliente>();
-            cliente = new Cliente(new Usuario("rocibessio@gmail.com","123"));
+            cliente = new Cliente(new Usuario("rocibessio@gmail.com", "123"));
             clientes.Add(cliente);
             #endregion
 
@@ -36,8 +38,9 @@ namespace Carniceria_GUI
             vendedores.Add(new Vendedor(new Usuario("Lucas@yahoo.com.ar", "123")));
             #endregion
 
-            #region INSTANCIO FORMULARIOS
-            //frmHeladera = new FrmHeladera(vendedor);//-->Le paso a Felipe
+            #region INSTANCIO SOUNDPLAYER
+            FrmLogin.soundPlayer = new SoundPlayer();
+            FrmLogin.soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\CompraSonido.wav";
             #endregion
 
             #region CREO LA AYUDA
@@ -55,7 +58,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = "App Carnicería";
+            this.Text = "La Cristina";
         }
 
         #region VALIDACIONES
@@ -159,10 +162,12 @@ namespace Carniceria_GUI
                 {
                     if (ingresante.EsCliente)//-->Utilizo la propiedad para saber si es Cliente
                     {
+                        soundPlayer.Play();
                         MessageBox.Show("Sos cliente");
                     }
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
+                        soundPlayer.Play();
                         MessageBox.Show("Sos Vendedor");
                         frmHeladera = new FrmHeladera(vendedor);//-->Le paso a Felipe
                         frmHeladera.ShowDialog();

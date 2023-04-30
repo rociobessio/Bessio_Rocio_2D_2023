@@ -56,6 +56,7 @@
             btnVender = new Button();
             lblPrintHelp = new Label();
             groupBox1 = new GroupBox();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -67,10 +68,11 @@
             // 
             lblVendedorEmail.Anchor = AnchorStyles.None;
             lblVendedorEmail.AutoSize = true;
+            lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(27, 208);
+            lblVendedorEmail.Location = new Point(227, 89);
             lblVendedorEmail.Name = "lblVendedorEmail";
-            lblVendedorEmail.Size = new Size(59, 25);
+            lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 0;
             lblVendedorEmail.Text = "label1";
             // 
@@ -78,7 +80,7 @@
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
             pictureBoxVendedor.Image = (Image)resources.GetObject("pictureBoxVendedor.Image");
-            pictureBoxVendedor.Location = new Point(27, 17);
+            pictureBoxVendedor.Location = new Point(27, 44);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
             pictureBoxVendedor.Size = new Size(165, 188);
             pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
@@ -94,12 +96,12 @@
             dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Location = new Point(17, 608);
+            dataGridViewProductos.Location = new Point(12, 532);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
-            dataGridViewProductos.Size = new Size(1147, 225);
+            dataGridViewProductos.Size = new Size(1147, 275);
             dataGridViewProductos.TabIndex = 2;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
             // 
@@ -109,7 +111,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(27, 573);
+            label2.Location = new Point(27, 497);
             label2.Name = "label2";
             label2.Size = new Size(323, 32);
             label2.TabIndex = 3;
@@ -139,9 +141,9 @@
             groupBoxReponer.Controls.Add(label3);
             groupBoxReponer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBoxReponer.ForeColor = Color.White;
-            groupBoxReponer.Location = new Point(531, 3);
+            groupBoxReponer.Location = new Point(531, 16);
             groupBoxReponer.Name = "groupBoxReponer";
-            groupBoxReponer.Size = new Size(633, 467);
+            groupBoxReponer.Size = new Size(633, 452);
             groupBoxReponer.TabIndex = 4;
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Reponer Carne";
@@ -223,7 +225,7 @@
             btnReponer.FlatStyle = FlatStyle.Popup;
             btnReponer.Image = (Image)resources.GetObject("btnReponer.Image");
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
-            btnReponer.Location = new Point(448, 391);
+            btnReponer.Location = new Point(448, 382);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(169, 61);
             btnReponer.TabIndex = 5;
@@ -326,9 +328,9 @@
             btnVender.Cursor = Cursors.Hand;
             btnVender.FlatStyle = FlatStyle.Popup;
             btnVender.ForeColor = Color.White;
-            btnVender.Location = new Point(348, 202);
+            btnVender.Location = new Point(117, 82);
             btnVender.Name = "btnVender";
-            btnVender.Size = new Size(111, 40);
+            btnVender.Size = new Size(206, 74);
             btnVender.TabIndex = 6;
             btnVender.Text = "Vender";
             btnVender.UseVisualStyleBackColor = true;
@@ -341,7 +343,7 @@
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrintHelp.Image = (Image)resources.GetObject("lblPrintHelp.Image");
-            lblPrintHelp.Location = new Point(198, 17);
+            lblPrintHelp.Location = new Point(1137, 810);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
             lblPrintHelp.TabIndex = 9;
@@ -353,19 +355,32 @@
             groupBox1.Controls.Add(btnVender);
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(27, 263);
+            groupBox1.Location = new Point(27, 261);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(465, 248);
+            groupBox1.Size = new Size(465, 207);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Cliente vender Carne";
+            groupBox1.Text = "Venderle producto a Cliente";
+            // 
+            // label1
+            // 
+            label1.Anchor = AnchorStyles.None;
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(246, 44);
+            label1.Name = "label1";
+            label1.Size = new Size(166, 32);
+            label1.TabIndex = 11;
+            label1.Text = "BIENVENID@";
             // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkRed;
-            ClientSize = new Size(1176, 845);
+            ClientSize = new Size(1176, 870);
+            Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(lblPrintHelp);
             Controls.Add(groupBoxReponer);
@@ -417,5 +432,6 @@
         private GroupBox groupBox1;
         private Label label11;
         private TextBox txtPrecioCompra;
+        private Label label1;
     }
 }

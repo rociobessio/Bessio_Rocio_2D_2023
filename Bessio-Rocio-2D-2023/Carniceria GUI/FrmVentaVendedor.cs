@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,10 +22,11 @@ namespace Carniceria_GUI
         private Vendedor _vendedorForm;
         private Carne2 carneSeleccionada;
         private Cliente clienteSelecccionado;
+        private SoundPlayer soundPlayer;
 
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        // FrmHeladera frmHeladera;
+        //FrmHeladera frmHeladera;
 
         int indexTablaProductos;
         int indiceDetalle;
@@ -35,13 +37,16 @@ namespace Carniceria_GUI
         public FrmVentaVendedor(Vendedor vendedor)
         {
             InitializeComponent();
-            this.Text = "Venta de productos";
-            this.StartPosition = FormStartPosition.CenterScreen;
             _vendedorForm = vendedor;
+            this.lblVendedorEmail.Text = _vendedorForm;
+            this.Text = "Venta de Productos";
+            this.StartPosition = FormStartPosition.CenterScreen;
 
             this._dataTable = new DataTable();
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
             carneSeleccionada = new Carne2();
+            soundPlayer = new SoundPlayer();
+            soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\CompraSonido.wav";
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -73,7 +78,7 @@ namespace Carniceria_GUI
             this.ckbTarjeta.Enabled = false;
             this.txtPrecioPorUnidad.Enabled = false;
             this.txtStockActual.Enabled = false;
-            this.txtPesoTotalStock.Enabled = false; 
+            this.txtPesoTotalStock.Enabled = false;
             #endregion
 
             #region CARGO COLUMNAS DATAGRID
@@ -108,11 +113,11 @@ namespace Carniceria_GUI
         /// de la clase.
         /// </summary>
         private void CargarProductosDataGrid()
-        { 
+        {
             _dataTable.Rows.Clear();
 
             foreach (Carne2 carnes in this._vendedorForm.ListaProductos)
-            { 
+            {
                 auxFilaProduc = _dataTable.NewRow();
 
                 auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
@@ -124,7 +129,7 @@ namespace Carniceria_GUI
                 auxFilaProduc[6] = $"{carnes.PrecioCompra}";
 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
-                
+
             }
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
@@ -217,7 +222,7 @@ namespace Carniceria_GUI
                 esValido = false;
             }
 
-            if (this.indexTablaProductos <= -1)
+            if (this.indexTablaProductos < 0)
             {
                 sb.AppendLine("No se ha seleccionado un Producto de la lista.");
                 esValido = false;
@@ -349,10 +354,11 @@ namespace Carniceria_GUI
 
                 if (this.Comprar(totalAPagar, clienteSelecccionado, cantidad, peso))//-->Intenta comprar.
                 {
+                    soundPlayer.Play();
                     MessageBox.Show("Venta generada",
                         "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    if(carneSeleccionada.Stock == 0)
+                    if (carneSeleccionada.Stock == 0)
                     {
                         this._vendedorForm.ListaProductos.Remove(carneSeleccionada);
                     }

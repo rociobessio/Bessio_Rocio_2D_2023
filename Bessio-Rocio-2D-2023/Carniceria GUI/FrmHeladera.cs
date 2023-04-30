@@ -35,9 +35,9 @@ namespace Carniceria_GUI
         public FrmHeladera(Vendedor vendedor)
         {
             InitializeComponent();
-            this.lblVendedorEmail.Text = $"Hola {vendedor.Usuario.ToString()}";
+            this.lblVendedorEmail.Text = vendedor;
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Perfil Vendedor";
+            this.Text = "Reponer Stock";
 
             this.tablaProductos = new DataTable();
 
@@ -193,7 +193,7 @@ namespace Carniceria_GUI
                 this.cbCorteCarne.Items.Add(Corte.Matambre);
                 this.cbCorteCarne.SelectedIndex = 0;//-->Selecciono el primero de esa opcion, si cambiase el Tipo me quedaria seleccionado el indice anterior
 
-                this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillito); 
+                this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillito);
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Ternero);
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillo);
                 this.cbTexturaCarne.SelectedIndex = 0;
@@ -222,7 +222,7 @@ namespace Carniceria_GUI
 
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.No_Es_Bovino);
                 this.cbTexturaCarne.SelectedIndex = 0;
-                this.cbTexturaCarne.Enabled = false ;
+                this.cbTexturaCarne.Enabled = false;
             }
         }
 
@@ -246,7 +246,7 @@ namespace Carniceria_GUI
 
                 auxFilaProduc[0] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
                 auxFilaProduc[1] = $"{carnes.Corte}";
-                auxFilaProduc[2] = $"{carnes.Textura.ToString().Replace("_"," ")}";
+                auxFilaProduc[2] = $"{carnes.Textura.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Peso}";
                 auxFilaProduc[4] = $"{carnes.Stock}";
                 auxFilaProduc[5] = $"{carnes.PrecioVenta}";
@@ -288,7 +288,7 @@ namespace Carniceria_GUI
                 this.numericStock.Value <= 0 || precioCompra <= 0 || precioCompra > precio)
             {
                 esValido = false;//-->Si alguno de los valores ingresado es menor o igual a 0, no lo dejo.
-            } 
+            }
 
             //-->Valido que no ingrese una fecha invalida, es decir, un producto vencido.
             if (this.dtpFechaVencimiento.Value < DateTime.Now)

@@ -55,6 +55,7 @@
             ckbTarjeta = new CheckBox();
             ckbEfectivo = new CheckBox();
             groupBox3 = new GroupBox();
+            btnCalcularCosto = new Button();
             label10 = new Label();
             txtTotalAPagar = new TextBox();
             label2 = new Label();
@@ -65,7 +66,7 @@
             label9 = new Label();
             label8 = new Label();
             groupBox4 = new GroupBox();
-            btnCalcularCosto = new Button();
+            lblVendedorEmail = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericCantidadCompra).BeginInit();
@@ -356,6 +357,20 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Método de Pago";
             // 
+            // btnCalcularCosto
+            // 
+            btnCalcularCosto.Anchor = AnchorStyles.Bottom;
+            btnCalcularCosto.Cursor = Cursors.Hand;
+            btnCalcularCosto.FlatStyle = FlatStyle.Popup;
+            btnCalcularCosto.ForeColor = Color.White;
+            btnCalcularCosto.Location = new Point(356, 88);
+            btnCalcularCosto.Name = "btnCalcularCosto";
+            btnCalcularCosto.Size = new Size(130, 42);
+            btnCalcularCosto.TabIndex = 22;
+            btnCalcularCosto.Text = "Calcular";
+            btnCalcularCosto.UseVisualStyleBackColor = true;
+            btnCalcularCosto.Click += btnCalcularCosto_Click;
+            // 
             // label10
             // 
             label10.AutoSize = true;
@@ -465,19 +480,17 @@
             groupBox4.TabStop = false;
             groupBox4.Text = "Vender";
             // 
-            // btnCalcularCosto
+            // lblVendedorEmail
             // 
-            btnCalcularCosto.Anchor = AnchorStyles.Bottom;
-            btnCalcularCosto.Cursor = Cursors.Hand;
-            btnCalcularCosto.FlatStyle = FlatStyle.Popup;
-            btnCalcularCosto.ForeColor = Color.White;
-            btnCalcularCosto.Location = new Point(356, 88);
-            btnCalcularCosto.Name = "btnCalcularCosto";
-            btnCalcularCosto.Size = new Size(130, 42);
-            btnCalcularCosto.TabIndex = 22;
-            btnCalcularCosto.Text = "Calcular";
-            btnCalcularCosto.UseVisualStyleBackColor = true;
-            btnCalcularCosto.Click += btnCalcularCosto_Click;
+            lblVendedorEmail.Anchor = AnchorStyles.None;
+            lblVendedorEmail.AutoSize = true;
+            lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblVendedorEmail.ForeColor = Color.White;
+            lblVendedorEmail.Location = new Point(116, 22);
+            lblVendedorEmail.Name = "lblVendedorEmail";
+            lblVendedorEmail.Size = new Size(65, 28);
+            lblVendedorEmail.TabIndex = 23;
+            lblVendedorEmail.Text = "label1";
             // 
             // FrmVentaVendedor
             // 
@@ -485,6 +498,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkRed;
             ClientSize = new Size(1001, 871);
+            Controls.Add(lblVendedorEmail);
             Controls.Add(groupBox4);
             Controls.Add(pictureBox1);
             Controls.Add(lblPrintHelp);
@@ -553,5 +567,6 @@
         private Label label8;
         private GroupBox groupBox4;
         private Button btnCalcularCosto;
+        private Label lblVendedorEmail;
     }
 }

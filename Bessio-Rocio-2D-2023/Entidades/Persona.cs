@@ -104,7 +104,7 @@ namespace Entidades
         /// Operador explicito que me devuelve el email de la persona.
         /// </summary>
         /// <param name="persona"></param>
-        public static explicit operator string(Persona persona)
+        public static implicit operator string(Persona persona)
         {
             return persona.Usuario.Email;
         }
