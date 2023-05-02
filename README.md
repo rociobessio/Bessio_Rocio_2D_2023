@@ -15,6 +15,7 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 ----------------------
 ## Reponer stock:
 <img width="589" alt="HeladeraVendedor" src="https://user-images.githubusercontent.com/98594436/235566830-79e3c137-978d-43f5-b42d-a06c3a6b4882.png">
+
 1) El Vendedor podrá reponer productos al stock de la carnicería.
 2) Siempre y cuando pase las validaciones necesarias, si las pasa entonces se actualiza el stock.
 3) Al presionar el botón vender se abrirá un nuevo Form para poder venderle a un cliente los productos.
