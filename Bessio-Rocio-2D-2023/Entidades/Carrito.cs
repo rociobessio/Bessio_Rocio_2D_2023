@@ -10,12 +10,10 @@ namespace Entidades
     {
         #region ATRIBUTOS
         private DateTime _fechaCompra;
-        private double _precioTotal;
-        //private double _precioConRecargo;
+        private double _precioTotal; 
         private bool _conTarjeta;
-        private List<Carne2> _listaDeProductos;
+        private List<Carne> _listaDeProductos; 
 
-        private static readonly double precioIVA = 5;
         #endregion
 
         #region PROPIEDADES
@@ -23,7 +21,7 @@ namespace Entidades
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
         //public double Recargo { get { return this.AplicarRecargo(this._precioTotal); } set { this._precioConRecargo = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } }
-        public List<Carne2> Productos { get { return this._listaDeProductos; } }
+        public List<Carne> Productos { get { return this._listaDeProductos; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -33,10 +31,9 @@ namespace Entidades
         public Carrito()
         {
             this._conTarjeta = false;
-            this._fechaCompra = DateTime.Now;
+            this._fechaCompra = DateTime.Today;
             this._precioTotal = 00;
-            //this._precioConRecargo = 11;
-            this._listaDeProductos = new List<Carne2>();
+            this._listaDeProductos = new List<Carne>();
         }
 
         /// <summary>
@@ -47,15 +44,37 @@ namespace Entidades
         /// <param name="precioTotal"></param>
         /// <param name="descuento"></param>
         /// <param name="productos"></param>
-        public Carrito(DateTime compra, double precioTotal, double descuento, List<Carne2> productos,bool tarjeta)
+        public Carrito(DateTime compra, double precioTotal, double descuento, List<Carne> productos,bool tarjeta)
         {
             this._conTarjeta = tarjeta;
             this._fechaCompra = compra; 
             this._precioTotal = precioTotal;
-            //this._precioConRecargo = descuento;
             this._listaDeProductos = productos;
         }
         #endregion
+
+        ///// <summary>
+        ///// Me permite añadir un producto al carrito si este no se encuentra
+        ///// ya contenido en el.
+        ///// Utilizo la sobrecarga del == de Carne.
+        ///// </summary>
+        ///// <param name="carrito"></param>
+        ///// <param name="carne"></param>
+        ///// <returns></returns>
+        //public static Carrito operator + (Carrito carrito,Carne carne)
+        //{
+        //    if(!(carrito is null) && !(carne is null))
+        //    {
+        //        foreach (Carne item in carrito._listaDeProductos)
+        //        {
+        //            if(item == carne)//-->Si son distintos puedo añadirlo
+        //            {
+        //                carrito._listaDeProductos.Add(carne);
+        //            }
+        //        }
+        //    }
+        //    return carrito;
+        //}
 
         #region METODO
         ///// <summary>
@@ -85,24 +104,28 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"{this._fechaCompra.ToShortTimeString()}-${this._precioTotal:f}");
+            double acumulador = 0;
+            sb.AppendLine($"FECHA DE COMPRA:{this._fechaCompra.ToShortDateString()}"); 
 
-            //if( this._conTarjeta)//Si pago con tarjeta muestro el recargo
-            //{
-            //    sb.AppendLine($"- ${this._precioConRecargo}");
-            //}
-
-            foreach (Carne2 producto in this._listaDeProductos)
+            foreach (Carne producto in this._listaDeProductos)
             {
                 if(this._listaDeProductos.Count > 0)
                 {
-                    sb.AppendLine($"{producto.ToString()}");
+                    sb.AppendLine($"Tipo: {producto.Tipo.ToString().Replace("_", " ")}");
+                    sb.AppendLine($"Corte: {producto.Corte.ToString().Replace("_", " ")}");
+                    sb.AppendLine($"Categoría: {producto.Categoria.ToString().Replace("_", " ")}");
+                    sb.AppendLine($"Peso: {producto.Peso}");
+                    sb.AppendLine($"Precio: ${producto.PrecioCompraCliente}");
+                    acumulador += producto.PrecioCompraCliente;//-->Acumulo el total entre todos los productos
                 }
                 else
                 {
                     sb.AppendLine("No hay productos seleccionados.");
                 }
             }
+            this._precioTotal = acumulador;
+
+            sb.AppendLine($"Total: ${this._precioTotal:f}");
 
             return sb.ToString();
         }

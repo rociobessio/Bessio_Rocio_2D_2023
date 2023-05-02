@@ -9,7 +9,7 @@ namespace Entidades
     public class Cliente : Persona
     {
         #region ATRIBUTOS
-        private double _dineroDebitoDisponible;
+        private double _dineroEfectivoDisponible;
         //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
         private Tarjeta _tarjetaCredito;
         private Carrito _CarritoCompra; 
@@ -17,18 +17,16 @@ namespace Entidades
         #endregion
 
         #region PROPIEDADES
-        public double DineroDebitoDisponible { get { return this._dineroDebitoDisponible; } set { this._dineroDebitoDisponible = value; } }
+        public double DineroEfectivoDisponible { get { return this._dineroEfectivoDisponible; } set { this._dineroEfectivoDisponible = value; } }
         public Tarjeta TarjetaCredito { get { return this._tarjetaCredito; } set { this._tarjetaCredito = value; } }
-        public Carrito CarritoCompra { get { return this._CarritoCompra; } } 
+        public Carrito CarritoCompra { get { return this._CarritoCompra; } set { this.CarritoCompra = value; } } 
         public bool ConTarjeta { get { return this._esConTarjeta; } set { this._esConTarjeta = value; } }
         /// <summary>
         /// Hago override de la propiedad EsCliente retornando true.
         /// </summary>
         public override bool EsCliente { get { return true; } }
         #endregion
-
-        #region CONSTRUCTORES
-
+ 
         #region CONSTRUCTORES VERSION 2
         /// <summary>
         /// Constructor del base y me permite instanciar tambien el carrito.
@@ -93,7 +91,7 @@ namespace Entidades
                        string dni, string domicilio, string telefono, Usuario user, Carrito carrito,double debito,bool usaTarjeta)
             : this(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user, carrito)
         {
-            this._dineroDebitoDisponible = debito;
+            this._dineroEfectivoDisponible = debito;
             this._esConTarjeta = usaTarjeta;
         }
 
@@ -102,55 +100,6 @@ namespace Entidades
         {
 
         }
-        #endregion
-
-        ///// <summary>
-        ///// Constructor que inicializar con valores validos el objeto que va a ser creado
-        ///// En este constructor no esta el parametro Tarjeta, solo paga con debito
-        ///// </summary>
-        ///// <param name="nombre"></param>
-        ///// <param name="apellido"></param>
-        ///// <param name="sexo"></param>
-        ///// <param name="nacionalidad"></param>
-        ///// <param name="fechaNacimiento"></param>
-        ///// <param name="dni"></param>
-        ///// <param name="domicilio"></param> 
-        ///// <param name="dineroDebitoDisponible"></param> 
-        ///// <param name="tarjeta"></param>
-        ///// <param name="carrito"></param>
-        //public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-        //               string dni, string domicilio,
-        //               double dineroDebitoDisponible, Carrito carrito,string telefono,Usuario user,bool tarjeta)
-        //    : base(nombre, apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio, telefono, user)
-        //{
-        //    this._dineroDebitoDisponible = dineroDebitoDisponible; 
-        //    this._CarritoCompra = carrito; 
-        //    this._esConTarjeta = tarjeta;
-        //}
-
-        ///// <summary>
-        ///// Sobrecarga de constructor, este a diferencia del anterior añade el parametro
-        ///// tarjeta, por si el cliente decide abonar con esta.
-        ///// </summary>
-        ///// <param name="nombre"></param>
-        ///// <param name="apellido"></param>
-        ///// <param name="sexo"></param>
-        ///// <param name="nacionalidad"></param>
-        ///// <param name="fechaNacimiento"></param>
-        ///// <param name="dni"></param>
-        ///// <param name="domicilio"></param>
-        ///// <param name="dineroDebitoDisponible"></param> 
-        ///// <param name="tarjeta"></param>
-        ///// <param name="carrito"></param> 
-        //public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-        //               string dni, string domicilio,
-        //               double dineroDebitoDisponible, Tarjeta tarjeta, Carrito carrito,string telefono,Usuario user, bool escontarjeta)
-        //     : this(nombre,apellido,sexo,nacionalidad,fechaNacimiento,dni,domicilio,dineroDebitoDisponible,carrito, telefono, user, escontarjeta)
-        //{
-        //    this._tarjetaCredito = tarjeta;
-        //}
-
-
         #endregion 
 
         #region SOBRECARGA DE OPERADORES
@@ -188,7 +137,7 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()}-${this._dineroDebitoDisponible:f}-{this._tarjetaCredito.ToString()}";
+            return $"{base.ToString()}-${this._dineroEfectivoDisponible:f}-{this._tarjetaCredito.ToString()}";
         }
 
         /// <summary>
@@ -216,5 +165,11 @@ namespace Entidades
         }
         #endregion
 
+        #region METODOS
+        //private bool Comprar()
+        //{
+
+        //}
+        #endregion
     }
 }

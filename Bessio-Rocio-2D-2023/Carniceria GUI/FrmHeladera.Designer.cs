@@ -38,8 +38,6 @@
             txtPrecioCompra = new TextBox();
             label10 = new Label();
             txtProveedor = new TextBox();
-            label9 = new Label();
-            numericStock = new NumericUpDown();
             cbTipoDeCarneReponer = new ComboBox();
             label8 = new Label();
             btnReponer = new Button();
@@ -60,7 +58,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericStock).BeginInit();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -92,8 +89,9 @@
             dataGridViewProductos.AllowUserToAddRows = false;
             dataGridViewProductos.AllowUserToDeleteRows = false;
             dataGridViewProductos.AllowUserToResizeColumns = false;
+            dataGridViewProductos.AllowUserToResizeRows = false;
             dataGridViewProductos.Anchor = AnchorStyles.Bottom;
-            dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProductos.Location = new Point(12, 532);
@@ -124,8 +122,6 @@
             groupBoxReponer.Controls.Add(txtPrecioCompra);
             groupBoxReponer.Controls.Add(label10);
             groupBoxReponer.Controls.Add(txtProveedor);
-            groupBoxReponer.Controls.Add(label9);
-            groupBoxReponer.Controls.Add(numericStock);
             groupBoxReponer.Controls.Add(cbTipoDeCarneReponer);
             groupBoxReponer.Controls.Add(label8);
             groupBoxReponer.Controls.Add(btnReponer);
@@ -164,6 +160,7 @@
             txtPrecioCompra.Name = "txtPrecioCompra";
             txtPrecioCompra.Size = new Size(159, 37);
             txtPrecioCompra.TabIndex = 21;
+            txtPrecioCompra.KeyPress += txtPrecioCompra_KeyPress;
             // 
             // label10
             // 
@@ -181,23 +178,6 @@
             txtProveedor.Name = "txtProveedor";
             txtProveedor.Size = new Size(182, 37);
             txtProveedor.TabIndex = 19;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(391, 182);
-            label9.Name = "label9";
-            label9.Size = new Size(64, 28);
-            label9.TabIndex = 18;
-            label9.Text = "Stock:";
-            // 
-            // numericStock
-            // 
-            numericStock.Location = new Point(467, 179);
-            numericStock.Name = "numericStock";
-            numericStock.Size = new Size(150, 37);
-            numericStock.TabIndex = 17;
             // 
             // cbTipoDeCarneReponer
             // 
@@ -229,7 +209,7 @@
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(169, 61);
             btnReponer.TabIndex = 5;
-            btnReponer.Text = "     Reponer";
+            btnReponer.Text = "   Reponer";
             btnReponer.TextAlign = ContentAlignment.MiddleLeft;
             btnReponer.UseVisualStyleBackColor = true;
             btnReponer.Click += btnReponer_Click;
@@ -238,7 +218,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(391, 278);
+            label7.Location = new Point(391, 171);
             label7.Name = "label7";
             label7.Size = new Size(206, 28);
             label7.TabIndex = 14;
@@ -246,7 +226,7 @@
             // 
             // dtpFechaVencimiento
             // 
-            dtpFechaVencimiento.Location = new Point(391, 325);
+            dtpFechaVencimiento.Location = new Point(391, 218);
             dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             dtpFechaVencimiento.Size = new Size(226, 37);
             dtpFechaVencimiento.TabIndex = 13;
@@ -267,6 +247,7 @@
             txtPrecio.Name = "txtPrecio";
             txtPrecio.Size = new Size(156, 37);
             txtPrecio.TabIndex = 11;
+            txtPrecio.KeyPress += txtPrecio_KeyPress;
             // 
             // label5
             // 
@@ -284,6 +265,7 @@
             txtPesoCarne.Name = "txtPesoCarne";
             txtPesoCarne.Size = new Size(156, 37);
             txtPesoCarne.TabIndex = 9;
+            txtPesoCarne.KeyPress += txtPesoCarne_KeyPress;
             // 
             // cbTexturaCarne
             // 
@@ -343,7 +325,7 @@
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrintHelp.Image = (Image)resources.GetObject("lblPrintHelp.Image");
-            lblPrintHelp.Location = new Point(1137, 810);
+            lblPrintHelp.Location = new Point(12, 810);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
             lblPrintHelp.TabIndex = 9;
@@ -397,7 +379,6 @@
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
             groupBoxReponer.ResumeLayout(false);
             groupBoxReponer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericStock).EndInit();
             groupBox1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
@@ -425,8 +406,6 @@
         private Label label8;
         private Label label10;
         private TextBox txtProveedor;
-        private Label label9;
-        private NumericUpDown numericStock;
         private Button btnVender;
         private Label lblPrintHelp;
         private GroupBox groupBox1;

@@ -9,7 +9,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Carniceria GUI", "Carniceri
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entidades", "Entidades\Entidades.csproj", "{E130CE07-5DED-4370-B7BF-C09FF5E4D3ED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carniceria GUI", "Carniceria GUI\Carniceria GUI.csproj", "{FAE5FA8F-E52D-47FB-838F-BD653D6A7F77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Carniceria GUI", "Carniceria GUI\Carniceria GUI.csproj", "{FAE5FA8F-E52D-47FB-838F-BD653D6A7F77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

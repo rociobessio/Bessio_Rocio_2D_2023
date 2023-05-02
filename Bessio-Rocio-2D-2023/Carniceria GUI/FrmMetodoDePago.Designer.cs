@@ -110,6 +110,7 @@
             txtTitular.Name = "txtTitular";
             txtTitular.Size = new Size(182, 34);
             txtTitular.TabIndex = 20;
+            txtTitular.KeyPress += txtTitular_KeyPress;
             // 
             // label6
             // 
@@ -365,6 +366,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmMetodoDePago";
             Text = "FrmMetodoDePago";
+            FormClosing += FrmMetodoDePago_FormClosing;
             Load += FrmMetodoDePago_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox1.ResumeLayout(false);

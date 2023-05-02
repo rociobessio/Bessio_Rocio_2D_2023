@@ -16,6 +16,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS
         private Cliente clienteForm;
         private Tarjeta tarjetaCliente;
+        private FrmCompraCliente frmCompraCliente;
         #endregion
 
 
@@ -116,11 +117,8 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtNumTarjeta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (this.txtNumTarjeta.TextLength <= 16)
-            {
-                SoloNumeros(sender, e);
-            }
+        { 
+            FrmMetodoDePago.SoloNumeros(sender, e); 
         }
 
         /// <summary>
@@ -129,11 +127,8 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtCVV_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (this.txtCVV.TextLength <= 4)
-            {
-                SoloNumeros(sender, e);
-            }
+        { 
+             FrmMetodoDePago.SoloNumeros(sender, e); 
         }
 
         /// <summary>
@@ -143,7 +138,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void txtTotalTarjeta_KeyPress(object sender, KeyPressEventArgs e)
         {
-            SoloNumeros(sender, e);
+            FrmMetodoDePago.SoloNumeros(sender, e);
         }
 
         /// <summary>
@@ -153,7 +148,21 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void txtEfectivoAGastar_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.SoloNumeros(sender, e);
+            FrmMetodoDePago.SoloNumeros(sender, e);
+        }
+
+        /// <summary>
+        /// Este evento llama al metodo SoloLetras, validando unicamente el ingreso de letras.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtTitular_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FrmMetodoDePago.SoloLetras(sender, e);
+        }
+         
+        private void FrmMetodoDePago_FormClosing(object sender, FormClosingEventArgs e)
+        { 
         }
         #endregion 
 
@@ -260,9 +269,24 @@ namespace Carniceria_GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SoloNumeros(object sender, KeyPressEventArgs e)
+        public static void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// Chequea que solo se introduzcan letras y el espacio.
+        /// Es un validador.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public static void SoloLetras(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) &&
+                (e.KeyChar != ' '))
             {
                 e.Handled = true;
             }
@@ -279,7 +303,7 @@ namespace Carniceria_GUI
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
             if (this.ValidarInput())//-->Valido los ingresos
-            {
+            { 
                 if (this.rbTarjetaDebito.Checked || this.rbTarjetaCredito.Checked)//-->Me fijo de que es
                 {
                     tarjetaCliente = this.CargarTarjeta();//-->Cargo la tarjeta
@@ -287,6 +311,10 @@ namespace Carniceria_GUI
                     {
                         clienteForm.TarjetaCredito = tarjetaCliente;//-->Le asigno la tarjeta
                         clienteForm.ConTarjeta = true;
+
+                        frmCompraCliente = new FrmCompraCliente(clienteForm);
+                        frmCompraCliente.ShowDialog();//-->Abro el form de compra
+                        this.Hide();
                     }
                     else
                     {
@@ -296,8 +324,12 @@ namespace Carniceria_GUI
 
                 if (this.rbEfectivo.Checked)//-->Efectivo, le asigno el valor
                 {
-                    clienteForm.DineroDebitoDisponible = double.Parse(this.txtEfectivoAGastar.Text);
+                    clienteForm.DineroEfectivoDisponible = double.Parse(this.txtEfectivoAGastar.Text);
                     clienteForm.ConTarjeta = false;
+
+                    frmCompraCliente = new FrmCompraCliente(clienteForm);
+                    frmCompraCliente.ShowDialog();//-->Abro el form de compra
+                    this.Hide();
                 }
             }
         }
