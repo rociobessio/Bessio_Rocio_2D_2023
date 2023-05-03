@@ -16,8 +16,7 @@ namespace Carniceria_GUI
     {
         #region ATRIBUTOS DEL FORM 
 
-        #region CARNES
-        List<Carne> listaCarnesDisponibles;
+        #region CARNES 
         Carne carneIngresada;
         Carne carneSeleccionada;
         CategoriaBovina texturaCarne;
@@ -32,46 +31,50 @@ namespace Carniceria_GUI
         double peso;
         #endregion
 
-        bool habilitarTextBoxes;
+        bool terminoDeReponer;
         FrmVentaVendedor frmVentaVendedor;
-        Vendedor vendedorForm;
-        List<Cliente> listaClientes;
-        #endregion
+        Vendedor vendedorForm; 
+        #endregion 
 
         #region CONSTRUCTOR
-        public FrmHeladera(Vendedor vendedor)
+
+        public FrmHeladera()
         {
             InitializeComponent();
-            this.lblVendedorEmail.Text = vendedor;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Reponer Stock";
 
             this.tablaProductos = new DataTable();//-->Instancio la dataTable.
             this.carneSeleccionada = new Carne();//-->Instancio par evitar nulls
+        }
+        public FrmHeladera(Vendedor vendedor)
+            : this()
+        {
+            this.lblVendedorEmail.Text = vendedor;
 
-            #region INSTANCIO CARNES
-            this.listaCarnesDisponibles = new List<Carne>();
-            this.listaCarnesDisponibles.Add(new Carne(Corte.Lomo, 1900, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
-            this.listaCarnesDisponibles.Add(new Carne(Corte.Pechuga, 700, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
-            this.listaCarnesDisponibles.Add(new Carne(Corte.Costilla, 1900, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
-            #endregion
+            //#region INSTANCIO CARNES
+            //this.listaCarnesDisponibles = new List<Carne>();
+            //this.listaCarnesDisponibles.Add(new Carne(Corte.Lomo, 1900, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
+            //this.listaCarnesDisponibles.Add(new Carne(Corte.Pechuga, 700, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
+            //this.listaCarnesDisponibles.Add(new Carne(Corte.Costilla, 1900, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
+            //#endregion
 
-            #region INSTANCIO CLIENTES
-            this.listaClientes = new List<Cliente>();
-            this.listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
-                        "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
-                        new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 55000, false), true));//-->Utiliza Tarjeta Débito
-            this.listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
-                                    "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
-                                    new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 100000, true), true));//-->Utiliza Tarjeta Credito
-            this.listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
-                                    "20193123", "Rucci 2680", "11234124", new Usuario("gCasares@yahoo.com.ar", "123"), new Carrito(), 12000, false));//-->Utiliza Debito
-            #endregion
+            //#region INSTANCIO CLIENTES
+            //this.listaClientes = new List<Cliente>();
+            //this.listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
+            //            "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
+            //            new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 55000, false), true));//-->Utiliza Tarjeta Débito
+            //this.listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
+            //                        "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
+            //                        new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 100000, true), true));//-->Utiliza Tarjeta Credito
+            //this.listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
+            //                        "20193123", "Rucci 2680", "11234124", new Usuario("gCasares@yahoo.com.ar", "123"), new Carrito(), 12000, false));//-->Utiliza Debito
+            //#endregion
 
             #region ASIGNACION VENDEDOR
             vendedorForm = vendedor;//-->Asigno el vendedor que recibo
-            vendedorForm.ListaClientes = this.listaClientes;//-->Asigno clientes
-            vendedorForm.ListaProductos = this.listaCarnesDisponibles;//-->Asigno productos
+            //vendedorForm.ListaClientes = this.listaClientes;//-->Asigno clientes
+            //vendedorForm.ListaProductos = this.listaCarnesDisponibles;//-->Asigno productos
             #endregion
 
             #region PRINT AYUDA
@@ -123,8 +126,8 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void dataGridViewProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.habilitarTextBoxes = false;
-            this.ManejoTextBoxes();
+            this.terminoDeReponer = false;//-->Si selecciona una celda quiere decir que repone
+            this.ManejoTextBoxes();//-->Por eso deshabilito los textboxes
 
             this.indexTablaProductos = e.RowIndex;//-->Obtengo el indice
 
@@ -145,11 +148,11 @@ namespace Carniceria_GUI
                     this.cbCorteCarne.Text = carne.Corte.ToString();
                     this.cbTexturaCarne.Text = carne.Categoria.ToString();
                     this.cbTipoDeCarneReponer.Text = carne.Tipo.ToString();
-                    this.dtpFechaVencimiento.Value = carne.Vencimiento; 
+                    this.dtpFechaVencimiento.Value = carne.Vencimiento;
 
                     carneSeleccionada = carne;//-->Guardo esa carne para realizar las modificaciones o calculos
                 }
-            }  
+            }
         }
 
         /// <summary>
@@ -263,7 +266,7 @@ namespace Carniceria_GUI
         /// al datagrid se le puede pasar la lista y mostrara gracias a las propiedades
         /// de la clase.
         /// </summary>
-        private void CargarProductosDataGrid()
+        public void CargarProductosDataGrid()
         {
             tablaProductos.Rows.Clear();
 
@@ -273,7 +276,7 @@ namespace Carniceria_GUI
 
                 auxFilaProduc[0] = $"{carnes.Codigo}";
                 auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
-                auxFilaProduc[2] = $"{carnes.Corte}";
+                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
                 auxFilaProduc[4] = $"{carnes.Peso}";
                 auxFilaProduc[5] = $"{carnes.PrecioCompraCliente}";
@@ -284,14 +287,19 @@ namespace Carniceria_GUI
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
             this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista
-        } 
+        }
 
         /// <summary>
-        /// Me permite habilitar o deshabilitar los textboxes del formulario
+        /// Me permite habilitar o deshabilitar los textboxes del formulario y limpiarlos
         /// </summary>
         private void ManejoTextBoxes()
         {
-            if (habilitarTextBoxes)
+            this.txtPesoCarne.Clear();
+            this.txtPrecioCompraFrigorifico.Clear();
+            this.txtPrecioVentaClientes.Clear();
+            this.txtProveedor.Clear();
+
+            if (terminoDeReponer)//-->Si termino de reponer entonces  habilito los textboxes nuevamente.
             {
                 this.txtPrecioCompraFrigorifico.Enabled = true;
                 this.txtPrecioVentaClientes.Enabled = true;
@@ -319,7 +327,7 @@ namespace Carniceria_GUI
         /// <returns>Devuelve true si la informacion es valida, false sino</returns>
         private bool ValidarDatos()
         {
-            bool esValido = true; 
+            bool esValido = true;
             double precio;
             double precioCompra;
             double.TryParse(this.txtPrecioVentaClientes.Text, out precio);
@@ -364,20 +372,20 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnReponer_Click(object sender, EventArgs e)
         {
-            double.TryParse(this.txtPesoCarne.Text,out peso);//-->Parseo el peso
+            double.TryParse(this.txtPesoCarne.Text, out peso);//-->Parseo el peso
             if (indexTablaProductos >= 0 && peso > 0)
             {
                 carneSeleccionada.Peso += peso;//-->Le agrego el peso nuevo a lo que tenia. 
 
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-
-                habilitarTextBoxes = true;//-->Habilito los textboxes.
-                this.ManejoTextBoxes();
             }
             else
             {
                 MessageBox.Show("Ocurrio un error al intentar reponer el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            terminoDeReponer = true;//-->Habilito los textboxes nuevamente ya que termino de reponer.
+            this.ManejoTextBoxes();
         }
 
         /// <summary>
@@ -386,9 +394,10 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnVender_Click(object sender, EventArgs e)
-        { 
+        {
             frmVentaVendedor = new FrmVentaVendedor(vendedorForm);
-            frmVentaVendedor.ShowDialog();
+            frmVentaVendedor.Show();
+            this.Close();//-->Cierro este formualario.
         }
 
         /// <summary>
@@ -398,7 +407,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnAgregarAlStock_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos())//-->Valido los datos
+            if (ValidarDatos() && terminoDeReponer)//-->Valido los datos y verifico si reponer no es true
             {
                 texturaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
 
@@ -413,7 +422,6 @@ namespace Carniceria_GUI
             }
         }
         #endregion
-
 
     }
 }

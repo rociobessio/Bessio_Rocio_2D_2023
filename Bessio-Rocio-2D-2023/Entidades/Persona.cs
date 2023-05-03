@@ -123,7 +123,7 @@ namespace Entidades
         public override bool Equals(object obj)
         {
             bool retorno = false;
-            if (obj is Persona)
+            if (obj is Persona && (obj is not null))
             {
                 retorno = this == ((Persona)obj);
             }

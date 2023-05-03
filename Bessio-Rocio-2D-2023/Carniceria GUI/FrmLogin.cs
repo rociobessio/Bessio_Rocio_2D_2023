@@ -20,8 +20,7 @@ namespace Carniceria_GUI
         private FrmMetodoDePago frmMetodoDePago;
         static SoundPlayer soundPlayer;
         #endregion
-
-
+         
         public FrmLogin()
         {
             InitializeComponent();
@@ -40,6 +39,8 @@ namespace Carniceria_GUI
             #region INSTANCIO VENDEDORES
             vendedores = new List<Vendedor>();
             vendedor = new Vendedor(new Usuario("felipe@hotmail.com", "123"));
+            vendedor = Vendedor.CargarDatosVendedor(vendedor);//-->Le cargo los datos al vendedor que usare.
+
             vendedores.Add(vendedor);//-->Asi lo puedo enviar al formulario si presiona el boton.
             vendedores.Add(new Vendedor(new Usuario("Lucas@yahoo.com.ar", "123")));
             #endregion
@@ -172,15 +173,14 @@ namespace Carniceria_GUI
                         soundPlayer.Play();
                         MessageBox.Show("Sos Cliente");
                         frmMetodoDePago = new FrmMetodoDePago((Cliente)ingresante);//-->Casteo Persona a Cliente
-                        frmMetodoDePago.ShowDialog();
+                        frmMetodoDePago.Show();
                     }
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
                         soundPlayer.Play();
                         MessageBox.Show("Sos Vendedor");
                         frmHeladera = new FrmHeladera((Vendedor)ingresante);//-->Casteo a Vendedor
-                        frmHeladera.ShowDialog();
-                        this.Hide();
+                        frmHeladera.Show(); 
                     }
                 }
             }

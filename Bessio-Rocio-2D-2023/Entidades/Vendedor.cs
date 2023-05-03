@@ -69,6 +69,40 @@ namespace Entidades
         } 
         #endregion
 
+        /// <summary>
+        /// Este metodo estatico me permite hardcodear las listas de los vendedores.
+        /// </summary>
+        /// <param name="vendedor"></param>
+        /// <returns></returns>
+        public static Vendedor CargarDatosVendedor(Vendedor vendedor)
+        {
+            #region INSTANCIO CARNES
+            //velistaCarnesDisponibles = new List<Carne>();
+            vendedor._listaCarne.Add(new Carne(Corte.Lomo, 1900, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
+            vendedor._listaCarne.Add(new Carne(Corte.Pechuga, 700, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
+            vendedor._listaCarne.Add(new Carne(Corte.Costilla, 1900, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
+            vendedor._listaCarne.Add(new Carne(Corte.Asado, 1000, CategoriaBovina.Ternero, new DateTime(2023, 05, 10), 190, "La mirona", Tipo.Carne_Vacuna, 1300));
+            vendedor._listaCarne.Add(new Carne(Corte.Pollo_Entero, 900, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 12, 07), 230, "La Granjita", Tipo.Pollo, 500));
+            vendedor._listaCarne.Add(new Carne(Corte.Matambre, 500, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1000, "Chascomus LA", Tipo.Cerdo, 1300));
+            vendedor._listaCarne.Add(new Carne(Corte.Pechuga, 100, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 06, 18), 500, "La Granjita", Tipo.Pollo, 1000));
+            vendedor._listaCarne.Add(new Carne(Corte.Pechito, 900, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 10, 05), 2000, "La mirona", Tipo.Cerdo, 2500));
+            vendedor._listaCarne.Add(new Carne(Corte.Bife_Angosto, 100, CategoriaBovina.Novillito, new DateTime(2023, 09, 08),2000, "Siga la vaca", Tipo.Carne_Vacuna, 2300));
+            #endregion
+
+            #region INSTANCIO CLIENTES 
+            vendedor._listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
+                        "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
+                        new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 55000, false), true));//-->Utiliza Tarjeta Débito
+            vendedor._listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
+                                    "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
+                                    new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 10000, true), true));//-->Utiliza Tarjeta Credito
+            vendedor._listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
+                                    "20193123", "Rucci 2680", "11234124", new Usuario("gCasares@yahoo.com.ar", "123"), new Carrito(), 12000, false));//-->Utiliza Debito
+            #endregion
+
+            return vendedor;
+        }
+
         #region SOBRECARGA DE OPERADORES
         /// <summary>
         /// Dos vendedores seran iguales si tienen el mismo ID.
@@ -123,7 +157,9 @@ namespace Entidades
         /// <returns>string con el estado del objeto</returns>
         public override string ToString()
         {
-            return $"{base.ToString()}-{this._id}-{this._fechaIngreso.ToShortDateString()}";
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.AppendLine($"{base.ToString()}-{this._id} - ID: {this._id} - Fecha Ingreso: {this._fechaIngreso.ToShortDateString()}");
+            return stringBuilder.ToString();
         }
         #endregion
     }

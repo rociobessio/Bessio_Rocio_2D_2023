@@ -167,6 +167,30 @@ namespace Entidades
                 $"Precio compra cliente: ${this._precioCompraCliente}");
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Codigo Hash del objeto 
+        /// </summary>
+        /// <returns>Codigo Hash del objeto </returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        /// <summary>
+        /// Compara si el objeto actual this es igual al objeto del parametro, es comparado por la sobrecarga del ==
+        /// </summary>
+        /// <param name="obj">de tipo object</param>
+        /// <returns>si son iguales retorna true sino false</returns>
+        public override bool Equals(object obj)
+        {
+            bool retorno = false;
+            if (obj is Carne && !(obj is null))
+            {
+                retorno = this == ((Carne)obj);
+            }
+            return retorno;
+        }
         #endregion
     }
 }

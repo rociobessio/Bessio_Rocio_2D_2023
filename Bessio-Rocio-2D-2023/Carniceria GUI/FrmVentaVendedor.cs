@@ -26,14 +26,19 @@ namespace Carniceria_GUI
 
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        //FrmHeladera frmHeladera;
+        FrmHeladera frmHeladera;
 
         int indexTablaProductos;
         int indiceDetalle;
         int codigoProducto;
         double totalAPagar;
-        #endregion
+        #endregion 
 
+        #region CONSTRUCTORES FORMULARIO
+        /// <summary>
+        /// Este constructor del Venta me permite asignarle un nombre al form,
+        /// centrarlo, instanciar el soundplayer y la datatable
+        /// </summary>
         public FrmVentaVendedor()
         {
             InitializeComponent();
@@ -43,9 +48,13 @@ namespace Carniceria_GUI
 
             soundPlayer = new SoundPlayer();
             soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\CompraSonido.wav";
-
         }
 
+        /// <summary>
+        /// Sobrecarga del constructor del formulario, este recibira una instancia de 
+        /// Vendedor.
+        /// </summary>
+        /// <param name="vendedor"></param>
         public FrmVentaVendedor(Vendedor vendedor)
             : this()
         {
@@ -53,6 +62,8 @@ namespace Carniceria_GUI
             this.lblVendedorEmail.Text = _vendedorForm;
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
             carneSeleccionada = new Carne();
+
+            frmHeladera = new FrmHeladera();
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -64,6 +75,8 @@ namespace Carniceria_GUI
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
+        #endregion
+
 
         /// <summary>
         /// En el evento load quito que pueda escribir en los textboxes,
@@ -383,6 +396,17 @@ namespace Carniceria_GUI
         }
         #endregion
 
-
+        /// <summary>
+        /// En este evento, antes de cerrarlo le paso al formulario heladera
+        /// la lista actualizada.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmVentaVendedor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmHeladera = new FrmHeladera(_vendedorForm);//-->Le paso al vendedor con los datos actualizados
+            frmHeladera.Show();
+            this.Hide();
+        }
     }
 }

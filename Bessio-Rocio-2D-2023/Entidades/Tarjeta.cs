@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System; 
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +29,20 @@ namespace Entidades
         #endregion 
 
         #region CONSTRUCTOR
+        /// <summary>
+        /// Este constructor privado me permite crear una instancia de tarjeta por defecto. 
+        /// </summary>
+        private Tarjeta()
+        {
+            this._fechaVencimiento = DateTime.Now;
+            this._titular = "AAAA AAAA";
+            this._cvv = "6666";
+            this._numeroTarjeta = "1234";
+            this._entidadEmisora = "Banco Nación";
+            this._dineroDisponible = 00;
+            this._esDebito = true;
+        }
+
         /// <summary>
         /// Constructor parametrizado de la clase Tarjeta, me permite crear una instancia
         /// con valores.
@@ -62,13 +76,23 @@ namespace Entidades
         /// <returns>Retornara true si es valida, false sino.</returns>
         public static bool ValidarTarjeta(Tarjeta tarjetaValidar)
         {
+            //Tarjeta tarjeta = new Tarjeta();
+
+            //if (numeroTarjeta.Length < 16 || numeroTarjeta.Length > 16 ||
+            //    dinero <= 0 || vencimiento < DateTime.Now || cvv.Length < 4 || cvv.Length > 4)
+            //{
+            //    //-->Si paso las validaciones la retorno
+            //    tarjeta = new Tarjeta(vencimiento,titular,cvv,numeroTarjeta,entidad,dinero,esDebito);
+            //}
+            //return tarjeta;
+
             bool esValida = true;//Como inicio presupongo que es valida. 
-            
+
             if (tarjetaValidar._numeroTarjeta.Length < 16 ||
                 tarjetaValidar._numeroTarjeta.Length > 16 ||
-                tarjetaValidar._dineroDisponible <= 0 || 
+                tarjetaValidar._dineroDisponible <= 0 ||
                 tarjetaValidar._fechaVencimiento < DateTime.Now ||
-                tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4  )
+                tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4)
             {
                 esValida = false;
             }

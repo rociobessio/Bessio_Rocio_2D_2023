@@ -62,6 +62,7 @@
             label9 = new Label();
             groupBox4 = new GroupBox();
             lblVendedorEmail = new Label();
+            label8 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -109,7 +110,7 @@
             txtApellido.Location = new Point(293, 243);
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(193, 37);
-            txtApellido.TabIndex = 18;
+            txtApellido.TabIndex = 6;
             // 
             // label6
             // 
@@ -126,7 +127,7 @@
             txtNombre.Location = new Point(15, 243);
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(193, 37);
-            txtNombre.TabIndex = 16;
+            txtNombre.TabIndex = 3;
             // 
             // label5
             // 
@@ -143,7 +144,7 @@
             txtDNI.Location = new Point(16, 164);
             txtDNI.Name = "txtDNI";
             txtDNI.Size = new Size(193, 37);
-            txtDNI.TabIndex = 14;
+            txtDNI.TabIndex = 2;
             // 
             // label4
             // 
@@ -160,7 +161,7 @@
             txtTelefono.Location = new Point(293, 164);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(193, 37);
-            txtTelefono.TabIndex = 12;
+            txtTelefono.TabIndex = 5;
             // 
             // label1
             // 
@@ -177,7 +178,7 @@
             txtDomicilio.Location = new Point(293, 92);
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(193, 37);
-            txtDomicilio.TabIndex = 10;
+            txtDomicilio.TabIndex = 4;
             // 
             // label3
             // 
@@ -195,7 +196,7 @@
             cbClientes.Location = new Point(15, 92);
             cbClientes.Name = "cbClientes";
             cbClientes.Size = new Size(194, 38);
-            cbClientes.TabIndex = 8;
+            cbClientes.TabIndex = 1;
             cbClientes.SelectedIndexChanged += cbClientes_SelectedIndexChanged;
             // 
             // groupBox2
@@ -279,7 +280,7 @@
             btnVender.Location = new Point(832, 802);
             btnVender.Name = "btnVender";
             btnVender.Size = new Size(157, 57);
-            btnVender.TabIndex = 7;
+            btnVender.TabIndex = 5;
             btnVender.Text = "      Vender";
             btnVender.TextAlign = ContentAlignment.MiddleLeft;
             btnVender.UseVisualStyleBackColor = true;
@@ -333,7 +334,7 @@
             btnCalcularCosto.Location = new Point(356, 88);
             btnCalcularCosto.Name = "btnCalcularCosto";
             btnCalcularCosto.Size = new Size(130, 42);
-            btnCalcularCosto.TabIndex = 22;
+            btnCalcularCosto.TabIndex = 4;
             btnCalcularCosto.Text = "Calcular";
             btnCalcularCosto.UseVisualStyleBackColor = true;
             btnCalcularCosto.Click += btnCalcularCosto_Click;
@@ -395,7 +396,7 @@
             txtPesoEspecificado.Location = new Point(238, 55);
             txtPesoEspecificado.Name = "txtPesoEspecificado";
             txtPesoEspecificado.Size = new Size(150, 37);
-            txtPesoEspecificado.TabIndex = 25;
+            txtPesoEspecificado.TabIndex = 3;
             txtPesoEspecificado.TextChanged += txtPesoEspecificado_TextChanged;
             txtPesoEspecificado.KeyPress += txtPesoEspecificado_KeyPress;
             // 
@@ -429,11 +430,23 @@
             lblVendedorEmail.AutoSize = true;
             lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(116, 22);
+            lblVendedorEmail.Location = new Point(270, 22);
             lblVendedorEmail.Name = "lblVendedorEmail";
             lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 23;
             lblVendedorEmail.Text = "label1";
+            // 
+            // label8
+            // 
+            label8.Anchor = AnchorStyles.None;
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.White;
+            label8.Location = new Point(104, 18);
+            label8.Name = "label8";
+            label8.Size = new Size(152, 32);
+            label8.TabIndex = 24;
+            label8.Text = "VENDEDOR:";
             // 
             // FrmVentaVendedor
             // 
@@ -441,6 +454,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkRed;
             ClientSize = new Size(1001, 871);
+            Controls.Add(label8);
             Controls.Add(lblVendedorEmail);
             Controls.Add(groupBox4);
             Controls.Add(pictureBox1);
@@ -454,6 +468,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmVentaVendedor";
             Text = "FrmVentaVendedor";
+            FormClosing += FrmVentaVendedor_FormClosing;
             Load += FrmVentaVendedor_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -504,5 +519,6 @@
         private GroupBox groupBox4;
         private Button btnCalcularCosto;
         private Label lblVendedorEmail;
+        private Label label8;
     }
 }

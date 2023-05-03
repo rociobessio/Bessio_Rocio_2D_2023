@@ -68,7 +68,7 @@
             lblVendedorEmail.AutoSize = true;
             lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(227, 89);
+            lblVendedorEmail.Location = new Point(185, 173);
             lblVendedorEmail.Name = "lblVendedorEmail";
             lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 0;
@@ -78,9 +78,9 @@
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
             pictureBoxVendedor.Image = Properties.Resources.pngwing_com__2_;
-            pictureBoxVendedor.Location = new Point(27, 44);
+            pictureBoxVendedor.Location = new Point(126, 12);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
-            pictureBoxVendedor.Size = new Size(165, 188);
+            pictureBoxVendedor.Size = new Size(184, 142);
             pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxVendedor.TabIndex = 1;
             pictureBoxVendedor.TabStop = false;
@@ -101,7 +101,7 @@
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
             dataGridViewProductos.Size = new Size(1147, 275);
-            dataGridViewProductos.TabIndex = 2;
+            dataGridViewProductos.TabIndex = 12;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
             // 
             // label2
@@ -155,7 +155,7 @@
             btnAgregarAlStock.Location = new Point(448, 303);
             btnAgregarAlStock.Name = "btnAgregarAlStock";
             btnAgregarAlStock.Size = new Size(169, 61);
-            btnAgregarAlStock.TabIndex = 23;
+            btnAgregarAlStock.TabIndex = 2;
             btnAgregarAlStock.Text = "   Agregar";
             btnAgregarAlStock.TextAlign = ContentAlignment.MiddleLeft;
             btnAgregarAlStock.UseVisualStyleBackColor = true;
@@ -176,7 +176,7 @@
             txtPrecioCompraFrigorifico.Location = new Point(191, 327);
             txtPrecioCompraFrigorifico.Name = "txtPrecioCompraFrigorifico";
             txtPrecioCompraFrigorifico.Size = new Size(159, 37);
-            txtPrecioCompraFrigorifico.TabIndex = 21;
+            txtPrecioCompraFrigorifico.TabIndex = 8;
             txtPrecioCompraFrigorifico.KeyPress += txtPrecioCompra_KeyPress;
             // 
             // label10
@@ -194,7 +194,7 @@
             txtProveedor.Location = new Point(168, 261);
             txtProveedor.Name = "txtProveedor";
             txtProveedor.Size = new Size(182, 37);
-            txtProveedor.TabIndex = 19;
+            txtProveedor.TabIndex = 7;
             // 
             // cbTipoDeCarneReponer
             // 
@@ -203,7 +203,7 @@
             cbTipoDeCarneReponer.Location = new Point(168, 38);
             cbTipoDeCarneReponer.Name = "cbTipoDeCarneReponer";
             cbTipoDeCarneReponer.Size = new Size(182, 36);
-            cbTipoDeCarneReponer.TabIndex = 16;
+            cbTipoDeCarneReponer.TabIndex = 4;
             cbTipoDeCarneReponer.SelectedIndexChanged += cbTipoDeCarneReponer_SelectedIndexChanged;
             // 
             // label8
@@ -225,7 +225,7 @@
             btnReponer.Location = new Point(448, 382);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(169, 61);
-            btnReponer.TabIndex = 5;
+            btnReponer.TabIndex = 3;
             btnReponer.Text = "   Reponer";
             btnReponer.TextAlign = ContentAlignment.MiddleLeft;
             btnReponer.UseVisualStyleBackColor = true;
@@ -246,7 +246,7 @@
             dtpFechaVencimiento.Location = new Point(391, 218);
             dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             dtpFechaVencimiento.Size = new Size(226, 37);
-            dtpFechaVencimiento.TabIndex = 13;
+            dtpFechaVencimiento.TabIndex = 11;
             // 
             // label6
             // 
@@ -263,7 +263,7 @@
             txtPrecioVentaClientes.Location = new Point(467, 108);
             txtPrecioVentaClientes.Name = "txtPrecioVentaClientes";
             txtPrecioVentaClientes.Size = new Size(156, 37);
-            txtPrecioVentaClientes.TabIndex = 11;
+            txtPrecioVentaClientes.TabIndex = 10;
             txtPrecioVentaClientes.KeyPress += txtPrecio_KeyPress;
             // 
             // label5
@@ -291,7 +291,7 @@
             cbTexturaCarne.Location = new Point(168, 182);
             cbTexturaCarne.Name = "cbTexturaCarne";
             cbTexturaCarne.Size = new Size(182, 36);
-            cbTexturaCarne.TabIndex = 8;
+            cbTexturaCarne.TabIndex = 6;
             // 
             // label4
             // 
@@ -310,7 +310,7 @@
             cbCorteCarne.Location = new Point(168, 108);
             cbCorteCarne.Name = "cbCorteCarne";
             cbCorteCarne.Size = new Size(182, 36);
-            cbCorteCarne.TabIndex = 6;
+            cbCorteCarne.TabIndex = 5;
             // 
             // label3
             // 
@@ -327,10 +327,10 @@
             btnVender.Cursor = Cursors.Hand;
             btnVender.FlatStyle = FlatStyle.Popup;
             btnVender.ForeColor = Color.White;
-            btnVender.Location = new Point(117, 82);
+            btnVender.Location = new Point(77, 63);
             btnVender.Name = "btnVender";
             btnVender.Size = new Size(206, 74);
-            btnVender.TabIndex = 6;
+            btnVender.TabIndex = 1;
             btnVender.Text = "Vender";
             btnVender.UseVisualStyleBackColor = true;
             btnVender.Click += btnVender_Click;
@@ -356,7 +356,7 @@
             groupBox1.ForeColor = Color.White;
             groupBox1.Location = new Point(27, 261);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(465, 207);
+            groupBox1.Size = new Size(385, 176);
             groupBox1.TabIndex = 10;
             groupBox1.TabStop = false;
             groupBox1.Text = "Venderle producto a Cliente";
@@ -367,11 +367,11 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(246, 44);
+            label1.Location = new Point(27, 169);
             label1.Name = "label1";
-            label1.Size = new Size(166, 32);
+            label1.Size = new Size(152, 32);
             label1.TabIndex = 11;
-            label1.Text = "BIENVENID@";
+            label1.Text = "VENDEDOR:";
             // 
             // FrmHeladera
             // 
