@@ -15,7 +15,7 @@ namespace Carniceria_GUI
 {
     /// <summary>
     /// Este formulario me permitirá que el Cliente
-    /// pueda comprar uno mas productos.
+    /// pueda comprar uno o mas productos.
     /// </summary>
     public partial class FrmCompraCliente : Form
     {
@@ -105,7 +105,7 @@ namespace Carniceria_GUI
             this.txtSaldoDisponible.Enabled = false;
             this.txtTotalCompra.Enabled = false;
             this.txtNumTarjeta.Enabled = false;
-            this.richTextBoxCarrito.ReadOnly = true; 
+            this.richTextBoxCarrito.ReadOnly = true;
             #endregion
 
             this.CargarDatosCliente();//-->Cargo los datos del cliente.
@@ -138,14 +138,14 @@ namespace Carniceria_GUI
         {
             this.txtEmail.Text = clienteFormulario.Usuario.Email;
             this.txtTelefono.Text = clienteFormulario.Telefono;
-            this.txtDomicilio.Text = clienteFormulario.Domicilio; 
+            this.txtDomicilio.Text = clienteFormulario.Domicilio;
 
             if (clienteFormulario.ConTarjeta)
             {
                 this.checkboxTarjeta.Checked = true;
-                this.txtNumTarjeta.Text = clienteFormulario.TarjetaCredito.NumeroTarjeta;
-                totalDisponibleCliente = clienteFormulario.TarjetaCredito.DineroDisponible;
-                this.txtSaldoDisponible.Text = clienteFormulario.TarjetaCredito.DineroDisponible.ToString();
+                this.txtNumTarjeta.Text = clienteFormulario.Tarjeta.NumeroTarjeta;
+                totalDisponibleCliente = clienteFormulario.Tarjeta.DineroDisponible;//-->Obtengo el dinero total del cliente
+                this.txtSaldoDisponible.Text = clienteFormulario.Tarjeta.DineroDisponible.ToString();
             }
             else
             {
@@ -153,7 +153,7 @@ namespace Carniceria_GUI
                 totalDisponibleCliente = clienteFormulario.DineroEfectivoDisponible;
                 this.txtSaldoDisponible.Text = clienteFormulario.DineroEfectivoDisponible.ToString();
             }
-            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();
+            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();//-->Cargo el total disponible del cliente
         }
 
         /// <summary>
@@ -231,6 +231,10 @@ namespace Carniceria_GUI
             }
         }
 
+        /// <summary>
+        /// Metodo del formulario que me permite realizar validaciones.
+        /// </summary>
+        /// <returns></returns>
         private bool Validar()
         {
             bool puedeSeguir = true;
@@ -262,8 +266,7 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAgregarAlCarrito_Click(object sender, EventArgs e)
-        {
-
+        { 
             if (Validar())//-->Valido que haya tocado un producto
             {
                 double.TryParse(this.txtPesoRequerido.Text, out peso);

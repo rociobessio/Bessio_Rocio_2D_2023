@@ -12,8 +12,7 @@ namespace Entidades
         private DateTime _fechaCompra;
         private double _precioTotal; 
         private bool _conTarjeta;
-        private List<Carne> _listaDeProductos; 
-
+        private List<Carne> _listaDeProductos;  
         #endregion
 
         #region PROPIEDADES

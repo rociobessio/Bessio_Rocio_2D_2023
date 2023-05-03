@@ -102,7 +102,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources.farm_animal_cow_icon_153815;
             pictureBox1.Location = new Point(354, 34);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(203, 160);
@@ -146,7 +146,7 @@
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrintHelp.Image = (Image)resources.GetObject("lblPrintHelp.Image");
+            lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
             lblPrintHelp.Location = new Point(12, 503);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);

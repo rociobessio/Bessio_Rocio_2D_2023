@@ -34,8 +34,9 @@
             dataGridViewProductos = new DataGridView();
             label2 = new Label();
             groupBoxReponer = new GroupBox();
+            btnAgregarAlStock = new Button();
             label11 = new Label();
-            txtPrecioCompra = new TextBox();
+            txtPrecioCompraFrigorifico = new TextBox();
             label10 = new Label();
             txtProveedor = new TextBox();
             cbTipoDeCarneReponer = new ComboBox();
@@ -44,7 +45,7 @@
             label7 = new Label();
             dtpFechaVencimiento = new DateTimePicker();
             label6 = new Label();
-            txtPrecio = new TextBox();
+            txtPrecioVentaClientes = new TextBox();
             label5 = new Label();
             txtPesoCarne = new TextBox();
             cbTexturaCarne = new ComboBox();
@@ -76,7 +77,7 @@
             // pictureBoxVendedor
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
-            pictureBoxVendedor.Image = (Image)resources.GetObject("pictureBoxVendedor.Image");
+            pictureBoxVendedor.Image = Properties.Resources.pngwing_com__2_;
             pictureBoxVendedor.Location = new Point(27, 44);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
             pictureBoxVendedor.Size = new Size(165, 188);
@@ -118,8 +119,9 @@
             // groupBoxReponer
             // 
             groupBoxReponer.Anchor = AnchorStyles.None;
+            groupBoxReponer.Controls.Add(btnAgregarAlStock);
             groupBoxReponer.Controls.Add(label11);
-            groupBoxReponer.Controls.Add(txtPrecioCompra);
+            groupBoxReponer.Controls.Add(txtPrecioCompraFrigorifico);
             groupBoxReponer.Controls.Add(label10);
             groupBoxReponer.Controls.Add(txtProveedor);
             groupBoxReponer.Controls.Add(cbTipoDeCarneReponer);
@@ -128,7 +130,7 @@
             groupBoxReponer.Controls.Add(label7);
             groupBoxReponer.Controls.Add(dtpFechaVencimiento);
             groupBoxReponer.Controls.Add(label6);
-            groupBoxReponer.Controls.Add(txtPrecio);
+            groupBoxReponer.Controls.Add(txtPrecioVentaClientes);
             groupBoxReponer.Controls.Add(label5);
             groupBoxReponer.Controls.Add(txtPesoCarne);
             groupBoxReponer.Controls.Add(cbTexturaCarne);
@@ -144,6 +146,21 @@
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Reponer Carne";
             // 
+            // btnAgregarAlStock
+            // 
+            btnAgregarAlStock.Cursor = Cursors.Hand;
+            btnAgregarAlStock.FlatStyle = FlatStyle.Popup;
+            btnAgregarAlStock.Image = Properties.Resources._1486485588_add_create_new_math_sign_cross_plus_81186;
+            btnAgregarAlStock.ImageAlign = ContentAlignment.MiddleRight;
+            btnAgregarAlStock.Location = new Point(448, 303);
+            btnAgregarAlStock.Name = "btnAgregarAlStock";
+            btnAgregarAlStock.Size = new Size(169, 61);
+            btnAgregarAlStock.TabIndex = 23;
+            btnAgregarAlStock.Text = "   Agregar";
+            btnAgregarAlStock.TextAlign = ContentAlignment.MiddleLeft;
+            btnAgregarAlStock.UseVisualStyleBackColor = true;
+            btnAgregarAlStock.Click += btnAgregarAlStock_Click;
+            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -154,13 +171,13 @@
             label11.TabIndex = 22;
             label11.Text = "Precio de compra \r\ndel Frigorifico:";
             // 
-            // txtPrecioCompra
+            // txtPrecioCompraFrigorifico
             // 
-            txtPrecioCompra.Location = new Point(191, 327);
-            txtPrecioCompra.Name = "txtPrecioCompra";
-            txtPrecioCompra.Size = new Size(159, 37);
-            txtPrecioCompra.TabIndex = 21;
-            txtPrecioCompra.KeyPress += txtPrecioCompra_KeyPress;
+            txtPrecioCompraFrigorifico.Location = new Point(191, 327);
+            txtPrecioCompraFrigorifico.Name = "txtPrecioCompraFrigorifico";
+            txtPrecioCompraFrigorifico.Size = new Size(159, 37);
+            txtPrecioCompraFrigorifico.TabIndex = 21;
+            txtPrecioCompraFrigorifico.KeyPress += txtPrecioCompra_KeyPress;
             // 
             // label10
             // 
@@ -203,7 +220,7 @@
             // 
             btnReponer.Cursor = Cursors.Hand;
             btnReponer.FlatStyle = FlatStyle.Popup;
-            btnReponer.Image = (Image)resources.GetObject("btnReponer.Image");
+            btnReponer.Image = Properties.Resources.shoppaymentorderbuy_08_icon_icons_com_73885;
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
             btnReponer.Location = new Point(448, 382);
             btnReponer.Name = "btnReponer";
@@ -241,13 +258,13 @@
             label6.TabIndex = 12;
             label6.Text = "Precio Venta \r\nPara Clientes:";
             // 
-            // txtPrecio
+            // txtPrecioVentaClientes
             // 
-            txtPrecio.Location = new Point(467, 108);
-            txtPrecio.Name = "txtPrecio";
-            txtPrecio.Size = new Size(156, 37);
-            txtPrecio.TabIndex = 11;
-            txtPrecio.KeyPress += txtPrecio_KeyPress;
+            txtPrecioVentaClientes.Location = new Point(467, 108);
+            txtPrecioVentaClientes.Name = "txtPrecioVentaClientes";
+            txtPrecioVentaClientes.Size = new Size(156, 37);
+            txtPrecioVentaClientes.TabIndex = 11;
+            txtPrecioVentaClientes.KeyPress += txtPrecio_KeyPress;
             // 
             // label5
             // 
@@ -324,7 +341,7 @@
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrintHelp.Image = (Image)resources.GetObject("lblPrintHelp.Image");
+            lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
             lblPrintHelp.Location = new Point(12, 810);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
@@ -395,7 +412,7 @@
         private Label label7;
         private DateTimePicker dtpFechaVencimiento;
         private Label label6;
-        private TextBox txtPrecio;
+        private TextBox txtPrecioVentaClientes;
         private Label label5;
         private TextBox txtPesoCarne;
         private ComboBox cbTexturaCarne;
@@ -410,7 +427,8 @@
         private Label lblPrintHelp;
         private GroupBox groupBox1;
         private Label label11;
-        private TextBox txtPrecioCompra;
+        private TextBox txtPrecioCompraFrigorifico;
         private Label label1;
+        private Button btnAgregarAlStock;
     }
 }

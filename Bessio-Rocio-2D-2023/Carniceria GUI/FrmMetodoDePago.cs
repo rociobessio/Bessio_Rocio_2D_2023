@@ -17,8 +17,7 @@ namespace Carniceria_GUI
         private Cliente clienteForm;
         private Tarjeta tarjetaCliente;
         private FrmCompraCliente frmCompraCliente;
-        #endregion
-
+        #endregion 
 
         #region CONSTRUCTOR FORM
         /// <summary>
@@ -117,8 +116,8 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtNumTarjeta_KeyPress(object sender, KeyPressEventArgs e)
-        { 
-            FrmMetodoDePago.SoloNumeros(sender, e); 
+        {
+            FrmMetodoDePago.SoloNumeros(sender, e);
         }
 
         /// <summary>
@@ -127,8 +126,8 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtCVV_KeyPress(object sender, KeyPressEventArgs e)
-        { 
-             FrmMetodoDePago.SoloNumeros(sender, e); 
+        {
+            FrmMetodoDePago.SoloNumeros(sender, e);
         }
 
         /// <summary>
@@ -160,9 +159,9 @@ namespace Carniceria_GUI
         {
             FrmMetodoDePago.SoloLetras(sender, e);
         }
-         
+
         private void FrmMetodoDePago_FormClosing(object sender, FormClosingEventArgs e)
-        { 
+        {
         }
         #endregion 
 
@@ -303,13 +302,14 @@ namespace Carniceria_GUI
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
             if (this.ValidarInput())//-->Valido los ingresos
-            { 
+            {
                 if (this.rbTarjetaDebito.Checked || this.rbTarjetaCredito.Checked)//-->Me fijo de que es
                 {
                     tarjetaCliente = this.CargarTarjeta();//-->Cargo la tarjeta
+
                     if (Tarjeta.ValidarTarjeta(tarjetaCliente))
                     {
-                        clienteForm.TarjetaCredito = tarjetaCliente;//-->Le asigno la tarjeta
+                        clienteForm.Tarjeta = tarjetaCliente;//-->Le asigno la tarjeta
                         clienteForm.ConTarjeta = true;
 
                         frmCompraCliente = new FrmCompraCliente(clienteForm);

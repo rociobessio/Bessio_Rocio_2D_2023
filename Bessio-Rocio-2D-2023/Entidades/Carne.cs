@@ -21,7 +21,7 @@ namespace Entidades
         private static int ultimoCodigo = 100;
         #endregion
 
-        #region 
+        #region  PROPIEDADES
         public int Codigo { get { return this._codigo; } }
         public Tipo Tipo { get { return this._tipoCarne; } }
         public Corte Corte { get { return this._corteCarne; } }
@@ -93,7 +93,7 @@ namespace Entidades
             precioCarne = (peso) * precio;
 
             //--> Si paga con tarjeta y es de credito
-            if (cliente.ConTarjeta && (cliente.TarjetaCredito.EsDebito == false))
+            if (cliente.ConTarjeta && (cliente.Tarjeta.EsDebito == false))
             {
                 double conRecargo = precioCarne * 0.05;//-->Recargo del %5
                 precioFinalTarjeta = precioCarne + conRecargo;
@@ -102,13 +102,12 @@ namespace Entidades
             //-->Devuelvo
             return precioCarne;
         }
-        #endregion
-
+        #endregion 
 
         #region SOBRECARGA
         /// <summary>
         /// Compara si el codigo de un objeto Carne es igual al int
-        /// que recibe.
+        /// que recibe. Me servira para el manejo de datagrids.
         /// </summary>
         /// <param name="carne1"></param>
         /// <param name="codigo"></param>

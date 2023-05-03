@@ -266,15 +266,15 @@ namespace Carniceria_GUI
         /// <param name="cliente"></param> 
         /// <param name="peso"></param>
         /// <returns>True si cumple con los requisitos, false sino.</returns>
-        private bool Comprar(double totalCompra, Cliente cliente, double peso)
+        private bool Vender(double totalCompra, Cliente cliente, double peso)
         {
             bool pudoComprar = false;
-            if (cliente.ConTarjeta)
+            if (cliente.ConTarjeta)//-->Chequeo que sea con tarjeta
             {
-                if (cliente.TarjetaCredito.DineroDisponible > 0 &&
-                     cliente.TarjetaCredito.DineroDisponible > totalCompra)
+                if (cliente.Tarjeta.DineroDisponible > 0 &&
+                     cliente.Tarjeta.DineroDisponible > totalCompra)
                 {
-                    cliente.TarjetaCredito.DineroDisponible -= totalCompra;//-->Descuento la plata
+                    cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
                     cliente.CarritoCompra.Productos.Add(carneSeleccionada);//-->Al carrito le añado la carne 
                     cliente.CarritoCompra.PrecioTotal += totalCompra;
 
@@ -324,10 +324,11 @@ namespace Carniceria_GUI
             if (ValidarCampos())//-->Valido los datos que recibo
             {
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
-                totalAPagar = Carne.CalcularPrecioTotal(clienteSelecccionado, carneSeleccionada, peso);//-->Obtengo el total.
-                //int cantidad = int.Parse(this.numericCantidadCompra.Value.ToString());
 
-                if (this.Comprar(totalAPagar, clienteSelecccionado, peso))//-->Intenta comprar.
+                //-->Obtengo el total que deberá pagar el cliente.
+                totalAPagar = Carne.CalcularPrecioTotal(clienteSelecccionado, carneSeleccionada, peso);
+
+                if (this.Vender(totalAPagar, clienteSelecccionado, peso))//-->Intenta comprar.
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",

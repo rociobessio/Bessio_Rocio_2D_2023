@@ -11,14 +11,14 @@ namespace Entidades
         #region ATRIBUTOS
         private double _dineroEfectivoDisponible;
         //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
-        private Tarjeta _tarjetaCredito;
+        private Tarjeta _tarjeta;
         private Carrito _CarritoCompra; 
         private bool _esConTarjeta;
         #endregion
 
         #region PROPIEDADES
         public double DineroEfectivoDisponible { get { return this._dineroEfectivoDisponible; } set { this._dineroEfectivoDisponible = value; } }
-        public Tarjeta TarjetaCredito { get { return this._tarjetaCredito; } set { this._tarjetaCredito = value; } }
+        public Tarjeta Tarjeta { get { return this._tarjeta; } set { this._tarjeta = value; } }
         public Carrito CarritoCompra { get { return this._CarritoCompra; } set { this.CarritoCompra = value; } } 
         public bool ConTarjeta { get { return this._esConTarjeta; } set { this._esConTarjeta = value; } }
         /// <summary>
@@ -67,7 +67,7 @@ namespace Entidades
                        string dni, string domicilio, string telefono, Usuario user,Carrito carrito,Tarjeta tarjeta,bool usaTarjeta)
             : this(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user,carrito)
         {
-            this._tarjetaCredito = tarjeta;
+            this._tarjeta = tarjeta;
             this._esConTarjeta = usaTarjeta;
         }
 
@@ -137,7 +137,7 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()}-${this._dineroEfectivoDisponible:f}-{this._tarjetaCredito.ToString()}";
+            return $"{base.ToString()}-${this._dineroEfectivoDisponible:f}-{this._tarjeta.ToString()}";
         }
 
         /// <summary>

@@ -29,10 +29,10 @@ namespace Carniceria_GUI
 
             #region INSTANCIO CLIENTES
             clientes = new List<Cliente>();
-            cliente = new Cliente( "Rocio","Bessio",Sexo.Femenino,Nacionalidad.Argentina,new DateTime(2003,08,13),"45013997","Formosa 2680","1138225232",
-                                   new Usuario("rociobessio@gmail.com","123"),new Carrito()); 
-            clientePrueba = new Cliente("Romina","Peréz",Sexo.Femenino,Nacionalidad.Argentina,new DateTime(1992,10,11),
-                                        "30125878","Mitre 198","11890778",new Usuario("romipp@gmail.com","123"),new Carrito());
+            cliente = new Cliente("Rocio", "Bessio", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(2003, 08, 13), "45013997", "Formosa 2680", "1138225232",
+                                   new Usuario("rociobessio@gmail.com", "123"), new Carrito());
+            clientePrueba = new Cliente("Romina", "Peréz", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1992, 10, 11),
+                                        "30125878", "Mitre 198", "11890778", new Usuario("romipp@gmail.com", "123"), new Carrito());
             clientes.Add(clientePrueba);
             clientes.Add(cliente);
             #endregion

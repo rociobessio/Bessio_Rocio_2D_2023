@@ -71,7 +71,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Image = Properties.Resources._customer_service_agent_89777;
             pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(123, 117);
@@ -128,7 +128,7 @@
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
-            lblPrintHelp.Image = (Image)resources.GetObject("lblPrintHelp.Image");
+            lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
             lblPrintHelp.Location = new Point(12, 758);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
@@ -343,7 +343,7 @@
             btnEliminarDelCarrito.FlatStyle = FlatStyle.Popup;
             btnEliminarDelCarrito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnEliminarDelCarrito.ForeColor = Color.White;
-            btnEliminarDelCarrito.Image = (Image)resources.GetObject("btnEliminarDelCarrito.Image");
+            btnEliminarDelCarrito.Image = Properties.Resources.Cartmultiply_icon_icons_com_51189;
             btnEliminarDelCarrito.ImageAlign = ContentAlignment.MiddleRight;
             btnEliminarDelCarrito.Location = new Point(104, 195);
             btnEliminarDelCarrito.Name = "btnEliminarDelCarrito";
@@ -379,7 +379,7 @@
             btnAgregarAlCarrito.FlatStyle = FlatStyle.Popup;
             btnAgregarAlCarrito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAgregarAlCarrito.ForeColor = Color.White;
-            btnAgregarAlCarrito.Image = (Image)resources.GetObject("btnAgregarAlCarrito.Image");
+            btnAgregarAlCarrito.Image = Properties.Resources.shopping_action_basket_shop_buy_add_108644;
             btnAgregarAlCarrito.ImageAlign = ContentAlignment.MiddleRight;
             btnAgregarAlCarrito.Location = new Point(104, 125);
             btnAgregarAlCarrito.Name = "btnAgregarAlCarrito";
@@ -397,7 +397,7 @@
             btnComprar.FlatStyle = FlatStyle.Popup;
             btnComprar.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnComprar.ForeColor = Color.White;
-            btnComprar.Image = (Image)resources.GetObject("btnComprar.Image");
+            btnComprar.Image = Properties.Resources.pay_cash_payment_money_dollar_bill_icon_143267;
             btnComprar.ImageAlign = ContentAlignment.MiddleRight;
             btnComprar.Location = new Point(829, 761);
             btnComprar.Name = "btnComprar";

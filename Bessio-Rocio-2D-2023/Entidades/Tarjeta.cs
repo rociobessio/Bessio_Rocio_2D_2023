@@ -66,15 +66,15 @@ namespace Entidades
             
             if (tarjetaValidar._numeroTarjeta.Length < 16 ||
                 tarjetaValidar._numeroTarjeta.Length > 16 ||
-                tarjetaValidar._dineroDisponible < 0 || 
+                tarjetaValidar._dineroDisponible <= 0 || 
                 tarjetaValidar._fechaVencimiento < DateTime.Now ||
-                tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4)
+                tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4  )
             {
                 esValida = false;
             }
 
             return esValida;
-        }
+        } 
         #endregion
 
         #region SOBRECARGA

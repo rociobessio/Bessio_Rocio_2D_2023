@@ -19,14 +19,20 @@ namespace Carniceria_GUI
         #region CARNES
         List<Carne> listaCarnesDisponibles;
         Carne carneIngresada;
+        Carne carneSeleccionada;
         CategoriaBovina texturaCarne;
         #endregion
 
         #region DATAGRIDVIEW
         DataTable tablaProductos;
         DataRow auxFilaProduc;
+        int indexTablaProductos;
+        int indiceDetalle;
+        int codigoProducto;
+        double peso;
         #endregion
 
+        bool habilitarTextBoxes;
         FrmVentaVendedor frmVentaVendedor;
         Vendedor vendedorForm;
         List<Cliente> listaClientes;
@@ -40,7 +46,8 @@ namespace Carniceria_GUI
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Reponer Stock";
 
-            this.tablaProductos = new DataTable();
+            this.tablaProductos = new DataTable();//-->Instancio la dataTable.
+            this.carneSeleccionada = new Carne();//-->Instancio par evitar nulls
 
             #region INSTANCIO CARNES
             this.listaCarnesDisponibles = new List<Carne>();
@@ -69,8 +76,8 @@ namespace Carniceria_GUI
 
             #region PRINT AYUDA
             StringBuilder textoAyuda = new StringBuilder();
-            textoAyuda.AppendLine("El vendedor podrá reponer los productos, visualizarlos");
-            textoAyuda.AppendLine("y también podrá seleccionar a un cliente y venderle un producto.");
+            textoAyuda.AppendLine("El vendedor podrá reponer el stock de un producto o agregar uno nuevo a la lista, podrá visualizarlos");
+            textoAyuda.AppendLine("y al presionar el botón 'Vender' se abrirá un nuevo formulario para que le venda un producto a un cliente.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion       
         }
@@ -85,6 +92,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmHeladera_Load(object sender, EventArgs e)
         {
+            this.tablaProductos.Columns.Add("Código");
             this.tablaProductos.Columns.Add("Tipo");
             this.tablaProductos.Columns.Add("Corte");
             this.tablaProductos.Columns.Add("Categoría bovina");
@@ -107,8 +115,41 @@ namespace Carniceria_GUI
             this.CargarProductosDataGrid();//-->Ponele que no quiero que me muestre los datos que quiero yo
         }
 
+        /// <summary>
+        /// Me permite seleccionar un producto del datagrid para poder reponerlo.
+        /// Unicamente me dejara editar su peso, lo cargo y se lo paso a una nueva variable.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.habilitarTextBoxes = false;
+            this.ManejoTextBoxes();
+
+            this.indexTablaProductos = e.RowIndex;//-->Obtengo el indice
+
+            if (this.indexTablaProductos > -1)//-->Si es mayor a -1 obtengo el codigo, celda [0]
+            {
+                this.indiceDetalle = 0;
+                codigoProducto = int.Parse(this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value.ToString());//-->Obtengo el codigo
+            }
+
+            //Recorro la lista en busca de ese producto y lo muestro en los textboxes
+            foreach (Carne carne in this.vendedorForm.ListaProductos)
+            {
+                if (carne == codigoProducto)
+                {
+                    this.txtPrecioVentaClientes.Text = carne.PrecioCompraCliente.ToString();
+                    this.txtPrecioCompraFrigorifico.Text = carne.PrecioVentaProveedor.ToString();
+                    this.txtProveedor.Text = carne.Proveedor;
+                    this.cbCorteCarne.Text = carne.Corte.ToString();
+                    this.cbTexturaCarne.Text = carne.Categoria.ToString();
+                    this.cbTipoDeCarneReponer.Text = carne.Tipo.ToString();
+                    this.dtpFechaVencimiento.Value = carne.Vencimiento; 
+
+                    carneSeleccionada = carne;//-->Guardo esa carne para realizar las modificaciones o calculos
+                }
+            }  
         }
 
         /// <summary>
@@ -230,18 +271,46 @@ namespace Carniceria_GUI
             {
                 auxFilaProduc = tablaProductos.NewRow();
 
-                auxFilaProduc[0] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
-                auxFilaProduc[1] = $"{carnes.Corte}";
-                auxFilaProduc[2] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[3] = $"{carnes.Peso}";
-                auxFilaProduc[4] = $"{carnes.PrecioCompraCliente}";
-                auxFilaProduc[5] = $"{carnes.Vencimiento.ToShortDateString()}";
-                auxFilaProduc[6] = $"{carnes.Proveedor}";
-                auxFilaProduc[7] = $"{carnes.PrecioVentaProveedor}";
+                auxFilaProduc[0] = $"{carnes.Codigo}";
+                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
+                auxFilaProduc[2] = $"{carnes.Corte}";
+                auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
+                auxFilaProduc[4] = $"{carnes.Peso}";
+                auxFilaProduc[5] = $"{carnes.PrecioCompraCliente}";
+                auxFilaProduc[6] = $"{carnes.Vencimiento.ToShortDateString()}";
+                auxFilaProduc[7] = $"{carnes.Proveedor}";
+                auxFilaProduc[8] = $"{carnes.PrecioVentaProveedor}";
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
             this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista
+        } 
+
+        /// <summary>
+        /// Me permite habilitar o deshabilitar los textboxes del formulario
+        /// </summary>
+        private void ManejoTextBoxes()
+        {
+            if (habilitarTextBoxes)
+            {
+                this.txtPrecioCompraFrigorifico.Enabled = true;
+                this.txtPrecioVentaClientes.Enabled = true;
+                this.txtProveedor.Enabled = true;
+                this.cbCorteCarne.Enabled = true;
+                this.cbTexturaCarne.Enabled = true;
+                this.cbTipoDeCarneReponer.Enabled = true;
+                this.dtpFechaVencimiento.Enabled = true;
+            }
+            else
+            {
+                this.txtPrecioCompraFrigorifico.Enabled = false;
+                this.txtPrecioVentaClientes.Enabled = false;
+                this.txtProveedor.Enabled = false;
+                this.cbCorteCarne.Enabled = false;
+                this.cbTexturaCarne.Enabled = false;
+                this.cbTipoDeCarneReponer.Enabled = false;
+                this.dtpFechaVencimiento.Enabled = false;
+            }
         }
 
         /// <summary>
@@ -250,17 +319,16 @@ namespace Carniceria_GUI
         /// <returns>Devuelve true si la informacion es valida, false sino</returns>
         private bool ValidarDatos()
         {
-            bool esValido = true;
-            double peso;
+            bool esValido = true; 
             double precio;
             double precioCompra;
-            double.TryParse(this.txtPrecio.Text, out precio);
+            double.TryParse(this.txtPrecioVentaClientes.Text, out precio);
             double.TryParse(this.txtPesoCarne.Text, out peso);
-            double.TryParse(this.txtPrecioCompra.Text, out precioCompra);
+            double.TryParse(this.txtPrecioCompraFrigorifico.Text, out precioCompra);
 
 
             if (string.IsNullOrEmpty(this.txtProveedor.Text) ||
-                string.IsNullOrEmpty(this.txtPrecio.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
+                string.IsNullOrEmpty(this.txtPrecioVentaClientes.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
                 string.IsNullOrEmpty(this.cbTipoDeCarneReponer.Text) ||
                 string.IsNullOrEmpty(this.cbTexturaCarne.Text) ||
                 string.IsNullOrEmpty(this.cbCorteCarne.Text))
@@ -290,24 +358,25 @@ namespace Carniceria_GUI
 
         #region BOTONES DEL FORM
         /// <summary>
-        /// Al presionar este boton me permitira guardar un nuevo producto en la lista.
+        /// Al presionar este boton me permitira reponer un nuevo producto.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnReponer_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos())//-->Valido los datos
+            double.TryParse(this.txtPesoCarne.Text,out peso);//-->Parseo el peso
+            if (indexTablaProductos >= 0 && peso > 0)
             {
-                texturaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
-
-                carneIngresada = new Carne(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
-                    texturaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompra.Text),
-                    this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()),
-                    double.Parse(this.txtPrecio.Text));
-
-                this.vendedorForm.ListaProductos.Add(carneIngresada);
+                carneSeleccionada.Peso += peso;//-->Le agrego el peso nuevo a lo que tenia. 
 
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+
+                habilitarTextBoxes = true;//-->Habilito los textboxes.
+                this.ManejoTextBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error al intentar reponer el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -317,12 +386,34 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnVender_Click(object sender, EventArgs e)
-        {
-            //vendedorForm.ListaProductos = listaCarnesDisponibles;//Le paso la lista de carnes
-            //vendedorForm.ListaClientes = listaClientes;
+        { 
             frmVentaVendedor = new FrmVentaVendedor(vendedorForm);
             frmVentaVendedor.ShowDialog();
         }
-        #endregion 
+
+        /// <summary>
+        /// Este botón me permite instanciar un nuevo producto y agregarlo al stock.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAgregarAlStock_Click(object sender, EventArgs e)
+        {
+            if (ValidarDatos())//-->Valido los datos
+            {
+                texturaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
+
+                carneIngresada = new Carne(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
+                    texturaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
+                    this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()),
+                    double.Parse(this.txtPrecioVentaClientes.Text));
+
+                this.vendedorForm.ListaProductos.Add(carneIngresada);
+
+                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+            }
+        }
+        #endregion
+
+
     }
 }
