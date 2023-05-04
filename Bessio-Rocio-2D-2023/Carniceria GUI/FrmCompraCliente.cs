@@ -212,7 +212,26 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void cbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
         {
+            _dataTable.Rows.Clear();
+          //  List<Carne> filtrado = new List<Carne>();
 
+            for (int i = 0; i < this.productosDisponibles.Count; i++)
+            {
+                if (this.productosDisponibles[i].Corte.ToString().Replace("_"," ") == cbFiltrarPor.SelectedItem.ToString())
+                {
+                    auxFilaProduc = _dataTable.NewRow();
+
+                    auxFilaProduc[0] = $"{this.productosDisponibles[i].Codigo}";//-->Muestro el codigo para luego seleccionarlo
+                    auxFilaProduc[1] = $"{this.productosDisponibles[i].Tipo.ToString().Replace("_", " ")}";
+                    auxFilaProduc[2] = $"{this.productosDisponibles[i].Corte.ToString().Replace("_", " ")}";
+                    auxFilaProduc[3] = $"{this.productosDisponibles[i].Categoria.ToString().Replace("_", " ")}";
+                    auxFilaProduc[4] = $"{this.productosDisponibles[i].PrecioCompraCliente}";
+
+                    _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
+                }
+            }
+            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
+            // this.dataGridViewProductos.DataSource = filtrado;
         }
 
         /// <summary>
@@ -324,7 +343,7 @@ namespace Carniceria_GUI
         {
             if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
             {
-                DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (DialogResult.Yes == respuesta)
                 {

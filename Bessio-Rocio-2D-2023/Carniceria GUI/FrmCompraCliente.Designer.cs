@@ -193,21 +193,21 @@
             // 
             txtTelefono.Location = new Point(181, 80);
             txtTelefono.Name = "txtTelefono";
-            txtTelefono.Size = new Size(156, 37);
+            txtTelefono.Size = new Size(223, 37);
             txtTelefono.TabIndex = 24;
             // 
             // txtDomicilio
             // 
             txtDomicilio.Location = new Point(181, 128);
             txtDomicilio.Name = "txtDomicilio";
-            txtDomicilio.Size = new Size(156, 37);
+            txtDomicilio.Size = new Size(223, 37);
             txtDomicilio.TabIndex = 23;
             // 
             // txtEmail
             // 
             txtEmail.Location = new Point(181, 36);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(156, 37);
+            txtEmail.Size = new Size(223, 37);
             txtEmail.TabIndex = 25;
             // 
             // groupBox2
@@ -272,7 +272,7 @@
             // 
             checkBoxEfectivo.AutoSize = true;
             checkBoxEfectivo.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
-            checkBoxEfectivo.Location = new Point(111, 36);
+            checkBoxEfectivo.Location = new Point(124, 36);
             checkBoxEfectivo.Name = "checkBoxEfectivo";
             checkBoxEfectivo.Size = new Size(98, 25);
             checkBoxEfectivo.TabIndex = 16;
@@ -346,7 +346,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(28, 55);
+            label1.Location = new Point(28, 74);
             label1.Name = "label1";
             label1.Size = new Size(70, 50);
             label1.TabIndex = 20;
@@ -354,7 +354,7 @@
             // 
             // txtPesoRequerido
             // 
-            txtPesoRequerido.Location = new Point(104, 63);
+            txtPesoRequerido.Location = new Point(104, 82);
             txtPesoRequerido.Name = "txtPesoRequerido";
             txtPesoRequerido.Size = new Size(218, 37);
             txtPesoRequerido.TabIndex = 1;
@@ -412,7 +412,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(478, 192);
+            label11.Location = new Point(467, 191);
             label11.Name = "label11";
             label11.Size = new Size(117, 32);
             label11.TabIndex = 30;

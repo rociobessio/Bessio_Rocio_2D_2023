@@ -19,7 +19,7 @@ namespace Entidades
         #region PROPIEDADES
         public DateTime FechaCompra { get { return this._fechaCompra; } }
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
-        public bool ConTarjeta { get { return this._conTarjeta; } }
+        public bool ConTarjeta { get { return this._conTarjeta; } set { this._conTarjeta = value; } }
         public List<Carne> Productos { get { return this._listaDeProductos; } }
         #endregion
 
@@ -92,7 +92,8 @@ namespace Entidades
             bool pudoAgregar = false;
             Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto original
 
-            double precioCarne = Carne.CalcularPrecioTotal(cliente, carne, cantPesoCliente);
+            double precioCarne = Carne.CalcularPrecioTotal(cliente, carne, cantPesoCliente);//-->Calculo el precio
+            cliente.CarritoCompra._conTarjeta = cliente.ConTarjeta;//-->Paso si es con tarjeta la compra
 
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
             if (carne.Peso > 0 && carne.Peso >= cantPesoCliente)
@@ -127,7 +128,8 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Metodo que me permite limpiar el carrito de productos
+        /// Metodo que me permite limpiar el carrito de productos y
+        /// el precio total.
         /// </summary>
         /// <param name="cliente"></param>
         /// <returns></returns>
@@ -154,7 +156,7 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(); 
-            sb.AppendLine($"FECHA DE COMPRA:{this._fechaCompra.ToShortDateString()}");
+            sb.AppendLine($"FECHA DE COMPRA: {this._fechaCompra.ToShortDateString()}");
             if (ConTarjeta)
             {
                 sb.AppendLine("Con tarjeta: SI.");
