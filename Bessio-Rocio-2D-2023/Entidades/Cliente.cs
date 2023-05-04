@@ -6,20 +6,26 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Esta clase hereda de Persona.
+    /// </summary>
     public class Cliente : Persona
     {
         #region ATRIBUTOS
         private double _dineroEfectivoDisponible;
         //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
         private Tarjeta _tarjeta;
-        private Carrito _CarritoCompra; 
+        private Carrito _carritoCompra; 
         private bool _esConTarjeta;
         #endregion
 
         #region PROPIEDADES
         public double DineroEfectivoDisponible { get { return this._dineroEfectivoDisponible; } set { this._dineroEfectivoDisponible = value; } }
         public Tarjeta Tarjeta { get { return this._tarjeta; } set { this._tarjeta = value; } }
-        public Carrito CarritoCompra { get { return this._CarritoCompra; } set { this.CarritoCompra = value; } } 
+        public Carrito CarritoCompra { get { return this._carritoCompra; } set { this.CarritoCompra = value; } } 
+        /// <summary>
+        /// Retornara un booleano si usa tarjeta o no.
+        /// </summary>
         public bool ConTarjeta { get { return this._esConTarjeta; } set { this._esConTarjeta = value; } }
         /// <summary>
         /// Hago override de la propiedad EsCliente retornando true.
@@ -27,9 +33,11 @@ namespace Entidades
         public override bool EsCliente { get { return true; } }
         #endregion
  
-        #region CONSTRUCTORES VERSION 2
+        #region CONSTRUCTORES
         /// <summary>
-        /// Constructor del base y me permite instanciar tambien el carrito.
+        /// Constructor que me permite crear una instancia de Cliente, le paso los 
+        /// parametros correspondientes al base y el valor Carrito que recibo se lo doy
+        /// a mi atributo carrito..
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -45,11 +53,12 @@ namespace Entidades
                        string dni, string domicilio, string telefono, Usuario user,Carrito carrito) 
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user)
         {
-            this._CarritoCompra = carrito;
+            this._carritoCompra = carrito;
         }
 
         /// <summary>
-        /// Me permite crear una instancia de Cliente con tarjeta de credito
+        /// Constructor que me permite crear una instancia de cliente con Tarjeta y
+        /// realizo una sobrecarga de constructor con el : this()
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -72,8 +81,8 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Me permitira crear una instancia de Cliente si este decide usar unicamente debito,
-        /// uso sobrecarga del this.
+        /// Me permitira crear una instancia de Cliente si este decide usar unicamente efectivo,
+        /// uso sobrecarga del : this().
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -95,21 +104,18 @@ namespace Entidades
             this._esConTarjeta = usaTarjeta;
         }
 
+        /// <summary>
+        /// Constructor que me permite recibir un usuario, y
+        /// pasarselo al base.
+        /// </summary>
+        /// <param name="user"></param>
         public Cliente(Usuario user)
-                    : base(user)
-        {
-
-        }
+                    : base(user) { }
         #endregion 
 
         #region SOBRECARGA DE OPERADORES
         /// <summary>
         /// Dos Clientes seran iguales, si comparten el mismo DNI.
-        /// 
-        /// PIENSA BART PIENSA-------------
-        /// Esta pensando para que luego en la clase Cliente y Vendedor
-        /// lo unico que haga es comparar si ellos son iguales por el
-        /// mail y la contraseña.
         /// </summary>
         /// <param name="cliente1"></param>
         /// <param name="cliente2"></param>
@@ -127,8 +133,47 @@ namespace Entidades
         public static bool operator !=(Cliente cliente, Cliente cliente2)
         {
             return !(cliente == cliente2);
+        }
+        #endregion
+
+        #region METODOS
+        /// <summary>
+        /// Me permite que un cliente compre si cumple con las validaciones necesarias.
+        /// </summary>
+        /// <param name="clienteIngresado"></param>
+        /// <param name="listaCarnesDisponibles"></param> 
+        /// <returns></returns>
+        public static bool Comprar(Cliente clienteIngresado, List<Carne> listaCarnesDisponibles)
+        {
+            bool puedeComprar = false;  
+            //-->Que tenga dinero disponible y sea mayor al total del carrito
+            if((clienteIngresado._dineroEfectivoDisponible > 0 || clienteIngresado.Tarjeta.DineroDisponible > 0)
+                 && (clienteIngresado._dineroEfectivoDisponible > clienteIngresado.CarritoCompra.PrecioTotal || 
+                        clienteIngresado.Tarjeta.DineroDisponible > clienteIngresado.CarritoCompra.PrecioTotal))
+            {
+                foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+                {
+                    foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
+                    {
+                        if(carneDisponible == carneCarrito)//-->Busco que coincidan
+                        {
+                            carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
+                            puedeComprar = true;
+                        }
+                    }
+                }
+                //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
+                if (clienteIngresado.ConTarjeta)
+                {
+                    clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+                }
+                else
+                    clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+            }
+            return puedeComprar;
         } 
         #endregion
+
 
         #region POLIMORFISMO
         /// <summary>
@@ -137,7 +182,21 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{base.ToString()}-${this._dineroEfectivoDisponible:f}-{this._tarjeta.ToString()}";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine(base.ToString());
+            if (this._esConTarjeta)
+            {
+                sb.AppendLine("DATOS DE LA TARJETA:");
+                sb.AppendLine(this._tarjeta.ToString());
+            }
+            else
+            {
+                sb.AppendLine($"Efectivo: ${this._dineroEfectivoDisponible:f}"); 
+            }
+            sb.AppendLine("CARRITO:");
+            sb.AppendLine(this._carritoCompra.ToString());    
+
+            return sb.ToString();
         }
 
         /// <summary>
@@ -163,13 +222,6 @@ namespace Entidades
         {
             return base.GetHashCode();
         }
-        #endregion
-
-        #region METODOS
-        //private bool Comprar()
-        //{
-
-        //}
         #endregion
     }
 }

@@ -290,11 +290,11 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(8, 151);
+            label5.Location = new Point(2, 151);
             label5.Name = "label5";
-            label5.Size = new Size(147, 25);
+            label5.Size = new Size(220, 25);
             label5.TabIndex = 14;
-            label5.Text = "Monto máximo ";
+            label5.Text = "Monto máximo  a gastar";
             // 
             // txtMontoDisponible
             // 

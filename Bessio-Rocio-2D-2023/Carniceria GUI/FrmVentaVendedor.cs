@@ -77,7 +77,7 @@ namespace Carniceria_GUI
         }
         #endregion
 
-
+        #region EVENTOS DEL FORM
         /// <summary>
         /// En el evento load quito que pueda escribir en los textboxes,
         /// lleno el combo-box de los usuarios.
@@ -118,6 +118,28 @@ namespace Carniceria_GUI
             foreach (Cliente cliente in this._vendedorForm.ListaClientes)
             {
                 this.cbClientes.Items.Add(cliente.Usuario.Email);
+            }
+        } 
+
+        /// <summary>
+        /// En este evento, antes de cerrarlo le paso al formulario heladera
+        /// la lista actualizada.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmVentaVendedor_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea salir?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (DialogResult.No == respuesta)
+            {
+                e.Cancel = true;
+            }
+            else
+            {
+                frmHeladera = new FrmHeladera(_vendedorForm);//-->Le paso al vendedor con los datos actualizados
+                frmHeladera.Show();
+                this.Hide();
             }
         }
 
@@ -221,6 +243,7 @@ namespace Carniceria_GUI
                 }
             }
         }
+        #endregion
 
         #region METODOS
         /// <summary>
@@ -378,6 +401,7 @@ namespace Carniceria_GUI
             }
         }
         #endregion
+
         #region EVENTOS COLGADOS
         /// <summary>
         /// A medida que incremente la cantidad que requiere el cliente
@@ -396,17 +420,5 @@ namespace Carniceria_GUI
         }
         #endregion
 
-        /// <summary>
-        /// En este evento, antes de cerrarlo le paso al formulario heladera
-        /// la lista actualizada.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void FrmVentaVendedor_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            frmHeladera = new FrmHeladera(_vendedorForm);//-->Le paso al vendedor con los datos actualizados
-            frmHeladera.Show();
-            this.Hide();
-        }
     }
 }

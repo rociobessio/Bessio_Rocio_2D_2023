@@ -22,10 +22,11 @@ namespace Carniceria_GUI
         #region ATRIBUTOS
         private List<Carne> productosDisponibles;
         private Cliente clienteFormulario;
-        private Carne carneSeleccionada;
+        private static Carne carneSeleccionada; 
         private Carrito carritoCliente;
         private double peso;
         private double totalDisponibleCliente;
+        private Corte corteBuscado;
 
         #region DATAGRID
         DataTable _dataTable;
@@ -58,7 +59,7 @@ namespace Carniceria_GUI
 
             #region INSTANCIO PRODUCTOS
             productosDisponibles = new List<Carne>();
-            productosDisponibles.Add(new Carne(Corte.Lomo, 1000, CategoriaBovina.Novillo,
+            productosDisponibles.Add(new Carne(Corte.Lomo, 2, CategoriaBovina.Novillo,
                                      new DateTime(2023, 06, 01), 1000, "Antonio", Tipo.Carne_Vacuna, 1200));
             productosDisponibles.Add(new Carne(Corte.Suprema, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 05, 21), 800, "Mingo CO", Tipo.Pollo, 1000));
@@ -127,6 +128,16 @@ namespace Carniceria_GUI
             {
                 this.cbFiltrarPor.Items.Add(corte.ToString().Replace("_", " "));
             }
+
+            if (clienteFormulario.ConTarjeta)
+            {
+                totalDisponibleCliente = clienteFormulario.Tarjeta.DineroDisponible;//-->Obtengo el dinero total del cliente
+            }
+            else
+            {
+                totalDisponibleCliente = clienteFormulario.DineroEfectivoDisponible;
+            }
+            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();
         }
         #endregion
 
@@ -144,13 +155,11 @@ namespace Carniceria_GUI
             {
                 this.checkboxTarjeta.Checked = true;
                 this.txtNumTarjeta.Text = clienteFormulario.Tarjeta.NumeroTarjeta;
-                totalDisponibleCliente = clienteFormulario.Tarjeta.DineroDisponible;//-->Obtengo el dinero total del cliente
                 this.txtSaldoDisponible.Text = clienteFormulario.Tarjeta.DineroDisponible.ToString();
             }
             else
             {
                 this.checkBoxEfectivo.Checked = true;
-                totalDisponibleCliente = clienteFormulario.DineroEfectivoDisponible;
                 this.txtSaldoDisponible.Text = clienteFormulario.DineroEfectivoDisponible.ToString();
             }
             this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();//-->Cargo el total disponible del cliente
@@ -266,45 +275,35 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAgregarAlCarrito_Click(object sender, EventArgs e)
-        { 
+        {
+            if (carneSeleccionada.Peso <= 0)//-->Si no hay peso/stock lo quito
+            {
+                productosDisponibles.Remove(carneSeleccionada);
+            }
+
             if (Validar())//-->Valido que haya tocado un producto
             {
                 double.TryParse(this.txtPesoRequerido.Text, out peso);
 
-                //if (Carrito.AgregarAlCarrito(carneSeleccionada, peso))
-                //{
-                //    carritoCliente.Productos.Add(carneSeleccionada);//-->Agrego al carrito
+                if (carritoCliente.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
+                {
+                    foreach (Carne carne in clienteFormulario.CarritoCompra.Productos)
+                    {
+                        this.richTextBoxCarrito.Text = $"Corte: {carne.Corte} - " +
+                                         $"Precio: {carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
+                    } 
 
-                //    this.richTextBoxCarrito.Text += carritoCliente.ToString();//-->Imprimo el carrito
-
-                //    carneSeleccionada.Peso -= peso;//-->Voy descontando
-
-                //    //this.listBoxCarrito.Items.Add(carritoCliente.ToString());
-
-                //    if (carneSeleccionada.Peso <= 0)//-->Si no hay peso/stock lo quito
-                //    {
-                //        productosDisponibles.Remove(carneSeleccionada);
-                //    }
-                //    this.CargarProductosDataGrid();//-->Actualizo el datagrid.
-                //}
-                //else
-                //{
-                //    MessageBox.Show("No hay stock disponible.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //}
+                    this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra
+                    MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("No se pudo agregar al carrito, puede ser que ya exista o el peso no sea valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                this.txtPesoRequerido.Clear();
+                this.CargarProductosDataGrid();//-->Actualizo el datagrid.
             }
-        }
-
-        private static bool AgregarAlCarrito(Carne carne, double cantPesoCliente)
-        {
-            bool puedeAgregar = true;
-
-            //-->Producto sin stock o se quiere mas de lo que hay en stock
-            if (carne.Peso <= 0 || carne.Peso < cantPesoCliente)
-            {
-                puedeAgregar = false;
-            }
-            return puedeAgregar;
-        }
+        } 
 
         /// <summary>
         /// Este boton me permite comprar un producto.
@@ -312,8 +311,35 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
-        {
+        {  
+            if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
+            {
+                DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (DialogResult.Yes == respuesta)
+                {
+                    if (Cliente.Comprar(clienteFormulario, productosDisponibles))
+                    {
+                        MessageBox.Show("Pudo Comprar.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information); 
 
+                        //-->Actualizo en los textboxes el dinero del cliente
+                        this.CargarDatosCliente();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrio un problema.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Compra cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No hay productos en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
+            this.listBoxCarrito.Items.Clear();
+            this.CargarProductosDataGrid();//-->Actualizo el datagrid. 
         }
     }
 }

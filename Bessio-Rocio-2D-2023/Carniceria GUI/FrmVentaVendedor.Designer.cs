@@ -383,6 +383,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.pngwing_com__2_;
             pictureBox1.Location = new Point(12, 9);
             pictureBox1.Name = "pictureBox1";

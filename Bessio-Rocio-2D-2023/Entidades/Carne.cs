@@ -23,14 +23,14 @@ namespace Entidades
 
         #region  PROPIEDADES
         public int Codigo { get { return this._codigo; } }
-        public Tipo Tipo { get { return this._tipoCarne; } }
-        public Corte Corte { get { return this._corteCarne; } }
+        public Tipo Tipo { get { return this._tipoCarne; } set { this._tipoCarne = value; } }
+        public Corte Corte { get { return this._corteCarne; } set { this._corteCarne = value; } }
         public double Peso { get { return this._peso; } set { this._peso = value; } }
-        public CategoriaBovina Categoria { get { return this._categoria; } }
-        public DateTime Vencimiento { get { return this._vencimiento; } }
+        public CategoriaBovina Categoria { get { return this._categoria; } set { this._categoria = value; } }
+        public DateTime Vencimiento { get { return this._vencimiento; } set { this._vencimiento = value; } }
         public double PrecioVentaProveedor { get { return this._precioVentaProveedor; } } 
-        public string Proveedor { get { return this._proveedor; } }
-        public double PrecioCompraCliente { get { return this._precioCompraCliente; } }
+        public string Proveedor { get { return this._proveedor; } set { this._proveedor = value; } }
+        public double PrecioCompraCliente { get { return this._precioCompraCliente; } set { this._precioCompraCliente = value; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -51,7 +51,7 @@ namespace Entidades
 
         /// <summary>
         /// Constructor parametrizado que me permitira crear una instancia
-        /// del tipo Carnes.
+        /// del tipo Carne.
         /// </summary>
         /// <param name="tipoCarne"></param>
         /// <param name="corteCarne"></param>
@@ -129,7 +129,7 @@ namespace Entidades
 
         /// <summary>
         /// La sobrecarga del == me permitirá comparar si dos carnes son
-        /// iguales mediante su codigo y su peso.
+        /// iguales mediante su codigo, su peso y su tipo.
         /// Me sevirá para hacer la sobrecarga del + en el Carrito.
         /// </summary>
         /// <param name="carne1"></param>
@@ -140,8 +140,13 @@ namespace Entidades
             bool sonIguales = false;
             if(!(carne1 is null) && !(carne2 is null))
             {
-                sonIguales = (carne1._codigo == carne2._codigo) &&
-                             (carne1._peso == carne2._peso);
+                //sonIguales = (carne1._codigo == carne2._codigo) &&
+                //             (carne1._tipoCarne == carne2._tipoCarne &&
+                //             (carne1._corteCarne == carne2._corteCarne)) ;
+                sonIguales = (carne1._tipoCarne == carne2._tipoCarne &&
+                             (carne1._corteCarne == carne2._corteCarne) &&
+                             (carne1._categoria == carne2._categoria) &&
+                             (carne1._proveedor == carne2._proveedor));
             }
             return sonIguales;
         }
@@ -163,7 +168,7 @@ namespace Entidades
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Corte: {this._corteCarne.ToString().Replace("_"," ")} - Categoría: {this._categoria.ToString().Replace("_"," ")} " +
                 $"- Tipo: {this._tipoCarne.ToString().Replace("_", " ")}");
-            sb.AppendLine($"Peso: {this._peso} - Vencimiento: {this._vencimiento.ToShortDateString()} - Precio proveedor: ${this._precioVentaProveedor} -" +
+            sb.AppendLine($"Kilos: {this._peso} - Vencimiento: {this._vencimiento.ToShortDateString()} - Precio proveedor: ${this._precioVentaProveedor} -" +
                 $"Precio compra cliente: ${this._precioCompraCliente}");
             return sb.ToString();
         }

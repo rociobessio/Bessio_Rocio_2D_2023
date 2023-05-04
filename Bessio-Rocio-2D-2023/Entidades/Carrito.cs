@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,7 +19,6 @@ namespace Entidades
         #region PROPIEDADES
         public DateTime FechaCompra { get { return this._fechaCompra; } }
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
-        //public double Recargo { get { return this.AplicarRecargo(this._precioTotal); } set { this._precioConRecargo = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } }
         public List<Carne> Productos { get { return this._listaDeProductos; } }
         #endregion
@@ -36,7 +36,8 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Constructor de la clase Ticket que me permite crear una instacia del objeto
+        /// Constructor de la clase Carrito que me permite crear una instacia del objeto
+        /// parametrizado.
         /// parametrizado. 
         /// </summary>
         /// <param name="compra"></param>
@@ -52,47 +53,70 @@ namespace Entidades
         }
         #endregion
 
-        ///// <summary>
-        ///// Me permite añadir un producto al carrito si este no se encuentra
-        ///// ya contenido en el.
-        ///// Utilizo la sobrecarga del == de Carne.
-        ///// </summary>
-        ///// <param name="carrito"></param>
-        ///// <param name="carne"></param>
-        ///// <returns></returns>
-        //public static Carrito operator + (Carrito carrito,Carne carne)
-        //{
-        //    if(!(carrito is null) && !(carne is null))
-        //    {
-        //        foreach (Carne item in carrito._listaDeProductos)
-        //        {
-        //            if(item == carne)//-->Si son distintos puedo añadirlo
-        //            {
-        //                carrito._listaDeProductos.Add(carne);
-        //            }
-        //        }
-        //    }
-        //    return carrito;
-        //}
+        #region SOBRECARGA DE OPERADORES
+        /// <summary>
+        /// Me permite añadir un producto al carrito si este no se encuentra
+        /// ya contenido en el.
+        /// Utilizo la sobrecarga del == de Carne.
+        /// </summary>
+        /// <param name="carrito"></param>
+        /// <param name="carne"></param>
+        /// <returns></returns>
+        public static bool operator +(Carrito carrito, Carne carne)
+        {
+            bool puede = true;
+            Carne carneAux = new Carne();
+            carneAux = carne;
+            if (!(carrito is null) && !(carne is null))
+            {
+                if (!carrito._listaDeProductos.Contains(carne))
+                {
+                    carrito._listaDeProductos.Add(carneAux);
+                    puede = true;
+                }
+            }
+            return puede;
+        }
+        #endregion
 
         #region METODO
-        ///// <summary>
-        ///// El metodo AplicarRecargo aplica un recargo (IVA)
-        ///// si el cliente decidio abonar con tarjeta de credito.
-        ///// </summary>
-        ///// <param name="precio"></param>
-        ///// <returns></returns>
-        //private double AplicarRecargo(double precio)
-        //{
-        //    double retorno = 0;
-        //    if (this._conTarjeta && precio > 0)
-        //    {
-        //        double totalSinImpuestos = precio;
-        //        double impuestos = totalSinImpuestos * precioIVA / 100;
-        //        retorno = totalSinImpuestos + impuestos; 
-        //    } 
-        //    return retorno; 
-        //}
+        /// <summary>
+        /// Este método me permite validar si el ingreso del peso requerido es valido
+        /// y si puede agregar al carrito mediante la sobrecarga del + en Carrito.
+        /// A su vez llamo al metodo de CalcularPrecioTotal para que lo acumule al total de la compra.
+        /// </summary>
+        /// <param name="carne"></param>
+        /// <param name="cantPesoCliente"></param>
+        /// <param name="cliente"></param>
+        /// <returns>Retorna true si pudo, false sino</returns>
+        public bool AgregarAlCarrito(Carne carne, double cantPesoCliente,Cliente cliente)
+        {
+            bool pudoAgregar = false;
+            Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto
+
+            double precioCarne = Carne.CalcularPrecioTotal(cliente, carne, cantPesoCliente);
+
+            //-->Peso de la carne > 0 y mayor a lo que pide el cliente
+            if (carne.Peso > 0 && carne.Peso >= cantPesoCliente)
+            {
+                auxCarne.Proveedor = carne.Proveedor;
+                auxCarne.Peso = cantPesoCliente;
+                auxCarne.Tipo = carne.Tipo;
+                auxCarne.Corte = carne.Corte;
+                auxCarne.Categoria = carne.Categoria;
+                auxCarne.Vencimiento = carne.Vencimiento; 
+                auxCarne.PrecioCompraCliente = precioCarne;//-->Setteo su precio ya calculado
+                //cliente.CarritoCompra.PrecioTotal += precioCarne;
+                //cliente.CarritoCompra.Productos.Add(auxCarne);
+                //pudoAgregar = true;
+                if (cliente.CarritoCompra + auxCarne)//-->Devuelve true si puede
+                {
+                    cliente.CarritoCompra.PrecioTotal += precioCarne;//-->Acumulo el precio d productos al total del carrito
+                    pudoAgregar = true;//-->Si puede retorno true
+                }
+            }
+            return pudoAgregar;
+        }
         #endregion
 
         #region POLIMORFISMO
@@ -102,28 +126,26 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            StringBuilder sb = new StringBuilder();
-            double acumulador = 0;
-            sb.AppendLine($"FECHA DE COMPRA:{this._fechaCompra.ToShortDateString()}"); 
-
+            StringBuilder sb = new StringBuilder(); 
+            sb.AppendLine($"FECHA DE COMPRA:{this._fechaCompra.ToShortDateString()}");
+            
             foreach (Carne producto in this._listaDeProductos)
             {
-                if(this._listaDeProductos.Count > 0)
+                sb.AppendLine("---------PRODUCTO-------------");
+                if (this._listaDeProductos.Count > 0)
                 {
                     sb.AppendLine($"Tipo: {producto.Tipo.ToString().Replace("_", " ")}");
                     sb.AppendLine($"Corte: {producto.Corte.ToString().Replace("_", " ")}");
                     sb.AppendLine($"Categoría: {producto.Categoria.ToString().Replace("_", " ")}");
-                    sb.AppendLine($"Peso: {producto.Peso}");
-                    sb.AppendLine($"Precio: ${producto.PrecioCompraCliente}");
-                    acumulador += producto.PrecioCompraCliente;//-->Acumulo el total entre todos los productos
+                    sb.AppendLine($"Peso: {producto.Peso}kgs.");
+                    sb.AppendLine($"Precio: ${producto.PrecioCompraCliente:f}"); 
                 }
                 else
                 {
                     sb.AppendLine("No hay productos seleccionados.");
                 }
             }
-            this._precioTotal = acumulador;
-
+            sb.AppendLine("-----------------------------");
             sb.AppendLine($"Total: ${this._precioTotal:f}");
 
             return sb.ToString();

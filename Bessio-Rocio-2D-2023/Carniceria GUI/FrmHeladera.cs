@@ -162,12 +162,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmHeladera_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult respuesta = MessageBox.Show("¿Esta seguro que desea salir?", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (DialogResult.No == respuesta)
-            {
-                e.Cancel = true;
-            }
         }
 
         /// <summary>
