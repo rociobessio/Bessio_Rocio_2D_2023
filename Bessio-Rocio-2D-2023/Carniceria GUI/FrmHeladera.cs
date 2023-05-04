@@ -33,8 +33,8 @@ namespace Carniceria_GUI
 
         bool terminoDeReponer;
         FrmVentaVendedor frmVentaVendedor;
-        Vendedor vendedorForm; 
-        #endregion 
+        Vendedor vendedorForm;
+        #endregion
 
         #region CONSTRUCTOR
 

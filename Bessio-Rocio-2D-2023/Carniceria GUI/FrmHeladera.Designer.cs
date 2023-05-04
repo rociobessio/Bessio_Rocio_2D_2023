@@ -388,6 +388,7 @@
             Controls.Add(pictureBoxVendedor);
             Controls.Add(lblVendedorEmail);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1198, 926);
             Name = "FrmHeladera";
             Text = "FrmHeladera";
             FormClosing += FrmHeladera_FormClosing;

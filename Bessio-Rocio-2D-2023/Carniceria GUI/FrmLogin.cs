@@ -20,7 +20,7 @@ namespace Carniceria_GUI
         private FrmMetodoDePago frmMetodoDePago;
         static SoundPlayer soundPlayer;
         #endregion
-         
+
         public FrmLogin()
         {
             InitializeComponent();
@@ -180,7 +180,7 @@ namespace Carniceria_GUI
                         soundPlayer.Play();
                         MessageBox.Show("Sos Vendedor");
                         frmHeladera = new FrmHeladera((Vendedor)ingresante);//-->Casteo a Vendedor
-                        frmHeladera.Show(); 
+                        frmHeladera.Show();
                     }
                 }
             }

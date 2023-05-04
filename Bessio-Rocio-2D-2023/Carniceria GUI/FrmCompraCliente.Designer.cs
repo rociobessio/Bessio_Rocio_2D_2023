@@ -71,6 +71,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources._customer_service_agent_89777;
             pictureBox1.Location = new Point(12, 12);
             pictureBox1.Name = "pictureBox1";
@@ -81,6 +82,7 @@
             // 
             // lblClienteEmail
             // 
+            lblClienteEmail.Anchor = AnchorStyles.None;
             lblClienteEmail.AutoSize = true;
             lblClienteEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             lblClienteEmail.ForeColor = Color.White;
@@ -124,12 +126,13 @@
             // 
             // lblPrintHelp
             // 
-            lblPrintHelp.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            lblPrintHelp.Anchor = AnchorStyles.None;
             lblPrintHelp.AutoSize = true;
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
             lblPrintHelp.Location = new Point(12, 758);
+            lblPrintHelp.MinimumSize = new Size(37, 60);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
             lblPrintHelp.TabIndex = 14;
@@ -137,6 +140,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.None;
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label3);
@@ -208,6 +212,7 @@
             // 
             // groupBox2
             // 
+            groupBox2.Anchor = AnchorStyles.None;
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(txtNumTarjeta);
@@ -323,6 +328,7 @@
             // 
             // groupBox3
             // 
+            groupBox3.Anchor = AnchorStyles.None;
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(txtPesoRequerido);
             groupBox3.Controls.Add(btnAgregarAlCarrito);
@@ -392,6 +398,7 @@
             // 
             // cbFiltrarPor
             // 
+            cbFiltrarPor.Anchor = AnchorStyles.None;
             cbFiltrarPor.FormattingEnabled = true;
             cbFiltrarPor.Location = new Point(167, 472);
             cbFiltrarPor.Name = "cbFiltrarPor";
@@ -405,7 +412,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(443, 191);
+            label11.Location = new Point(478, 192);
             label11.Name = "label11";
             label11.Size = new Size(117, 32);
             label11.TabIndex = 30;
@@ -413,6 +420,7 @@
             // 
             // label9
             // 
+            label9.Anchor = AnchorStyles.None;
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
@@ -424,6 +432,7 @@
             // 
             // richTextBoxCarrito
             // 
+            richTextBoxCarrito.Anchor = AnchorStyles.None;
             richTextBoxCarrito.BackColor = Color.FloralWhite;
             richTextBoxCarrito.Location = new Point(373, 226);
             richTextBoxCarrito.Name = "richTextBoxCarrito";
@@ -470,6 +479,7 @@
             Controls.Add(lblClienteEmail);
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(977, 883);
             Name = "FrmCompraCliente";
             Text = "FrmCompraCliente";
             Load += FrmCompraCliente_Load;

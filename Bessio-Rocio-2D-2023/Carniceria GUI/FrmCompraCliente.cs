@@ -6,6 +6,7 @@ using System.Data;
 using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -34,9 +35,9 @@ namespace Carniceria_GUI
         DataRow auxFilaProduc;
         int indexTablaProductos;
         int codigoProducto;
-        int indiceDetalle;
         #endregion
 
+        SoundPlayer soundPlayer;
         #endregion
 
         #region CONSTRUCTOR
@@ -57,6 +58,7 @@ namespace Carniceria_GUI
             clienteFormulario = cliente;//-->Paso los datos
             carneSeleccionada = new Carne();//-->Evito nulos
             carritoCliente = new Carrito();
+            soundPlayer = new SoundPlayer();
 
             #region INSTANCIO PRODUCTOS
             productosDisponibles = new List<Carne>();
@@ -81,8 +83,9 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("Como cliente podrás elegir un producto de la lista filtrando los tipos de corte, y ");
             textoAyuda.AppendLine("comprar por kilo para agregar al carrito.");
             textoAyuda.AppendLine("Podrás visualizar alguno de tus datos, en el apartado de costo ");
-            textoAyuda.AppendLine("se mostrará el monton disponible de cliente, el saldo disponible que tiene y ");
-            textoAyuda.AppendLine("el total de la compra. Al presionar el botón 'Finalizar' podrá ver una factura para confirmar la compra.");
+            textoAyuda.AppendLine("se mostrará el monto disponible de cliente, el saldo disponible que tiene y ");
+            textoAyuda.AppendLine("el total de la compra. Tambien podrá cancelar una compra eliminando todos los contenidos del carrito.");
+            textoAyuda.AppendLine("Al presionar el botón 'Finalizar' podrá ver una factura para confirmar la compra.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
@@ -201,7 +204,6 @@ namespace Carniceria_GUI
             }
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
-        #endregion
 
         /// <summary>
         /// Este evento me permitira filtrar las carnes disponibles
@@ -235,7 +237,6 @@ namespace Carniceria_GUI
 
             if (this.indexTablaProductos > -1)//-->Si es mayor a -1 obtengo el codigo, celda [0]
             {
-                this.indiceDetalle = 0;
                 codigoProducto = int.Parse(this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value.ToString());//-->Obtengo el codigo
             }
 
@@ -277,7 +278,9 @@ namespace Carniceria_GUI
 
             return puedeSeguir;
         }
+        #endregion
 
+        #region BOTONES DEL FORM
         /// <summary>
         /// Al presionar este boton me permite agregarlo al carrito.
         /// </summary>
@@ -285,10 +288,6 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
-            //if (carneSeleccionada.Peso <= 0)//-->Si no hay peso/stock lo quito
-            //{
-            //    productosDisponibles.Remove(carneSeleccionada);
-            //}
             this.richTextBoxCarrito.Clear();//-->Limpio el carrito
 
             if (Validar())//-->Valido que haya tocado un producto
@@ -311,12 +310,13 @@ namespace Carniceria_GUI
                     MessageBox.Show("No se pudo agregar al carrito, puede ser que ya exista o el peso no sea valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 this.txtPesoRequerido.Clear();
-                //this.CargarProductosDataGrid();//-->Actualizo el datagrid.
             }
         }
 
         /// <summary>
         /// Este boton me permite comprar un producto.
+        /// Le muestro el ticket de la compra mediante un modal, si presiona si se realiza
+        /// sino se eliminan los productos del carrito.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -325,16 +325,21 @@ namespace Carniceria_GUI
             if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
             {
                 DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
                 if (DialogResult.Yes == respuesta)
                 {
                     if (Cliente.Comprar(clienteFormulario, productosDisponibles))
                     {
+                        soundPlayer.SoundLocation = "CompraSonido.wav";
+                        soundPlayer.Play();
                         MessageBox.Show("Compra realizada.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //-->Actualizo en los textboxes el dinero del cliente
                         this.CargarDatosCliente();
-                        this.richTextBoxCarrito.Clear();//-->Limpio el richtextbox de carrito
+                        this.richTextBoxCarrito.Clear();//-->Limpio el richtextbox con info del carrito
                         this.txtTotalCompra.Clear();
+
+                        Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito.
                     }
                     else
                     {
@@ -354,7 +359,7 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
-        /// Me permite cancelar una compra entera.
+        /// Me permite cancelar una compra entera al presionarlo.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -372,5 +377,6 @@ namespace Carniceria_GUI
                 MessageBox.Show("No hay nada en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
     }
 }

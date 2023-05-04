@@ -119,7 +119,7 @@ namespace Carniceria_GUI
             {
                 this.cbClientes.Items.Add(cliente.Usuario.Email);
             }
-        } 
+        }
 
         /// <summary>
         /// En este evento, antes de cerrarlo le paso al formulario heladera

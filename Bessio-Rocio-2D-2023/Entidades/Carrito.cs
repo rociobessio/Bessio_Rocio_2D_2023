@@ -138,6 +138,7 @@ namespace Entidades
                 if (cliente.CarritoCompra.Productos.Count > 0)
                 {
                     cliente.CarritoCompra.Productos.RemoveAt(i);
+                    cliente.CarritoCompra.PrecioTotal = 0;//-->Quito tambien el dinero acumulado
                 }
             }
             return cliente.CarritoCompra;

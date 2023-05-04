@@ -169,6 +169,7 @@
             Controls.Add(txtContrasenia);
             Controls.Add(txtEmail);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(957, 628);
             Name = "FrmLogin";
             Text = "Form1";
             FormClosing += FrmLogin_FormClosing;

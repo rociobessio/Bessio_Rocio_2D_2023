@@ -467,6 +467,7 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MinimumSize = new Size(1023, 927);
             Name = "FrmVentaVendedor";
             Text = "FrmVentaVendedor";
             FormClosing += FrmVentaVendedor_FormClosing;
