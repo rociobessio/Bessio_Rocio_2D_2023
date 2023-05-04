@@ -13,7 +13,6 @@ namespace Entidades
     {
         #region ATRIBUTOS
         private double _dineroEfectivoDisponible;
-        //private List<Producto> _listaProductos;--> La lista de productos en realidad estaria en ticket o compra ya que de ahi luego impprimiria los detalles de estos
         private Tarjeta _tarjeta;
         private Carrito _carritoCompra; 
         private bool _esConTarjeta;
@@ -138,7 +137,7 @@ namespace Entidades
 
         #region METODOS
         /// <summary>
-        /// Me permite que un cliente compre si cumple con las validaciones necesarias.
+        /// Me permite que un cliente compre si cumple con las validaciones necesarias, tiene dinero disponible.
         /// </summary>
         /// <param name="clienteIngresado"></param>
         /// <param name="listaCarnesDisponibles"></param> 
@@ -146,19 +145,30 @@ namespace Entidades
         public static bool Comprar(Cliente clienteIngresado, List<Carne> listaCarnesDisponibles)
         {
             bool puedeComprar = false;  
-            //-->Que tenga dinero disponible y sea mayor al total del carrito
-            if((clienteIngresado._dineroEfectivoDisponible > 0 || clienteIngresado.Tarjeta.DineroDisponible > 0)
-                 && (clienteIngresado._dineroEfectivoDisponible > clienteIngresado.CarritoCompra.PrecioTotal || 
-                        clienteIngresado.Tarjeta.DineroDisponible > clienteIngresado.CarritoCompra.PrecioTotal))
+
+            if((clienteIngresado.ConTarjeta))
+            {
+                if ((clienteIngresado.Tarjeta.DineroDisponible < clienteIngresado._carritoCompra.PrecioTotal) ||
+                         (clienteIngresado.Tarjeta.DineroDisponible < 0))
+                {
+                    puedeComprar = false;
+                }
+            }
+            else if((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
+            {
+                puedeComprar = false;
+            }
+            else
             {
                 foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
                 {
                     foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
                     {
-                        if(carneDisponible == carneCarrito)//-->Busco que coincidan
+                        if ((carneDisponible == carneCarrito) &&
+                            (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
                         {
                             carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
-                            puedeComprar = true;
+                            puedeComprar = true;//-->Solo aca cambio a true
                         }
                     }
                 }
@@ -169,7 +179,7 @@ namespace Entidades
                 }
                 else
                     clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-            }
+            }  
             return puedeComprar;
         } 
         #endregion

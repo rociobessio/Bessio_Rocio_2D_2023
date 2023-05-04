@@ -93,6 +93,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Cartmultiply_icon_icons1 {
+            get {
+                object obj = ResourceManager.GetObject("Cartmultiply_icon-icons1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap farm_animal_cow_icon_153815 {
             get {
                 object obj = ResourceManager.GetObject("farm_animal_cow_icon_153815", resourceCulture);

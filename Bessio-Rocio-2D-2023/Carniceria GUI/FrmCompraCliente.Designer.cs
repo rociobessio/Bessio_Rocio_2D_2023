@@ -38,9 +38,9 @@
             label8 = new Label();
             label7 = new Label();
             label3 = new Label();
-            txtEmail = new TextBox();
             txtTelefono = new TextBox();
             txtDomicilio = new TextBox();
+            txtEmail = new TextBox();
             groupBox2 = new GroupBox();
             label10 = new Label();
             label6 = new Label();
@@ -53,7 +53,6 @@
             label4 = new Label();
             txtSaldoDisponible = new TextBox();
             groupBox3 = new GroupBox();
-            btnEliminarDelCarrito = new Button();
             label1 = new Label();
             txtPesoRequerido = new TextBox();
             btnAgregarAlCarrito = new Button();
@@ -62,6 +61,7 @@
             label11 = new Label();
             label9 = new Label();
             richTextBoxCarrito = new RichTextBox();
+            btnCancelarCompra = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBox1.SuspendLayout();
@@ -101,12 +101,12 @@
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.BackgroundColor = Color.FloralWhite;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Location = new Point(12, 508);
+            dataGridViewProductos.Location = new Point(15, 516);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
-            dataGridViewProductos.Size = new Size(597, 239);
+            dataGridViewProductos.Size = new Size(928, 239);
             dataGridViewProductos.TabIndex = 12;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
             // 
@@ -116,7 +116,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 429);
+            label2.Location = new Point(12, 432);
             label2.Name = "label2";
             label2.Size = new Size(495, 32);
             label2.TabIndex = 13;
@@ -140,14 +140,14 @@
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label7);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(txtEmail);
             groupBox1.Controls.Add(txtTelefono);
             groupBox1.Controls.Add(txtDomicilio);
+            groupBox1.Controls.Add(txtEmail);
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(12, 169);
+            groupBox1.Location = new Point(207, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(337, 232);
+            groupBox1.Size = new Size(471, 173);
             groupBox1.TabIndex = 15;
             groupBox1.TabStop = false;
             groupBox1.Text = "Informacion cliente";
@@ -157,7 +157,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(48, 64);
+            label8.Location = new Point(75, 43);
             label8.Name = "label8";
             label8.Size = new Size(58, 25);
             label8.TabIndex = 27;
@@ -168,7 +168,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label7.ForeColor = Color.White;
-            label7.Location = new Point(37, 181);
+            label7.Location = new Point(69, 140);
             label7.Name = "label7";
             label7.Size = new Size(92, 25);
             label7.TabIndex = 26;
@@ -179,32 +179,32 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.ForeColor = Color.White;
-            label3.Location = new Point(37, 120);
+            label3.Location = new Point(75, 87);
             label3.Name = "label3";
             label3.Size = new Size(86, 25);
             label3.TabIndex = 23;
             label3.Text = "Télefono";
             // 
-            // txtEmail
-            // 
-            txtEmail.Location = new Point(166, 57);
-            txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(156, 37);
-            txtEmail.TabIndex = 25;
-            // 
             // txtTelefono
             // 
-            txtTelefono.Location = new Point(166, 113);
+            txtTelefono.Location = new Point(181, 80);
             txtTelefono.Name = "txtTelefono";
             txtTelefono.Size = new Size(156, 37);
             txtTelefono.TabIndex = 24;
             // 
             // txtDomicilio
             // 
-            txtDomicilio.Location = new Point(166, 178);
+            txtDomicilio.Location = new Point(181, 128);
             txtDomicilio.Name = "txtDomicilio";
             txtDomicilio.Size = new Size(156, 37);
             txtDomicilio.TabIndex = 23;
+            // 
+            // txtEmail
+            // 
+            txtEmail.Location = new Point(181, 36);
+            txtEmail.Name = "txtEmail";
+            txtEmail.Size = new Size(156, 37);
+            txtEmail.TabIndex = 25;
             // 
             // groupBox2
             // 
@@ -220,7 +220,7 @@
             groupBox2.Controls.Add(txtSaldoDisponible);
             groupBox2.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(758, 12);
+            groupBox2.Location = new Point(709, 12);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(231, 389);
             groupBox2.TabIndex = 16;
@@ -323,35 +323,17 @@
             // 
             // groupBox3
             // 
-            groupBox3.Controls.Add(btnEliminarDelCarrito);
             groupBox3.Controls.Add(label1);
             groupBox3.Controls.Add(txtPesoRequerido);
             groupBox3.Controls.Add(btnAgregarAlCarrito);
             groupBox3.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(397, 132);
+            groupBox3.Location = new Point(12, 191);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(328, 269);
+            groupBox3.Size = new Size(328, 215);
             groupBox3.TabIndex = 17;
             groupBox3.TabStop = false;
             groupBox3.Text = "Comprar";
-            // 
-            // btnEliminarDelCarrito
-            // 
-            btnEliminarDelCarrito.Anchor = AnchorStyles.Bottom;
-            btnEliminarDelCarrito.Cursor = Cursors.Hand;
-            btnEliminarDelCarrito.FlatStyle = FlatStyle.Popup;
-            btnEliminarDelCarrito.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnEliminarDelCarrito.ForeColor = Color.White;
-            btnEliminarDelCarrito.Image = Properties.Resources.Cartmultiply_icon_icons_com_51189;
-            btnEliminarDelCarrito.ImageAlign = ContentAlignment.MiddleRight;
-            btnEliminarDelCarrito.Location = new Point(104, 195);
-            btnEliminarDelCarrito.Name = "btnEliminarDelCarrito";
-            btnEliminarDelCarrito.Size = new Size(218, 57);
-            btnEliminarDelCarrito.TabIndex = 21;
-            btnEliminarDelCarrito.Text = "Eliminar de carrito";
-            btnEliminarDelCarrito.TextAlign = ContentAlignment.MiddleLeft;
-            btnEliminarDelCarrito.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -366,7 +348,7 @@
             // 
             // txtPesoRequerido
             // 
-            txtPesoRequerido.Location = new Point(104, 68);
+            txtPesoRequerido.Location = new Point(104, 63);
             txtPesoRequerido.Name = "txtPesoRequerido";
             txtPesoRequerido.Size = new Size(218, 37);
             txtPesoRequerido.TabIndex = 1;
@@ -381,7 +363,7 @@
             btnAgregarAlCarrito.ForeColor = Color.White;
             btnAgregarAlCarrito.Image = Properties.Resources.shopping_action_basket_shop_buy_add_108644;
             btnAgregarAlCarrito.ImageAlign = ContentAlignment.MiddleRight;
-            btnAgregarAlCarrito.Location = new Point(104, 125);
+            btnAgregarAlCarrito.Location = new Point(104, 152);
             btnAgregarAlCarrito.Name = "btnAgregarAlCarrito";
             btnAgregarAlCarrito.Size = new Size(218, 57);
             btnAgregarAlCarrito.TabIndex = 19;
@@ -399,7 +381,7 @@
             btnComprar.ForeColor = Color.White;
             btnComprar.Image = Properties.Resources.pay_cash_payment_money_dollar_bill_icon_143267;
             btnComprar.ImageAlign = ContentAlignment.MiddleRight;
-            btnComprar.Location = new Point(829, 761);
+            btnComprar.Location = new Point(786, 761);
             btnComprar.Name = "btnComprar";
             btnComprar.Size = new Size(157, 57);
             btnComprar.TabIndex = 18;
@@ -411,7 +393,7 @@
             // cbFiltrarPor
             // 
             cbFiltrarPor.FormattingEnabled = true;
-            cbFiltrarPor.Location = new Point(167, 467);
+            cbFiltrarPor.Location = new Point(167, 472);
             cbFiltrarPor.Name = "cbFiltrarPor";
             cbFiltrarPor.Size = new Size(140, 33);
             cbFiltrarPor.TabIndex = 19;
@@ -423,7 +405,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label11.ForeColor = Color.White;
-            label11.Location = new Point(758, 439);
+            label11.Location = new Point(443, 191);
             label11.Name = "label11";
             label11.Size = new Size(117, 32);
             label11.TabIndex = 30;
@@ -434,7 +416,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(15, 470);
+            label9.Location = new Point(15, 475);
             label9.Name = "label9";
             label9.Size = new Size(146, 25);
             label9.TabIndex = 28;
@@ -443,18 +425,37 @@
             // richTextBoxCarrito
             // 
             richTextBoxCarrito.BackColor = Color.FloralWhite;
-            richTextBoxCarrito.Location = new Point(647, 474);
+            richTextBoxCarrito.Location = new Point(373, 226);
             richTextBoxCarrito.Name = "richTextBoxCarrito";
-            richTextBoxCarrito.Size = new Size(342, 273);
+            richTextBoxCarrito.Size = new Size(305, 175);
             richTextBoxCarrito.TabIndex = 32;
             richTextBoxCarrito.Text = "";
+            // 
+            // btnCancelarCompra
+            // 
+            btnCancelarCompra.Anchor = AnchorStyles.Bottom;
+            btnCancelarCompra.Cursor = Cursors.Hand;
+            btnCancelarCompra.FlatStyle = FlatStyle.Popup;
+            btnCancelarCompra.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCancelarCompra.ForeColor = Color.White;
+            btnCancelarCompra.Image = Properties.Resources.Cartmultiply_icon_icons1;
+            btnCancelarCompra.ImageAlign = ContentAlignment.MiddleRight;
+            btnCancelarCompra.Location = new Point(612, 761);
+            btnCancelarCompra.Name = "btnCancelarCompra";
+            btnCancelarCompra.Size = new Size(157, 57);
+            btnCancelarCompra.TabIndex = 33;
+            btnCancelarCompra.Text = "    Cancelar";
+            btnCancelarCompra.TextAlign = ContentAlignment.MiddleLeft;
+            btnCancelarCompra.UseVisualStyleBackColor = true;
+            btnCancelarCompra.Click += button1_Click;
             // 
             // FrmCompraCliente
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkKhaki;
-            ClientSize = new Size(998, 827);
+            ClientSize = new Size(955, 827);
+            Controls.Add(btnCancelarCompra);
             Controls.Add(richTextBoxCarrito);
             Controls.Add(label11);
             Controls.Add(label9);
@@ -518,7 +519,7 @@
         private Label label11;
         private Label label9;
         private ListBox listBoxCarrito;
-        private Button btnEliminarDelCarrito;
         private RichTextBox richTextBoxCarrito;
+        private Button btnCancelarCompra;
     }
 }

@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Carniceria_GUI
@@ -22,7 +23,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS
         private List<Carne> productosDisponibles;
         private Cliente clienteFormulario;
-        private static Carne carneSeleccionada; 
+        private static Carne carneSeleccionada;
         private Carrito carritoCliente;
         private double peso;
         private double totalDisponibleCliente;
@@ -59,7 +60,7 @@ namespace Carniceria_GUI
 
             #region INSTANCIO PRODUCTOS
             productosDisponibles = new List<Carne>();
-            productosDisponibles.Add(new Carne(Corte.Lomo, 2, CategoriaBovina.Novillo,
+            productosDisponibles.Add(new Carne(Corte.Lomo, 3, CategoriaBovina.Novillo,
                                      new DateTime(2023, 06, 01), 1000, "Antonio", Tipo.Carne_Vacuna, 1200));
             productosDisponibles.Add(new Carne(Corte.Suprema, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 05, 21), 800, "Mingo CO", Tipo.Pollo, 1000));
@@ -71,8 +72,8 @@ namespace Carniceria_GUI
                          new DateTime(2023, 06, 01), 600, "Antonio", Tipo.Carne_Vacuna, 1000));
             productosDisponibles.Add(new Carne(Corte.Pollo_Entero, 2000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 06, 01), 1400, "Granjitas ", Tipo.Pollo, 1700));
-            productosDisponibles.Add(new Carne(Corte.Solomillo, 0, CategoriaBovina.No_Es_Bovino,
-             new DateTime(2023, 06, 01), 1400, "Alsina Lanús ", Tipo.Cerdo, 1700));//-->Test, no debe mostrarlo, no tiene peso/stock
+            productosDisponibles.Add(new Carne(Corte.Solomillo, 10, CategoriaBovina.No_Es_Bovino,
+             new DateTime(2023, 06, 01), 1400, "Alsina Lanús ", Tipo.Cerdo, 1700));
             #endregion
 
             #region CREO LA AYUDA
@@ -111,12 +112,12 @@ namespace Carniceria_GUI
 
             this.CargarDatosCliente();//-->Cargo los datos del cliente.
 
-            #region DATAGRID
+            #region COLUMNAS DATAGRID
             this._dataTable.Columns.Add("Código");
             this._dataTable.Columns.Add("Tipo");
             this._dataTable.Columns.Add("Corte");
             this._dataTable.Columns.Add("Categoría bovina");
-            this._dataTable.Columns.Add("Precio compra");
+            this._dataTable.Columns.Add("Precio");
 
             this.dataGridViewProductos.AllowUserToAddRows = false;
             this.dataGridViewProductos.AllowUserToDeleteRows = false;
@@ -177,6 +178,14 @@ namespace Carniceria_GUI
         private void CargarProductosDataGrid()
         {
             _dataTable.Rows.Clear();
+
+            for (int i = 0; i < this.productosDisponibles.Count; i++)
+            {
+                if (this.productosDisponibles[i].Peso == 0)//Sino hay stock lo saco, rompe con foreach
+                {
+                    this.productosDisponibles.RemoveAt(i);
+                }
+            }
 
             foreach (Carne carnes in this.productosDisponibles)
             {
@@ -276,10 +285,11 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnAgregarAlCarrito_Click(object sender, EventArgs e)
         {
-            if (carneSeleccionada.Peso <= 0)//-->Si no hay peso/stock lo quito
-            {
-                productosDisponibles.Remove(carneSeleccionada);
-            }
+            //if (carneSeleccionada.Peso <= 0)//-->Si no hay peso/stock lo quito
+            //{
+            //    productosDisponibles.Remove(carneSeleccionada);
+            //}
+            this.richTextBoxCarrito.Clear();//-->Limpio el carrito
 
             if (Validar())//-->Valido que haya tocado un producto
             {
@@ -289,9 +299,9 @@ namespace Carniceria_GUI
                 {
                     foreach (Carne carne in clienteFormulario.CarritoCompra.Productos)
                     {
-                        this.richTextBoxCarrito.Text = $"Corte: {carne.Corte} - " +
-                                         $"Precio: {carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
-                    } 
+                        this.richTextBoxCarrito.Text += $"Corte: {carne.Corte} - " +
+                                         $"Precio: ${carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
+                    }
 
                     this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra
                     MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -301,9 +311,9 @@ namespace Carniceria_GUI
                     MessageBox.Show("No se pudo agregar al carrito, puede ser que ya exista o el peso no sea valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 this.txtPesoRequerido.Clear();
-                this.CargarProductosDataGrid();//-->Actualizo el datagrid.
+                //this.CargarProductosDataGrid();//-->Actualizo el datagrid.
             }
-        } 
+        }
 
         /// <summary>
         /// Este boton me permite comprar un producto.
@@ -311,7 +321,7 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
-        {  
+        {
             if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
             {
                 DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -319,10 +329,12 @@ namespace Carniceria_GUI
                 {
                     if (Cliente.Comprar(clienteFormulario, productosDisponibles))
                     {
-                        MessageBox.Show("Pudo Comprar.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                        MessageBox.Show("Compra realizada.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         //-->Actualizo en los textboxes el dinero del cliente
                         this.CargarDatosCliente();
+                        this.richTextBoxCarrito.Clear();//-->Limpio el richtextbox de carrito
+                        this.txtTotalCompra.Clear();
                     }
                     else
                     {
@@ -331,15 +343,34 @@ namespace Carniceria_GUI
                 }
                 else
                 {
-                    MessageBox.Show("Compra cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.button1_Click(sender, e);//-->Cancelo la compra, llamo al boton 'Cancelar' reutilizando codigo        
                 }
             }
             else
             {
                 MessageBox.Show("No hay productos en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
-            this.listBoxCarrito.Items.Clear();
+            }
             this.CargarProductosDataGrid();//-->Actualizo el datagrid. 
+        }
+
+        /// <summary>
+        /// Me permite cancelar una compra entera.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (clienteFormulario.CarritoCompra.Productos.Count > 0)
+            {
+                Carrito.LimpiarCarrito(clienteFormulario);
+                this.richTextBoxCarrito.Clear();
+                this.txtTotalCompra.Clear();
+                MessageBox.Show("Compra cancelada.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("No hay nada en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

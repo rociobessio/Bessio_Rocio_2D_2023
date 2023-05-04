@@ -42,9 +42,9 @@ namespace Entidades
         /// </summary>
         /// <param name="compra"></param>
         /// <param name="precioTotal"></param>
-        /// <param name="descuento"></param>
+        /// <param name="tarjeta"></param>
         /// <param name="productos"></param>
-        public Carrito(DateTime compra, double precioTotal, double descuento, List<Carne> productos,bool tarjeta)
+        public Carrito(DateTime compra, double precioTotal, List<Carne> productos,bool tarjeta)
         {
             this._conTarjeta = tarjeta;
             this._fechaCompra = compra; 
@@ -64,14 +64,12 @@ namespace Entidades
         /// <returns></returns>
         public static bool operator +(Carrito carrito, Carne carne)
         {
-            bool puede = true;
-            Carne carneAux = new Carne();
-            carneAux = carne;
+            bool puede = true; 
             if (!(carrito is null) && !(carne is null))
             {
                 if (!carrito._listaDeProductos.Contains(carne))
                 {
-                    carrito._listaDeProductos.Add(carneAux);
+                    carrito._listaDeProductos.Add(carne);
                     puede = true;
                 }
             }
@@ -92,13 +90,15 @@ namespace Entidades
         public bool AgregarAlCarrito(Carne carne, double cantPesoCliente,Cliente cliente)
         {
             bool pudoAgregar = false;
-            Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto
+            Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto original
 
             double precioCarne = Carne.CalcularPrecioTotal(cliente, carne, cantPesoCliente);
 
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
             if (carne.Peso > 0 && carne.Peso >= cantPesoCliente)
             {
+                //--->Por alguna razón me pisaba la carne anterior, asi que creo una nueva y le paso sus atributos
+                auxCarne.Codigo = carne.Codigo;
                 auxCarne.Proveedor = carne.Proveedor;
                 auxCarne.Peso = cantPesoCliente;
                 auxCarne.Tipo = carne.Tipo;
@@ -106,28 +106,62 @@ namespace Entidades
                 auxCarne.Categoria = carne.Categoria;
                 auxCarne.Vencimiento = carne.Vencimiento; 
                 auxCarne.PrecioCompraCliente = precioCarne;//-->Setteo su precio ya calculado
-                //cliente.CarritoCompra.PrecioTotal += precioCarne;
-                //cliente.CarritoCompra.Productos.Add(auxCarne);
-                //pudoAgregar = true;
-                if (cliente.CarritoCompra + auxCarne)//-->Devuelve true si puede
+
+                foreach (Carne item in cliente.CarritoCompra.Productos)//-->Recorro si son coincidentes
+                {
+                    if(item == auxCarne)//-->Mediante el codigo comparo
+                    {
+                        item.Peso += auxCarne.Peso;//-->Si son iguales sumo la cantidad
+                        item.PrecioCompraCliente += auxCarne.PrecioCompraCliente;//-->Sumo el precio
+                    }
+                }
+
+                if (cliente.CarritoCompra + auxCarne)//-->Devuelve true si puede añadirlo al carrito
                 {
                     cliente.CarritoCompra.PrecioTotal += precioCarne;//-->Acumulo el precio d productos al total del carrito
+
                     pudoAgregar = true;//-->Si puede retorno true
                 }
             }
             return pudoAgregar;
         }
+
+        /// <summary>
+        /// Metodo que me permite limpiar el carrito de productos
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        public static Carrito LimpiarCarrito(Cliente cliente)
+        {
+            for (int i = 0; i < cliente.CarritoCompra.Productos.Count; i++)
+            {
+                if (cliente.CarritoCompra.Productos.Count > 0)
+                {
+                    cliente.CarritoCompra.Productos.RemoveAt(i);
+                }
+            }
+            return cliente.CarritoCompra;
+        }
         #endregion
 
         #region POLIMORFISMO
         /// <summary>
-        /// Sobrecarga del .ToString()
+        /// Sobrecarga del .ToString().
+        /// Intento que tenga formato de ticket.
         /// </summary>
         /// <returns></returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(); 
             sb.AppendLine($"FECHA DE COMPRA:{this._fechaCompra.ToShortDateString()}");
+            if (ConTarjeta)
+            {
+                sb.AppendLine("Con tarjeta: SI.");
+            }
+            else
+            {
+                sb.AppendLine("Con tarjeta: NO.");
+            }
             
             foreach (Carne producto in this._listaDeProductos)
             {

@@ -18,11 +18,11 @@ namespace Entidades
         private DateTime _vencimiento;
         private double _precioVentaProveedor;//--->Precio por el cual lo voy a vender
         private double _precioCompraCliente;//--->Precio por el cual compre en un frigorifico
-        private static int ultimoCodigo = 100;
+        private static int ultimoCodigo;
         #endregion
 
         #region  PROPIEDADES
-        public int Codigo { get { return this._codigo; } }
+        public int Codigo { get { return this._codigo; } set { this._codigo = value; } }
         public Tipo Tipo { get { return this._tipoCarne; } set { this._tipoCarne = value; } }
         public Corte Corte { get { return this._corteCarne; } set { this._corteCarne = value; } }
         public double Peso { get { return this._peso; } set { this._peso = value; } }
@@ -33,7 +33,15 @@ namespace Entidades
         public double PrecioCompraCliente { get { return this._precioCompraCliente; } set { this._precioCompraCliente = value; } }
         #endregion
 
-        #region CONSTRUCTOR
+        #region CONSTRUCTOR 
+        /// <summary>
+        /// Se llama la primera vez y setteo el ultimo codigo a 100
+        /// </summary>
+        static Carne()
+        {
+            ultimoCodigo = 100;
+        }
+
         /// <summary>
         /// Sera mi constructor por defecto.
         /// </summary>
@@ -71,7 +79,7 @@ namespace Entidades
             this._precioVentaProveedor = precioProveedor;
             this._proveedor = proveedor; 
             this._codigo = ultimoCodigo;
-            ultimoCodigo++;//POr cada instancia incrementa el numero del ultcodigo
+            ultimoCodigo++;//Por cada instancia incrementa el numero del ultcodigo
         }
         #endregion
 
@@ -143,10 +151,11 @@ namespace Entidades
                 //sonIguales = (carne1._codigo == carne2._codigo) &&
                 //             (carne1._tipoCarne == carne2._tipoCarne &&
                 //             (carne1._corteCarne == carne2._corteCarne)) ;
-                sonIguales = (carne1._tipoCarne == carne2._tipoCarne &&
-                             (carne1._corteCarne == carne2._corteCarne) &&
-                             (carne1._categoria == carne2._categoria) &&
-                             (carne1._proveedor == carne2._proveedor));
+                //sonIguales = (carne1._tipoCarne == carne2._tipoCarne &&
+                //             (carne1._corteCarne == carne2._corteCarne) &&
+                //             (carne1._categoria == carne2._categoria) &&
+                //             (carne1._proveedor == carne2._proveedor));
+                sonIguales = carne1._codigo == carne2._codigo;
             }
             return sonIguales;
         }
