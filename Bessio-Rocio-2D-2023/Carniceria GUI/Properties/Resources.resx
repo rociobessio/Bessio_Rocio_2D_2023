@@ -124,6 +124,9 @@
   <data name="Cartmultiply_icon-icons1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cartmultiply_icon-icons.com_511891.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancel_779471" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_779471.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="pay_cash_payment_money_dollar_bill_icon_143267" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pay_cash_payment_money_dollar_bill_icon_143267.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -133,8 +136,11 @@
   <data name="1486485588-add-create-new-math-sign-cross-plus_81186" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1486485588-add-create-new-math-sign-cross-plus_81186.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salesman_avatar_icon_133993" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salesman_avatar_icon_133993.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="call_center_contact_information_service_icon_187270" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\call_center_contact_information_service_icon_187270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cancel_77947" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancel_77947.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="-customer-service-agent_89777" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\-customer-service-agent_89777.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +154,14 @@
   <data name="security-protection-protect-key-password-login_1085541" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\security-protection-protect-key-password-login_1085541.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="iconfinder-documents07-1622836_121949" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconfinder-documents07-1622836_121949.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="security-protection-protect-key-password-login_108554" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\security-protection-protect-key-password-login_108554.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="salesman_avatar_icon_133993" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salesman_avatar_icon_133993.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="pngwing.com (2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pngwing.com (2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,7 +172,7 @@
   <data name="Cartmultiply_icon-icons.com_51189" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cartmultiply_icon-icons.com_51189.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="call_center_contact_information_service_icon_187270" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\call_center_contact_information_service_icon_187270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Cancel_icon-icons.com_54824" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cancel_icon-icons.com_54824.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

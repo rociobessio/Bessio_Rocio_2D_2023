@@ -217,11 +217,11 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void cbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _dataTable.Rows.Clear(); 
+            _dataTable.Rows.Clear();
 
             for (int i = 0; i < this.productosDisponibles.Count; i++)
             {
-                if (this.productosDisponibles[i].Corte.ToString().Replace("_"," ") == cbFiltrarPor.SelectedItem.ToString())
+                if (this.productosDisponibles[i].Corte.ToString().Replace("_", " ") == cbFiltrarPor.SelectedItem.ToString())
                 {
                     auxFilaProduc = _dataTable.NewRow();
 
@@ -399,6 +399,19 @@ namespace Carniceria_GUI
                 MessageBox.Show("No hay nada en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        /// <summary>
+        /// Me permite quitar el filtro y mostrar TODOS los productos 
+        /// disponibles.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSacarFiltro_Click(object sender, EventArgs e)
+        {
+            this.CargarProductosDataGrid();
+        }
         #endregion
+
+
     }
 }

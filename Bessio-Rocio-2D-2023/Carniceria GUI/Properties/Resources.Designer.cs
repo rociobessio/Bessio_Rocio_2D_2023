@@ -93,6 +93,36 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap cancel_77947 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_77947", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap cancel_779471 {
+            get {
+                object obj = ResourceManager.GetObject("cancel_779471", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Cancel_icon_icons_com_54824 {
+            get {
+                object obj = ResourceManager.GetObject("Cancel_icon-icons.com_54824", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cartmultiply_icon_icons_com_51189 {
             get {
                 object obj = ResourceManager.GetObject("Cartmultiply_icon-icons.com_51189", resourceCulture);
@@ -116,6 +146,16 @@ namespace Carniceria_GUI.Properties {
         internal static System.Drawing.Bitmap farm_animal_cow_icon_153815 {
             get {
                 object obj = ResourceManager.GetObject("farm_animal_cow_icon_153815", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_documents07_1622836_121949 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-documents07-1622836_121949", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

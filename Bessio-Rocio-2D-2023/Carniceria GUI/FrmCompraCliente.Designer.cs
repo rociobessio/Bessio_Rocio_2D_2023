@@ -62,6 +62,7 @@
             label9 = new Label();
             richTextBoxCarrito = new RichTextBox();
             btnCancelarCompra = new Button();
+            btnSacarFiltro = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBox1.SuspendLayout();
@@ -458,12 +459,26 @@
             btnCancelarCompra.UseVisualStyleBackColor = true;
             btnCancelarCompra.Click += button1_Click;
             // 
+            // btnSacarFiltro
+            // 
+            btnSacarFiltro.Cursor = Cursors.Hand;
+            btnSacarFiltro.FlatAppearance.BorderSize = 0;
+            btnSacarFiltro.FlatStyle = FlatStyle.Flat;
+            btnSacarFiltro.Image = Properties.Resources.Cancel_icon_icons_com_54824;
+            btnSacarFiltro.Location = new Point(313, 468);
+            btnSacarFiltro.Name = "btnSacarFiltro";
+            btnSacarFiltro.Size = new Size(35, 39);
+            btnSacarFiltro.TabIndex = 36;
+            btnSacarFiltro.UseVisualStyleBackColor = true;
+            btnSacarFiltro.Click += btnSacarFiltro_Click;
+            // 
             // FrmCompraCliente
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkKhaki;
             ClientSize = new Size(955, 827);
+            Controls.Add(btnSacarFiltro);
             Controls.Add(btnCancelarCompra);
             Controls.Add(richTextBoxCarrito);
             Controls.Add(label11);
@@ -531,5 +546,6 @@
         private ListBox listBoxCarrito;
         private RichTextBox richTextBoxCarrito;
         private Button btnCancelarCompra;
+        private Button btnSacarFiltro;
     }
 }
