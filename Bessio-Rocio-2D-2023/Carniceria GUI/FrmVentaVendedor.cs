@@ -47,7 +47,7 @@ namespace Carniceria_GUI
             this._dataTable = new DataTable();
 
             soundPlayer = new SoundPlayer();
-            soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\CompraSonido.wav";
+            soundPlayer.SoundLocation = "CompraSonido.wav";
         }
 
         /// <summary>

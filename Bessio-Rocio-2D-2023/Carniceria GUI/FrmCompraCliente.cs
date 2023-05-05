@@ -64,6 +64,8 @@ namespace Carniceria_GUI
             productosDisponibles = new List<Carne>();
             productosDisponibles.Add(new Carne(Corte.Lomo, 3, CategoriaBovina.Novillo,
                                      new DateTime(2023, 06, 01), 1000, "Antonio", Tipo.Carne_Vacuna, 1200));
+            productosDisponibles.Add(new Carne(Corte.Lomo, 13, CategoriaBovina.Ternero,
+                         new DateTime(2023, 10, 07), 1100, "Miramar CO", Tipo.Carne_Vacuna, 1400));
             productosDisponibles.Add(new Carne(Corte.Suprema, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 05, 21), 800, "Mingo CO", Tipo.Pollo, 1000));
             productosDisponibles.Add(new Carne(Corte.Bondiola, 1000, CategoriaBovina.No_Es_Bovino,
@@ -206,14 +208,16 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
-        /// Este evento me permitira filtrar las carnes disponibles
+        /// Este evento me permitira filtrar las carnes disponibles que el cliente elija del
+        /// combo-box.
+        /// Encontrar una forma de reutilizar codigo, muy parecido a CargarDatosDatagrid().
+        /// Pero ahi no cuento con filtrado.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cbFiltrarPor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _dataTable.Rows.Clear();
-          //  List<Carne> filtrado = new List<Carne>();
+            _dataTable.Rows.Clear(); 
 
             for (int i = 0; i < this.productosDisponibles.Count; i++)
             {
@@ -230,8 +234,7 @@ namespace Carniceria_GUI
                     _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
                 }
             }
-            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
-            // this.dataGridViewProductos.DataSource = filtrado;
+            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista 
         }
 
         /// <summary>

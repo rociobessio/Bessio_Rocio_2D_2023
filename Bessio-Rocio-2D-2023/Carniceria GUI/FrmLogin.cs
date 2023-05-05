@@ -18,7 +18,7 @@ namespace Carniceria_GUI
 
         private FrmHeladera frmHeladera;
         private FrmMetodoDePago frmMetodoDePago;
-        static SoundPlayer soundPlayer;
+        private SoundPlayer soundPlayer;
         #endregion
 
         public FrmLogin()
@@ -46,8 +46,8 @@ namespace Carniceria_GUI
             #endregion
 
             #region INSTANCIO SOUNDPLAYER
-            FrmLogin.soundPlayer = new SoundPlayer();
-            FrmLogin.soundPlayer.SoundLocation = "C:\\Users\\Rocio\\Desktop\\Primer Parcial 2023\\PP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Imagenes-Sonido\\LoginUnlocked.wav";
+            soundPlayer = new SoundPlayer();
+            soundPlayer.SoundLocation = "LoginUnlocked.wav";
             #endregion
 
             #region CREO LA AYUDA
@@ -233,6 +233,7 @@ namespace Carniceria_GUI
         {
             this.txtContrasenia.Text = this.vendedor.Usuario.Contrasenia;
             this.txtEmail.Text = this.vendedor.Usuario.Email;
+            this.BackColor = Color.DarkRed;
         }
 
         /// <summary>
@@ -245,6 +246,7 @@ namespace Carniceria_GUI
         {
             this.txtContrasenia.Text = this.clientePrueba.Usuario.Contrasenia;
             this.txtEmail.Text = this.clientePrueba.Usuario.Email;
+            this.BackColor = Color.DarkKhaki;
         }
     }
 }
