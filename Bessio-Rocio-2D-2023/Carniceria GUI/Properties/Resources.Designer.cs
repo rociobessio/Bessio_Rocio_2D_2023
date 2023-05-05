@@ -183,6 +183,36 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap receipt_information_icon_177401 {
+            get {
+                object obj = ResourceManager.GetObject("receipt_information_icon_177401", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap receipt_information_icon_1774011 {
+            get {
+                object obj = ResourceManager.GetObject("receipt_information_icon_1774011", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap receipt_information_icon_1774012 {
+            get {
+                object obj = ResourceManager.GetObject("receipt_information_icon_1774012", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap salesman_avatar_icon_133993 {
             get {
                 object obj = ResourceManager.GetObject("salesman_avatar_icon_133993", resourceCulture);

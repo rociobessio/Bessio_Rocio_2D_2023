@@ -72,6 +72,7 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("mediante el datagrid podrá seleccionar un producto disponible de la lista");
             textoAyuda.AppendLine("para venderlo se necesitara la cantidad y se descontará del stock, actualizandose.");
             textoAyuda.AppendLine("Podrá cancelar la compra si lo requiere.");
+            textoAyuda.AppendLine("Al presionar 'Historial' será capaz de visualizar el historial de compras.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }

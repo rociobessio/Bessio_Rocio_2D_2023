@@ -63,6 +63,7 @@
             richTextBoxCarrito = new RichTextBox();
             btnCancelarCompra = new Button();
             btnSacarFiltro = new Button();
+            btnHistorial = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBox1.SuspendLayout();
@@ -472,12 +473,30 @@
             btnSacarFiltro.UseVisualStyleBackColor = true;
             btnSacarFiltro.Click += btnSacarFiltro_Click;
             // 
+            // btnHistorial
+            // 
+            btnHistorial.Anchor = AnchorStyles.Bottom;
+            btnHistorial.Cursor = Cursors.Hand;
+            btnHistorial.FlatStyle = FlatStyle.Popup;
+            btnHistorial.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHistorial.ForeColor = Color.White;
+            btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
+            btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
+            btnHistorial.Location = new Point(415, 761);
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.Size = new Size(169, 57);
+            btnHistorial.TabIndex = 37;
+            btnHistorial.Text = "  Mi Historial";
+            btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistorial.UseVisualStyleBackColor = true;
+            // 
             // FrmCompraCliente
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkKhaki;
             ClientSize = new Size(955, 827);
+            Controls.Add(btnHistorial);
             Controls.Add(btnSacarFiltro);
             Controls.Add(btnCancelarCompra);
             Controls.Add(richTextBoxCarrito);
@@ -547,5 +566,6 @@
         private RichTextBox richTextBoxCarrito;
         private Button btnCancelarCompra;
         private Button btnSacarFiltro;
+        private Button btnHistorial;
     }
 }

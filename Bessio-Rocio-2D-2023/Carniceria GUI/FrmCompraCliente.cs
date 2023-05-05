@@ -87,6 +87,7 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("Podrás visualizar alguno de tus datos, en el apartado de costo ");
             textoAyuda.AppendLine("se mostrará el monto disponible de cliente, el saldo disponible que tiene y ");
             textoAyuda.AppendLine("el total de la compra. Tambien podrá cancelar una compra eliminando todos los contenidos del carrito.");
+            textoAyuda.AppendLine("Podrá visualizar su historial de compras realizadas presionando el botón 'Mi Historial'.");
             textoAyuda.AppendLine("Al presionar el botón 'Finalizar' podrá ver una factura para confirmar la compra.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
