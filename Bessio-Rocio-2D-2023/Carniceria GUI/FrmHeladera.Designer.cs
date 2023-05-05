@@ -77,10 +77,10 @@
             // pictureBoxVendedor
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
-            pictureBoxVendedor.Image = Properties.Resources.pngwing_com__2_;
-            pictureBoxVendedor.Location = new Point(126, 12);
+            pictureBoxVendedor.Image = Properties.Resources.shipping_weight_scale_measurement_price_icon_187244;
+            pictureBoxVendedor.Location = new Point(62, 37);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
-            pictureBoxVendedor.Size = new Size(184, 142);
+            pictureBoxVendedor.Size = new Size(158, 129);
             pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxVendedor.TabIndex = 1;
             pictureBoxVendedor.TabStop = false;
@@ -377,7 +377,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkRed;
+            BackColor = Color.MediumPurple;
             ClientSize = new Size(1176, 870);
             Controls.Add(label1);
             Controls.Add(groupBox1);

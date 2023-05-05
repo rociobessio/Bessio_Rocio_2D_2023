@@ -384,7 +384,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = Properties.Resources.pngwing_com__2_;
+            pictureBox1.Image = Properties.Resources.shipping_weight_scale_measurement_price_icon_187244;
             pictureBox1.Location = new Point(12, 9);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 55);
@@ -453,7 +453,7 @@
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.DarkRed;
+            BackColor = Color.MediumPurple;
             ClientSize = new Size(1001, 871);
             Controls.Add(label8);
             Controls.Add(lblVendedorEmail);

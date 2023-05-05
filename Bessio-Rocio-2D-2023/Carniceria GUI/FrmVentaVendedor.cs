@@ -288,7 +288,7 @@ namespace Carniceria_GUI
             }
 
             return esValido;
-        } 
+        }
 
         /// <summary>
         /// Metodo privado que me permite limpiar los controles del formulario.

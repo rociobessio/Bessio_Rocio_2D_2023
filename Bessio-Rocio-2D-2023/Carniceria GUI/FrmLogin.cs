@@ -170,13 +170,16 @@ namespace Carniceria_GUI
                 {
                     if (ingresante.EsCliente)//-->Utilizo la propiedad abstracta para saber si es Cliente
                     {
+                        this.BackColor = Color.DarkKhaki;
                         soundPlayer.Play();
                         MessageBox.Show("Sos Cliente");
                         frmMetodoDePago = new FrmMetodoDePago((Cliente)ingresante);//-->Casteo Persona a Cliente
                         frmMetodoDePago.Show();
+
                     }
                     else //-->Si no lo es, quiere decir que es Vendedor
                     {
+                        this.BackColor = Color.MediumPurple;
                         soundPlayer.Play();
                         MessageBox.Show("Sos Vendedor");
                         frmHeladera = new FrmHeladera((Vendedor)ingresante);//-->Casteo a Vendedor
@@ -221,7 +224,6 @@ namespace Carniceria_GUI
             yourToolTip.ShowAlways = true;//-->Que siempre lo muestra
             yourToolTip.SetToolTip(etiqueta, mensaje);//-->Lo seteo.
         }
-        #endregion
 
         /// <summary>
         /// Al presionarlo me cargara en el texbox los datos del Vendedor 
@@ -233,7 +235,7 @@ namespace Carniceria_GUI
         {
             this.txtContrasenia.Text = this.vendedor.Usuario.Contrasenia;
             this.txtEmail.Text = this.vendedor.Usuario.Email;
-            this.BackColor = Color.DarkRed;
+            this.BackColor = Color.MediumPurple;
         }
 
         /// <summary>
@@ -248,5 +250,6 @@ namespace Carniceria_GUI
             this.txtEmail.Text = this.clientePrueba.Usuario.Email;
             this.BackColor = Color.DarkKhaki;
         }
+        #endregion 
     }
 }

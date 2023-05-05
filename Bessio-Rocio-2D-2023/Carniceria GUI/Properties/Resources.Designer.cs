@@ -83,6 +83,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap call_center_contact_information_service_icon_187270 {
+            get {
+                object obj = ResourceManager.GetObject("call_center_contact_information_service_icon_187270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cartmultiply_icon_icons_com_51189 {
             get {
                 object obj = ResourceManager.GetObject("Cartmultiply_icon-icons.com_51189", resourceCulture);
@@ -126,6 +136,46 @@ namespace Carniceria_GUI.Properties {
         internal static System.Drawing.Bitmap pngwing_com__2_ {
             get {
                 object obj = ResourceManager.GetObject("pngwing.com (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap salesman_avatar_icon_133993 {
+            get {
+                object obj = ResourceManager.GetObject("salesman_avatar_icon_133993", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap security_protection_protect_key_password_login_108554 {
+            get {
+                object obj = ResourceManager.GetObject("security-protection-protect-key-password-login_108554", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap security_protection_protect_key_password_login_1085541 {
+            get {
+                object obj = ResourceManager.GetObject("security-protection-protect-key-password-login_1085541", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shipping_weight_scale_measurement_price_icon_187244 {
+            get {
+                object obj = ResourceManager.GetObject("shipping_weight_scale_measurement_price_icon_187244", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

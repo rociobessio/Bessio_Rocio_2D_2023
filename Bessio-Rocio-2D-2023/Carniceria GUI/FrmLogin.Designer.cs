@@ -91,11 +91,14 @@
             btnInicioSesion.FlatStyle = FlatStyle.Popup;
             btnInicioSesion.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnInicioSesion.ForeColor = Color.White;
-            btnInicioSesion.Location = new Point(495, 413);
+            btnInicioSesion.Image = Properties.Resources.security_protection_protect_key_password_login_1085541;
+            btnInicioSesion.ImageAlign = ContentAlignment.MiddleRight;
+            btnInicioSesion.Location = new Point(462, 413);
             btnInicioSesion.Name = "btnInicioSesion";
-            btnInicioSesion.Size = new Size(134, 42);
+            btnInicioSesion.Size = new Size(167, 42);
             btnInicioSesion.TabIndex = 4;
-            btnInicioSesion.Text = "Iniciar sesión";
+            btnInicioSesion.Text = " Iniciar sesión";
+            btnInicioSesion.TextAlign = ContentAlignment.MiddleLeft;
             btnInicioSesion.UseVisualStyleBackColor = true;
             btnInicioSesion.Click += button1_Click;
             // 
