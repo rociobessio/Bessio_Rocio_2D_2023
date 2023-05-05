@@ -33,6 +33,7 @@ namespace Carniceria_GUI
         bool terminoDeReponer;
         FrmVentaVendedor frmVentaVendedor;
         Vendedor vendedorForm;
+        FrmHistorial frmHistorial;
         #endregion
 
         #region CONSTRUCTOR
@@ -414,11 +415,18 @@ namespace Carniceria_GUI
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
         }
-        #endregion
 
+        /// <summary>
+        /// Al presionarlo me permitira ver el historial de las compras realizadas.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-
+            frmHistorial = new FrmHistorial(vendedorForm);
+            frmHistorial.ShowDialog();
         }
+        #endregion
+
     }
 }

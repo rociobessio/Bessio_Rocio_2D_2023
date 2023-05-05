@@ -14,6 +14,7 @@ namespace Entidades
         private List<Cliente> _listaClientes;
         private List<Carne> _listaCarne;
         private static List<Carrito> _historialVentas;
+        private static Dictionary<string, Carrito> _historialVentasDic;
         #endregion
 
         #region PROPIEDADES
@@ -31,6 +32,7 @@ namespace Entidades
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
         /// </summary>
         public override bool EsCliente { get { return false; } }
+        public static Dictionary<string,Carrito> HistorialVentas { get { return _historialVentasDic; } set { _historialVentasDic = value; } }
         public static List<Carrito> HistorialCompras { get { return _historialVentas; } set { _historialVentas = value; } }
         #endregion
 
@@ -54,14 +56,15 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne> productos,string telefono,Usuario user,List<Carrito> listaVentas)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne> productos,string telefono,Usuario user,List<Carrito> listaVentas,Dictionary<string,Carrito> dic)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
             _historialVentas = listaVentas;
-            this._listaCarne = productos; 
+            this._listaCarne = productos;
+            _historialVentasDic = dic;
         } 
 
         /// <summary>
@@ -77,6 +80,7 @@ namespace Entidades
             this._listaCarne = new List<Carne>();
             this._listaClientes = new List<Cliente>();
             _historialVentas = new List<Carrito>();
+            _historialVentasDic = new Dictionary<string, Carrito>();
         }
         #endregion
 
@@ -114,17 +118,19 @@ namespace Entidades
 
             return vendedor;
         }
+
         /// <summary>
         /// Me permite verificar si el cliente cumple con los requisitios para comprar:
         /// 1.Si es con tarjeta que esta tenga saldo y que sea mayor al total de la compra.
         /// 2.Lo mismo con debito, que tenga saldo y que sea mayor al total.
-        /// 3.Le descuento el total de su billetera
-        /// 4.Le agrego a su carrito el producto y acumulo el total.
-        /// 5.Resto del stock la cantidad y el peso. 
+        /// 3.Me fijo si pudo agregarlo al carrito. (Reutilizo codigo)
+        /// 4.Si pudo, le descuento el total de su billetera 
+        /// 5.Resto del stock la cantidad. 
         /// </summary>
         /// <param name="totalCompra"></param>
         /// <param name="cliente"></param> 
         /// <param name="peso"></param>
+        /// <param name="carneSeleccionada"></param>
         /// <returns>True si cumple con los requisitos, false sino.</returns>
         public static bool Vender(double totalCompra, Cliente cliente, double peso,Carne carneSeleccionada)
         {
@@ -134,29 +140,29 @@ namespace Entidades
                 if (cliente.Tarjeta.DineroDisponible > 0 &&
                      cliente.Tarjeta.DineroDisponible > totalCompra)
                 {
-                    cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
-                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);//-->Al carrito le añado la carne 
-                    cliente.CarritoCompra.PrecioTotal += totalCompra;
-
-                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
-                    pudoComprar = true;
+                    if (Carrito.AgregarAlCarrito(carneSeleccionada,peso,cliente))
+                    {
+                        cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
+                        carneSeleccionada.Peso -= peso;//-->Descuento el peso
+                        pudoComprar = true;
+                    } 
                 }
             }
             else//Es con efectivo
             {
                 if (cliente.DineroEfectivoDisponible > 0 && cliente.DineroEfectivoDisponible > totalCompra)
                 {
-                    cliente.DineroEfectivoDisponible -= totalCompra;
-                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);
-                    cliente.CarritoCompra.PrecioTotal += totalCompra;//-->Voy acumulando
-
-                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
-
-                    pudoComprar = true;
+                    if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, cliente))
+                    {
+                        cliente.DineroEfectivoDisponible -= totalCompra;
+                        carneSeleccionada.Peso -= peso;//-->Descuento el peso 
+                        pudoComprar = true;
+                    } 
                 }
             }
 
-            Vendedor.Historial(cliente);
+            //Vendedor.Historial(cliente);
+            Vendedor.HistorialDictionary(cliente);
 
             return pudoComprar;
         }
@@ -166,6 +172,13 @@ namespace Entidades
             _historialVentas.Add(new Carrito(DateTime.Now,cliente.CarritoCompra.PrecioTotal,
                 cliente.CarritoCompra.Productos,cliente.CarritoCompra.ConTarjeta));
                 //-->Añado al historial del cliente pasandole el carrito
+        }
+
+        public static void HistorialDictionary(Cliente cliente)
+        {
+            _historialVentasDic = new Dictionary<string, Carrito>();
+            _historialVentasDic.Add(cliente.Usuario.Email,new Carrito(DateTime.Now, cliente.CarritoCompra.PrecioTotal,
+                cliente.CarritoCompra.Productos, cliente.CarritoCompra.ConTarjeta));
         }
         #endregion
 

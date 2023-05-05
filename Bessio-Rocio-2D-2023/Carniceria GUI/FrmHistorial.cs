@@ -19,6 +19,7 @@ namespace Carniceria_GUI
         DataTable _dataTable;
         DataRow auxFilaProduc;
         private List<Carrito> historial;
+        private static Dictionary<string, Carrito> historialCarritoDic;
 
         public FrmHistorial()
         {
@@ -26,28 +27,22 @@ namespace Carniceria_GUI
             this.Text = "Historial de compras";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
-        }
-
-        public FrmHistorial(Cliente cliente)
-            : this()
-        {
-            this.cbFiltrarPorUsuario.Visible = false;
-            this.lblUsuario.Text = "";
-            this.BackColor = Color.DarkKhaki;
-            clienteForm = cliente; 
-        }
+        } 
 
         public FrmHistorial(Vendedor vendedor)
             : this()
         {
             this.BackColor = Color.MediumPurple;
+            vendedorForm = vendedor;
+            historial = new List<Carrito>();
+            historialCarritoDic = new Dictionary<string, Carrito>();
+            historialCarritoDic = Vendedor.HistorialVentas;
 
             //-->Cargo combo-box de los emails de usuarios
             foreach (Cliente cliente in this.vendedorForm.ListaClientes)
             {
                 this.cbFiltrarPorUsuario.Items.Add(cliente.Usuario.Email);
             }
-            vendedorForm = vendedor;
         }
 
         /// <summary>
@@ -63,21 +58,21 @@ namespace Carniceria_GUI
         {
             _dataTable.Rows.Clear();
 
-            foreach (Carrito carrito in this.historial)
-            {
-                auxFilaProduc = _dataTable.NewRow();
+            //foreach (Carrito carrito in this.historial)
+            //{
+            //    auxFilaProduc = _dataTable.NewRow();
 
-                for (int i = 0; i < carrito.Productos.Count; i++)
-                {
-                    auxFilaProduc[0] = $"{carrito.Productos[i].Tipo.ToString().Replace("_", " ")}";//-->Muestro el codigo para luego seleccionarlo
-                    auxFilaProduc[1] = $"{carrito.Productos[i].Corte.ToString().Replace("_", " ")}";
-                    auxFilaProduc[2] = $"{carrito.Productos[i].Categoria.ToString().Replace("_", " ")}";
-                    auxFilaProduc[3] = $"{carrito.Productos[i].Peso.ToString().Replace("_", " ")}";
-                    auxFilaProduc[4] = $"{carrito.Productos[i].PrecioCompraCliente}";
-                }
+            //    for (int i = 0; i < carrito.Productos.Count; i++)
+            //    {
+            //        auxFilaProduc[0] = $"{carrito.Productos[i].Tipo.ToString().Replace("_", " ")}";//-->Muestro el codigo para luego seleccionarlo
+            //        auxFilaProduc[1] = $"{carrito.Productos[i].Corte.ToString().Replace("_", " ")}";
+            //        auxFilaProduc[2] = $"{carrito.Productos[i].Categoria.ToString().Replace("_", " ")}";
+            //        auxFilaProduc[3] = $"{carrito.Productos[i].Peso.ToString().Replace("_", " ")}";
+            //        auxFilaProduc[4] = $"{carrito.Productos[i].PrecioCompraCliente}";
+            //    }
 
-                _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
-            }
+            //    _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
+            //}
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
 

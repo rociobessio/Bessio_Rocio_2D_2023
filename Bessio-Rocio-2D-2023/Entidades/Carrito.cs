@@ -87,7 +87,7 @@ namespace Entidades
         /// <param name="cantPesoCliente"></param>
         /// <param name="cliente"></param>
         /// <returns>Retorna true si pudo, false sino</returns>
-        public bool AgregarAlCarrito(Carne carne, double cantPesoCliente,Cliente cliente)
+        public static bool AgregarAlCarrito(Carne carne, double cantPesoCliente,Cliente cliente)
         {
             bool pudoAgregar = false;
             Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto original
@@ -139,9 +139,7 @@ namespace Entidades
             cliente.CarritoCompra.PrecioTotal = 0;//-->Quito tambien el dinero acumulado
 
             return cliente.CarritoCompra;
-        }
-
-
+        } 
         #endregion
 
         #region POLIMORFISMO

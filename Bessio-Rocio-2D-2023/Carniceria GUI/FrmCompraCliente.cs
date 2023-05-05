@@ -283,7 +283,7 @@ namespace Carniceria_GUI
             }
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
-         
+
         /// <summary>
         /// Metodo del formulario que me permite realizar validaciones.
         /// </summary>
@@ -328,7 +328,7 @@ namespace Carniceria_GUI
             {
                 double.TryParse(this.txtPesoRequerido.Text, out peso);
 
-                if (carritoCliente.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
+                if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
                 {
                     foreach (Carne carne in clienteFormulario.CarritoCompra.Productos)
                     {
@@ -423,11 +423,6 @@ namespace Carniceria_GUI
             this.CargarProductosDataGrid();
         }
 
-        private void btnHistorial_Click(object sender, EventArgs e)
-        {
-            frmHistorial = new FrmHistorial(clienteFormulario);
-            frmHistorial.ShowDialog();
-        }
         #endregion
 
 
