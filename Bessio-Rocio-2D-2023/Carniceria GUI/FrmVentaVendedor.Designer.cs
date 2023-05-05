@@ -63,7 +63,6 @@
             groupBox4 = new GroupBox();
             lblVendedorEmail = new Label();
             label8 = new Label();
-            btnHistorial = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -450,30 +449,12 @@
             label8.TabIndex = 24;
             label8.Text = "VENDEDOR:";
             // 
-            // btnHistorial
-            // 
-            btnHistorial.Anchor = AnchorStyles.Bottom;
-            btnHistorial.Cursor = Cursors.Hand;
-            btnHistorial.FlatStyle = FlatStyle.Popup;
-            btnHistorial.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnHistorial.ForeColor = Color.White;
-            btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
-            btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
-            btnHistorial.Location = new Point(634, 802);
-            btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(169, 57);
-            btnHistorial.TabIndex = 38;
-            btnHistorial.Text = "    Historial";
-            btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
-            btnHistorial.UseVisualStyleBackColor = true;
-            // 
             // FrmVentaVendedor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1001, 871);
-            Controls.Add(btnHistorial);
             Controls.Add(label8);
             Controls.Add(lblVendedorEmail);
             Controls.Add(groupBox4);
@@ -541,6 +522,5 @@
         private Button btnCalcularCosto;
         private Label lblVendedorEmail;
         private Label label8;
-        private Button btnHistorial;
     }
 }

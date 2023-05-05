@@ -15,7 +15,7 @@ namespace Entidades
         private double _dineroEfectivoDisponible;
         private Tarjeta _tarjeta;
         private Carrito _carritoCompra; 
-        private bool _esConTarjeta;
+        private bool _esConTarjeta; 
         #endregion
 
         #region PROPIEDADES
@@ -29,7 +29,7 @@ namespace Entidades
         /// <summary>
         /// Hago override de la propiedad EsCliente retornando true.
         /// </summary>
-        public override bool EsCliente { get { return true; } }
+        public override bool EsCliente { get { return true; } } 
         #endregion
  
         #region CONSTRUCTORES
@@ -52,7 +52,7 @@ namespace Entidades
                        string dni, string domicilio, string telefono, Usuario user,Carrito carrito) 
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user)
         {
-            this._carritoCompra = carrito;
+            this._carritoCompra = carrito; 
         }
 
         /// <summary>
@@ -174,7 +174,8 @@ namespace Entidades
                         puedeComprar = true;//-->Solo aca cambio a true
                     }
                 }
-            }
+            } 
+
             //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
             if (clienteIngresado.ConTarjeta)
             {
@@ -182,40 +183,8 @@ namespace Entidades
             }
             else
                 clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-            //if((clienteIngresado.ConTarjeta))
-            //{
-            //    if ((clienteIngresado.Tarjeta.DineroDisponible < clienteIngresado._carritoCompra.PrecioTotal) ||
-            //             (clienteIngresado.Tarjeta.DineroDisponible < 0))
-            //    {
-            //        puedeComprar = false;
-            //    }
-            //}
-            //else if((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
-            //{
-            //    puedeComprar = false;
-            //}
-            //else
-            //{
-            //    foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
-            //    {
-            //        foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
-            //        {
-            //            if ((carneDisponible == carneCarrito) &&
-            //                (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
-            //            {
-            //                carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
-            //                puedeComprar = true;//-->Solo aca cambio a true
-            //            }
-            //        }
-            //    }
-            //    //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
-            //    if (clienteIngresado.ConTarjeta)
-            //    {
-            //        clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-            //    }
-            //    else
-            //        clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-            //}  
+
+
             return puedeComprar;
         } 
         #endregion

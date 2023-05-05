@@ -56,6 +56,7 @@
             lblPrintHelp = new Label();
             groupBox1 = new GroupBox();
             label1 = new Label();
+            btnHistorial = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -95,7 +96,7 @@
             dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Location = new Point(12, 532);
+            dataGridViewProductos.Location = new Point(12, 520);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
@@ -110,7 +111,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(27, 497);
+            label2.Location = new Point(27, 485);
             label2.Name = "label2";
             label2.Size = new Size(323, 32);
             label2.TabIndex = 3;
@@ -373,12 +374,31 @@
             label1.TabIndex = 11;
             label1.Text = "VENDEDOR:";
             // 
+            // btnHistorial
+            // 
+            btnHistorial.Anchor = AnchorStyles.Bottom;
+            btnHistorial.Cursor = Cursors.Hand;
+            btnHistorial.FlatStyle = FlatStyle.Popup;
+            btnHistorial.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnHistorial.ForeColor = Color.White;
+            btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
+            btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
+            btnHistorial.Location = new Point(990, 801);
+            btnHistorial.Name = "btnHistorial";
+            btnHistorial.Size = new Size(169, 57);
+            btnHistorial.TabIndex = 39;
+            btnHistorial.Text = "    Historial";
+            btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
+            btnHistorial.UseVisualStyleBackColor = true;
+            btnHistorial.Click += btnHistorial_Click;
+            // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1176, 870);
+            Controls.Add(btnHistorial);
             Controls.Add(label1);
             Controls.Add(groupBox1);
             Controls.Add(lblPrintHelp);
@@ -431,5 +451,6 @@
         private TextBox txtPrecioCompraFrigorifico;
         private Label label1;
         private Button btnAgregarAlStock;
+        private Button btnHistorial;
     }
 }

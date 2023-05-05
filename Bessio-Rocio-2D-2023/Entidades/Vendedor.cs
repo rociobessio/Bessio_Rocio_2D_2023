@@ -12,7 +12,8 @@ namespace Entidades
         private int _id;
         private DateTime _fechaIngreso;
         private List<Cliente> _listaClientes;
-        private List<Carne> _listaCarne;  
+        private List<Carne> _listaCarne;
+        private static List<Carrito> _historialVentas;
         #endregion
 
         #region PROPIEDADES
@@ -29,7 +30,8 @@ namespace Entidades
         /// <summary>
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
         /// </summary>
-        public override bool EsCliente { get { return false; } } 
+        public override bool EsCliente { get { return false; } }
+        public static List<Carrito> HistorialCompras { get { return _historialVentas; } set { _historialVentas = value; } }
         #endregion
 
         #region CONSTRUCTOR 
@@ -52,12 +54,13 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne> productos,string telefono,Usuario user)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne> productos,string telefono,Usuario user,List<Carrito> listaVentas)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
         {
             this._id = id;
             this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
+            _historialVentas = listaVentas;
             this._listaCarne = productos; 
         } 
 
@@ -72,7 +75,8 @@ namespace Entidades
             :base(user)
         {
             this._listaCarne = new List<Carne>();
-            this._listaClientes = new List<Cliente>();  
+            this._listaClientes = new List<Cliente>();
+            _historialVentas = new List<Carrito>();
         }
         #endregion
 
@@ -151,7 +155,17 @@ namespace Entidades
                     pudoComprar = true;
                 }
             }
+
+            Vendedor.Historial(cliente);
+
             return pudoComprar;
+        }
+
+        public static void Historial(Cliente cliente)
+        {
+            _historialVentas.Add(new Carrito(DateTime.Now,cliente.CarritoCompra.PrecioTotal,
+                cliente.CarritoCompra.Productos,cliente.CarritoCompra.ConTarjeta));
+                //-->Añado al historial del cliente pasandole el carrito
         }
         #endregion
 

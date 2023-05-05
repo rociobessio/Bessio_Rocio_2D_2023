@@ -28,7 +28,6 @@ namespace Carniceria_GUI
         private Carrito carritoCliente;
         private double peso;
         private double totalDisponibleCliente;
-        private Corte corteBuscado;
 
         #region DATAGRID
         DataTable _dataTable;
@@ -38,6 +37,7 @@ namespace Carniceria_GUI
         #endregion
 
         SoundPlayer soundPlayer;
+        FrmHistorial frmHistorial;
         #endregion
 
         #region CONSTRUCTOR
@@ -146,66 +146,15 @@ namespace Carniceria_GUI
             }
             this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();
         }
-        #endregion
-
-        #region METODOS
-        /// <summary>
-        /// Metodo privado que me permite cargar en los textboxes los datos del cliente.
-        /// </summary>
-        private void CargarDatosCliente()
-        {
-            this.txtEmail.Text = clienteFormulario.Usuario.Email;
-            this.txtTelefono.Text = clienteFormulario.Telefono;
-            this.txtDomicilio.Text = clienteFormulario.Domicilio;
-
-            if (clienteFormulario.ConTarjeta)
-            {
-                this.checkboxTarjeta.Checked = true;
-                this.txtNumTarjeta.Text = clienteFormulario.Tarjeta.NumeroTarjeta;
-                this.txtSaldoDisponible.Text = clienteFormulario.Tarjeta.DineroDisponible.ToString();
-            }
-            else
-            {
-                this.checkBoxEfectivo.Checked = true;
-                this.txtSaldoDisponible.Text = clienteFormulario.DineroEfectivoDisponible.ToString();
-            }
-            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();//-->Cargo el total disponible del cliente
-        }
 
         /// <summary>
-        /// Metodo privado que me permite cargar los productos de la lista,
-        /// la recorre, uso auxiliares de las filas para poder imprimir los atributos
-        /// en el datagrid.
-        /// 
-        /// Es una forma de que me muestre lo que quiero, ya que sino directamente
-        /// al datagrid se le puede pasar la lista y mostrara gracias a las propiedades
-        /// de la clase.
+        /// Al cerrar limpio el carrito.
         /// </summary>
-        private void CargarProductosDataGrid()
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FrmCompraCliente_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _dataTable.Rows.Clear();
-
-            for (int i = 0; i < this.productosDisponibles.Count; i++)
-            {
-                if (this.productosDisponibles[i].Peso == 0)//Sino hay stock lo saco, rompe con foreach
-                {
-                    this.productosDisponibles.RemoveAt(i);
-                }
-            }
-
-            foreach (Carne carnes in this.productosDisponibles)
-            {
-                auxFilaProduc = _dataTable.NewRow();
-
-                auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
-                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
-                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
-                auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{carnes.PrecioCompraCliente}";
-
-                _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
-            }
-            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
+            Carrito.LimpiarCarrito(clienteFormulario);
         }
 
         /// <summary>
@@ -273,6 +222,68 @@ namespace Carniceria_GUI
             }
         }
 
+        #endregion
+
+        #region METODOS
+        /// <summary>
+        /// Metodo privado que me permite cargar en los textboxes los datos del cliente.
+        /// </summary>
+        private void CargarDatosCliente()
+        {
+            this.txtEmail.Text = clienteFormulario.Usuario.Email;
+            this.txtTelefono.Text = clienteFormulario.Telefono;
+            this.txtDomicilio.Text = clienteFormulario.Domicilio;
+
+            if (clienteFormulario.ConTarjeta)
+            {
+                this.checkboxTarjeta.Checked = true;
+                this.txtNumTarjeta.Text = clienteFormulario.Tarjeta.NumeroTarjeta;
+                this.txtSaldoDisponible.Text = clienteFormulario.Tarjeta.DineroDisponible.ToString();
+            }
+            else
+            {
+                this.checkBoxEfectivo.Checked = true;
+                this.txtSaldoDisponible.Text = clienteFormulario.DineroEfectivoDisponible.ToString();
+            }
+            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();//-->Cargo el total disponible del cliente
+        }
+
+        /// <summary>
+        /// Metodo privado que me permite cargar los productos de la lista,
+        /// la recorre, uso auxiliares de las filas para poder imprimir los atributos
+        /// en el datagrid.
+        /// 
+        /// Es una forma de que me muestre lo que quiero, ya que sino directamente
+        /// al datagrid se le puede pasar la lista y mostrara gracias a las propiedades
+        /// de la clase.
+        /// </summary>
+        private void CargarProductosDataGrid()
+        {
+            _dataTable.Rows.Clear();
+
+            for (int i = 0; i < this.productosDisponibles.Count; i++)
+            {
+                if (this.productosDisponibles[i].Peso == 0)//Sino hay stock lo saco, rompe con foreach
+                {
+                    this.productosDisponibles.RemoveAt(i);
+                }
+            }
+
+            foreach (Carne carnes in this.productosDisponibles)
+            {
+                auxFilaProduc = _dataTable.NewRow();
+
+                auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
+                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
+                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
+                auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
+                auxFilaProduc[4] = $"{carnes.PrecioCompraCliente}";
+
+                _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
+            }
+            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
+        }
+         
         /// <summary>
         /// Metodo del formulario que me permite realizar validaciones.
         /// </summary>
@@ -411,7 +422,14 @@ namespace Carniceria_GUI
         {
             this.CargarProductosDataGrid();
         }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            frmHistorial = new FrmHistorial(clienteFormulario);
+            frmHistorial.ShowDialog();
+        }
         #endregion
+
 
 
     }

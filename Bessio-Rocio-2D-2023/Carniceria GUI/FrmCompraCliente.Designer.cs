@@ -489,6 +489,7 @@
             btnHistorial.Text = "  Mi Historial";
             btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
             btnHistorial.UseVisualStyleBackColor = true;
+            btnHistorial.Click += btnHistorial_Click;
             // 
             // FrmCompraCliente
             // 
@@ -516,6 +517,7 @@
             MinimumSize = new Size(977, 883);
             Name = "FrmCompraCliente";
             Text = "FrmCompraCliente";
+            FormClosing += FrmCompraCliente_FormClosing;
             Load += FrmCompraCliente_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();

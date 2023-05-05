@@ -29,7 +29,6 @@ namespace Carniceria_GUI
         FrmHeladera frmHeladera;
 
         int indexTablaProductos;
-        int indiceDetalle;
         int codigoProducto;
         double totalAPagar;
         #endregion 
@@ -229,7 +228,6 @@ namespace Carniceria_GUI
 
             if (this.indexTablaProductos > -1)//-->Si es mayor a -1 obtengo el codigo, celda [0]
             {
-                this.indiceDetalle = 0;
                 codigoProducto = int.Parse(this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value.ToString());//-->Obtengo el codigo
             }
 
@@ -331,6 +329,8 @@ namespace Carniceria_GUI
                     {
                         this._vendedorForm.ListaProductos.Remove(carneSeleccionada);
                     }
+
+                 //   Vendedor.Historial(clienteSelecccionado);//-->Al vendedor le paso el historial
 
                     this.CargarProductosDataGrid();//-->Recargo el datagrid
                 }

@@ -26,7 +26,6 @@ namespace Carniceria_GUI
         DataTable tablaProductos;
         DataRow auxFilaProduc;
         int indexTablaProductos;
-        int indiceDetalle;
         int codigoProducto;
         double peso;
         #endregion
@@ -133,7 +132,6 @@ namespace Carniceria_GUI
 
             if (this.indexTablaProductos > -1)//-->Si es mayor a -1 obtengo el codigo, celda [0]
             {
-                this.indiceDetalle = 0;
                 codigoProducto = int.Parse(this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value.ToString());//-->Obtengo el codigo
             }
 
@@ -418,5 +416,9 @@ namespace Carniceria_GUI
         }
         #endregion
 
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

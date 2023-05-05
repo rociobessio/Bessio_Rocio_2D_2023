@@ -20,7 +20,7 @@ namespace Entidades
         public DateTime FechaCompra { get { return this._fechaCompra; } }
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } set { this._conTarjeta = value; } }
-        public List<Carne> Productos { get { return this._listaDeProductos; } }
+        public List<Carne> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -140,6 +140,8 @@ namespace Entidades
 
             return cliente.CarritoCompra;
         }
+
+
         #endregion
 
         #region POLIMORFISMO
