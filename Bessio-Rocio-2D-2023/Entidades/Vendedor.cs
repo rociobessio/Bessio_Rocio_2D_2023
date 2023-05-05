@@ -17,12 +17,17 @@ namespace Entidades
 
         #region PROPIEDADES
         public int ID { get { return this._id; } }
-        public List<Cliente> ListaClientes { get { return this._listaClientes; } set { this._listaClientes = value; } }
-        public List<Carne> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
-        public DateTime FechaIngreso { get { return this._fechaIngreso; } }
-
         /// <summary>
-        /// Hago override de la propiedad abtracta retornando false.
+        /// Propiedad de lectura y escritura de la lista de Clientes.
+        /// </summary>
+        public List<Cliente> ListaClientes { get { return this._listaClientes; } set { this._listaClientes = value; } }
+        /// <summary>
+        /// Propiedad de escritura y lectura de la Lista de Productos/Carne.
+        /// </summary>
+        public List<Carne> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
+        public DateTime FechaIngreso { get { return this._fechaIngreso; } } 
+        /// <summary>
+        /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
         /// </summary>
         public override bool EsCliente { get { return false; } } 
         #endregion
@@ -30,6 +35,8 @@ namespace Entidades
         #region CONSTRUCTOR 
         /// <summary>
         /// Constructor parametrizado de la clase Vendedor.
+        /// Le paso sus parametros al base y recibe y asigna los atributos
+        /// propios.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -66,9 +73,10 @@ namespace Entidades
         {
             this._listaCarne = new List<Carne>();
             this._listaClientes = new List<Cliente>();  
-        } 
+        }
         #endregion
 
+        #region METODOS
         /// <summary>
         /// Este metodo estatico me permite hardcodear las listas de los vendedores.
         /// </summary>
@@ -102,6 +110,50 @@ namespace Entidades
 
             return vendedor;
         }
+        /// <summary>
+        /// Me permite verificar si el cliente cumple con los requisitios para comprar:
+        /// 1.Si es con tarjeta que esta tenga saldo y que sea mayor al total de la compra.
+        /// 2.Lo mismo con debito, que tenga saldo y que sea mayor al total.
+        /// 3.Le descuento el total de su billetera
+        /// 4.Le agrego a su carrito el producto y acumulo el total.
+        /// 5.Resto del stock la cantidad y el peso. 
+        /// </summary>
+        /// <param name="totalCompra"></param>
+        /// <param name="cliente"></param> 
+        /// <param name="peso"></param>
+        /// <returns>True si cumple con los requisitos, false sino.</returns>
+        public static bool Vender(double totalCompra, Cliente cliente, double peso,Carne carneSeleccionada)
+        {
+            bool pudoComprar = false;
+            if (cliente.ConTarjeta)//-->Chequeo que sea con tarjeta
+            {
+                if (cliente.Tarjeta.DineroDisponible > 0 &&
+                     cliente.Tarjeta.DineroDisponible > totalCompra)
+                {
+                    cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
+                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);//-->Al carrito le añado la carne 
+                    cliente.CarritoCompra.PrecioTotal += totalCompra;
+
+                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
+                    pudoComprar = true;
+                }
+            }
+            else//Es con efectivo
+            {
+                if (cliente.DineroEfectivoDisponible > 0 && cliente.DineroEfectivoDisponible > totalCompra)
+                {
+                    cliente.DineroEfectivoDisponible -= totalCompra;
+                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);
+                    cliente.CarritoCompra.PrecioTotal += totalCompra;//-->Voy acumulando
+
+                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
+
+                    pudoComprar = true;
+                }
+            }
+            return pudoComprar;
+        }
+        #endregion
 
         #region SOBRECARGA DE OPERADORES
         /// <summary>

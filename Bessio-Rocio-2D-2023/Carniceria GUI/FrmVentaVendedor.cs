@@ -288,51 +288,7 @@ namespace Carniceria_GUI
             }
 
             return esValido;
-        }
-
-        /// <summary>
-        /// Me permite verificar si el cliente cumple con los requisitios para comprar:
-        /// 1.Si es con tarjeta que esta tenga saldo y que sea mayor al total de la compra.
-        /// 2.Lo mismo con debito, que tenga saldo y que sea mayor al total.
-        /// 3.Le descuento el total de su billetera
-        /// 4.Le agrego a su carrito el producto y acumulo el total.
-        /// 5.Resto del stock la cantidad y el peso. 
-        /// </summary>
-        /// <param name="totalCompra"></param>
-        /// <param name="cliente"></param> 
-        /// <param name="peso"></param>
-        /// <returns>True si cumple con los requisitos, false sino.</returns>
-        private bool Vender(double totalCompra, Cliente cliente, double peso)
-        {
-            bool pudoComprar = false;
-            if (cliente.ConTarjeta)//-->Chequeo que sea con tarjeta
-            {
-                if (cliente.Tarjeta.DineroDisponible > 0 &&
-                     cliente.Tarjeta.DineroDisponible > totalCompra)
-                {
-                    cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
-                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);//-->Al carrito le añado la carne 
-                    cliente.CarritoCompra.PrecioTotal += totalCompra;
-
-                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
-                    pudoComprar = true;
-                }
-            }
-            else//Es con efectivo
-            {
-                if (cliente.DineroEfectivoDisponible > 0 && cliente.DineroEfectivoDisponible > totalCompra)
-                {
-                    cliente.DineroEfectivoDisponible -= totalCompra;
-                    cliente.CarritoCompra.Productos.Add(carneSeleccionada);
-                    cliente.CarritoCompra.PrecioTotal += totalCompra;//-->Voy acumulando
-
-                    carneSeleccionada.Peso -= peso;//-->Descuento el peso
-
-                    pudoComprar = true;
-                }
-            }
-            return pudoComprar;
-        }
+        } 
 
         /// <summary>
         /// Metodo privado que me permite limpiar los controles del formulario.
@@ -364,7 +320,7 @@ namespace Carniceria_GUI
                 //-->Obtengo el total que deberá pagar el cliente.
                 totalAPagar = Carne.CalcularPrecioTotal(clienteSelecccionado, carneSeleccionada, peso);
 
-                if (this.Vender(totalAPagar, clienteSelecccionado, peso))//-->Intenta comprar.
+                if (Vendedor.Vender(totalAPagar, clienteSelecccionado, peso, carneSeleccionada))//-->Intenta comprar.
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",
