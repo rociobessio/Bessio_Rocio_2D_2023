@@ -144,42 +144,78 @@ namespace Entidades
         /// <returns></returns>
         public static bool Comprar(Cliente clienteIngresado, List<Carne> listaCarnesDisponibles)
         {
-            bool puedeComprar = false;  
+            bool puedeComprar = false;
 
-            if((clienteIngresado.ConTarjeta))
+            if (clienteIngresado.ConTarjeta)
             {
                 if ((clienteIngresado.Tarjeta.DineroDisponible < clienteIngresado._carritoCompra.PrecioTotal) ||
                          (clienteIngresado.Tarjeta.DineroDisponible < 0))
                 {
-                    puedeComprar = false;
+                    return false;
                 }
-            }
-            else if((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
-            {
-                puedeComprar = false;
             }
             else
             {
-                foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+                if ((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
                 {
-                    foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
+                    return false;
+                }
+            }
+
+
+            foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+            {
+                foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
+                {
+                    if ((carneDisponible == carneCarrito) &&
+                        (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
                     {
-                        if ((carneDisponible == carneCarrito) &&
-                            (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
-                        {
-                            carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
-                            puedeComprar = true;//-->Solo aca cambio a true
-                        }
+                        carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
+                        puedeComprar = true;//-->Solo aca cambio a true
                     }
                 }
-                //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
-                if (clienteIngresado.ConTarjeta)
-                {
-                    clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-                }
-                else
-                    clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
-            }  
+            }
+            //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
+            if (clienteIngresado.ConTarjeta)
+            {
+                clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+            }
+            else
+                clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+            //if((clienteIngresado.ConTarjeta))
+            //{
+            //    if ((clienteIngresado.Tarjeta.DineroDisponible < clienteIngresado._carritoCompra.PrecioTotal) ||
+            //             (clienteIngresado.Tarjeta.DineroDisponible < 0))
+            //    {
+            //        puedeComprar = false;
+            //    }
+            //}
+            //else if((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
+            //{
+            //    puedeComprar = false;
+            //}
+            //else
+            //{
+            //    foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+            //    {
+            //        foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
+            //        {
+            //            if ((carneDisponible == carneCarrito) &&
+            //                (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
+            //            {
+            //                carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
+            //                puedeComprar = true;//-->Solo aca cambio a true
+            //            }
+            //        }
+            //    }
+            //    //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
+            //    if (clienteIngresado.ConTarjeta)
+            //    {
+            //        clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+            //    }
+            //    else
+            //        clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
+            //}  
             return puedeComprar;
         } 
         #endregion

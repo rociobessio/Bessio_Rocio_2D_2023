@@ -134,15 +134,10 @@ namespace Entidades
         /// <param name="cliente"></param>
         /// <returns></returns>
         public static Carrito LimpiarCarrito(Cliente cliente)
-        {
-            for (int i = 0; i < cliente.CarritoCompra.Productos.Count; i++)
-            {
-                if (cliente.CarritoCompra.Productos.Count > 0)
-                {
-                    cliente.CarritoCompra.Productos.RemoveAt(i);
-                    cliente.CarritoCompra.PrecioTotal = 0;//-->Quito tambien el dinero acumulado
-                }
-            }
+        { 
+            cliente.CarritoCompra.Productos.Clear();
+            cliente.CarritoCompra.PrecioTotal = 0;//-->Quito tambien el dinero acumulado
+
             return cliente.CarritoCompra;
         }
         #endregion
