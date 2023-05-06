@@ -162,7 +162,7 @@ namespace Carniceria_GUI
                 auxFilaProduc = _dataTable.NewRow();
 
                 auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
-                auxFilaProduc[1] = $"{carnes.Tipo}";
+                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
                 auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
                 auxFilaProduc[4] = $"{carnes.Vencimiento.ToShortDateString()}";
@@ -326,12 +326,7 @@ namespace Carniceria_GUI
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",
-                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    if (carneSeleccionada.Peso == 0)//-->Si no hay mas stock del producto lo saco
-                    {
-                        this._vendedorForm.ListaProductos.Remove(carneSeleccionada);
-                    }
+                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
 
                     if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
                     {
