@@ -147,14 +147,7 @@ namespace Entidades
         {
             bool sonIguales = false;
             if(!(carne1 is null) && !(carne2 is null))
-            {
-                //sonIguales = (carne1._codigo == carne2._codigo) &&
-                //             (carne1._tipoCarne == carne2._tipoCarne &&
-                //             (carne1._corteCarne == carne2._corteCarne)) ;
-                //sonIguales = (carne1._tipoCarne == carne2._tipoCarne &&
-                //             (carne1._corteCarne == carne2._corteCarne) &&
-                //             (carne1._categoria == carne2._categoria) &&
-                //             (carne1._proveedor == carne2._proveedor));
+            { 
                 sonIguales = carne1._codigo == carne2._codigo;
             }
             return sonIguales;

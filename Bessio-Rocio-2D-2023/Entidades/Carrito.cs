@@ -182,6 +182,30 @@ namespace Entidades
 
             return sb.ToString();
         }
+
+        /// <summary>
+        /// Compara si el objeto this actual es igual al pasaddo por parametro
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            bool retorno = false;
+            if (obj is Carrito)
+            {
+                retorno = this == ((Carrito)obj);
+            }
+            return retorno;
+        }
+
+        /// <summary>
+        /// Valor Hash del objeto
+        /// </summary>
+        /// <returns>Valor Hash del objeto</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
         #endregion
     }
 }

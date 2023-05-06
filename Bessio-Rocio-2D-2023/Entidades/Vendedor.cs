@@ -156,9 +156,7 @@ namespace Entidades
                         pudoComprar = true;
                     } 
                 }
-            }
-
-           // Vendedor.ObtenerHistorialVentas(cliente);//-->Le paso al historial
+            } 
 
             return pudoComprar;
         }

@@ -99,7 +99,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(342, 212);
+            label7.Location = new Point(293, 212);
             label7.Name = "label7";
             label7.Size = new Size(90, 28);
             label7.TabIndex = 19;
@@ -116,7 +116,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(64, 212);
+            label6.Location = new Point(15, 212);
             label6.Name = "label6";
             label6.Size = new Size(89, 28);
             label6.TabIndex = 17;
@@ -133,7 +133,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(84, 133);
+            label5.Location = new Point(15, 133);
             label5.Name = "label5";
             label5.Size = new Size(50, 28);
             label5.TabIndex = 15;
@@ -150,7 +150,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(342, 133);
+            label4.Location = new Point(293, 133);
             label4.Name = "label4";
             label4.Size = new Size(90, 28);
             label4.TabIndex = 13;
@@ -167,7 +167,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(342, 61);
+            label1.Location = new Point(293, 61);
             label1.Name = "label1";
             label1.Size = new Size(100, 28);
             label1.TabIndex = 11;
@@ -406,7 +406,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(87, 64);
+            label9.Location = new Point(88, 59);
             label9.Name = "label9";
             label9.Size = new Size(97, 28);
             label9.TabIndex = 24;

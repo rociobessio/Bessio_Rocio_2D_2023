@@ -75,26 +75,19 @@ namespace Entidades
         /// <param name="tarjetaValidar"></param>
         /// <returns>Retornara true si es valida, false sino.</returns>
         public static bool ValidarTarjeta(Tarjeta tarjetaValidar)
-        {
-            //Tarjeta tarjeta = new Tarjeta();
-
-            //if (numeroTarjeta.Length < 16 || numeroTarjeta.Length > 16 ||
-            //    dinero <= 0 || vencimiento < DateTime.Now || cvv.Length < 4 || cvv.Length > 4)
-            //{
-            //    //-->Si paso las validaciones la retorno
-            //    tarjeta = new Tarjeta(vencimiento,titular,cvv,numeroTarjeta,entidad,dinero,esDebito);
-            //}
-            //return tarjeta;
-
+        {  
             bool esValida = true;//Como inicio presupongo que es valida. 
 
-            if (tarjetaValidar._numeroTarjeta.Length < 16 ||
-                tarjetaValidar._numeroTarjeta.Length > 16 ||
-                tarjetaValidar._dineroDisponible <= 0 ||
-                tarjetaValidar._fechaVencimiento < DateTime.Now ||
-                tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4)
+            if(tarjetaValidar is not null)
             {
-                esValida = false;
+                if (tarjetaValidar._numeroTarjeta.Length < 16 ||
+                    tarjetaValidar._numeroTarjeta.Length > 16 ||
+                    tarjetaValidar._dineroDisponible <= 0 ||
+                    tarjetaValidar._fechaVencimiento < DateTime.Now ||
+                    tarjetaValidar._cvv.Length < 4 || tarjetaValidar._cvv.Length > 4)
+                {
+                    esValida = false;
+                }
             }
 
             return esValida;
@@ -134,6 +127,30 @@ namespace Entidades
         {
             return $"{this._entidadEmisora}-{this._titular}-{this._fechaVencimiento}-" +
                 $"{this._numeroTarjeta}-{this._cvv}-{this._dineroDisponible}-{this._esDebito}";
+        }
+
+        /// <summary>
+        /// Compara si el objeto this actual es igual al pasaddo por parametro
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            bool retorno = false;
+            if (obj is Tarjeta)
+            {
+                retorno = this == ((Tarjeta)obj);
+            }
+            return retorno;
+        }
+
+        /// <summary>
+        /// Valor Hash del objeto
+        /// </summary>
+        /// <returns>Valor Hash del objeto</returns>
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
         #endregion
     }

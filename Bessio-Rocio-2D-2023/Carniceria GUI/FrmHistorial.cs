@@ -31,6 +31,12 @@ namespace Carniceria_GUI
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
             this.MaximizeBox = false;
+
+            #region INSTANCIO AYUDA
+            StringBuilder textoAyuda = new StringBuilder();
+            textoAyuda.AppendLine("El vendedor podrá visualizar el historial de ventas a cargo suyo.");
+            FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
+            #endregion
         }
 
         /// <summary>

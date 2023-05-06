@@ -19,7 +19,7 @@ namespace Carniceria_GUI
         #region CARNES 
         Carne carneIngresada;
         Carne carneSeleccionada;
-        CategoriaBovina texturaCarne;
+        CategoriaBovina categoriaCarne;
         #endregion
 
         #region DATAGRIDVIEW
@@ -50,31 +50,10 @@ namespace Carniceria_GUI
         public FrmHeladera(Vendedor vendedor)
             : this()
         {
-            this.lblVendedorEmail.Text = vendedor;
-
-            //#region INSTANCIO CARNES
-            //this.listaCarnesDisponibles = new List<Carne>();
-            //this.listaCarnesDisponibles.Add(new Carne(Corte.Lomo, 1900, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
-            //this.listaCarnesDisponibles.Add(new Carne(Corte.Pechuga, 700, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
-            //this.listaCarnesDisponibles.Add(new Carne(Corte.Costilla, 1900, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
-            //#endregion
-
-            //#region INSTANCIO CLIENTES
-            //this.listaClientes = new List<Cliente>();
-            //this.listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
-            //            "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
-            //            new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 55000, false), true));//-->Utiliza Tarjeta Débito
-            //this.listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
-            //                        "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
-            //                        new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 100000, true), true));//-->Utiliza Tarjeta Credito
-            //this.listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
-            //                        "20193123", "Rucci 2680", "11234124", new Usuario("gCasares@yahoo.com.ar", "123"), new Carrito(), 12000, false));//-->Utiliza Debito
-            //#endregion
+            this.lblVendedorEmail.Text = vendedor; 
 
             #region ASIGNACION VENDEDOR
-            vendedorForm = vendedor;//-->Asigno el vendedor que recibo
-            //vendedorForm.ListaClientes = this.listaClientes;//-->Asigno clientes
-            //vendedorForm.ListaProductos = this.listaCarnesDisponibles;//-->Asigno productos
+            vendedorForm = vendedor;//-->Asigno el vendedor que recibo 
             #endregion
 
             #region PRINT AYUDA
@@ -114,6 +93,9 @@ namespace Carniceria_GUI
             {
                 this.cbTexturaCarne.Items.Add(categoria.ToString().Replace("_", " "));
             }
+
+            this.dtpFechaVencimiento.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaVencimiento.Format = DateTimePickerFormat.Custom;
 
             this.CargarProductosDataGrid();//-->Ponele que no quiero que me muestre los datos que quiero yo
         }
@@ -403,10 +385,10 @@ namespace Carniceria_GUI
         {
             if (ValidarDatos() && terminoDeReponer)//-->Valido los datos y verifico si reponer no es true
             {
-                texturaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
+                categoriaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
 
                 carneIngresada = new Carne(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
-                    texturaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
+                    categoriaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
                     this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()),
                     double.Parse(this.txtPrecioVentaClientes.Text));
 
@@ -415,6 +397,13 @@ namespace Carniceria_GUI
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
         }
+
+        //public bool PuedeAgregarAlStock(Carne carneIngresada,List<Carne> listaCarnes)
+        //{
+        //    bool puede = false;
+
+        //}
+
 
         /// <summary>
         /// Al presionarlo me permitira ver el historial de las compras realizadas.
@@ -428,5 +417,25 @@ namespace Carniceria_GUI
         }
         #endregion
 
+        #region EVENTOS
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void txtPrecioCompraFrigorifico_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        #endregion 
     }
 }

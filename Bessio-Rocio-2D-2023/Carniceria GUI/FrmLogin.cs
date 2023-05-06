@@ -59,13 +59,13 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
-        /// En el evento load cargo las listas de los vendedores y clientes.
+        /// En el evento load le cambio el nombre al form.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Text = "La Cristina";
+            this.Text = "Felices las vacas";
         }
 
         #region VALIDACIONES
@@ -96,7 +96,7 @@ namespace Carniceria_GUI
 
         /// <summary>
         /// Metodo privado del formulario.
-        /// Recibe dos strings, email y password.
+        /// Recibe un usuario.
         /// Instacio un usuario con el usuario recibido y recorro cada lista (ya que cuento
         /// con dos perfiles en la app) buscando si coincide el usuario instanciado con alguno de la lista,
         /// si hay coincidencia lo retorno, pero como debo retornar uno o el otro retorno una Persona, ya que
@@ -158,7 +158,7 @@ namespace Carniceria_GUI
         {
             //-->Creo un usuario con los datos del textboxes
             Usuario usuario = new Usuario(this.txtEmail.Text, this.txtContrasenia.Text);
-            bool ingresaraONo = this.PuedeSeguir(usuario);
+            bool ingresaraONo = this.PuedeSeguir(usuario);//-->Devuelve bool si puede
 
             if (ValidarCampos())//-->Verifico que haya ingresado email y contraseña
             {

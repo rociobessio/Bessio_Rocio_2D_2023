@@ -30,8 +30,11 @@ namespace Carniceria_GUI
             this.Text = "Seleccionar método de pago";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.lblClienteEmail.Text = cliente;//-->Muestro el email del cliente.
+            this.dtpFechaVencimiento.CustomFormat = "dd/MM/yyyy";
+            this.dtpFechaVencimiento.Format = DateTimePickerFormat.Custom;
 
             clienteForm = cliente;//-->Paso al cliente que recibo
+            tarjetaCliente = null;
 
             #region DESHABILITO TEXTBOXES
             this.DeshabilitarDatosTarjeta();
