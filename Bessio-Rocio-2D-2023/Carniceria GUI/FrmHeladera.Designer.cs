@@ -34,7 +34,6 @@
             dataGridViewProductos = new DataGridView();
             label2 = new Label();
             groupBoxReponer = new GroupBox();
-            btnAgregarAlStock = new Button();
             label11 = new Label();
             txtPrecioCompraFrigorifico = new TextBox();
             label10 = new Label();
@@ -121,7 +120,6 @@
             // groupBoxReponer
             // 
             groupBoxReponer.Anchor = AnchorStyles.None;
-            groupBoxReponer.Controls.Add(btnAgregarAlStock);
             groupBoxReponer.Controls.Add(label11);
             groupBoxReponer.Controls.Add(txtPrecioCompraFrigorifico);
             groupBoxReponer.Controls.Add(label10);
@@ -148,21 +146,6 @@
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Reponer Carne";
             // 
-            // btnAgregarAlStock
-            // 
-            btnAgregarAlStock.Cursor = Cursors.Hand;
-            btnAgregarAlStock.FlatStyle = FlatStyle.Popup;
-            btnAgregarAlStock.Image = Properties.Resources._1486485588_add_create_new_math_sign_cross_plus_81186;
-            btnAgregarAlStock.ImageAlign = ContentAlignment.MiddleRight;
-            btnAgregarAlStock.Location = new Point(448, 303);
-            btnAgregarAlStock.Name = "btnAgregarAlStock";
-            btnAgregarAlStock.Size = new Size(169, 61);
-            btnAgregarAlStock.TabIndex = 2;
-            btnAgregarAlStock.Text = "   Agregar";
-            btnAgregarAlStock.TextAlign = ContentAlignment.MiddleLeft;
-            btnAgregarAlStock.UseVisualStyleBackColor = true;
-            btnAgregarAlStock.Click += btnAgregarAlStock_Click;
-            // 
             // label11
             // 
             label11.AutoSize = true;
@@ -176,9 +159,9 @@
             // 
             // txtPrecioCompraFrigorifico
             // 
-            txtPrecioCompraFrigorifico.Location = new Point(168, 327);
+            txtPrecioCompraFrigorifico.Location = new Point(191, 327);
             txtPrecioCompraFrigorifico.Name = "txtPrecioCompraFrigorifico";
-            txtPrecioCompraFrigorifico.Size = new Size(182, 37);
+            txtPrecioCompraFrigorifico.Size = new Size(159, 37);
             txtPrecioCompraFrigorifico.TabIndex = 8;
             txtPrecioCompraFrigorifico.TextChanged += txtPrecioCompraFrigorifico_TextChanged;
             txtPrecioCompraFrigorifico.KeyPress += txtPrecioCompra_KeyPress;
@@ -240,15 +223,16 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(391, 182);
+            label7.Location = new Point(411, 166);
             label7.Name = "label7";
             label7.Size = new Size(206, 28);
             label7.TabIndex = 14;
             label7.Text = "Fecha de Vencimiento:";
+            label7.Click += label7_Click;
             // 
             // dtpFechaVencimiento
             // 
-            dtpFechaVencimiento.Location = new Point(391, 218);
+            dtpFechaVencimiento.Location = new Point(407, 197);
             dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             dtpFechaVencimiento.Size = new Size(226, 37);
             dtpFechaVencimiento.TabIndex = 11;
@@ -457,7 +441,6 @@
         private Label label11;
         private TextBox txtPrecioCompraFrigorifico;
         private Label label1;
-        private Button btnAgregarAlStock;
         private Button btnHistorial;
     }
 }

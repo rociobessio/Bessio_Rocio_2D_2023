@@ -16,10 +16,10 @@ namespace Carniceria_GUI
     {
         #region ATRIBUTOS DEL FORM 
 
-        #region CARNES 
-        Carne carneIngresada;
+        #region CARNE
         Carne carneSeleccionada;
-        CategoriaBovina categoriaCarne;
+        double peso;
+        double precioCompraCliente;
         #endregion
 
         #region DATAGRIDVIEW
@@ -27,10 +27,9 @@ namespace Carniceria_GUI
         DataRow auxFilaProduc;
         int indexTablaProductos;
         int codigoProducto;
-        double peso;
         #endregion
 
-        bool terminoDeReponer;
+        //  bool terminoDeReponer;
         FrmVentaVendedor frmVentaVendedor;
         Vendedor vendedorForm;
         FrmHistorial frmHistorial;
@@ -58,8 +57,9 @@ namespace Carniceria_GUI
 
             #region PRINT AYUDA
             StringBuilder textoAyuda = new StringBuilder();
-            textoAyuda.AppendLine("El vendedor podrá reponer el stock de un producto o agregar uno nuevo a la lista, podrá visualizarlos");
+            textoAyuda.AppendLine("El vendedor podrá reponer el stock de un producto, cambiarle el precio y el tipo de corte, además podrá visualizarlos");
             textoAyuda.AppendLine("y al presionar el botón 'Vender' se abrirá un nuevo formulario para que le venda un producto a un cliente.");
+            textoAyuda.AppendLine("Será capaz de ver el historial de ventas realizadas.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion       
         }
@@ -97,7 +97,9 @@ namespace Carniceria_GUI
             this.dtpFechaVencimiento.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaVencimiento.Format = DateTimePickerFormat.Custom;
 
+            this.ManejoTextBoxes();//-->Por eso deshabilito los textboxes
             this.CargarProductosDataGrid();//-->Ponele que no quiero que me muestre los datos que quiero yo
+                                           //  this.terminoDeReponer = true;
         }
 
         /// <summary>
@@ -108,8 +110,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void dataGridViewProductos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            this.terminoDeReponer = false;//-->Si selecciona una celda quiere decir que repone
-            this.ManejoTextBoxes();//-->Por eso deshabilito los textboxes
+            // this.terminoDeReponer = false;//-->Si selecciona una celda quiere decir que repone
 
             this.indexTablaProductos = e.RowIndex;//-->Obtengo el indice
 
@@ -274,27 +275,12 @@ namespace Carniceria_GUI
             this.txtPrecioCompraFrigorifico.Clear();
             this.txtPrecioVentaClientes.Clear();
             this.txtProveedor.Clear();
-
-            if (terminoDeReponer)//-->Si termino de reponer entonces  habilito los textboxes nuevamente.
-            {
-                this.txtPrecioCompraFrigorifico.Enabled = true;
-                this.txtPrecioVentaClientes.Enabled = true;
-                this.txtProveedor.Enabled = true;
-                this.cbCorteCarne.Enabled = true;
-                this.cbTexturaCarne.Enabled = true;
-                this.cbTipoDeCarneReponer.Enabled = true;
-                this.dtpFechaVencimiento.Enabled = true;
-            }
-            else
-            {
-                this.txtPrecioCompraFrigorifico.Enabled = false;
-                this.txtPrecioVentaClientes.Enabled = false;
-                this.txtProveedor.Enabled = false;
-                this.cbCorteCarne.Enabled = false;
-                this.cbTexturaCarne.Enabled = false;
-                this.cbTipoDeCarneReponer.Enabled = false;
-                this.dtpFechaVencimiento.Enabled = false;
-            }
+            this.txtPrecioCompraFrigorifico.Enabled = false;
+            this.txtProveedor.Enabled = false;
+          //  this.cbCorteCarne.Enabled = false;
+            this.cbTexturaCarne.Enabled = false;
+            this.cbTipoDeCarneReponer.Enabled = false;
+            this.dtpFechaVencimiento.Enabled = false;
         }
 
         /// <summary>
@@ -304,26 +290,28 @@ namespace Carniceria_GUI
         private bool ValidarDatos()
         {
             bool esValido = true;
-            double precio;
             double precioCompra;
-            double.TryParse(this.txtPrecioVentaClientes.Text, out precio);
+
+            double.TryParse(this.txtPrecioVentaClientes.Text, out precioCompraCliente);
             double.TryParse(this.txtPesoCarne.Text, out peso);
             double.TryParse(this.txtPrecioCompraFrigorifico.Text, out precioCompra);
 
 
-            if (string.IsNullOrEmpty(this.txtProveedor.Text) ||
-                string.IsNullOrEmpty(this.txtPrecioVentaClientes.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
-                string.IsNullOrEmpty(this.cbTipoDeCarneReponer.Text) ||
-                string.IsNullOrEmpty(this.cbTexturaCarne.Text) ||
+            if (string.IsNullOrEmpty(this.txtPrecioVentaClientes.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
                 string.IsNullOrEmpty(this.cbCorteCarne.Text))
             {
                 esValido = false;//-->Alguna de todas las cadenas ingresadas es invalida
             }
 
             //--->Valido los numeros, EL PRECIO DE COMPRA DEL FRIGORIFICO DEBERA DE SER MAYOR AL PRECIO DE VENTA EL PUBLICO
-            if (peso <= 0 || precio <= 0 || precioCompra <= 0 || precioCompra > precio)
+            if (peso <= 0 || precioCompraCliente <= 0 || precioCompra <= 0 || precioCompra > precioCompraCliente)
             {
                 esValido = false;//-->Si alguno de los valores ingresado es menor o igual a 0, no lo dejo.
+            }
+
+            if (indexTablaProductos < 0)
+            {
+                esValido = false;//-->No selecciono.
             }
 
             //-->Valido que no ingrese una fecha invalida, es decir, un producto vencido.
@@ -348,10 +336,11 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnReponer_Click(object sender, EventArgs e)
         {
-            double.TryParse(this.txtPesoCarne.Text, out peso);//-->Parseo el peso
-            if (indexTablaProductos >= 0 && peso > 0)
+            if (ValidarDatos())
             {
                 carneSeleccionada.Peso += peso;//-->Le agrego el peso nuevo a lo que tenia. 
+                carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
+                carneSeleccionada.Corte = Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()); 
 
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
@@ -359,9 +348,8 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show("Ocurrio un error al intentar reponer el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            terminoDeReponer = true;//-->Habilito los textboxes nuevamente ya que termino de reponer.
-            this.ManejoTextBoxes();
+            //terminoDeReponer = true;//-->Habilito los textboxes nuevamente ya que termino de reponer.
+            // this.ManejoTextBoxes();
         }
 
         /// <summary>
@@ -377,35 +365,6 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
-        /// Este botón me permite instanciar un nuevo producto y agregarlo al stock.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnAgregarAlStock_Click(object sender, EventArgs e)
-        {
-            if (ValidarDatos() && terminoDeReponer)//-->Valido los datos y verifico si reponer no es true
-            {
-                categoriaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
-
-                carneIngresada = new Carne(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
-                    categoriaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
-                    this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()),
-                    double.Parse(this.txtPrecioVentaClientes.Text));
-
-                this.vendedorForm.ListaProductos.Add(carneIngresada);
-
-                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-            }
-        }
-
-        //public bool PuedeAgregarAlStock(Carne carneIngresada,List<Carne> listaCarnes)
-        //{
-        //    bool puede = false;
-
-        //}
-
-
-        /// <summary>
         /// Al presionarlo me permitira ver el historial de las compras realizadas.
         /// </summary>
         /// <param name="sender"></param>
@@ -415,24 +374,46 @@ namespace Carniceria_GUI
             frmHistorial = new FrmHistorial(vendedorForm);
             frmHistorial.ShowDialog();
         }
-        #endregion
+        #endregion 
 
-        #region EVENTOS
+        #region EVENTOS Colgados
+        /// <summary>
+        /// Este botón me permite instanciar un nuevo producto y agregarlo al stock.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAgregarAlStock_Click(object sender, EventArgs e)
+        {
+            //if (ValidarDatos() && terminoDeReponer)//-->Valido los datos y verifico si reponer no es true
+            //{
+            //    categoriaCarne = Enum.Parse<CategoriaBovina>(this.cbTexturaCarne.SelectedItem.ToString());
+
+            //    carneIngresada = new Carne(Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()), double.Parse(this.txtPesoCarne.Text),
+            //        categoriaCarne, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
+            //        this.txtProveedor.Text, Enum.Parse<Tipo>(this.cbTipoDeCarneReponer.SelectedItem.ToString()),
+            //        double.Parse(this.txtPrecioVentaClientes.Text));
+
+            //    this.vendedorForm.ListaProductos.Add(carneIngresada);
+
+            //    this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+            //}
+        }
         private void label3_Click(object sender, EventArgs e)
         {
 
         }
-
         private void label10_Click(object sender, EventArgs e)
         {
-
         }
-
         private void label11_Click(object sender, EventArgs e)
         {
 
         }
         private void txtPrecioCompraFrigorifico_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void label7_Click(object sender, EventArgs e)
         {
 
         }
