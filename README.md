@@ -1,4 +1,4 @@
-# Primer Parcial: "Carnicería: La Cristina".
+# Primer Parcial: "Carnicería: Felices las vacas".
 En este repositorio se desarollo una aplicación del tipo carnicería.
 
 ## Inicio de Sesión:
