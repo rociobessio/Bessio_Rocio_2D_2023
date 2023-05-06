@@ -258,6 +258,7 @@
             dataGridViewProductos.Anchor = AnchorStyles.None;
             dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewProductos.BackgroundColor = Color.MediumPurple;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProductos.Location = new Point(12, 607);
             dataGridViewProductos.Name = "dataGridViewProductos";
@@ -384,7 +385,7 @@
             // pictureBox1
             // 
             pictureBox1.Anchor = AnchorStyles.None;
-            pictureBox1.Image = Properties.Resources.shipping_weight_scale_measurement_price_icon_187244;
+            pictureBox1.Image = Properties.Resources.call_center_contact_information_service_icon_187270;
             pictureBox1.Location = new Point(12, 9);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 55);

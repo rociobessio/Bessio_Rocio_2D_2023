@@ -14,37 +14,41 @@ namespace Carniceria_GUI
 {
     public partial class FrmHistorial : Form
     {
-        private Vendedor vendedorForm;
-        private Cliente clienteForm;
+        #region ATRIBUTOS FORM  
         DataTable _dataTable;
         DataRow auxFilaProduc;
         private List<Carrito> historial;
-        private static Dictionary<string, Carrito> historialCarritoDic;
+        #endregion
 
+        #region CONSTRUCTORES
+        /// <summary>
+        /// Constructor del formulario.
+        /// </summary>
         public FrmHistorial()
         {
             InitializeComponent();
-            this.Text = "Historial de compras";
+            this.Text = "Historial de Ventas";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
-        } 
+            this.MaximizeBox = false;
+        }
 
+        /// <summary>
+        /// Sobrecarga del constructor del form,
+        /// me permite cargar el atributo historial del frm
+        /// y recibir el vendedor.
+        /// </summary>
+        /// <param name="vendedor"></param>
         public FrmHistorial(Vendedor vendedor)
             : this()
         {
             this.BackColor = Color.MediumPurple;
-            vendedorForm = vendedor;
-            historial = new List<Carrito>();
-            historialCarritoDic = new Dictionary<string, Carrito>();
-            historialCarritoDic = Vendedor.HistorialVentas;
-
-            //-->Cargo combo-box de los emails de usuarios
-            foreach (Cliente cliente in this.vendedorForm.ListaClientes)
-            {
-                this.cbFiltrarPorUsuario.Items.Add(cliente.Usuario.Email);
-            }
+            this.lblVendedorEmail.Text = vendedor;
+            historial = Vendedor.HistorialVentas;
         }
+        #endregion 
 
+        #region METODOS/EVENTOS FORM
         /// <summary>
         /// Metodo privado que me permite cargar los productos de la lista,
         /// la recorre, uso auxiliares de las filas para poder imprimir los atributos
@@ -58,35 +62,43 @@ namespace Carniceria_GUI
         {
             _dataTable.Rows.Clear();
 
-            //foreach (Carrito carrito in this.historial)
-            //{
-            //    auxFilaProduc = _dataTable.NewRow();
+            foreach (Carrito carrito in this.historial)
+            {
+                auxFilaProduc = _dataTable.NewRow();
+                auxFilaProduc[0] = $"{carrito.FechaCompra.ToShortDateString()}";
+                for (int i = 0; i < carrito.Productos.Count; i++)
+                {
+                    auxFilaProduc[1] = $"{carrito.Productos[i].Tipo.ToString().Replace("_", " ")}";//-->Muestro el codigo para luego seleccionarlo
+                    auxFilaProduc[2] = $"{carrito.Productos[i].Corte.ToString().Replace("_", " ")}";
+                    auxFilaProduc[3] = $"{carrito.Productos[i].Categoria.ToString().Replace("_", " ")}";
+                    auxFilaProduc[4] = $"{carrito.Productos[i].Peso.ToString().Replace("_", " ")}kgs.";
+                    auxFilaProduc[5] = $"${carrito.Productos[i].PrecioCompraCliente:f}";
+                }
 
-            //    for (int i = 0; i < carrito.Productos.Count; i++)
-            //    {
-            //        auxFilaProduc[0] = $"{carrito.Productos[i].Tipo.ToString().Replace("_", " ")}";//-->Muestro el codigo para luego seleccionarlo
-            //        auxFilaProduc[1] = $"{carrito.Productos[i].Corte.ToString().Replace("_", " ")}";
-            //        auxFilaProduc[2] = $"{carrito.Productos[i].Categoria.ToString().Replace("_", " ")}";
-            //        auxFilaProduc[3] = $"{carrito.Productos[i].Peso.ToString().Replace("_", " ")}";
-            //        auxFilaProduc[4] = $"{carrito.Productos[i].PrecioCompraCliente}";
-            //    }
-
-            //    _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
-            //}
+                _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
+            }
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
 
+        /// <summary>
+        /// El evento load del formulario me permite crear las columnas del datagridview
+        /// y cargarlo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            #region COLUMNAS DATAGRID
+            #region COLUMNAS 
+            this._dataTable.Columns.Add("Fecha De Compra");
             this._dataTable.Columns.Add("Tipo");
             this._dataTable.Columns.Add("Corte");
             this._dataTable.Columns.Add("Categoría bovina");
-            this._dataTable.Columns.Add("Peso");
-            this._dataTable.Columns.Add("Precio compra"); 
+            this._dataTable.Columns.Add("Kilos");
+            this._dataTable.Columns.Add("Total");
 
             this.CargarProductosDataGrid();//-->Cargo los productos disponibles en el datagrid
             #endregion
         }
+        #endregion
     }
 }

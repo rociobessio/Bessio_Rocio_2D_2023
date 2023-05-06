@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +16,8 @@ namespace Entidades
         private double _dineroEfectivoDisponible;
         private Tarjeta _tarjeta;
         private Carrito _carritoCompra; 
-        private bool _esConTarjeta; 
+        private bool _esConTarjeta;
+        //private Dictionary<string, List<Carrito>> _historialDeCompra;
         #endregion
 
         #region PROPIEDADES
@@ -30,6 +32,7 @@ namespace Entidades
         /// Hago override de la propiedad EsCliente retornando true.
         /// </summary>
         public override bool EsCliente { get { return true; } } 
+        //public Dictionary<string,List<Carrito>> HistorialCompra { get { return _historialDeCompra; } set { _historialDeCompra = value; } }
         #endregion
  
         #region CONSTRUCTORES
@@ -52,7 +55,8 @@ namespace Entidades
                        string dni, string domicilio, string telefono, Usuario user,Carrito carrito) 
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user)
         {
-            this._carritoCompra = carrito; 
+            this._carritoCompra = carrito;
+            //_historialDeCompra = new Dictionary<string, List<Carrito>>();
         }
 
         /// <summary>
@@ -184,9 +188,27 @@ namespace Entidades
             else
                 clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
 
+           // clienteIngresado.HistorialCliente(clienteIngresado);//-->Lo agrego al historial del usuario.
 
             return puedeComprar;
         } 
+
+        ///// <summary>
+        ///// Me permite agregar al historial de compras del cliente 
+        ///// las compras realizadas.
+        ///// </summary>
+        ///// <param name="cliente"></param>
+        //public void HistorialCliente(Cliente cliente)
+        //{
+        //    Carrito carrito = new Carrito();
+        //    carrito.Productos = cliente.CarritoCompra.Productos;
+        //    carrito.PrecioTotal = cliente.CarritoCompra.PrecioTotal;
+        //    carrito.ConTarjeta = cliente.CarritoCompra.ConTarjeta; 
+        //    List<Carrito> lista = new List<Carrito>();
+        //    lista.Add(cliente.CarritoCompra);
+        //   // _historialDeCompra = new Dictionary<string, List<Carrito>>();
+        //    _historialDeCompra.Add(cliente.Usuario.Email, lista);
+        //}
         #endregion
 
 

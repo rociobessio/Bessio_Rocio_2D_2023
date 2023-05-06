@@ -83,9 +83,39 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap boss3_118128 {
+            get {
+                object obj = ResourceManager.GetObject("boss3_118128", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap boss3_1181281 {
+            get {
+                object obj = ResourceManager.GetObject("boss3_1181281", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap call_center_contact_information_service_icon_187270 {
             get {
                 object obj = ResourceManager.GetObject("call_center_contact_information_service_icon_187270", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap call_center_contact_information_service_icon_1872701 {
+            get {
+                object obj = ResourceManager.GetObject("call_center_contact_information_service_icon_1872701", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +166,16 @@ namespace Carniceria_GUI.Properties {
         internal static System.Drawing.Bitmap Cartmultiply_icon_icons1 {
             get {
                 object obj = ResourceManager.GetObject("Cartmultiply_icon-icons1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delivery_payment_cash_service_price_icon_187251 {
+            get {
+                object obj = ResourceManager.GetObject("delivery_payment_cash_service_price_icon_187251", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

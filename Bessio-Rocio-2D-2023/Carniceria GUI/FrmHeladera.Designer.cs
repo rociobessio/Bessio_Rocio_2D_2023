@@ -69,7 +69,7 @@
             lblVendedorEmail.AutoSize = true;
             lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(185, 173);
+            lblVendedorEmail.Location = new Point(286, 108);
             lblVendedorEmail.Name = "lblVendedorEmail";
             lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 0;
@@ -78,10 +78,10 @@
             // pictureBoxVendedor
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
-            pictureBoxVendedor.Image = Properties.Resources.shipping_weight_scale_measurement_price_icon_187244;
-            pictureBoxVendedor.Location = new Point(62, 37);
+            pictureBoxVendedor.Image = Properties.Resources.call_center_contact_information_service_icon_187270;
+            pictureBoxVendedor.Location = new Point(27, 79);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
-            pictureBoxVendedor.Size = new Size(158, 129);
+            pictureBoxVendedor.Size = new Size(87, 82);
             pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxVendedor.TabIndex = 1;
             pictureBoxVendedor.TabStop = false;
@@ -96,6 +96,7 @@
             dataGridViewProductos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewProductos.GridColor = Color.MediumPurple;
             dataGridViewProductos.Location = new Point(12, 520);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
@@ -327,10 +328,12 @@
             // 
             btnVender.Cursor = Cursors.Hand;
             btnVender.FlatStyle = FlatStyle.Popup;
+            btnVender.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point);
             btnVender.ForeColor = Color.White;
-            btnVender.Location = new Point(77, 63);
+            btnVender.ImageAlign = ContentAlignment.MiddleRight;
+            btnVender.Location = new Point(101, 65);
             btnVender.Name = "btnVender";
-            btnVender.Size = new Size(206, 74);
+            btnVender.Size = new Size(180, 70);
             btnVender.TabIndex = 1;
             btnVender.Text = "Vender";
             btnVender.UseVisualStyleBackColor = true;
@@ -368,7 +371,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(27, 169);
+            label1.Location = new Point(128, 104);
             label1.Name = "label1";
             label1.Size = new Size(152, 32);
             label1.TabIndex = 11;
@@ -383,11 +386,11 @@
             btnHistorial.ForeColor = Color.White;
             btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
             btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
-            btnHistorial.Location = new Point(990, 801);
+            btnHistorial.Location = new Point(938, 801);
             btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(169, 57);
+            btnHistorial.Size = new Size(221, 57);
             btnHistorial.TabIndex = 39;
-            btnHistorial.Text = "    Historial";
+            btnHistorial.Text = "    Historial Ventas";
             btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
             btnHistorial.UseVisualStyleBackColor = true;
             btnHistorial.Click += btnHistorial_Click;

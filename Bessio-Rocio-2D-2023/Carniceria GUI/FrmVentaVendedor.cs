@@ -330,7 +330,7 @@ namespace Carniceria_GUI
                         this._vendedorForm.ListaProductos.Remove(carneSeleccionada);
                     }
 
-                 //   Vendedor.Historial(clienteSelecccionado);//-->Al vendedor le paso el historial
+                    Vendedor.ObtenerHistorialVentas(clienteSelecccionado);//-->Al vendedor le paso el historial
 
                     this.CargarProductosDataGrid();//-->Recargo el datagrid
                 }
