@@ -21,8 +21,8 @@ namespace Carniceria_GUI
         #region ATRIBUTOS
         private Vendedor _vendedorForm;
         private Carne carneSeleccionada;
-        private Cliente clienteSelecccionado;
-        private SoundPlayer soundPlayer;
+        private Cliente clienteSeleccionado;
+        private SoundPlayer soundPlayer; 
 
         DataTable _dataTable;
         DataRow auxFilaProduc;
@@ -60,7 +60,7 @@ namespace Carniceria_GUI
             _vendedorForm = vendedor;
             this.lblVendedorEmail.Text = _vendedorForm;
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
-            carneSeleccionada = new Carne();
+            carneSeleccionada = new Carne(); 
 
             frmHeladera = new FrmHeladera();
 
@@ -97,6 +97,7 @@ namespace Carniceria_GUI
             this.ckbTarjeta.Enabled = false;
             this.txtPrecioPorUnidad.Enabled = false;
             this.txtPesoTotalStock.Enabled = false;
+            this.txtSaldoDisponibleCliente.Enabled = false;
             #endregion
 
             #region CARGO COLUMNAS DATAGRID
@@ -189,19 +190,21 @@ namespace Carniceria_GUI
                     this.txtDNI.Text = cliente.DNI;
                     this.txtDomicilio.Text = cliente.Domicilio;
                     this.txtNombre.Text = cliente.Nombre;
-                    this.txtTelefono.Text = cliente.Telefono;
+                    this.txtTelefono.Text = cliente.Telefono; 
 
                     if (cliente.ConTarjeta)
                     {
                         this.ckbTarjeta.Checked = true;
                         this.ckbEfectivo.Checked = false;
+                        this.txtSaldoDisponibleCliente.Text = cliente.Tarjeta.DineroDisponible.ToString();
                     }
                     else
                     {
                         this.ckbEfectivo.Checked = true;
                         this.ckbTarjeta.Checked = false;
+                        this.txtSaldoDisponibleCliente.Text = cliente.DineroEfectivoDisponible.ToString();
                     }
-                    clienteSelecccionado = cliente;//-->Guardo ese cliente
+                    clienteSeleccionado = cliente;//-->Guardo ese cliente
                 }
             }
         }
@@ -317,9 +320,9 @@ namespace Carniceria_GUI
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
 
                 //-->Obtengo el total que deberá pagar el cliente.
-                totalAPagar = Carne.CalcularPrecioTotal(clienteSelecccionado, carneSeleccionada, peso);
+                totalAPagar = Carne.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
 
-                if (Vendedor.Vender(totalAPagar, clienteSelecccionado, peso, carneSeleccionada))//-->Intenta comprar.
+                if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada))//-->Intenta comprar.
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",
@@ -330,9 +333,18 @@ namespace Carniceria_GUI
                         this._vendedorForm.ListaProductos.Remove(carneSeleccionada);
                     }
 
-                    Vendedor.ObtenerHistorialVentas(clienteSelecccionado);//-->Al vendedor le paso el historial
+                    if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
+                    {
+                        this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.Tarjeta.DineroDisponible.ToString();
+                    }
+                    else
+                    {
+                        this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.DineroEfectivoDisponible.ToString();
+                    }
 
-                    this.CargarProductosDataGrid();//-->Recargo el datagrid
+                    Vendedor.ObtenerHistorialVentas(clienteSeleccionado);//-->Al vendedor le paso el historial 
+
+                    this.CargarProductosDataGrid();//-->Recargo el datagrid 
                 }
                 else//-->No pudo comprar.
                 {
@@ -353,7 +365,7 @@ namespace Carniceria_GUI
             if (ValidarCampos())
             {
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
-                double retorno = Carne.CalcularPrecioTotal(clienteSelecccionado, carneSeleccionada, peso);
+                double retorno = Carne.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
                 this.txtTotalAPagar.Text = retorno.ToString();
             }
         }

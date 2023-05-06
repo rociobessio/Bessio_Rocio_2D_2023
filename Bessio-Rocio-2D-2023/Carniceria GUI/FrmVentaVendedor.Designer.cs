@@ -63,6 +63,8 @@
             groupBox4 = new GroupBox();
             lblVendedorEmail = new Label();
             label8 = new Label();
+            label12 = new Label();
+            txtSaldoDisponibleCliente = new TextBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -88,7 +90,7 @@
             groupBox1.Controls.Add(cbClientes);
             groupBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox1.ForeColor = Color.White;
-            groupBox1.Location = new Point(12, 70);
+            groupBox1.Location = new Point(12, 97);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(506, 298);
             groupBox1.TabIndex = 0;
@@ -208,7 +210,7 @@
             groupBox2.Controls.Add(txtPrecioPorUnidad);
             groupBox2.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(577, 70);
+            groupBox2.Location = new Point(577, 97);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(412, 298);
             groupBox2.TabIndex = 1;
@@ -260,7 +262,7 @@
             dataGridViewProductos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewProductos.BackgroundColor = Color.MediumPurple;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewProductos.Location = new Point(12, 607);
+            dataGridViewProductos.Location = new Point(12, 698);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
@@ -278,7 +280,7 @@
             btnVender.ForeColor = Color.White;
             btnVender.Image = Properties.Resources.pay_cash_payment_money_dollar_bill_icon_143267;
             btnVender.ImageAlign = ContentAlignment.MiddleRight;
-            btnVender.Location = new Point(832, 802);
+            btnVender.Location = new Point(832, 893);
             btnVender.Name = "btnVender";
             btnVender.Size = new Size(157, 57);
             btnVender.TabIndex = 5;
@@ -312,6 +314,8 @@
             // groupBox3
             // 
             groupBox3.Anchor = AnchorStyles.None;
+            groupBox3.Controls.Add(txtSaldoDisponibleCliente);
+            groupBox3.Controls.Add(label12);
             groupBox3.Controls.Add(btnCalcularCosto);
             groupBox3.Controls.Add(label10);
             groupBox3.Controls.Add(ckbEfectivo);
@@ -319,9 +323,9 @@
             groupBox3.Controls.Add(ckbTarjeta);
             groupBox3.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox3.ForeColor = Color.White;
-            groupBox3.Location = new Point(12, 394);
+            groupBox3.Location = new Point(12, 401);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(506, 141);
+            groupBox3.Size = new Size(506, 237);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Método de Pago";
@@ -332,7 +336,7 @@
             btnCalcularCosto.Cursor = Cursors.Hand;
             btnCalcularCosto.FlatStyle = FlatStyle.Popup;
             btnCalcularCosto.ForeColor = Color.White;
-            btnCalcularCosto.Location = new Point(356, 88);
+            btnCalcularCosto.Location = new Point(356, 184);
             btnCalcularCosto.Name = "btnCalcularCosto";
             btnCalcularCosto.Size = new Size(130, 42);
             btnCalcularCosto.TabIndex = 4;
@@ -344,7 +348,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(26, 97);
+            label10.Location = new Point(23, 188);
             label10.Name = "label10";
             label10.Size = new Size(127, 28);
             label10.TabIndex = 21;
@@ -352,7 +356,7 @@
             // 
             // txtTotalAPagar
             // 
-            txtTotalAPagar.Location = new Point(173, 93);
+            txtTotalAPagar.Location = new Point(185, 184);
             txtTotalAPagar.Name = "txtTotalAPagar";
             txtTotalAPagar.Size = new Size(150, 37);
             txtTotalAPagar.TabIndex = 0;
@@ -363,7 +367,7 @@
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label2.ForeColor = Color.White;
-            label2.Location = new Point(12, 572);
+            label2.Location = new Point(12, 653);
             label2.Name = "label2";
             label2.Size = new Size(323, 32);
             label2.TabIndex = 9;
@@ -376,7 +380,7 @@
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
-            lblPrintHelp.Location = new Point(12, 802);
+            lblPrintHelp.Location = new Point(12, 893);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
             lblPrintHelp.TabIndex = 11;
@@ -386,7 +390,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.call_center_contact_information_service_icon_187270;
-            pictureBox1.Location = new Point(12, 9);
+            pictureBox1.Location = new Point(12, 25);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(86, 55);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -395,7 +399,7 @@
             // 
             // txtPesoEspecificado
             // 
-            txtPesoEspecificado.Location = new Point(238, 55);
+            txtPesoEspecificado.Location = new Point(238, 72);
             txtPesoEspecificado.Name = "txtPesoEspecificado";
             txtPesoEspecificado.Size = new Size(150, 37);
             txtPesoEspecificado.TabIndex = 3;
@@ -406,7 +410,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(88, 59);
+            label9.Location = new Point(88, 76);
             label9.Name = "label9";
             label9.Size = new Size(97, 28);
             label9.TabIndex = 24;
@@ -419,9 +423,9 @@
             groupBox4.Controls.Add(label9);
             groupBox4.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBox4.ForeColor = Color.White;
-            groupBox4.Location = new Point(570, 394);
+            groupBox4.Location = new Point(570, 401);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(419, 141);
+            groupBox4.Size = new Size(419, 180);
             groupBox4.TabIndex = 22;
             groupBox4.TabStop = false;
             groupBox4.Text = "Vender";
@@ -432,7 +436,7 @@
             lblVendedorEmail.AutoSize = true;
             lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(270, 22);
+            lblVendedorEmail.Location = new Point(270, 38);
             lblVendedorEmail.Name = "lblVendedorEmail";
             lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 23;
@@ -444,18 +448,35 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label8.ForeColor = Color.White;
-            label8.Location = new Point(104, 18);
+            label8.Location = new Point(104, 34);
             label8.Name = "label8";
             label8.Size = new Size(152, 32);
             label8.TabIndex = 24;
             label8.Text = "VENDEDOR:";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(15, 118);
+            label12.Name = "label12";
+            label12.Size = new Size(163, 28);
+            label12.TabIndex = 22;
+            label12.Text = "Saldo disponible:";
+            // 
+            // txtSaldoDisponibleCliente
+            // 
+            txtSaldoDisponibleCliente.Location = new Point(184, 109);
+            txtSaldoDisponibleCliente.Name = "txtSaldoDisponibleCliente";
+            txtSaldoDisponibleCliente.Size = new Size(150, 37);
+            txtSaldoDisponibleCliente.TabIndex = 23;
             // 
             // FrmVentaVendedor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
-            ClientSize = new Size(1001, 871);
+            ClientSize = new Size(1001, 962);
             Controls.Add(label8);
             Controls.Add(lblVendedorEmail);
             Controls.Add(groupBox4);
@@ -523,5 +544,7 @@
         private Button btnCalcularCosto;
         private Label lblVendedorEmail;
         private Label label8;
+        private TextBox txtSaldoDisponibleCliente;
+        private Label label12;
     }
 }

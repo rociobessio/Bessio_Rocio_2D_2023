@@ -50,7 +50,7 @@ namespace Carniceria_GUI
         public FrmHeladera(Vendedor vendedor)
             : this()
         {
-            this.lblVendedorEmail.Text = vendedor; 
+            this.lblVendedorEmail.Text = vendedor;
 
             #region ASIGNACION VENDEDOR
             vendedorForm = vendedor;//-->Asigno el vendedor que recibo 

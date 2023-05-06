@@ -304,9 +304,9 @@
             label4.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label4.Location = new Point(15, 182);
             label4.Name = "label4";
-            label4.Size = new Size(78, 28);
+            label4.Size = new Size(102, 56);
             label4.TabIndex = 7;
-            label4.Text = "Textura:";
+            label4.Text = "Categoría \r\nBovina:";
             // 
             // cbCorteCarne
             // 
@@ -321,7 +321,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(15, 117);
+            label3.Location = new Point(15, 112);
             label3.Name = "label3";
             label3.Size = new Size(64, 28);
             label3.TabIndex = 5;
