@@ -274,7 +274,7 @@ namespace Carniceria_GUI
                 auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
                 auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{carnes.PrecioCompraCliente}";
+                auxFilaProduc[4] = $"${carnes.PrecioCompraCliente:f}";
 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }

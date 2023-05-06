@@ -99,7 +99,7 @@ namespace Carniceria_GUI
             this.tablaProductos.Columns.Add("Tipo");
             this.tablaProductos.Columns.Add("Corte");
             this.tablaProductos.Columns.Add("Categoría bovina");
-            this.tablaProductos.Columns.Add("Peso");
+            this.tablaProductos.Columns.Add("Total de Kilos en Stock");
             this.tablaProductos.Columns.Add("Precio C/ Unidad");
             this.tablaProductos.Columns.Add("Vencimiento");
             this.tablaProductos.Columns.Add("Proveedor");
@@ -272,11 +272,11 @@ namespace Carniceria_GUI
                 auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
                 auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{carnes.Peso}";
-                auxFilaProduc[5] = $"{carnes.PrecioCompraCliente}";
+                auxFilaProduc[4] = $"{carnes.Peso}kgs";
+                auxFilaProduc[5] = $"${carnes.PrecioCompraCliente:f}";
                 auxFilaProduc[6] = $"{carnes.Vencimiento.ToShortDateString()}";
                 auxFilaProduc[7] = $"{carnes.Proveedor}";
-                auxFilaProduc[8] = $"{carnes.PrecioVentaProveedor}";
+                auxFilaProduc[8] = $"${carnes.PrecioVentaProveedor:f}";
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }

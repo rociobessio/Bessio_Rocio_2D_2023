@@ -228,9 +228,9 @@
             label13.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label13.Location = new Point(81, 164);
             label13.Name = "label13";
-            label13.Size = new Size(101, 56);
+            label13.Size = new Size(131, 56);
             label13.TabIndex = 27;
-            label13.Text = "Peso total\r\n del Stock:";
+            label13.Text = "Total de kilos \r\nen Stock:";
             // 
             // label11
             // 

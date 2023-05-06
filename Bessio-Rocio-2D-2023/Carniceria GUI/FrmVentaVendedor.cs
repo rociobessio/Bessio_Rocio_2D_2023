@@ -162,11 +162,11 @@ namespace Carniceria_GUI
 
                 auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
                 auxFilaProduc[1] = $"{carnes.Tipo}";
-                auxFilaProduc[2] = $"{carnes.Corte}";
+                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
                 auxFilaProduc[4] = $"{carnes.Vencimiento.ToShortDateString()}";
                 auxFilaProduc[5] = $"{carnes.Proveedor}";
-                auxFilaProduc[6] = $"{carnes.PrecioVentaProveedor}";
+                auxFilaProduc[6] = $"${carnes.PrecioVentaProveedor:f}";
 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
 

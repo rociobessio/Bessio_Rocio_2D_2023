@@ -274,9 +274,9 @@
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             label5.Location = new Point(391, 45);
             label5.Name = "label5";
-            label5.Size = new Size(56, 28);
+            label5.Size = new Size(58, 28);
             label5.TabIndex = 10;
-            label5.Text = "Peso:";
+            label5.Text = "Kilos:";
             // 
             // txtPesoCarne
             // 
