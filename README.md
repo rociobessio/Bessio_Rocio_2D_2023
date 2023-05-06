@@ -13,12 +13,13 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 # Perfil Vendedor:
 ----------------------
 ## Reponer stock:
-<img width="587" alt="Screenshot_16" src="https://user-images.githubusercontent.com/98594436/236600045-885619e3-a63f-415d-b0d0-ac079529863f.png">
+<img width="589" alt="Screenshot_24" src="https://user-images.githubusercontent.com/98594436/236645863-4abf0ba8-57d6-44e2-9591-70f6a986f992.png">
 
-1) El Vendedor podrá reponer productos al stock de la carnicería o agregar uno nuevo.
-2) Siempre y cuando pase las validaciones necesarias, si las pasa entonces se actualiza el stock.
-3) Al presionar el botón vender se abrirá un nuevo Form para poder venderle a un cliente los productos.
-4) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
+1) El Vendedor podrá reponer productos al stock de la carnicería.
+2) Podrá agregar al stock, cambiar el precio de compra por kilo y cambiar el tipo de corte del producto.
+3) Siempre y cuando pase las validaciones necesarias, si las pasa entonces se actualiza el stock.
+4) Al presionar el botón vender se abrirá un nuevo Form para poder venderle a un cliente los productos.
+5) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
 ## Historial de Ventas:
 <img width="445" alt="Screenshot_17" src="https://user-images.githubusercontent.com/98594436/236600062-883d030e-f422-4e1a-90ea-5da3553c1635.png">
