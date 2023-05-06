@@ -173,7 +173,11 @@ namespace Entidades
             carrito.Productos = cliente.CarritoCompra.Productos;
             carrito.PrecioTotal = cliente.CarritoCompra.PrecioTotal;
             carrito.ConTarjeta = cliente.CarritoCompra.ConTarjeta;
-            _historialVentas.Add(carrito);//-->Añado al historial del cliente pasandole el carrito
+
+            if (!_historialVentas.Contains(carrito))
+            {
+                _historialVentas.Add(carrito);//-->Añado al historial del cliente pasandole el carrito
+            }
         }
         #endregion
 
