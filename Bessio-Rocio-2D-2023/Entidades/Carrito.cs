@@ -155,6 +155,7 @@ namespace Entidades
             if (ConTarjeta)
             {
                 sb.AppendLine("Con tarjeta: SI.");
+                sb.AppendLine("Cuenta con un recargo del: %5.");
             }
             else
             {
