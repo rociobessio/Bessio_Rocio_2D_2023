@@ -120,19 +120,19 @@ namespace Carniceria_GUI
             }
 
             //Recorro la lista en busca de ese producto y lo muestro en los textboxes
-            foreach (Producto carne in this.vendedorForm.ListaProductos)
+            foreach (KeyValuePair<int, Producto> dic in this.vendedorForm.ListaProductos)
             {
-                if (carne == codigoProducto)
+                if (dic.Key == codigoProducto)
                 {
-                    this.txtPrecioVentaClientes.Text = carne.PrecioCompraCliente.ToString();
-                    this.txtPrecioCompraFrigorifico.Text = carne.PrecioVentaProveedor.ToString();
-                    this.txtProveedor.Text = carne.Proveedor;
-                    this.cbCorteCarne.Text = carne.Corte.ToString();
-                    this.cbTexturaCarne.Text = carne.Categoria.ToString();
-                    this.cbTipoDeCarneReponer.Text = carne.Tipo.ToString();
-                    this.dtpFechaVencimiento.Value = carne.Vencimiento;
+                    this.txtPrecioVentaClientes.Text = dic.Value.PrecioCompraCliente.ToString();
+                    this.txtPrecioCompraFrigorifico.Text = dic.Value.PrecioVentaProveedor.ToString();
+                    this.txtProveedor.Text = dic.Value.Proveedor;
+                    this.cbCorteCarne.Text = dic.Value.Corte.ToString();
+                    this.cbTexturaCarne.Text = dic.Value.Categoria.ToString();
+                    this.cbTipoDeCarneReponer.Text = dic.Value.Tipo.ToString();
+                    this.dtpFechaVencimiento.Value = dic.Value.Vencimiento;
 
-                    carneSeleccionada = carne;//-->Guardo esa carne para realizar las modificaciones o calculos
+                    carneSeleccionada = dic.Value;//-->Guardo esa carne para realizar las modificaciones o calculos
                 }
             }
         }
@@ -247,19 +247,19 @@ namespace Carniceria_GUI
         {
             tablaProductos.Rows.Clear();
 
-            foreach (Producto carnes in this.vendedorForm.ListaProductos)
+            foreach (KeyValuePair<int, Producto> dic in this.vendedorForm.ListaProductos)
             {
                 auxFilaProduc = tablaProductos.NewRow();
 
-                auxFilaProduc[0] = $"{carnes.Codigo}";
-                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
-                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
-                auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{carnes.Peso}kgs";
-                auxFilaProduc[5] = $"${carnes.PrecioCompraCliente:f}";
-                auxFilaProduc[6] = $"{carnes.Vencimiento.ToShortDateString()}";
-                auxFilaProduc[7] = $"{carnes.Proveedor}";
-                auxFilaProduc[8] = $"${carnes.PrecioVentaProveedor:f}";
+                auxFilaProduc[0] = $"{dic.Key}";
+                auxFilaProduc[1] = $"{dic.Value.Tipo.ToString().Replace("_", " ")}";
+                auxFilaProduc[2] = $"{dic.Value.Corte.ToString().Replace("_", " ")}";
+                auxFilaProduc[3] = $"{dic.Value.Categoria.ToString().Replace("_", " ")}";
+                auxFilaProduc[4] = $"{dic.Value.Peso}kgs";
+                auxFilaProduc[5] = $"${dic.Value.PrecioCompraCliente:f}";
+                auxFilaProduc[6] = $"{dic.Value.Vencimiento.ToShortDateString()}";
+                auxFilaProduc[7] = $"{dic.Value.Proveedor}";
+                auxFilaProduc[8] = $"${dic.Value.PrecioVentaProveedor:f}";
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
@@ -276,8 +276,7 @@ namespace Carniceria_GUI
             this.txtPrecioVentaClientes.Clear();
             this.txtProveedor.Clear();
             this.txtPrecioCompraFrigorifico.Enabled = false;
-            this.txtProveedor.Enabled = false;
-            //  this.cbCorteCarne.Enabled = false;
+            this.txtProveedor.Enabled = false; 
             this.cbTexturaCarne.Enabled = false;
             this.cbTipoDeCarneReponer.Enabled = false;
             this.dtpFechaVencimiento.Enabled = false;
@@ -343,6 +342,8 @@ namespace Carniceria_GUI
                 carneSeleccionada.Corte = Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString());
 
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+                this.txtPesoCarne.Clear();
+                this.txtPrecioVentaClientes.Clear();
             }
             else
             {

@@ -157,17 +157,17 @@ namespace Carniceria_GUI
         {
             _dataTable.Rows.Clear();
 
-            foreach (Producto carnes in this._vendedorForm.ListaProductos)
+            foreach (KeyValuePair<int, Producto> dic in this._vendedorForm.ListaProductos)
             {
                 auxFilaProduc = _dataTable.NewRow();
 
-                auxFilaProduc[0] = $"{carnes.Codigo}";//-->Muestro el codigo para luego seleccionarlo
-                auxFilaProduc[1] = $"{carnes.Tipo.ToString().Replace("_", " ")}";
-                auxFilaProduc[2] = $"{carnes.Corte.ToString().Replace("_", " ")}";
-                auxFilaProduc[3] = $"{carnes.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{carnes.Vencimiento.ToShortDateString()}";
-                auxFilaProduc[5] = $"{carnes.Proveedor}";
-                auxFilaProduc[6] = $"${carnes.PrecioVentaProveedor:f}";
+                auxFilaProduc[0] = $"{dic.Key}";//-->Muestro lal key del dictionary para luego seleccionarlo
+                auxFilaProduc[1] = $"{dic.Value.Tipo.ToString().Replace("_", " ")}";
+                auxFilaProduc[2] = $"{dic.Value.Corte.ToString().Replace("_", " ")}";
+                auxFilaProduc[3] = $"{dic.Value.Categoria.ToString().Replace("_", " ")}";
+                auxFilaProduc[4] = $"{dic.Value.Vencimiento.ToShortDateString()}";
+                auxFilaProduc[5] = $"{dic.Value.Proveedor}";
+                auxFilaProduc[6] = $"${dic.Value.PrecioVentaProveedor:f}";
 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
 
@@ -235,13 +235,13 @@ namespace Carniceria_GUI
             }
 
             //Recorro la lista en busca de ese producto y lo muestro en los textboxes
-            foreach (Producto carne in this._vendedorForm.ListaProductos)
+            foreach (KeyValuePair<int, Producto> dic in this._vendedorForm.ListaProductos)
             {
-                if (carne == codigoProducto)
+                if (dic.Key == codigoProducto)//-->Comparo la key y el codigo que obtuve
                 {
-                    this.txtPrecioPorUnidad.Text = carne.PrecioCompraCliente.ToString();
-                    this.txtPesoTotalStock.Text = carne.Peso.ToString();
-                    carneSeleccionada = carne;//-->Guardo esa carne para realizar las modificaciones o calculos
+                    this.txtPrecioPorUnidad.Text = dic.Value.PrecioCompraCliente.ToString();
+                    this.txtPesoTotalStock.Text = dic.Value.Peso.ToString();
+                    carneSeleccionada = dic.Value;//-->Guardo esa carne para realizar las modificaciones o calculos
                 }
             }
         }
