@@ -22,14 +22,41 @@ namespace Entidades
         #endregion
 
         #region  PROPIEDADES
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public int Codigo { get { return this._codigo; } set { this._codigo = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public Tipo Tipo { get { return this._tipoCarne; } set { this._tipoCarne = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public Corte Corte { get { return this._corteCarne; } set { this._corteCarne = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public double Peso { get { return this._peso; } set { this._peso = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public CategoriaBovina Categoria { get { return this._categoria; } set { this._categoria = value; } }
+        /// <summary>
+        /// Propiedad de lctura y escritura.
+        /// </summary>
         public DateTime Vencimiento { get { return this._vencimiento; } set { this._vencimiento = value; } }
-        public double PrecioVentaProveedor { get { return this._precioVentaProveedor; } } 
+        /// <summary>
+        /// Propiedad de lctura y escritura.
+        /// </summary>
+        public double PrecioVentaProveedor { get { return this._precioVentaProveedor; } }
+        /// <summary>
+        /// Propiedad de lctura y escritura.
+        /// </summary>
         public string Proveedor { get { return this._proveedor; } set { this._proveedor = value; } }
+        /// <summary>
+        /// Propiedad de lctura y escritura.
+        /// </summary>
         public double PrecioCompraCliente { get { return this._precioCompraCliente; } set { this._precioCompraCliente = value; } }
         #endregion
 
@@ -126,11 +153,10 @@ namespace Entidades
             bool sonIguales = false;
             if (!(carne1 is null) && codigo >= 0)
             {
-                sonIguales = carne1._codigo == codigo; 
+                sonIguales = (carne1._codigo == codigo); 
             }
             return sonIguales;
         }
-
         public static bool operator !=(Producto carne1, int codigo)
         {
             return !(carne1 == codigo);
@@ -149,7 +175,7 @@ namespace Entidades
             bool sonIguales = false;
             if(!(carne1 is null) && !(carne2 is null))
             { 
-                sonIguales = carne1._codigo == carne2._codigo;
+                sonIguales = (carne1._codigo == carne2._codigo);
             }
             return sonIguales;
         }

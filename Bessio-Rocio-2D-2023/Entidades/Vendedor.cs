@@ -14,10 +14,14 @@ namespace Entidades
         private DateTime _fechaIngreso;
         private List<Cliente> _listaClientes;
         private List<Producto> _listaCarne;
-        private static List<Carrito> _historialVentas; 
+        private static List<Carrito> _historialVentas;
+        private static int ultimoID;
         #endregion
 
         #region PROPIEDADES
+        /// <summary>
+        /// Me permite obtener el ID del Vendedor.
+        /// </summary>
         public int ID { get { return this._id; } }
         /// <summary>
         /// Propiedad de lectura y escritura de la lista de Clientes.
@@ -36,6 +40,11 @@ namespace Entidades
         #endregion
 
         #region CONSTRUCTOR 
+        static Vendedor()
+        {
+            ultimoID = 2001;
+        }
+
         /// <summary>
         /// Constructor parametrizado de la clase Vendedor.
         /// Le paso sus parametros al base y recibe y asigna los atributos
@@ -55,14 +64,15 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
+                        DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
-        {
-            this._id = id;
+        { 
             this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
             _historialVentas = listaVentas;
-            this._listaCarne = productos; 
+            this._listaCarne = productos;
+            this._id = ultimoID;
+            ultimoID++;
         } 
 
         /// <summary>
@@ -193,13 +203,15 @@ namespace Entidades
             bool sonIguales = false;
             if (!(vendedor1 is null) && !(vendedor2 is null))
             {
-                sonIguales =  (vendedor1._id == vendedor2._id);  
+                sonIguales =  (vendedor1._id == vendedor2._id) && 
+                              (vendedor1.usuario == vendedor2.usuario);  
             }
             return sonIguales;
         }
 
         /// <summary>
-        /// Dos vendedores seran distintos si no comparte el mismo ID.
+        /// Dos vendedores seran distintos si no comparte el mismo ID
+        /// y usuario.
         /// </summary>
         /// <param name="vendedor1"></param>
         /// <param name="vendedor2"></param>

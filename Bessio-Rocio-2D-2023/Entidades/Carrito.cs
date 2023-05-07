@@ -17,9 +17,22 @@ namespace Entidades
         #endregion
 
         #region PROPIEDADES
+        /// <summary>
+        /// Propiedad de lectura que me permite obtener la fecha de compra.
+        /// </summary>
         public DateTime FechaCompra { get { return this._fechaCompra; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura.
+        /// </summary>
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
+        /// <summary>
+        /// Propiedad de escritura y lectura, me permite saber si la compra/venta se realizo con
+        /// Tarjeta.
+        /// </summary>
         public bool ConTarjeta { get { return this._conTarjeta; } set { this._conTarjeta = value; } }
+        /// <summary>
+        /// Propiedad de escritura y lectura de la Lista de Productos.
+        /// </summary>
         public List<Producto> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
         #endregion
 
@@ -55,13 +68,13 @@ namespace Entidades
 
         #region SOBRECARGA DE OPERADORES
         /// <summary>
-        /// Me permite añadir un producto al carrito si este no se encuentra
+        /// La sobrecarga del operador + me permite añadir un producto al carrito si este no se encuentra
         /// ya contenido en el.
         /// Utilizo la sobrecarga del == de Carne.
         /// </summary>
         /// <param name="carrito"></param>
         /// <param name="carne"></param>
-        /// <returns></returns>
+        /// <returns>Devuelve true si pudo añadirlo, false sino.</returns>
         public static bool operator +(Carrito carrito, Producto carne)
         {
             bool puede = true; 
@@ -144,8 +157,7 @@ namespace Entidades
 
         #region POLIMORFISMO
         /// <summary>
-        /// Sobrecarga del .ToString().
-        /// Intento que tenga formato de ticket.
+        /// Sobrecarga del .ToString(). 
         /// </summary>
         /// <returns></returns>
         public override string ToString()
@@ -199,7 +211,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Valor Hash del objeto
+        /// Valor Hash del objeto, es unico
         /// </summary>
         /// <returns>Valor Hash del objeto</returns>
         public override int GetHashCode()

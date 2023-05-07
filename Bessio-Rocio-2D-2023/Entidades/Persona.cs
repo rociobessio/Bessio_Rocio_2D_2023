@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase abstracta.
+    /// </summary>
     public abstract class Persona
     {
         #region ATRIBUTOS
@@ -17,7 +20,7 @@ namespace Entidades
         protected Sexo sexo;
         protected string domicilio;
         protected string telefono; 
-        protected Usuario usuario;//->Cada persona en nuestro sistema contara con un usuario.
+        protected Usuario usuario;//->Cada persona en nuestro sistema contará con un usuario.
         #endregion
 
         #region PROPIEDADES
@@ -25,16 +28,31 @@ namespace Entidades
         /// Propiedad de lectura que retorna el DNI de la persona.
         /// </summary>
         public string DNI { get { return this.dni; } }
-
         /// <summary>
         /// Esta propiedad abstracta, me permite implementarla en las clases derivadas, 
         /// de esta forma retornara en cliente true y en vendedor false, para poder usarla.
         /// </summary>
         public abstract bool EsCliente { get; }
+        /// <summary>
+        /// Propiedad de lectura, me permite obtener el Usuario de 
+        /// la persona.
+        /// </summary>
         public Usuario Usuario { get {  return this.usuario; } }
+        /// <summary>
+        /// Propiedad de lectura.
+        /// </summary>
         public string Nombre { get { return this.nombre; } }
+        /// <summary>
+        /// Propiedad de lectura.
+        /// </summary>
         public string Apellido { get { return this.apellido; } }
-        public string Telefono { get { return this.telefono; } }    
+        /// <summary>
+        /// Propiedad de lectura.
+        /// </summary>
+        public string Telefono { get { return this.telefono; } }
+        /// <summary>
+        /// Propiedad de lectura.
+        /// </summary>
         public string Domicilio { get { return this.domicilio; } }
         #endregion
 
@@ -107,7 +125,7 @@ namespace Entidades
 
         #region POLIMORFISMO
         /// <summary>
-        /// Codigo Hash del objeto 
+        /// Codigo Hash del objeto, es unico.
         /// </summary>
         /// <returns>Codigo Hash del objeto </returns>
         public override int GetHashCode()
@@ -137,8 +155,9 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{this.nombre}-{this.apellido}-{this.sexo}-{this.nacionalidad}" +
-                $"-{this.fechaDeNacimiento}-{this.dni}-{this.domicilio}";
+            return $"Nombre: {this.nombre} - Apellido: {this.apellido} - Sexo: {this.sexo} - Nacionalidad: {this.nacionalidad}" +
+                $" - Fecha de nacimiento: {this.fechaDeNacimiento} - DNI: {this.dni} - Domicilio: {this.domicilio} - Telefono: {this.telefono}" +
+                $" - Usuario: {this.usuario.ToString()}";
         }
         #endregion
     }

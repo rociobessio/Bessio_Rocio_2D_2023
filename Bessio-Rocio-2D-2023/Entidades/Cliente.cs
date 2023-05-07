@@ -20,15 +20,26 @@ namespace Entidades
         #endregion
 
         #region PROPIEDADES
+        /// <summary>
+        /// Propiedad de lectura y escritura, me permite devolver
+        /// y settear el dinero en efectivo del cliente.
+        /// </summary>
         public double DineroEfectivoDisponible { get { return this._dineroEfectivoDisponible; } set { this._dineroEfectivoDisponible = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura del atributo _tarjeta.
+        /// </summary>
         public Tarjeta Tarjeta { get { return this._tarjeta; } set { this._tarjeta = value; } }
+        /// <summary>
+        /// Propiedad de lectura y escritura del atributo _carritoCompra
+        /// </summary>
         public Carrito CarritoCompra { get { return this._carritoCompra; } set { this.CarritoCompra = value; } } 
         /// <summary>
         /// Retornara un booleano si usa tarjeta o no.
         /// </summary>
         public bool ConTarjeta { get { return this._esConTarjeta; } set { this._esConTarjeta = value; } }
         /// <summary>
-        /// Hago override de la propiedad EsCliente retornando true.
+        /// Hago override de la propiedad EsCliente retornando true, servirá para
+        /// el Login.
         /// </summary>
         public override bool EsCliente { get { return true; } } 
         #endregion
@@ -37,7 +48,7 @@ namespace Entidades
         /// <summary>
         /// Constructor que me permite crear una instancia de Cliente, le paso los 
         /// parametros correspondientes al base y el valor Carrito que recibo se lo doy
-        /// a mi atributo carrito..
+        /// a mi atributo carrito.
         /// </summary>
         /// <param name="nombre"></param>
         /// <param name="apellido"></param>
@@ -187,8 +198,7 @@ namespace Entidades
 
             return puedeComprar;
         } 
-        #endregion
-
+        #endregion 
 
         #region POLIMORFISMO
         /// <summary>
@@ -230,7 +240,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Valor Hash del objeto
+        /// Valor Hash del objeto, es unico.
         /// </summary>
         /// <returns>Valor Hash del objeto</returns>
         public override int GetHashCode()

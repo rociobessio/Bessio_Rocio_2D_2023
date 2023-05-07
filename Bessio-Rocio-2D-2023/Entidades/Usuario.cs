@@ -20,7 +20,6 @@ namespace Entidades
         /// la contrasenia.
         /// </summary>
         public string Contrasenia { get { return this._contrasenia; } }
-
         /// <summary>
         /// Esta propiedad de lectura me permitira imprimir en los textboxes
         /// el email.
@@ -67,7 +66,7 @@ namespace Entidades
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{this._email}-{this._contrasenia}-{this._fechaActual.ToShortDateString()}";
+            return $" email: {this._email} - contraseña: {this._contrasenia} - fecha de ingreso: {this._fechaActual.ToShortDateString()}";
         }
 
         /// <summary>
@@ -86,7 +85,7 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Codigo Hash del objeto
+        /// Codigo Hash del objeto, es unico.
         /// </summary>
         /// <returns>Codigo Hash del objeto</returns>
         public override int GetHashCode()
