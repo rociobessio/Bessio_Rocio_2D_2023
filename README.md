@@ -3,7 +3,7 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 
 ## Inicio de Sesión:
 ----------------------- 
-![LoginPP](https://user-images.githubusercontent.com/98594436/234700829-576121f3-ec55-462c-8955-b398d58f2d09.png)
+<img width="468" alt="Screenshot_26" src="https://user-images.githubusercontent.com/98594436/236694799-0e05c828-da78-4e72-b22b-a6884ec68c9a.png">
 
 1) El usuario podrá ingresar bajo dos perfiles, Vendedor y Cliente, dependiendo el perfil se cambiara el color del formulario.
 2) Existen 3 botones: el botón 'Cliente' muestra en los textboxes el email y contraseña de un Cliente hardcodeado para facilitar el ingreso a la aplicacion, lo mismo sucederá al presionar el botón 'Vendedor'. El botón 'Iniciar Sesión' buscará de que perfil es lo ingresado por los textboxes.
@@ -13,7 +13,7 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 # Perfil Vendedor:
 ----------------------
 ## Reponer stock:
-<img width="589" alt="Screenshot_24" src="https://user-images.githubusercontent.com/98594436/236645863-4abf0ba8-57d6-44e2-9591-70f6a986f992.png">
+<img width="588" alt="eqwe" src="https://user-images.githubusercontent.com/98594436/236694820-dd0f4420-a11e-43ab-8be7-e848df78ea35.png">
 
 1) El Vendedor podrá reponer productos al stock de la carnicería.
 2) Podrá agregar al stock, cambiar el precio de compra por kilo y cambiar el tipo de corte del producto.
@@ -56,4 +56,8 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 4) Al presionar el botón 'Comprar' se realizarán las validaciones necesarias y si puede compra.
 5) Si presiona 'Cancelar' eliminará todos los productos del carrito.
 6) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
+
+# Diagrama de clases:
+----------------------
+<img width="572" alt="DiagramaDeClases" src="https://user-images.githubusercontent.com/98594436/236694843-2407007f-fed6-45c9-8057-715b6e163186.png">
 
