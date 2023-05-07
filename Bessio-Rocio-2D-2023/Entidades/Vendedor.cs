@@ -13,7 +13,7 @@ namespace Entidades
         private int _id;
         private DateTime _fechaIngreso;
         private List<Cliente> _listaClientes;
-        private List<Carne> _listaCarne;
+        private List<Producto> _listaCarne;
         private static List<Carrito> _historialVentas; 
         #endregion
 
@@ -26,7 +26,7 @@ namespace Entidades
         /// <summary>
         /// Propiedad de escritura y lectura de la Lista de Productos/Carne.
         /// </summary>
-        public List<Carne> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
+        public List<Producto> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
         public DateTime FechaIngreso { get { return this._fechaIngreso; } } 
         /// <summary>
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
@@ -55,7 +55,7 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Carne> productos,string telefono,Usuario user,List<Carrito> listaVentas)
+                       int id,DateTime fechaIngreso,List<Cliente> clientes,List<Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
         {
             this._id = id;
@@ -75,7 +75,7 @@ namespace Entidades
         public Vendedor(Usuario user)
             :base(user)
         {
-            this._listaCarne = new List<Carne>();
+            this._listaCarne = new List<Producto>();
             this._listaClientes = new List<Cliente>(); 
             _historialVentas = new List<Carrito>(); 
         }
@@ -91,15 +91,15 @@ namespace Entidades
         {
             #region INSTANCIO CARNES
             //velistaCarnesDisponibles = new List<Carne>();
-            vendedor._listaCarne.Add(new Carne(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
-            vendedor._listaCarne.Add(new Carne(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
-            vendedor._listaCarne.Add(new Carne(Corte.Costilla, 190, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
-            vendedor._listaCarne.Add(new Carne(Corte.Asado, 10, CategoriaBovina.Ternero, new DateTime(2023, 05, 10), 190, "La mirona", Tipo.Carne_Vacuna, 1300));
-            vendedor._listaCarne.Add(new Carne(Corte.Pollo_Entero, 90, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 12, 07), 230, "La Granjita", Tipo.Pollo, 500));
-            vendedor._listaCarne.Add(new Carne(Corte.Matambre, 50, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1000, "Chascomus LA", Tipo.Cerdo, 1300));
-            vendedor._listaCarne.Add(new Carne(Corte.Pechuga, 100, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 06, 18), 500, "La Granjita", Tipo.Pollo, 1000));
-            vendedor._listaCarne.Add(new Carne(Corte.Pechito, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 10, 05), 2000, "La mirona", Tipo.Cerdo, 2500));
-            vendedor._listaCarne.Add(new Carne(Corte.Bife_Angosto, 100, CategoriaBovina.Novillito, new DateTime(2023, 09, 08),2000, "Siga la vaca", Tipo.Carne_Vacuna, 2300));
+            vendedor._listaCarne.Add(new Producto(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
+            vendedor._listaCarne.Add(new Producto(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
+            vendedor._listaCarne.Add(new Producto(Corte.Costilla, 190, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
+            vendedor._listaCarne.Add(new Producto(Corte.Asado, 10, CategoriaBovina.Ternero, new DateTime(2023, 05, 10), 190, "La mirona", Tipo.Carne_Vacuna, 1300));
+            vendedor._listaCarne.Add(new Producto(Corte.Pollo_Entero, 90, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 12, 07), 230, "La Granjita", Tipo.Pollo, 500));
+            vendedor._listaCarne.Add(new Producto(Corte.Matambre, 50, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1000, "Chascomus LA", Tipo.Cerdo, 1300));
+            vendedor._listaCarne.Add(new Producto(Corte.Pechuga, 100, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 06, 18), 500, "La Granjita", Tipo.Pollo, 1000));
+            vendedor._listaCarne.Add(new Producto(Corte.Pechito, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 10, 05), 2000, "La mirona", Tipo.Cerdo, 2500));
+            vendedor._listaCarne.Add(new Producto(Corte.Bife_Angosto, 100, CategoriaBovina.Novillito, new DateTime(2023, 09, 08),2000, "Siga la vaca", Tipo.Carne_Vacuna, 2300));
             #endregion
 
             #region INSTANCIO CLIENTES 
@@ -129,7 +129,7 @@ namespace Entidades
         /// <param name="peso"></param>
         /// <param name="carneSeleccionada"></param>
         /// <returns>True si cumple con los requisitos, false sino.</returns>
-        public static bool Vender(double totalCompra, Cliente cliente, double peso,Carne carneSeleccionada)
+        public static bool Vender(double totalCompra, Cliente cliente, double peso,Producto carneSeleccionada)
         {
             bool pudoComprar = false;
             if (cliente.ConTarjeta)//-->Chequeo que sea con tarjeta

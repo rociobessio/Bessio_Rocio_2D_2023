@@ -143,7 +143,7 @@ namespace Entidades
         /// <param name="clienteIngresado"></param>
         /// <param name="listaCarnesDisponibles"></param> 
         /// <returns></returns>
-        public static bool Comprar(Cliente clienteIngresado, List<Carne> listaCarnesDisponibles)
+        public static bool Comprar(Cliente clienteIngresado, List<Producto> listaCarnesDisponibles)
         {
             bool puedeComprar = false;
 
@@ -164,12 +164,12 @@ namespace Entidades
             }
 
 
-            foreach (Carne carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+            foreach (Producto carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
             {
-                foreach (Carne carneCarrito in clienteIngresado.CarritoCompra.Productos)
+                foreach (Producto carneCarrito in clienteIngresado.CarritoCompra.Productos)
                 {
                     if ((carneDisponible == carneCarrito) &&
-                        (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan
+                        (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan los codigos
                     {
                         carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
                         puedeComprar = true;//-->Solo aca cambio a true
@@ -178,11 +178,11 @@ namespace Entidades
             } 
 
             //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
-            if (clienteIngresado.ConTarjeta)
+            if (clienteIngresado.ConTarjeta && puedeComprar == true)
             {
                 clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
             }
-            else
+            else if(!clienteIngresado.ConTarjeta && puedeComprar == true)
                 clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
 
             return puedeComprar;

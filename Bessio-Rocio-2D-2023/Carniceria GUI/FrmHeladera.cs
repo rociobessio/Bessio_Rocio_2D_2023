@@ -17,7 +17,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS DEL FORM 
 
         #region CARNE
-        Carne carneSeleccionada;
+        Producto carneSeleccionada;
         double peso;
         double precioCompraCliente;
         #endregion
@@ -44,7 +44,7 @@ namespace Carniceria_GUI
             this.Text = "Reponer Stock";
 
             this.tablaProductos = new DataTable();//-->Instancio la dataTable.
-            this.carneSeleccionada = new Carne();//-->Instancio par evitar nulls
+            this.carneSeleccionada = new Producto();//-->Instancio par evitar nulls
         }
         public FrmHeladera(Vendedor vendedor)
             : this()
@@ -120,7 +120,7 @@ namespace Carniceria_GUI
             }
 
             //Recorro la lista en busca de ese producto y lo muestro en los textboxes
-            foreach (Carne carne in this.vendedorForm.ListaProductos)
+            foreach (Producto carne in this.vendedorForm.ListaProductos)
             {
                 if (carne == codigoProducto)
                 {
@@ -247,7 +247,7 @@ namespace Carniceria_GUI
         {
             tablaProductos.Rows.Clear();
 
-            foreach (Carne carnes in this.vendedorForm.ListaProductos)
+            foreach (Producto carnes in this.vendedorForm.ListaProductos)
             {
                 auxFilaProduc = tablaProductos.NewRow();
 
@@ -277,7 +277,7 @@ namespace Carniceria_GUI
             this.txtProveedor.Clear();
             this.txtPrecioCompraFrigorifico.Enabled = false;
             this.txtProveedor.Enabled = false;
-          //  this.cbCorteCarne.Enabled = false;
+            //  this.cbCorteCarne.Enabled = false;
             this.cbTexturaCarne.Enabled = false;
             this.cbTipoDeCarneReponer.Enabled = false;
             this.dtpFechaVencimiento.Enabled = false;
@@ -340,7 +340,7 @@ namespace Carniceria_GUI
             {
                 carneSeleccionada.Peso += peso;//-->Le agrego el peso nuevo a lo que tenia. 
                 carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
-                carneSeleccionada.Corte = Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString()); 
+                carneSeleccionada.Corte = Enum.Parse<Corte>(this.cbCorteCarne.SelectedItem.ToString());
 
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
@@ -417,6 +417,13 @@ namespace Carniceria_GUI
         {
 
         }
-        #endregion 
+        private void cbTexturaCarne_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
+
+
     }
 }

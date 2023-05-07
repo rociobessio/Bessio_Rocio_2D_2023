@@ -42,6 +42,7 @@
             txtDomicilio = new TextBox();
             txtEmail = new TextBox();
             groupBox2 = new GroupBox();
+            label13 = new Label();
             label10 = new Label();
             label6 = new Label();
             txtNumTarjeta = new TextBox();
@@ -52,6 +53,7 @@
             txtMontoDisponible = new TextBox();
             label4 = new Label();
             txtSaldoDisponible = new TextBox();
+            label12 = new Label();
             groupBox3 = new GroupBox();
             label1 = new Label();
             txtPesoRequerido = new TextBox();
@@ -74,7 +76,7 @@
             // 
             pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources._customer_service_agent_89777;
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(40, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(123, 117);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
@@ -214,6 +216,7 @@
             // groupBox2
             // 
             groupBox2.Anchor = AnchorStyles.None;
+            groupBox2.Controls.Add(label13);
             groupBox2.Controls.Add(label10);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(txtNumTarjeta);
@@ -228,10 +231,22 @@
             groupBox2.ForeColor = Color.White;
             groupBox2.Location = new Point(709, 12);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(231, 389);
+            groupBox2.Size = new Size(231, 394);
             groupBox2.TabIndex = 16;
             groupBox2.TabStop = false;
             groupBox2.Text = "Billetera";
+            groupBox2.Enter += groupBox2_Enter;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            label13.ForeColor = Color.White;
+            label13.Location = new Point(90, 37);
+            label13.Name = "label13";
+            label13.Size = new Size(17, 21);
+            label13.TabIndex = 37;
+            label13.Text = "*";
             // 
             // label10
             // 
@@ -249,7 +264,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label6.ForeColor = Color.White;
-            label6.Location = new Point(8, 304);
+            label6.Location = new Point(6, 308);
             label6.Name = "label6";
             label6.Size = new Size(128, 25);
             label6.TabIndex = 22;
@@ -264,7 +279,7 @@
             // 
             // txtTotalCompra
             // 
-            txtTotalCompra.Location = new Point(8, 332);
+            txtTotalCompra.Location = new Point(6, 336);
             txtTotalCompra.Name = "txtTotalCompra";
             txtTotalCompra.Size = new Size(217, 37);
             txtTotalCompra.TabIndex = 21;
@@ -296,7 +311,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.ForeColor = Color.White;
-            label5.Location = new Point(2, 151);
+            label5.Location = new Point(6, 151);
             label5.Name = "label5";
             label5.Size = new Size(220, 25);
             label5.TabIndex = 14;
@@ -304,7 +319,7 @@
             // 
             // txtMontoDisponible
             // 
-            txtMontoDisponible.Location = new Point(8, 179);
+            txtMontoDisponible.Location = new Point(6, 179);
             txtMontoDisponible.Name = "txtMontoDisponible";
             txtMontoDisponible.Size = new Size(216, 37);
             txtMontoDisponible.TabIndex = 13;
@@ -314,18 +329,33 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.ForeColor = Color.White;
-            label4.Location = new Point(6, 220);
+            label4.Location = new Point(6, 228);
             label4.Name = "label4";
             label4.Size = new Size(152, 25);
             label4.TabIndex = 12;
             label4.Text = "Saldo disponible";
+            label4.Click += label4_Click;
             // 
             // txtSaldoDisponible
             // 
-            txtSaldoDisponible.Location = new Point(6, 248);
+            txtSaldoDisponible.Location = new Point(6, 256);
             txtSaldoDisponible.Name = "txtSaldoDisponible";
             txtSaldoDisponible.Size = new Size(219, 37);
             txtSaldoDisponible.TabIndex = 0;
+            txtSaldoDisponible.TextChanged += txtSaldoDisponible_TextChanged;
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.None;
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 6F, FontStyle.Italic, GraphicsUnit.Point);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(75, 773);
+            label12.Name = "label12";
+            label12.Size = new Size(112, 45);
+            label12.TabIndex = 31;
+            label12.Text = "* Tarjeta de Crédito \r\ntiene un 5% de \r\nrecargo.";
+            label12.Click += label12_Click;
             // 
             // groupBox3
             // 
@@ -461,6 +491,7 @@
             // 
             // btnSacarFiltro
             // 
+            btnSacarFiltro.Anchor = AnchorStyles.None;
             btnSacarFiltro.Cursor = Cursors.Hand;
             btnSacarFiltro.FlatAppearance.BorderSize = 0;
             btnSacarFiltro.FlatStyle = FlatStyle.Flat;
@@ -479,6 +510,7 @@
             BackColor = Color.DarkKhaki;
             ClientSize = new Size(955, 827);
             Controls.Add(btnSacarFiltro);
+            Controls.Add(label12);
             Controls.Add(btnCancelarCompra);
             Controls.Add(richTextBoxCarrito);
             Controls.Add(label11);
@@ -548,5 +580,7 @@
         private RichTextBox richTextBoxCarrito;
         private Button btnCancelarCompra;
         private Button btnSacarFiltro;
+        private Label label12;
+        private Label label13;
     }
 }

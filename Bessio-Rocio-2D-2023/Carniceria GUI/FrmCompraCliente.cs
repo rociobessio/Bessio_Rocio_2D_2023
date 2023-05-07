@@ -22,9 +22,9 @@ namespace Carniceria_GUI
     public partial class FrmCompraCliente : Form
     {
         #region ATRIBUTOS
-        private List<Carne> productosDisponibles;
+        private List<Producto> productosDisponibles;
         private Cliente clienteFormulario;
-        private static Carne carneSeleccionada;
+        private static Producto carneSeleccionada;
         private Carrito carritoCliente;
         private double peso;
         private double totalDisponibleCliente;
@@ -36,7 +36,7 @@ namespace Carniceria_GUI
         int codigoProducto;
         #endregion
 
-        SoundPlayer soundPlayer;  
+        SoundPlayer soundPlayer;
         #endregion
 
         #region CONSTRUCTOR
@@ -55,27 +55,27 @@ namespace Carniceria_GUI
             _dataTable = new DataTable();
             this.lblClienteEmail.Text = cliente;
             clienteFormulario = cliente;//-->Paso los datos
-            carneSeleccionada = new Carne();//-->Evito nulos
+            carneSeleccionada = new Producto();//-->Evito nulos
             carritoCliente = new Carrito();
             soundPlayer = new SoundPlayer();
 
             #region INSTANCIO PRODUCTOS
-            productosDisponibles = new List<Carne>();
-            productosDisponibles.Add(new Carne(Corte.Lomo, 3, CategoriaBovina.Novillo,
+            productosDisponibles = new List<Producto>();
+            productosDisponibles.Add(new Producto(Corte.Lomo, 3, CategoriaBovina.Novillo,
                                      new DateTime(2023, 06, 01), 1000, "Antonio", Tipo.Carne_Vacuna, 1200));
-            productosDisponibles.Add(new Carne(Corte.Lomo, 13, CategoriaBovina.Ternero,
+            productosDisponibles.Add(new Producto(Corte.Lomo, 13, CategoriaBovina.Ternero,
                          new DateTime(2023, 10, 07), 1100, "Miramar CO", Tipo.Carne_Vacuna, 1400));
-            productosDisponibles.Add(new Carne(Corte.Suprema, 1000, CategoriaBovina.No_Es_Bovino,
+            productosDisponibles.Add(new Producto(Corte.Suprema, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 05, 21), 800, "Mingo CO", Tipo.Pollo, 1000));
-            productosDisponibles.Add(new Carne(Corte.Bondiola, 1000, CategoriaBovina.No_Es_Bovino,
+            productosDisponibles.Add(new Producto(Corte.Bondiola, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 06, 01), 1200, "Siga la Vaca", Tipo.Cerdo, 1400));
-            productosDisponibles.Add(new Carne(Corte.Costilla, 1000, CategoriaBovina.No_Es_Bovino,
+            productosDisponibles.Add(new Producto(Corte.Costilla, 1000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 07, 12), 1000, "Gra Chascomús", Tipo.Cerdo, 1200));
-            productosDisponibles.Add(new Carne(Corte.Nalga, 200, CategoriaBovina.Novillito,
+            productosDisponibles.Add(new Producto(Corte.Nalga, 200, CategoriaBovina.Novillito,
                          new DateTime(2023, 06, 01), 600, "Antonio", Tipo.Carne_Vacuna, 1000));
-            productosDisponibles.Add(new Carne(Corte.Pollo_Entero, 2000, CategoriaBovina.No_Es_Bovino,
+            productosDisponibles.Add(new Producto(Corte.Pollo_Entero, 2000, CategoriaBovina.No_Es_Bovino,
                          new DateTime(2023, 06, 01), 1400, "Granjitas ", Tipo.Pollo, 1700));
-            productosDisponibles.Add(new Carne(Corte.Solomillo, 10, CategoriaBovina.No_Es_Bovino,
+            productosDisponibles.Add(new Producto(Corte.Solomillo, 10, CategoriaBovina.No_Es_Bovino,
              new DateTime(2023, 06, 01), 1400, "Alsina Lanús ", Tipo.Cerdo, 1700));
             #endregion
 
@@ -85,7 +85,7 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("comprar por kilo para agregar al carrito.");
             textoAyuda.AppendLine("Podrás visualizar alguno de tus datos, en el apartado de costo ");
             textoAyuda.AppendLine("se mostrará el monto disponible de cliente, el saldo disponible que tiene y ");
-            textoAyuda.AppendLine("el total de la compra. Tambien podrá cancelar una compra eliminando todos los contenidos del carrito."); 
+            textoAyuda.AppendLine("el total de la compra. Tambien podrá cancelar una compra eliminando todos los contenidos del carrito.");
             textoAyuda.AppendLine("Al presionar el botón 'Finalizar' podrá ver una factura para confirmar la compra.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
@@ -211,7 +211,7 @@ namespace Carniceria_GUI
             }
 
             //Recorro la lista en busca de ese producto
-            foreach (Carne carne in this.productosDisponibles)
+            foreach (Producto carne in this.productosDisponibles)
             {
                 if (carne == codigoProducto)
                 {
@@ -266,7 +266,7 @@ namespace Carniceria_GUI
                 }
             }
 
-            foreach (Carne carnes in this.productosDisponibles)
+            foreach (Producto carnes in this.productosDisponibles)
             {
                 auxFilaProduc = _dataTable.NewRow();
 
@@ -327,10 +327,10 @@ namespace Carniceria_GUI
 
                 if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
                 {
-                    foreach (Carne carne in clienteFormulario.CarritoCompra.Productos)
+                    foreach (Producto carne in clienteFormulario.CarritoCompra.Productos)
                     {
                         this.richTextBoxCarrito.Text += $"Corte: {carne.Corte} - " +
-                                         $"Precio: ${carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
+                                         $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
                     }
 
                     this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra
@@ -355,7 +355,7 @@ namespace Carniceria_GUI
         {
             if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
             {
-                DialogResult respuesta = MessageBox.Show("¿Desea Realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Pregunta", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult respuesta = MessageBox.Show("¿Desea realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (DialogResult.Yes == respuesta)
                 {
@@ -418,6 +418,27 @@ namespace Carniceria_GUI
         private void btnSacarFiltro_Click(object sender, EventArgs e)
         {
             this.CargarProductosDataGrid();
+        }
+        #endregion
+
+        #region OTROS EVENTOS
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSaldoDisponible_TextChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
         #endregion
     }

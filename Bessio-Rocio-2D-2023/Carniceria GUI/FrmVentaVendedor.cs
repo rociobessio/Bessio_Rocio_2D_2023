@@ -20,7 +20,7 @@ namespace Carniceria_GUI
     {
         #region ATRIBUTOS
         private Vendedor _vendedorForm;
-        private Carne carneSeleccionada;
+        private Producto carneSeleccionada;
         private Cliente clienteSeleccionado;
         private SoundPlayer soundPlayer; 
 
@@ -60,7 +60,7 @@ namespace Carniceria_GUI
             _vendedorForm = vendedor;
             this.lblVendedorEmail.Text = _vendedorForm;
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
-            carneSeleccionada = new Carne(); 
+            carneSeleccionada = new Producto(); 
 
             frmHeladera = new FrmHeladera();
 
@@ -157,7 +157,7 @@ namespace Carniceria_GUI
         {
             _dataTable.Rows.Clear();
 
-            foreach (Carne carnes in this._vendedorForm.ListaProductos)
+            foreach (Producto carnes in this._vendedorForm.ListaProductos)
             {
                 auxFilaProduc = _dataTable.NewRow();
 
@@ -235,7 +235,7 @@ namespace Carniceria_GUI
             }
 
             //Recorro la lista en busca de ese producto y lo muestro en los textboxes
-            foreach (Carne carne in this._vendedorForm.ListaProductos)
+            foreach (Producto carne in this._vendedorForm.ListaProductos)
             {
                 if (carne == codigoProducto)
                 {
@@ -320,7 +320,7 @@ namespace Carniceria_GUI
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
 
                 //-->Obtengo el total que deberá pagar el cliente.
-                totalAPagar = Carne.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
+                totalAPagar = Producto.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
 
                 if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada))//-->Intenta comprar.
                 {
@@ -360,7 +360,7 @@ namespace Carniceria_GUI
             if (ValidarCampos())
             {
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
-                double retorno = Carne.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
+                double retorno = Producto.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
                 this.txtTotalAPagar.Text = retorno.ToString();
             }
         }

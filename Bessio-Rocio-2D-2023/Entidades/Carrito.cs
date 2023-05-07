@@ -13,14 +13,14 @@ namespace Entidades
         private DateTime _fechaCompra;
         private double _precioTotal; 
         private bool _conTarjeta;
-        private List<Carne> _listaDeProductos;  
+        private List<Producto> _listaDeProductos;  
         #endregion
 
         #region PROPIEDADES
         public DateTime FechaCompra { get { return this._fechaCompra; } }
         public double PrecioTotal { get { return this._precioTotal; } set { this._precioTotal = value; } }
         public bool ConTarjeta { get { return this._conTarjeta; } set { this._conTarjeta = value; } }
-        public List<Carne> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
+        public List<Producto> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -32,7 +32,7 @@ namespace Entidades
             this._conTarjeta = false;
             this._fechaCompra = DateTime.Today;
             this._precioTotal = 00;
-            this._listaDeProductos = new List<Carne>();
+            this._listaDeProductos = new List<Producto>();
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Entidades
         /// <param name="precioTotal"></param>
         /// <param name="tarjeta"></param>
         /// <param name="productos"></param>
-        public Carrito(DateTime compra, double precioTotal, List<Carne> productos,bool tarjeta)
+        public Carrito(DateTime compra, double precioTotal, List<Producto> productos,bool tarjeta)
         {
             this._conTarjeta = tarjeta;
             this._fechaCompra = compra; 
@@ -62,7 +62,7 @@ namespace Entidades
         /// <param name="carrito"></param>
         /// <param name="carne"></param>
         /// <returns></returns>
-        public static bool operator +(Carrito carrito, Carne carne)
+        public static bool operator +(Carrito carrito, Producto carne)
         {
             bool puede = true; 
             if (!(carrito is null) && !(carne is null))
@@ -87,12 +87,12 @@ namespace Entidades
         /// <param name="cantPesoCliente"></param>
         /// <param name="cliente"></param>
         /// <returns>Retorna true si pudo, false sino</returns>
-        public static bool AgregarAlCarrito(Carne carne, double cantPesoCliente,Cliente cliente)
+        public static bool AgregarAlCarrito(Producto carne, double cantPesoCliente,Cliente cliente)
         {
             bool pudoAgregar = false;
-            Carne auxCarne = new Carne();//-->Aux para no sobreescribir el producto original
+            Producto auxCarne = new Producto();//-->Aux para no sobreescribir el producto original
 
-            double precioCarne = Carne.CalcularPrecioTotal(cliente, carne, cantPesoCliente);//-->Calculo el precio
+            double precioCarne = Producto.CalcularPrecioTotal(cliente, carne, cantPesoCliente);//-->Calculo el precio
             cliente.CarritoCompra._conTarjeta = cliente.ConTarjeta;//-->Paso si es con tarjeta la compra
 
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
@@ -108,7 +108,7 @@ namespace Entidades
                 auxCarne.Vencimiento = carne.Vencimiento; 
                 auxCarne.PrecioCompraCliente = precioCarne;//-->Setteo su precio ya calculado
 
-                foreach (Carne item in cliente.CarritoCompra.Productos)//-->Recorro si son coincidentes
+                foreach (Producto item in cliente.CarritoCompra.Productos)//-->Recorro si son coincidentes
                 {
                     if(item == auxCarne)//-->Mediante el codigo comparo
                     {
@@ -155,14 +155,13 @@ namespace Entidades
             if (ConTarjeta)
             {
                 sb.AppendLine("Con tarjeta: SI.");
-                sb.AppendLine("Cuenta con un recargo del: %5.");
             }
             else
             {
                 sb.AppendLine("Con tarjeta: NO.");
             }
             
-            foreach (Carne producto in this._listaDeProductos)
+            foreach (Producto producto in this._listaDeProductos)
             {
                 sb.AppendLine("---------PRODUCTO-------------");
                 if (this._listaDeProductos.Count > 0)
