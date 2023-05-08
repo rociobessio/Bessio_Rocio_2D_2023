@@ -168,7 +168,7 @@ namespace Carniceria_GUI
                 this.cbCorteCarne.Items.Add(Corte.Lomo);
                 this.cbCorteCarne.Items.Add(Corte.Vacio);
                 this.cbCorteCarne.Items.Add(Corte.Matambre);
-                //this.cbCorteCarne.SelectedIndex = 0;//-->Selecciono el primero de esa opcion, si cambiase el Tipo me quedaria seleccionado el indice anterior
+                this.cbCorteCarne.SelectedIndex = 0;//-->Selecciono el primero de esa opcion, si cambiase el Tipo me quedaria seleccionado el indice anterior
 
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillito);
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Ternero);
@@ -182,7 +182,7 @@ namespace Carniceria_GUI
                 this.cbCorteCarne.Items.Add(Corte.Suprema);
                 this.cbCorteCarne.Items.Add(Corte.Pata_Y_Muslo);
                 this.cbCorteCarne.Items.Add(Corte.Pollo_Entero);
-                //this.cbCorteCarne.SelectedIndex = 0;
+                this.cbCorteCarne.SelectedIndex = 0;
 
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.No_Es_Bovino);
                 this.cbTexturaCarne.SelectedIndex = 0;
@@ -195,7 +195,7 @@ namespace Carniceria_GUI
                 this.cbCorteCarne.Items.Add(Corte.Pechito);
                 this.cbCorteCarne.Items.Add(Corte.Solomillo);
                 this.cbCorteCarne.Items.Add(Corte.Matambre);
-                //this.cbCorteCarne.SelectedIndex = 0;
+                this.cbCorteCarne.SelectedIndex = 0;
 
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.No_Es_Bovino);
                 this.cbTexturaCarne.SelectedIndex = 0;
@@ -304,7 +304,8 @@ namespace Carniceria_GUI
             }
 
             //--->Valido los numeros, EL PRECIO DE COMPRA DEL FRIGORIFICO DEBERA DE SER MAYOR AL PRECIO DE VENTA EL PUBLICO
-            if (peso <= 0 || precioCompraCliente <= 0 || precioCompra <= 0 || precioCompra > precioCompraCliente)
+            //-->Peso puede ser 0, no suma nada mantiene stock, por si quisiese cambiar el precio.
+            if (peso < 0 || precioCompraCliente <= 0 || precioCompra <= 0 || precioCompra > precioCompraCliente)
             {
                 esValido = false;//-->Si alguno de los valores ingresado es menor o igual a 0, no lo dejo.
             }
