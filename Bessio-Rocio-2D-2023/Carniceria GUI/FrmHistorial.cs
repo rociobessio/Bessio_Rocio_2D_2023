@@ -50,6 +50,7 @@ namespace Carniceria_GUI
         {
             this.BackColor = Color.MediumPurple;
             this.lblVendedorEmail.Text = vendedor;
+            this.lblHoraIngreso.Text = vendedor.FechaIngreso.ToShortTimeString();
             historial = Vendedor.HistorialVentas;
         }
         #endregion 

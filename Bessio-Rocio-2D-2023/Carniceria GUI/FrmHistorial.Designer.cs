@@ -35,6 +35,9 @@
             label8 = new Label();
             lblVendedorEmail = new Label();
             pictureBox1 = new PictureBox();
+            label15 = new Label();
+            lblHoraIngreso = new Label();
+            label14 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -119,12 +122,51 @@
             pictureBox1.TabIndex = 32;
             pictureBox1.TabStop = false;
             // 
+            // label15
+            // 
+            label15.Anchor = AnchorStyles.None;
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(839, 9);
+            label15.Name = "label15";
+            label15.Size = new Size(30, 21);
+            label15.TabIndex = 47;
+            label15.Text = "hs.";
+            // 
+            // lblHoraIngreso
+            // 
+            lblHoraIngreso.Anchor = AnchorStyles.None;
+            lblHoraIngreso.AutoSize = true;
+            lblHoraIngreso.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblHoraIngreso.ForeColor = Color.White;
+            lblHoraIngreso.Location = new Point(794, 9);
+            lblHoraIngreso.Name = "lblHoraIngreso";
+            lblHoraIngreso.Size = new Size(30, 21);
+            lblHoraIngreso.TabIndex = 46;
+            lblHoraIngreso.Text = "hs.";
+            // 
+            // label14
+            // 
+            label14.Anchor = AnchorStyles.None;
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(660, 9);
+            label14.Name = "label14";
+            label14.Size = new Size(128, 21);
+            label14.TabIndex = 45;
+            label14.Text = "Hora de ingreso:";
+            // 
             // FrmHistorial
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
             ClientSize = new Size(888, 567);
+            Controls.Add(label15);
+            Controls.Add(lblHoraIngreso);
+            Controls.Add(label14);
             Controls.Add(pictureBox1);
             Controls.Add(label8);
             Controls.Add(lblVendedorEmail);
@@ -150,5 +192,8 @@
         private Label label8;
         private Label lblVendedorEmail;
         private PictureBox pictureBox1;
+        private Label label15;
+        private Label lblHoraIngreso;
+        private Label label14;
     }
 }
