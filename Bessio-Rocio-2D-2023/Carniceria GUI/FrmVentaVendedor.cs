@@ -22,7 +22,7 @@ namespace Carniceria_GUI
         private Vendedor _vendedorForm;
         private Producto carneSeleccionada;
         private Cliente clienteSeleccionado;
-        private SoundPlayer soundPlayer; 
+        private SoundPlayer soundPlayer;
 
         DataTable _dataTable;
         DataRow auxFilaProduc;
@@ -59,8 +59,9 @@ namespace Carniceria_GUI
         {
             _vendedorForm = vendedor;
             this.lblVendedorEmail.Text = _vendedorForm;
+            this.lblHoraIngreso.Text = _vendedorForm.FechaIngreso.ToShortTimeString();
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
-            carneSeleccionada = new Producto(); 
+            carneSeleccionada = new Producto();
 
             frmHeladera = new FrmHeladera();
 
@@ -70,8 +71,6 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("se mostrará su método de pago y algunos datos relevantes,");
             textoAyuda.AppendLine("mediante el datagrid podrá seleccionar un producto disponible de la lista");
             textoAyuda.AppendLine("para venderlo se necesitara la cantidad y se descontará del stock, actualizandose.");
-            textoAyuda.AppendLine("Podrá cancelar la compra si lo requiere.");
-            textoAyuda.AppendLine("Al presionar 'Historial' será capaz de visualizar el historial de compras.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
@@ -190,7 +189,7 @@ namespace Carniceria_GUI
                     this.txtDNI.Text = cliente.DNI;
                     this.txtDomicilio.Text = cliente.Domicilio;
                     this.txtNombre.Text = cliente.Nombre;
-                    this.txtTelefono.Text = cliente.Telefono; 
+                    this.txtTelefono.Text = cliente.Telefono;
 
                     if (cliente.ConTarjeta)
                     {
@@ -326,7 +325,7 @@ namespace Carniceria_GUI
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",
-                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
                     {

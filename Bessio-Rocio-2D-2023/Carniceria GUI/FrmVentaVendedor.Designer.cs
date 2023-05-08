@@ -52,6 +52,8 @@
             ckbTarjeta = new CheckBox();
             ckbEfectivo = new CheckBox();
             groupBox3 = new GroupBox();
+            txtSaldoDisponibleCliente = new TextBox();
+            label12 = new Label();
             btnCalcularCosto = new Button();
             label10 = new Label();
             txtTotalAPagar = new TextBox();
@@ -63,8 +65,9 @@
             groupBox4 = new GroupBox();
             lblVendedorEmail = new Label();
             label8 = new Label();
-            label12 = new Label();
-            txtSaldoDisponibleCliente = new TextBox();
+            lblHoraIngreso = new Label();
+            label14 = new Label();
+            label15 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
@@ -330,6 +333,23 @@
             groupBox3.TabStop = false;
             groupBox3.Text = "Método de Pago";
             // 
+            // txtSaldoDisponibleCliente
+            // 
+            txtSaldoDisponibleCliente.Location = new Point(184, 109);
+            txtSaldoDisponibleCliente.Name = "txtSaldoDisponibleCliente";
+            txtSaldoDisponibleCliente.Size = new Size(150, 37);
+            txtSaldoDisponibleCliente.TabIndex = 23;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(15, 118);
+            label12.Name = "label12";
+            label12.Size = new Size(163, 28);
+            label12.TabIndex = 22;
+            label12.Text = "Saldo disponible:";
+            // 
             // btnCalcularCosto
             // 
             btnCalcularCosto.Anchor = AnchorStyles.Bottom;
@@ -454,22 +474,41 @@
             label8.TabIndex = 24;
             label8.Text = "VENDEDOR:";
             // 
-            // label12
+            // lblHoraIngreso
             // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(15, 118);
-            label12.Name = "label12";
-            label12.Size = new Size(163, 28);
-            label12.TabIndex = 22;
-            label12.Text = "Saldo disponible:";
+            lblHoraIngreso.Anchor = AnchorStyles.None;
+            lblHoraIngreso.AutoSize = true;
+            lblHoraIngreso.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblHoraIngreso.ForeColor = Color.White;
+            lblHoraIngreso.Location = new Point(898, 9);
+            lblHoraIngreso.Name = "lblHoraIngreso";
+            lblHoraIngreso.Size = new Size(30, 21);
+            lblHoraIngreso.TabIndex = 43;
+            lblHoraIngreso.Text = "hs.";
             // 
-            // txtSaldoDisponibleCliente
+            // label14
             // 
-            txtSaldoDisponibleCliente.Location = new Point(184, 109);
-            txtSaldoDisponibleCliente.Name = "txtSaldoDisponibleCliente";
-            txtSaldoDisponibleCliente.Size = new Size(150, 37);
-            txtSaldoDisponibleCliente.TabIndex = 23;
+            label14.Anchor = AnchorStyles.None;
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label14.ForeColor = Color.White;
+            label14.Location = new Point(764, 9);
+            label14.Name = "label14";
+            label14.Size = new Size(128, 21);
+            label14.TabIndex = 42;
+            label14.Text = "Hora de ingreso:";
+            // 
+            // label15
+            // 
+            label15.Anchor = AnchorStyles.None;
+            label15.AutoSize = true;
+            label15.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label15.ForeColor = Color.White;
+            label15.Location = new Point(943, 9);
+            label15.Name = "label15";
+            label15.Size = new Size(30, 21);
+            label15.TabIndex = 44;
+            label15.Text = "hs.";
             // 
             // FrmVentaVendedor
             // 
@@ -477,6 +516,9 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1001, 962);
+            Controls.Add(label15);
+            Controls.Add(lblHoraIngreso);
+            Controls.Add(label14);
             Controls.Add(label8);
             Controls.Add(lblVendedorEmail);
             Controls.Add(groupBox4);
@@ -546,5 +588,8 @@
         private Label label8;
         private TextBox txtSaldoDisponibleCliente;
         private Label label12;
+        private Label lblHoraIngreso;
+        private Label label14;
+        private Label label15;
     }
 }

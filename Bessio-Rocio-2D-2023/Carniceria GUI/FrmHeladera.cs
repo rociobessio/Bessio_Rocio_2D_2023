@@ -50,6 +50,7 @@ namespace Carniceria_GUI
             : this()
         {
             this.lblVendedorEmail.Text = vendedor;
+            this.lblHoraIngreso.Text = vendedor.FechaIngreso.ToShortTimeString();
 
             #region ASIGNACION VENDEDOR
             vendedorForm = vendedor;//-->Asigno el vendedor que recibo 
@@ -276,7 +277,7 @@ namespace Carniceria_GUI
             this.txtPrecioVentaClientes.Clear();
             this.txtProveedor.Clear();
             this.txtPrecioCompraFrigorifico.Enabled = false;
-            this.txtProveedor.Enabled = false; 
+            this.txtProveedor.Enabled = false;
             this.cbTexturaCarne.Enabled = false;
             this.cbTipoDeCarneReponer.Enabled = false;
             this.dtpFechaVencimiento.Enabled = false;

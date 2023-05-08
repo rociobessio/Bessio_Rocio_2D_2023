@@ -56,6 +56,9 @@
             groupBox1 = new GroupBox();
             label1 = new Label();
             btnHistorial = new Button();
+            label9 = new Label();
+            lblHoraIngreso = new Label();
+            label12 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -384,12 +387,51 @@
             btnHistorial.UseVisualStyleBackColor = true;
             btnHistorial.Click += btnHistorial_Click;
             // 
+            // label9
+            // 
+            label9.Anchor = AnchorStyles.None;
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label9.ForeColor = Color.White;
+            label9.Location = new Point(957, 9);
+            label9.Name = "label9";
+            label9.Size = new Size(128, 21);
+            label9.TabIndex = 40;
+            label9.Text = "Hora de ingreso:";
+            // 
+            // lblHoraIngreso
+            // 
+            lblHoraIngreso.Anchor = AnchorStyles.None;
+            lblHoraIngreso.AutoSize = true;
+            lblHoraIngreso.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lblHoraIngreso.ForeColor = Color.White;
+            lblHoraIngreso.Location = new Point(1079, 9);
+            lblHoraIngreso.Name = "lblHoraIngreso";
+            lblHoraIngreso.Size = new Size(30, 21);
+            lblHoraIngreso.TabIndex = 41;
+            lblHoraIngreso.Text = "hs.";
+            // 
+            // label12
+            // 
+            label12.Anchor = AnchorStyles.None;
+            label12.AutoSize = true;
+            label12.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label12.ForeColor = Color.White;
+            label12.Location = new Point(1129, 9);
+            label12.Name = "label12";
+            label12.Size = new Size(30, 21);
+            label12.TabIndex = 42;
+            label12.Text = "hs.";
+            // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1176, 801);
+            Controls.Add(label12);
+            Controls.Add(lblHoraIngreso);
+            Controls.Add(label9);
             Controls.Add(btnHistorial);
             Controls.Add(label1);
             Controls.Add(groupBox1);
@@ -443,5 +485,8 @@
         private TextBox txtPrecioCompraFrigorifico;
         private Label label1;
         private Button btnHistorial;
+        private Label label9;
+        private Label lblHoraIngreso;
+        private Label label12;
     }
 }

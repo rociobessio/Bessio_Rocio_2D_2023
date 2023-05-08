@@ -87,6 +87,7 @@ namespace Entidades
         public Vendedor(Usuario user)
             :base(user)
         {
+            this._fechaIngreso = DateTime.Now;
             this._listaProductos = new Dictionary<int, Producto>();
             this._listaClientes = new List<Cliente>(); 
             _historialVentas = new List<Carrito>(); 
