@@ -59,5 +59,6 @@ En este repositorio se desarollo una aplicación del tipo carnicería.
 
 # Diagrama de clases:
 ----------------------
-<img width="572" alt="DiagramaDeClases" src="https://user-images.githubusercontent.com/98594436/236694843-2407007f-fed6-45c9-8057-715b6e163186.png">
+<img width="572" alt="DiagramaDeClases" src="https://user-images.githubusercontent.com/98594436/236965537-9f016904-b103-40e2-9119-7719fada0334.png">
+
 
