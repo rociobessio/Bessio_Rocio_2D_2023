@@ -88,8 +88,7 @@ namespace Entidades
                 {
                     esValida = false;
                 }
-            }
-
+            } 
             return esValida;
         } 
         #endregion

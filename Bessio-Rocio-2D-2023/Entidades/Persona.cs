@@ -134,21 +134,6 @@ namespace Entidades
         }
 
         /// <summary>
-        /// Compara si el objeto actual this es igual al objeto del parametro, es comparado por la sobrecarga del ==
-        /// </summary>
-        /// <param name="obj">de tipo object</param>
-        /// <returns>si son iguales retorna true sino false</returns>
-        public override bool Equals(object obj)
-        {
-            bool retorno = false;
-            if (obj is Persona && (obj is not null))
-            {
-                retorno = this == ((Persona)obj);
-            }
-            return retorno;
-        }
-
-        /// <summary>
         /// La sobrecarga del .ToString() me devuelve la informacion
         /// de la objeto.
         /// </summary>

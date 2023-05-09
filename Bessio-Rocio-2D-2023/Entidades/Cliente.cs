@@ -105,13 +105,13 @@ namespace Entidades
         /// <param name="telefono"></param>
         /// <param name="user"></param>
         /// <param name="carrito"></param>
-        /// <param name="debito"></param>
+        /// <param name="efectivo"></param>
         /// <param name="usaTarjeta"></param>
         public Cliente(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
-                       string dni, string domicilio, string telefono, Usuario user, Carrito carrito,double debito,bool usaTarjeta)
+                       string dni, string domicilio, string telefono, Usuario user, Carrito carrito,double efectivo,bool usaTarjeta)
             : this(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio, telefono, user, carrito)
         {
-            this._dineroEfectivoDisponible = debito;
+            this._dineroEfectivoDisponible = efectivo;
             this._esConTarjeta = usaTarjeta;
         }
 
@@ -121,7 +121,10 @@ namespace Entidades
         /// </summary>
         /// <param name="user"></param>
         public Cliente(Usuario user)
-                    : base(user) { }
+                    : base(user)
+        { 
+            this._carritoCompra = new Carrito();
+        }
         #endregion 
 
         #region SOBRECARGA DE OPERADORES

@@ -319,7 +319,7 @@ namespace Carniceria_GUI
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
 
                 //-->Obtengo el total que deberá pagar el cliente.
-                totalAPagar = Producto.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
+                totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
 
                 if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada))//-->Intenta comprar.
                 {
@@ -359,7 +359,7 @@ namespace Carniceria_GUI
             if (ValidarCampos())
             {
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
-                double retorno = Producto.CalcularPrecioTotal(clienteSeleccionado, carneSeleccionada, peso);
+                double retorno = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
                 this.txtTotalAPagar.Text = retorno.ToString();
             }
         }

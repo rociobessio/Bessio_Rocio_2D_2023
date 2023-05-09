@@ -57,7 +57,7 @@ namespace Carniceria_GUI
             clienteFormulario = cliente;//-->Paso los datos
             carneSeleccionada = new Producto();//-->Evito nulos
             carritoCliente = new Carrito();
-            soundPlayer = new SoundPlayer();
+            soundPlayer = new SoundPlayer(); 
 
             #region INSTANCIO PRODUCTOS
             productosDisponibles = new List<Producto>();

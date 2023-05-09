@@ -16,8 +16,8 @@ namespace Entidades
         private string _proveedor;
         private double _peso;
         private DateTime _vencimiento;
-        private double _precioVentaProveedor;//--->Precio por el cual lo voy a vender
-        private double _precioCompraCliente;//--->Precio por el cual compre en un frigorifico
+        private double _precioVentaProveedor;//--->Precio por el cual compre en un frigorifico
+        private double _precioCompraCliente;//--->Precio por el cual lo voy a vender
         private static int ultimoCodigo;
         #endregion
 
@@ -120,7 +120,7 @@ namespace Entidades
         /// <param name="carne"></param>
         /// <param name="peso"></param>
         /// <returns>Devuelve el precio total del producto</returns>
-        public static double CalcularPrecioTotal(Cliente cliente, Producto carne, double peso)
+        public static double CalcularPrecioTotalProducto(Cliente cliente, Producto carne, double peso)
         {
             double precioCarne = 0;
             double precioFinalTarjeta;

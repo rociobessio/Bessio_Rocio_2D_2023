@@ -139,17 +139,15 @@ namespace Carniceria_GUI
                     if (ingresante.EsCliente)//-->Utilizo la propiedad abstracta para saber si es Cliente
                     {
                         this.BackColor = Color.DarkKhaki;
-                        soundPlayer.Play();
-                        MessageBox.Show("Sos Cliente");
+                        soundPlayer.Play(); 
                         frmMetodoDePago = new FrmMetodoDePago((Cliente)ingresante);//-->Casteo Persona a Cliente
                         frmMetodoDePago.Show();
 
                     }
-                    else //-->Si no lo es, quiere decir que es Vendedor
+                    else//-->Si no lo es, quiere decir que es Vendedor
                     {
                         this.BackColor = Color.MediumPurple;
-                        soundPlayer.Play();
-                        MessageBox.Show("Sos Vendedor");
+                        soundPlayer.Play(); 
                         frmHeladera = new FrmHeladera((Vendedor)ingresante);//-->Casteo a Vendedor
                         frmHeladera.Show();
                     }

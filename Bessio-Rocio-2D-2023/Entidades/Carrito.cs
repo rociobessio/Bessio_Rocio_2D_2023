@@ -105,7 +105,7 @@ namespace Entidades
             bool pudoAgregar = false;
             Producto auxCarne = new Producto();//-->Aux para no sobreescribir el producto original
 
-            double precioCarne = Producto.CalcularPrecioTotal(cliente, carne, cantPesoCliente);//-->Calculo el precio
+            double precioCarne = Producto.CalcularPrecioTotalProducto(cliente, carne, cantPesoCliente);//-->Calculo el precio
             cliente.CarritoCompra._conTarjeta = cliente.ConTarjeta;//-->Paso si es con tarjeta la compra
 
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
@@ -193,22 +193,7 @@ namespace Entidades
             sb.AppendLine($"Total: ${this._precioTotal:f}");
 
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Compara si el objeto this actual es igual al pasaddo por parametro
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public override bool Equals(object obj)
-        {
-            bool retorno = false;
-            if (obj is Carrito)
-            {
-                retorno = this == ((Carrito)obj);
-            }
-            return retorno;
-        }
+        } 
 
         /// <summary>
         /// Valor Hash del objeto, es unico

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// Clase que hereda de Persona.
+    /// </summary>
     public class Vendedor : Persona
     {
         #region ATRIBUTOS
@@ -29,7 +32,7 @@ namespace Entidades
         /// <summary>
         /// Propiedad de escritura y lectura de la Lista de Productos/Carne.
         /// </summary>
-       public Dictionary<int,Producto> ListaProductos { get { return this._listaProductos; } set { this._listaProductos = value; } }
+        public Dictionary<int,Producto> ListaProductos { get { return this._listaProductos; } set { this._listaProductos = value; } }
        // public List<Producto> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
         /// <summary>
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
@@ -171,8 +174,7 @@ namespace Entidades
                         pudoComprar = true;
                     } 
                 }
-            } 
-
+            }  
             return pudoComprar;
         }
 
@@ -258,7 +260,7 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"{base.ToString()}-{this._id} - ID: {this._id}");
+            stringBuilder.AppendLine($"{base.ToString()} - ID: {this._id}");
             return stringBuilder.ToString();
         }
         #endregion
