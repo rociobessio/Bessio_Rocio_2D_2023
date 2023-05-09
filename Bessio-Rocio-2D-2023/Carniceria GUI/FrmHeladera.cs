@@ -313,7 +313,8 @@ namespace Carniceria_GUI
 
             //--->Valido los numeros, EL PRECIO DE COMPRA DEL FRIGORIFICO DEBERA DE SER MAYOR AL PRECIO DE VENTA EL PUBLICO
             //-->Peso puede ser 0, no suma nada mantiene stock, por si quisiese cambiar el precio.
-            if (peso < 0 || precioCompraCliente <= 0 || precioCompra <= 0 || precioCompra > precioCompraCliente)
+            if (peso < 0 || precioCompraCliente <= 0 || precioCompra <= 0 || precioCompra > precioCompraCliente ||
+                peso > 120)
             {
                 esValido = false;//-->Si alguno de los valores ingresado es menor o igual a 0, no lo dejo.
             }
