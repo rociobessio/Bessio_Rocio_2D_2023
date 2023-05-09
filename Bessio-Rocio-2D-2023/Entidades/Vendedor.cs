@@ -32,15 +32,20 @@ namespace Entidades
         /// </summary>
        public Dictionary<int,Producto> ListaProductos { get { return this._listaProductos; } set { this._listaProductos = value; } }
        // public List<Producto> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
-       // public DateTime FechaIngreso { get { return this._fechaIngreso; } } 
         /// <summary>
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
         /// </summary>
         public override bool EsCliente { get { return false; } } 
+        /// <summary>
+        /// Me permite obtener el historial de ventas realizadas por el vendedor.
+        /// </summary>
         public static List<Carrito> HistorialVentas { get { return _historialVentas; } }
         #endregion
 
         #region CONSTRUCTOR 
+        /// <summary>
+        /// Constructor estatico que le asigna una ID a cada vendedor.
+        /// </summary>
         static Vendedor()
         {
             ultimoID = 2001;
@@ -67,8 +72,7 @@ namespace Entidades
                        string dni, string domicilio,
                         List<Cliente> clientes,Dictionary<int,Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
-        { 
-           // this._fechaIngreso = fechaIngreso;
+        {  
             this._listaClientes = clientes;
             _historialVentas = listaVentas;
             this._listaProductos = productos;
@@ -88,7 +92,9 @@ namespace Entidades
         {
             this._listaProductos = new Dictionary<int, Producto>();
             this._listaClientes = new List<Cliente>(); 
-            _historialVentas = new List<Carrito>(); 
+            _historialVentas = new List<Carrito>();
+            this._id = ultimoID;
+            ultimoID++;
         }
         #endregion
 
@@ -100,8 +106,7 @@ namespace Entidades
         /// <returns></returns>
         public static Vendedor CargarDatosVendedor(Vendedor vendedor)
         {
-            #region INSTANCIO CARNES
-            //velistaCarnesDisponibles = new List<Carne>();
+            #region INSTANCIO CARNES 
             vendedor._listaProductos.Add(1, new Producto(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
             vendedor._listaProductos.Add(2, new Producto(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
             vendedor._listaProductos.Add(3, new Producto(Corte.Costilla, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
@@ -116,7 +121,7 @@ namespace Entidades
             #region INSTANCIO CLIENTES 
             vendedor._listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
                         "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
-                        new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 55000, false), true));//-->Utiliza Tarjeta Débito
+                        new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 5500, false), true));//-->Utiliza Tarjeta Débito
             vendedor._listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
                                     "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
                                     new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 10000, true), true));//-->Utiliza Tarjeta Credito

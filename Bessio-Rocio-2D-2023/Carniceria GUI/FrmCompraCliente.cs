@@ -289,6 +289,8 @@ namespace Carniceria_GUI
         {
             bool puedeSeguir = true;
             StringBuilder sb = new StringBuilder();
+            int peso = 0;
+            int.TryParse(this.txtPesoRequerido.Text, out peso);
 
             if (this.indexTablaProductos < 0)
             {
@@ -298,7 +300,13 @@ namespace Carniceria_GUI
 
             if (string.IsNullOrEmpty(this.txtPesoRequerido.Text))
             {
-                sb.AppendLine("Error con el peso seleccionado.");
+                sb.AppendLine("Error debe ingresar el peso del producto.");
+                puedeSeguir = false;
+            }
+
+            if (peso <= 0)
+            {
+                sb.AppendLine("Error el peso debe ser mayor a 0.");
                 puedeSeguir = false;
             }
 

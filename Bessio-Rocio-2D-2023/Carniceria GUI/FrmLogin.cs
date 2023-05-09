@@ -39,7 +39,7 @@ namespace Carniceria_GUI
             #region INSTANCIO VENDEDORES
             vendedores = new List<Vendedor>();
             vendedor = new Vendedor(new Usuario("felipe@hotmail.com", "123"));
-            vendedor = Vendedor.CargarDatosVendedor(vendedor);//-->Le cargo los datos al vendedor que usare.
+            vendedor = Vendedor.CargarDatosVendedor(vendedor);//-->Le cargo las listas al vendedor que usare.
 
             vendedores.Add(vendedor);//-->Asi lo puedo enviar al formulario si presiona el boton.
             vendedores.Add(new Vendedor(new Usuario("Lucas@yahoo.com.ar", "123")));
@@ -92,13 +92,12 @@ namespace Carniceria_GUI
                 MessageBox.Show(sb.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return puede;
-        } 
-
+        }  
 
         /// <summary>
         /// Este metodo privado del formulario me permite principalmente verificar que Persona
-        /// no sea nulo, llamo al metodo esValidoElUsuario(), si una persona != null entonces
-        /// puede abrir otro formulario.
+        /// no sea nulo, llamo al metodo estatico de la clase Usuario esValidoElUsuario(), 
+        /// si una persona != null entonces puede abrir otro formulario.
         /// </summary>
         /// <param name="usuario"></param>
         /// <returns></returns>
