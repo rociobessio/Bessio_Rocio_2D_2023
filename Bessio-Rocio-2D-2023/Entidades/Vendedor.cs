@@ -11,8 +11,7 @@ namespace Entidades
     {
         #region ATRIBUTOS
         private int _id; 
-        private List<Cliente> _listaClientes;
-       // private List<Producto> _listaCarne;
+        private List<Cliente> _listaClientes; 
         private Dictionary<int, Producto> _listaProductos;
         private static List<Carrito> _historialVentas;
         private static int ultimoID;
@@ -49,6 +48,7 @@ namespace Entidades
         static Vendedor()
         {
             ultimoID = 2001;
+            _historialVentas = new List<Carrito>();
         }
 
         /// <summary>
@@ -91,8 +91,7 @@ namespace Entidades
             :base(user)
         {
             this._listaProductos = new Dictionary<int, Producto>();
-            this._listaClientes = new List<Cliente>(); 
-            _historialVentas = new List<Carrito>();
+            this._listaClientes = new List<Cliente>();  
             this._id = ultimoID;
             ultimoID++;
         }
@@ -116,7 +115,7 @@ namespace Entidades
             vendedor._listaProductos.Add(7, new Producto(Corte.Pechuga, 100, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 06, 18), 500, "La Granjita", Tipo.Pollo, 1000));
             vendedor._listaProductos.Add(8, new Producto(Corte.Pechito, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 10, 05), 2000, "La mirona", Tipo.Cerdo, 2500));
             vendedor._listaProductos.Add(9, new Producto(Corte.Bife_Angosto, 100, CategoriaBovina.Novillito, new DateTime(2023, 09, 08), 2000, "Siga la vaca", Tipo.Carne_Vacuna, 2300));
-            #endregion
+            #endregion 
 
             #region INSTANCIO CLIENTES 
             vendedor._listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
@@ -189,7 +188,6 @@ namespace Entidades
             carrito.Productos = cliente.CarritoCompra.Productos;
             carrito.PrecioTotal = cliente.CarritoCompra.PrecioTotal;
             carrito.ConTarjeta = cliente.CarritoCompra.ConTarjeta;
-
             if (!_historialVentas.Contains(carrito))
             {
                 _historialVentas.Add(carrito);//-->Añado al historial del cliente pasandole el carrito

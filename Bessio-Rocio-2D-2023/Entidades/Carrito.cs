@@ -13,7 +13,7 @@ namespace Entidades
         private DateTime _fechaCompra;
         private double _precioTotal; 
         private bool _conTarjeta;
-        private List<Producto> _listaDeProductos;  
+        private List<Producto> _listaDeProductos;   
         #endregion
 
         #region PROPIEDADES
@@ -87,7 +87,7 @@ namespace Entidades
                 }
             }
             return puede;
-        }
+        } 
         #endregion
 
         #region METODO
@@ -111,7 +111,7 @@ namespace Entidades
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
             if (carne.Peso > 0 && carne.Peso >= cantPesoCliente)
             {
-                //--->Por alguna razón me pisaba la carne anterior, asi que creo una nueva y le paso sus atributos
+                //--->Por alguna razón me pisaba la carne anterior, asi que instancio una nueva y le paso sus atributos
                 auxCarne.Codigo = carne.Codigo;
                 auxCarne.Proveedor = carne.Proveedor;
                 auxCarne.Peso = cantPesoCliente;

@@ -382,7 +382,7 @@ namespace Carniceria_GUI
                     }
                     else
                     {
-                        MessageBox.Show("Ocurrio un problema.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrio un problema, no tiene saldo disponible.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -409,7 +409,7 @@ namespace Carniceria_GUI
                 Carrito.LimpiarCarrito(clienteFormulario);
                 this.richTextBoxCarrito.Clear();
                 this.txtTotalCompra.Clear();
-                MessageBox.Show("Compra cancelada.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Compra cancelada.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             else
             {

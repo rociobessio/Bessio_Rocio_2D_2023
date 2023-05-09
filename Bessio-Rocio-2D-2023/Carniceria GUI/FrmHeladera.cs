@@ -36,16 +36,25 @@ namespace Carniceria_GUI
         #endregion
 
         #region CONSTRUCTOR
-
+        /// <summary>
+        /// Consrtuctor del form sin parametros, me permite 
+        /// centrar el form, e instanciar atributos.
+        /// </summary>
         public FrmHeladera()
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Reponer Stock";
+            this.Text = "Heladera - Reponer Stock";
 
             this.tablaProductos = new DataTable();//-->Instancio la dataTable.
             this.carneSeleccionada = new Producto();//-->Instancio par evitar nulls
-        }
+        } 
+        
+        /// <summary>
+        /// sobrecarga del constructor del form que recibe un vendedor,
+        /// le asigna valores.
+        /// </summary>
+        /// <param name="vendedor"></param>
         public FrmHeladera(Vendedor vendedor)
             : this()
         {
@@ -294,8 +303,7 @@ namespace Carniceria_GUI
 
             double.TryParse(this.txtPrecioVentaClientes.Text, out precioCompraCliente);
             double.TryParse(this.txtPesoCarne.Text, out peso);
-            double.TryParse(this.txtPrecioCompraFrigorifico.Text, out precioCompra);
-
+            double.TryParse(this.txtPrecioCompraFrigorifico.Text, out precioCompra); 
 
             if (string.IsNullOrEmpty(this.txtPrecioVentaClientes.Text) || string.IsNullOrEmpty(this.txtPesoCarne.Text) ||
                 string.IsNullOrEmpty(this.cbCorteCarne.Text))
@@ -319,12 +327,8 @@ namespace Carniceria_GUI
             if (this.dtpFechaVencimiento.Value < DateTime.Now)
             {
                 esValido = false;//-->Producto vencido
-            }
+            } 
 
-            if (!esValido)
-            {
-                MessageBox.Show("Alguno de los datos es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
             return esValido;
         }
         #endregion
@@ -349,7 +353,7 @@ namespace Carniceria_GUI
             }
             else
             {
-                MessageBox.Show("Ocurrio un error al intentar reponer el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Alguno de los datos es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             //terminoDeReponer = true;//-->Habilito los textboxes nuevamente ya que termino de reponer.
             // this.ManejoTextBoxes();

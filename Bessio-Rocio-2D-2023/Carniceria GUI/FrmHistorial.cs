@@ -17,7 +17,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS FORM  
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        private List<Carrito> historial;
+        private List<Carrito> historial; 
         #endregion
 
         #region CONSTRUCTORES
