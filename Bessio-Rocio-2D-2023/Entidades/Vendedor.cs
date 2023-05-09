@@ -109,9 +109,9 @@ namespace Entidades
         public static Vendedor CargarDatosVendedor(Vendedor vendedor)
         {
             #region INSTANCIO CARNES 
-            vendedor._listaProductos.Add(1, new Producto(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
-            vendedor._listaProductos.Add(2, new Producto(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
-            vendedor._listaProductos.Add(3, new Producto(Corte.Costilla, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
+            vendedor._listaProductos.Add(1, new Producto(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1200));
+            vendedor._listaProductos.Add(2, new Producto(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 1100, "La Granjita", Tipo.Pollo, 2120));
+            vendedor._listaProductos.Add(3, new Producto(Corte.Costilla, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1230, "El Muelle Mardel", Tipo.Cerdo, 1400));
             vendedor._listaProductos.Add(4, new Producto(Corte.Asado, 10, CategoriaBovina.Ternero, new DateTime(2023, 05, 10), 190, "La mirona", Tipo.Carne_Vacuna, 1300));
             vendedor._listaProductos.Add(5, new Producto(Corte.Pollo_Entero, 90, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 12, 07), 230, "La Granjita", Tipo.Pollo, 500));
             vendedor._listaProductos.Add(6, new Producto(Corte.Matambre, 50, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1000, "Chascomus LA", Tipo.Cerdo, 1300));
