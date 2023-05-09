@@ -121,7 +121,7 @@ namespace Carniceria_GUI
             this._dataTable.Columns.Add("Tipo");
             this._dataTable.Columns.Add("Corte");
             this._dataTable.Columns.Add("Categoría bovina");
-            this._dataTable.Columns.Add("Precio");
+            this._dataTable.Columns.Add("Precio por kilo");
 
             this.dataGridViewProductos.AllowUserToAddRows = false;
             this.dataGridViewProductos.AllowUserToDeleteRows = false;
@@ -333,7 +333,7 @@ namespace Carniceria_GUI
                                          $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
                     }
 
-                    this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra
+                    this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra hasta el momento
                     MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

@@ -92,39 +92,8 @@ namespace Carniceria_GUI
                 MessageBox.Show(sb.ToString(), "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return puede;
-        }
+        } 
 
-        /// <summary>
-        /// Metodo privado del formulario.
-        /// Recibe un usuario.
-        /// Instacio un usuario con el usuario recibido y recorro cada lista (ya que cuento
-        /// con dos perfiles en la app) buscando si coincide el usuario instanciado con alguno de la lista,
-        /// si hay coincidencia lo retorno, pero como debo retornar uno o el otro retorno una Persona, ya que
-        /// ambos (Cliente y Vendedor) heredan de esta.
-        /// 
-        /// Utilizo la sobrecarga del == de mi clase Usuario.
-        /// </summary>
-        /// <param name="usuario"></param> 
-        /// <returns>Retorna a una persona (la cual puede ser del tipo Vendedor o Cliente), null sino es ninguna</returns>
-        private Persona esValidoElUsuario(Usuario usuario)
-        {
-            foreach (Vendedor vendedorAux in vendedores)
-            {
-                if (vendedorAux.Usuario == usuario)
-                {
-                    return vendedorAux;
-                }
-            }
-
-            foreach (Cliente clienteAux in clientes)
-            {
-                if (clienteAux.Usuario == usuario)
-                {
-                    return clienteAux;
-                }
-            }
-            return null;
-        }
 
         /// <summary>
         /// Este metodo privado del formulario me permite principalmente verificar que Persona
@@ -136,7 +105,7 @@ namespace Carniceria_GUI
         private bool PuedeSeguir(Usuario usuario)
         {
             bool retorno = false;//No puede
-            ingresante = this.esValidoElUsuario(usuario);//-->Retorna el tipo de Persona
+            ingresante = Usuario.esValidoElUsuario(usuario,vendedores,clientes);//-->Retorna el tipo de Persona
 
             if (ingresante != null)//-->Verifico que sea distinta de null
             {

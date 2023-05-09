@@ -10,8 +10,7 @@ namespace Entidades
     public class Vendedor : Persona
     {
         #region ATRIBUTOS
-        private int _id;
-        private DateTime _fechaIngreso;
+        private int _id; 
         private List<Cliente> _listaClientes;
        // private List<Producto> _listaCarne;
         private Dictionary<int, Producto> _listaProductos;
@@ -33,7 +32,7 @@ namespace Entidades
         /// </summary>
        public Dictionary<int,Producto> ListaProductos { get { return this._listaProductos; } set { this._listaProductos = value; } }
        // public List<Producto> ListaProductos { get { return this._listaCarne; } set { this._listaCarne = value; } } 
-        public DateTime FechaIngreso { get { return this._fechaIngreso; } } 
+       // public DateTime FechaIngreso { get { return this._fechaIngreso; } } 
         /// <summary>
         /// Hago override de la propiedad abtracta retornando false, ya que NO es cliente.
         /// </summary>
@@ -66,10 +65,10 @@ namespace Entidades
         /// <param name="user"></param>
         public Vendedor(string nombre, string apellido, Sexo sexo, Nacionalidad nacionalidad, DateTime fechaNacimiento,
                        string dni, string domicilio,
-                        DateTime fechaIngreso,List<Cliente> clientes,Dictionary<int,Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
+                        List<Cliente> clientes,Dictionary<int,Producto> productos,string telefono,Usuario user,List<Carrito> listaVentas)
             : base(nombre, apellido, sexo, nacionalidad, fechaNacimiento, dni, domicilio,telefono,user)
         { 
-            this._fechaIngreso = fechaIngreso;
+           // this._fechaIngreso = fechaIngreso;
             this._listaClientes = clientes;
             _historialVentas = listaVentas;
             this._listaProductos = productos;
@@ -87,7 +86,6 @@ namespace Entidades
         public Vendedor(Usuario user)
             :base(user)
         {
-            this._fechaIngreso = DateTime.Now;
             this._listaProductos = new Dictionary<int, Producto>();
             this._listaClientes = new List<Cliente>(); 
             _historialVentas = new List<Carrito>(); 
@@ -106,7 +104,7 @@ namespace Entidades
             //velistaCarnesDisponibles = new List<Carne>();
             vendedor._listaProductos.Add(1, new Producto(Corte.Lomo, 19, CategoriaBovina.Ternero, new DateTime(2023, 12, 10), 900, "Mingo CO", Tipo.Carne_Vacuna, 1000));
             vendedor._listaProductos.Add(2, new Producto(Corte.Pechuga, 17, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 11, 22), 100, "La Granjita", Tipo.Pollo, 120));
-            vendedor._listaProductos.Add(3, new Producto(Corte.Costilla, 190, CategoriaBovina.Novillo, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
+            vendedor._listaProductos.Add(3, new Producto(Corte.Costilla, 190, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 230, "El Muelle Mardel", Tipo.Cerdo, 300));
             vendedor._listaProductos.Add(4, new Producto(Corte.Asado, 10, CategoriaBovina.Ternero, new DateTime(2023, 05, 10), 190, "La mirona", Tipo.Carne_Vacuna, 1300));
             vendedor._listaProductos.Add(5, new Producto(Corte.Pollo_Entero, 90, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 12, 07), 230, "La Granjita", Tipo.Pollo, 500));
             vendedor._listaProductos.Add(6, new Producto(Corte.Matambre, 50, CategoriaBovina.No_Es_Bovino, new DateTime(2023, 09, 08), 1000, "Chascomus LA", Tipo.Cerdo, 1300));
@@ -257,7 +255,7 @@ namespace Entidades
         public override string ToString()
         {
             StringBuilder stringBuilder = new StringBuilder();
-            stringBuilder.AppendLine($"{base.ToString()}-{this._id} - ID: {this._id} - Fecha Ingreso: {this._fechaIngreso.ToShortDateString()}");
+            stringBuilder.AppendLine($"{base.ToString()}-{this._id} - ID: {this._id}");
             return stringBuilder.ToString();
         }
         #endregion

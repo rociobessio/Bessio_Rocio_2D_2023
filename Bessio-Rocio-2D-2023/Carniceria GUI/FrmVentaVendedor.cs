@@ -59,7 +59,7 @@ namespace Carniceria_GUI
         {
             _vendedorForm = vendedor;
             this.lblVendedorEmail.Text = _vendedorForm;
-            this.lblHoraIngreso.Text = _vendedorForm.FechaIngreso.ToShortTimeString();
+            this.lblHoraIngreso.Text = _vendedorForm.Usuario.HoraIngreso.ToShortTimeString();
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
             carneSeleccionada = new Producto();
 
