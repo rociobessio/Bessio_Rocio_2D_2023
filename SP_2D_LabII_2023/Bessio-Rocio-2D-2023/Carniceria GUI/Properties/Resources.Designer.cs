@@ -323,6 +323,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap shoppaymentorderbuy_04_icon_icons_com_73886 {
+            get {
+                object obj = ResourceManager.GetObject("shoppaymentorderbuy-04_icon-icons.com_73886", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shoppaymentorderbuy_08_icon_icons_com_73885 {
             get {
                 object obj = ResourceManager.GetObject("shoppaymentorderbuy-08_icon-icons.com_73885", resourceCulture);

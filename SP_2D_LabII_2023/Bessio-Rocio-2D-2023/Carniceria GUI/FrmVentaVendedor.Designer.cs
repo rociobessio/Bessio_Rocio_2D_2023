@@ -68,12 +68,17 @@
             lblHoraIngreso = new Label();
             label14 = new Label();
             label15 = new Label();
+            groupBox5 = new GroupBox();
+            btnModDineroCliente = new Button();
+            txtSumarDineroCliente = new TextBox();
+            label16 = new Label();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -419,7 +424,7 @@
             // 
             // txtPesoEspecificado
             // 
-            txtPesoEspecificado.Location = new Point(238, 72);
+            txtPesoEspecificado.Location = new Point(238, 60);
             txtPesoEspecificado.Name = "txtPesoEspecificado";
             txtPesoEspecificado.Size = new Size(150, 37);
             txtPesoEspecificado.TabIndex = 3;
@@ -430,7 +435,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.Location = new Point(88, 76);
+            label9.Location = new Point(88, 64);
             label9.Name = "label9";
             label9.Size = new Size(97, 28);
             label9.TabIndex = 24;
@@ -445,7 +450,7 @@
             groupBox4.ForeColor = Color.White;
             groupBox4.Location = new Point(570, 401);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(419, 180);
+            groupBox4.Size = new Size(419, 119);
             groupBox4.TabIndex = 22;
             groupBox4.TabStop = false;
             groupBox4.Text = "Vender";
@@ -510,12 +515,63 @@
             label15.TabIndex = 44;
             label15.Text = "hs.";
             // 
+            // groupBox5
+            // 
+            groupBox5.Anchor = AnchorStyles.None;
+            groupBox5.Controls.Add(btnModDineroCliente);
+            groupBox5.Controls.Add(txtSumarDineroCliente);
+            groupBox5.Controls.Add(label16);
+            groupBox5.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            groupBox5.ForeColor = Color.White;
+            groupBox5.Location = new Point(570, 526);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new Size(419, 119);
+            groupBox5.TabIndex = 25;
+            groupBox5.TabStop = false;
+            // 
+            // btnModDineroCliente
+            // 
+            btnModDineroCliente.Anchor = AnchorStyles.Bottom;
+            btnModDineroCliente.Cursor = Cursors.Hand;
+            btnModDineroCliente.FlatStyle = FlatStyle.Popup;
+            btnModDineroCliente.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnModDineroCliente.ForeColor = Color.White;
+            btnModDineroCliente.Image = Properties.Resources.shoppaymentorderbuy_04_icon_icons_com_73886;
+            btnModDineroCliente.ImageAlign = ContentAlignment.MiddleRight;
+            btnModDineroCliente.Location = new Point(28, 44);
+            btnModDineroCliente.Name = "btnModDineroCliente";
+            btnModDineroCliente.Size = new Size(178, 57);
+            btnModDineroCliente.TabIndex = 45;
+            btnModDineroCliente.Text = "Mod. Dinero";
+            btnModDineroCliente.TextAlign = ContentAlignment.MiddleLeft;
+            btnModDineroCliente.UseVisualStyleBackColor = true;
+            btnModDineroCliente.Click += btnModDineroCliente_Click;
+            // 
+            // txtSumarDineroCliente
+            // 
+            txtSumarDineroCliente.Location = new Point(253, 62);
+            txtSumarDineroCliente.Name = "txtSumarDineroCliente";
+            txtSumarDineroCliente.Size = new Size(150, 37);
+            txtSumarDineroCliente.TabIndex = 3;
+            txtSumarDineroCliente.KeyPress += txtSumarDineroCliente_KeyPress;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(263, 24);
+            label16.Name = "label16";
+            label16.Size = new Size(126, 28);
+            label16.TabIndex = 24;
+            label16.Text = "Mod. Dinero:";
+            // 
             // FrmVentaVendedor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1001, 962);
+            Controls.Add(groupBox5);
             Controls.Add(label15);
             Controls.Add(lblHoraIngreso);
             Controls.Add(label14);
@@ -546,6 +602,8 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
+            groupBox5.ResumeLayout(false);
+            groupBox5.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -591,5 +649,9 @@
         private Label lblHoraIngreso;
         private Label label14;
         private Label label15;
+        private GroupBox groupBox5;
+        private Button btnModDineroCliente;
+        private TextBox txtSumarDineroCliente;
+        private Label label16;
     }
 }

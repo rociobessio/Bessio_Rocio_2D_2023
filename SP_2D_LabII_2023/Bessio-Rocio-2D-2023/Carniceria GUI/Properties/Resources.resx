@@ -178,6 +178,9 @@
   <data name="shoppaymentorderbuy-08_icon-icons.com_73885" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shoppaymentorderbuy-08_icon-icons.com_73885.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Fridge_icon-icons.com_53204" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Fridge_icon-icons.com_53204.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="call_center_contact_information_service_icon_187270" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\call_center_contact_information_service_icon_187270.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -202,7 +205,7 @@
   <data name="receipt_information_icon_177401" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\receipt_information_icon_177401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Fridge_icon-icons.com_53204" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Fridge_icon-icons.com_53204.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="shoppaymentorderbuy-04_icon-icons.com_73886" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shoppaymentorderbuy-04_icon-icons.com_73886.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -22,7 +22,7 @@ namespace Carniceria_GUI
         private Usuario _vendedorForm;
         private Producto carneSeleccionada;
         private Cliente clienteSeleccionado;
-        private SoundPlayer soundPlayer;
+        private SoundPlayer soundPlayer; 
 
         private ClienteDAO clienteDAO;
         private ProductoDAO productoDAO;
@@ -30,7 +30,7 @@ namespace Carniceria_GUI
         private List<Producto> listaProductos;
 
         DataTable _dataTable;
-        DataRow auxFilaProduc; 
+        DataRow auxFilaProduc;
 
         int indexTablaProductos;
         int codigoProducto;
@@ -54,6 +54,8 @@ namespace Carniceria_GUI
 
             soundPlayer = new SoundPlayer();
             soundPlayer.SoundLocation = "CompraSonido.wav";
+
+            //this.txtSumarDineroCliente.Enabled = false;//-->Desactivo el txt
         }
 
         /// <summary>
@@ -71,8 +73,7 @@ namespace Carniceria_GUI
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
             carneSeleccionada = new Producto();
             this.listaProductos = productoDAO.ObtenerLista();
-            this.listaClientes = clienteDAO.ObtenerLista();
-
+            this.listaClientes = clienteDAO.ObtenerLista(); 
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -138,7 +139,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmVentaVendedor_FormClosing(object sender, FormClosingEventArgs e)
         {
- 
+
         }
 
         /// <summary>
@@ -212,6 +213,16 @@ namespace Carniceria_GUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void txtPesoEspecificado_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            FrmMetodoDePago.SoloNumeros(sender, e);
+        }
+
+        /// <summary>
+        /// Solo ingresara numeros.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void txtSumarDineroCliente_KeyPress(object sender, KeyPressEventArgs e)
         {
             FrmMetodoDePago.SoloNumeros(sender, e);
         }
@@ -319,7 +330,7 @@ namespace Carniceria_GUI
                 //-->Obtengo el total que deberá pagar el cliente.
                 totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
 
-                if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada,out updateBase))//-->Intenta comprar.
+                if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada, out updateBase))//-->Intenta comprar.
                 {
                     soundPlayer.Play();
                     MessageBox.Show("Venta generada",
@@ -332,13 +343,13 @@ namespace Carniceria_GUI
                     else
                     {
                         this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.DineroEfectivoDisponible.ToString();
-                    } 
+                    }
 
                     ArchivoDeTexto.GuardarVenta(clienteSeleccionado);//-->Guardo esa venta. 
 
                     if (!updateBase)
                     {
-                        MessageBox.Show("Ocurrio un error al modificar las tablas.","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        MessageBox.Show("Ocurrio un error al modificar las tablas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     this.CargarProductosDataGrid();//-->Recargo el datagrid 
@@ -350,6 +361,53 @@ namespace Carniceria_GUI
                 }
             }
             this.Limpiar();
+        }
+
+        /// <summary>
+        /// El vendedor podrá modificarle
+        /// el saldo a un cliente.
+        /// Se le sumara el ingreso a lo que
+        /// tiene.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModDineroCliente_Click(object sender, EventArgs e)
+        {
+            if (this.cbClientes.SelectedIndex <= -1)//-->Primero verifico que haya seleccionado.
+            {
+                MessageBox.Show("No se ha seleccionado a un cliente.",
+                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else//-->Selecciono
+            {
+                double dinero =  double.Parse(this.txtSumarDineroCliente.Text);
+
+                if (dinero > 1)
+                {
+                    if (clienteSeleccionado.ConTarjeta)
+                    {
+                        clienteSeleccionado.Tarjeta.DineroDisponible += dinero;
+
+                    }
+                    else
+                        clienteSeleccionado.DineroEfectivoDisponible += dinero; 
+                        
+                    if(clienteDAO.ModificarCliente(clienteSeleccionado))//-->Lo modifico.
+                    {
+                        if(clienteSeleccionado.ConTarjeta)
+                            this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.Tarjeta.DineroDisponible.ToString();
+                        else
+                            this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.DineroEfectivoDisponible.ToString(); 
+                    }
+                    this.txtSumarDineroCliente.Clear();
+                }
+                else
+                {
+                    MessageBox.Show("Dinero ha agregar no valido.",
+                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
         }
 
         /// <summary>
@@ -385,6 +443,9 @@ namespace Carniceria_GUI
 
         }
         #endregion
+
+
+
 
     }
 }
