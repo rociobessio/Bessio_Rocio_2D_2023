@@ -213,11 +213,15 @@ namespace Entidades
             if (clienteDAO.ModificarCliente(clienteIngresado) && puedeComprar == true)
             {
                 puedeComprar = true;
+
+                clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;//-->Asigno el email 
+                XML.SerializarXML(clienteIngresado.CarritoCompra);//-->Serializo en XML
             }
             else
             {
                 return false;
             } 
+
             return puedeComprar;
         } 
         #endregion 

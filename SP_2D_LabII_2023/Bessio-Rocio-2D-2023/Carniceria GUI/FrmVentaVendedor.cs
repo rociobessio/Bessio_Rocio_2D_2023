@@ -53,9 +53,7 @@ namespace Carniceria_GUI
             this.clienteDAO = new ClienteDAO();
 
             soundPlayer = new SoundPlayer();
-            soundPlayer.SoundLocation = "CompraSonido.wav";
-
-            //this.txtSumarDineroCliente.Enabled = false;//-->Desactivo el txt
+            soundPlayer.SoundLocation = "CompraSonido.wav"; 
         }
 
         /// <summary>
@@ -81,6 +79,7 @@ namespace Carniceria_GUI
             textoAyuda.AppendLine("se mostrará su método de pago y algunos datos relevantes,");
             textoAyuda.AppendLine("mediante el datagrid podrá seleccionar un producto disponible de la lista");
             textoAyuda.AppendLine("para venderlo se necesitara la cantidad y se descontará del stock, actualizandose.");
+            textoAyuda.AppendLine("Tambien podrá sumarle dinero al cliente seleccionado.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }

@@ -162,6 +162,7 @@ namespace Entidades
                 {
                     if (Carrito.AgregarAlCarrito(carneSeleccionada,peso,cliente))
                     {
+                        cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
                         cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
                         carneSeleccionada.Peso -= peso;//-->Descuento el peso
                         pudoComprar = true;
@@ -174,6 +175,7 @@ namespace Entidades
                 {
                     if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, cliente))
                     {
+                        cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
                         cliente.DineroEfectivoDisponible -= totalCompra;
                         carneSeleccionada.Peso -= peso;//-->Descuento el peso 
                         pudoComprar = true;
@@ -185,7 +187,13 @@ namespace Entidades
             {
                 //-->Modifico las tablas correspondientes
                 if (productoDAO.UpdateProducto(carneSeleccionada) && clienteDAO.ModificarCliente(cliente))
-                    updateBase = true; 
+                    updateBase = true;
+
+                //-->Serializo en formato JSON el carrito, que seria como el ticket de compra
+                if (JSON.SerializacionJSON(cliente.CarritoCompra) && pudoComprar == true)
+                {
+                    pudoComprar = true;
+                }
             }
 
             return pudoComprar;

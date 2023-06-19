@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 18/6/2023
+Con tarjeta: NO.
+---------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Matambre
+Categoría: No Es Bovino
+Peso: 1kgs.
+Precio: $1700,00
+-----------------------------
+Total: $1700,00
+

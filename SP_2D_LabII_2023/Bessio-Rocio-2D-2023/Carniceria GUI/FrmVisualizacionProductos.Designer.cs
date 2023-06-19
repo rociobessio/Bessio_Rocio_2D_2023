@@ -38,6 +38,8 @@
             label15 = new Label();
             lblHoraIngreso = new Label();
             label14 = new Label();
+            btnVerXML = new Button();
+            btnVerJSON = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -58,7 +60,7 @@
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
-            dataGridViewProductos.Size = new Size(864, 344);
+            dataGridViewProductos.Size = new Size(857, 344);
             dataGridViewProductos.TabIndex = 13;
             // 
             // lblPrintHelp
@@ -83,9 +85,9 @@
             label2.ForeColor = Color.White;
             label2.Location = new Point(12, 113);
             label2.Name = "label2";
-            label2.Size = new Size(279, 32);
+            label2.Size = new Size(189, 32);
             label2.TabIndex = 29;
-            label2.Text = "HISTORIAL DE VENTAS:";
+            label2.Text = "VER CARRITOS:";
             // 
             // label8
             // 
@@ -158,12 +160,48 @@
             label14.TabIndex = 45;
             label14.Text = "Hora de ingreso:";
             // 
-            // FrmHistorial
+            // btnVerXML
+            // 
+            btnVerXML.Cursor = Cursors.Hand;
+            btnVerXML.FlatStyle = FlatStyle.Popup;
+            btnVerXML.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVerXML.ForeColor = SystemColors.ButtonHighlight;
+            btnVerXML.Image = Properties.Resources.shoppaymentorderbuy_08_icon_icons_com_73885;
+            btnVerXML.ImageAlign = ContentAlignment.MiddleRight;
+            btnVerXML.Location = new Point(700, 504);
+            btnVerXML.Name = "btnVerXML";
+            btnVerXML.Size = new Size(169, 51);
+            btnVerXML.TabIndex = 48;
+            btnVerXML.Text = "   Ver XML";
+            btnVerXML.TextAlign = ContentAlignment.MiddleLeft;
+            btnVerXML.UseVisualStyleBackColor = true;
+            btnVerXML.Click += btnVerXML_Click;
+            // 
+            // btnVerJSON
+            // 
+            btnVerJSON.Cursor = Cursors.Hand;
+            btnVerJSON.FlatStyle = FlatStyle.Popup;
+            btnVerJSON.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVerJSON.ForeColor = SystemColors.ButtonHighlight;
+            btnVerJSON.Image = Properties.Resources.shoppaymentorderbuy_08_icon_icons_com_73885;
+            btnVerJSON.ImageAlign = ContentAlignment.MiddleRight;
+            btnVerJSON.Location = new Point(515, 504);
+            btnVerJSON.Name = "btnVerJSON";
+            btnVerJSON.Size = new Size(169, 51);
+            btnVerJSON.TabIndex = 49;
+            btnVerJSON.Text = "   Ver JSON";
+            btnVerJSON.TextAlign = ContentAlignment.MiddleLeft;
+            btnVerJSON.UseVisualStyleBackColor = true;
+            btnVerJSON.Click += btnVerHTML_Click;
+            // 
+            // FrmVisualizacionProductos
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.Tan;
             ClientSize = new Size(888, 567);
+            Controls.Add(btnVerJSON);
+            Controls.Add(btnVerXML);
             Controls.Add(label15);
             Controls.Add(lblHoraIngreso);
             Controls.Add(label14);
@@ -175,7 +213,7 @@
             Controls.Add(dataGridViewProductos);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MinimumSize = new Size(910, 547);
-            Name = "FrmHistorial";
+            Name = "FrmVisualizacionProductos";
             Text = "FrmHistorial";
             Load += FrmHistorial_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).EndInit();
@@ -195,5 +233,7 @@
         private Label label15;
         private Label lblHoraIngreso;
         private Label label14;
+        private Button btnVerXML;
+        private Button btnVerJSON;
     }
 }

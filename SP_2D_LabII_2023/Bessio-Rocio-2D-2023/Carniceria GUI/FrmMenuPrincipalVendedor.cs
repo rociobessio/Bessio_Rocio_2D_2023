@@ -83,10 +83,20 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnHistorial_Click(object sender, EventArgs e)
         {
-            //frmVisualizarProductos = new FrmVisualizacionProductos(vendedorForm);
-            //frmVisualizarProductos.ShowDialog();
+
             frmHistorialVentas = new FrmHistorialVentas(vendedorForm);
-            frmHistorialVentas.ShowDialog();    
+            frmHistorialVentas.ShowDialog();
+        }
+
+        /// <summary>
+        /// Me permite visualizar los productos.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVisualizarProductos_Click(object sender, EventArgs e)
+        {
+            frmVisualizarProductos = new FrmVisualizacionProductos(vendedorForm);
+            frmVisualizarProductos.ShowDialog();
         }
         #endregion 
     }

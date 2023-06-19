@@ -15,10 +15,12 @@ namespace Entidades
         private double _precioTotal; 
         private bool _conTarjeta;
         private List<Producto> _listaDeProductos;
-        private static int ultimoCodigo;    
+        private string _usuarioCompra;
+        private static int ultimoCodigo;
         #endregion
 
         #region PROPIEDADES
+        public string UsuarioCompra { get { return this._usuarioCompra; } set { this._usuarioCompra = value; } }
         public int IDCarrito { get { return _IDCarrito; } }
         /// <summary>
         /// Propiedad de lectura que me permite obtener la fecha de compra.
@@ -37,6 +39,7 @@ namespace Entidades
         /// Propiedad de escritura y lectura de la Lista de Productos.
         /// </summary>
         public List<Producto> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
+        public static int UltimoID { get { return ultimoCodigo; } set { ultimoCodigo = value; } }
         #endregion
 
         #region CONSTRUCTOR

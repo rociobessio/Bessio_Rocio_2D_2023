@@ -17,7 +17,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS FORM  
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        private List<Carrito> historial; 
+        private List<Carrito> historial;
         #endregion
 
         #region CONSTRUCTORES
@@ -34,7 +34,9 @@ namespace Carniceria_GUI
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
-            textoAyuda.AppendLine("El vendedor podrá visualizar el historial de ventas a cargo suyo.");
+            textoAyuda.AppendLine("El Vendedor podrá elegir en que formato ver los carritos guardados.");
+            textoAyuda.AppendLine("El Carrito ingresado como cliente esta en XML.");
+            textoAyuda.AppendLine("Y el Carrito ingresado como Vendedor esta en JSON.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
@@ -51,7 +53,6 @@ namespace Carniceria_GUI
             this.BackColor = Color.MediumPurple;
             this.lblVendedorEmail.Text = vendedor;
             this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString();
-            historial = Vendedor.HistorialVentas;
         }
         #endregion 
 
@@ -72,18 +73,20 @@ namespace Carniceria_GUI
             foreach (Carrito carrito in this.historial)
             {
                 auxFilaProduc = _dataTable.NewRow();
-                auxFilaProduc[0] = $"{carrito.FechaCompra.ToShortDateString()}";
-                for (int i = 0; i < carrito.Productos.Count; i++)
+                auxFilaProduc[0] = $"{carrito.UsuarioCompra}";
+                auxFilaProduc[1] = $"{carrito.FechaCompra.ToShortDateString()}";
+                if (carrito.ConTarjeta)
                 {
-                    auxFilaProduc[1] = $"{carrito.Productos[i].Tipo.ToString().Replace("_", " ")}";//-->Muestro el codigo para luego seleccionarlo
-                    auxFilaProduc[2] = $"{carrito.Productos[i].Corte.ToString().Replace("_", " ")}";
-                    auxFilaProduc[3] = $"{carrito.Productos[i].Categoria.ToString().Replace("_", " ")}";
-                    auxFilaProduc[4] = $"{carrito.Productos[i].Peso.ToString().Replace("_", " ")}kgs.";
-                    auxFilaProduc[5] = $"${carrito.Productos[i].PrecioCompraCliente:f}";
+                    auxFilaProduc[2] = "Si";
                 }
+                else
+                    auxFilaProduc[2] = "No";
+
+                auxFilaProduc[3] = $"${carrito.PrecioTotal:f}";
 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
+
             this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
 
@@ -96,16 +99,49 @@ namespace Carniceria_GUI
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
             #region COLUMNAS 
+            this._dataTable.Columns.Add("Comprador");
             this._dataTable.Columns.Add("Fecha De Compra");
-            this._dataTable.Columns.Add("Tipo");
-            this._dataTable.Columns.Add("Corte");
-            this._dataTable.Columns.Add("Categoría bovina");
-            this._dataTable.Columns.Add("Kilos");
-            this._dataTable.Columns.Add("Total");
-
-            this.CargarProductosDataGrid();//-->Cargo los productos disponibles en el datagrid
+            this._dataTable.Columns.Add("Con Tarjeta");
+            this._dataTable.Columns.Add("Total de la compra");
             #endregion
         }
         #endregion
+
+        /// <summary>
+        /// Al presionar el boton me permite
+        /// visualizar aquellos Carritos guardados
+        /// en formato JSON.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVerHTML_Click(object sender, EventArgs e)
+        {
+            this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
+            if (historial.Count <= 0)
+            {
+                MessageBox.Show("No hay Carritos para visualizar en fomato JSON.", "Información",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                this.CargarProductosDataGrid();//-->Cargo los productos en el datagrid 
+        }
+
+        /// <summary>
+        /// Me permite ver aquellos carritos
+        /// Deserializando en formato XML.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnVerXML_Click(object sender, EventArgs e)
+        {
+            this.historial = XML.DeserializarXML();//-->Deserializo en XML
+            if (this.historial.Count <= 0)
+            {
+                MessageBox.Show("No hay Carritos para visualizar en fomato XML.", "Información",
+                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+                this.CargarProductosDataGrid();//-->Cargo los productos
+        }
     }
 }

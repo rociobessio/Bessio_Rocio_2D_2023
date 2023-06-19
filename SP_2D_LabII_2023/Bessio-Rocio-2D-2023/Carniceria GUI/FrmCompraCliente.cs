@@ -373,8 +373,11 @@ namespace Carniceria_GUI
                             this.CargarDatosCliente();
                             this.richTextBoxCarrito.Clear();//-->Limpio el richtextbox con info del carrito
                             this.txtTotalCompra.Clear();
+                            ArchivoDeTexto.GuardarVenta(clienteFormulario);//-->Guardo esa venta. 
 
                             Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito.
+
+
                         } 
                     }
                     else

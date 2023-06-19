@@ -42,6 +42,7 @@
             label1 = new Label();
             pictureBoxVendedor = new PictureBox();
             lblVendedorEmail = new Label();
+            btnVisualizarProductos = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
@@ -78,9 +79,9 @@
             btnReponer.ForeColor = SystemColors.ButtonHighlight;
             btnReponer.Image = Properties.Resources.Fridge_icon_icons_com_53204;
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
-            btnReponer.Location = new Point(21, 258);
+            btnReponer.Location = new Point(21, 219);
             btnReponer.Name = "btnReponer";
-            btnReponer.Size = new Size(221, 61);
+            btnReponer.Size = new Size(228, 61);
             btnReponer.TabIndex = 47;
             btnReponer.Text = "     Heladera";
             btnReponer.TextAlign = ContentAlignment.MiddleLeft;
@@ -95,9 +96,9 @@
             btnVender.ForeColor = Color.White;
             btnVender.Image = Properties.Resources.delivery_payment_cash_service_price_icon_187251;
             btnVender.ImageAlign = ContentAlignment.MiddleRight;
-            btnVender.Location = new Point(21, 173);
+            btnVender.Location = new Point(21, 120);
             btnVender.Name = "btnVender";
-            btnVender.Size = new Size(221, 57);
+            btnVender.Size = new Size(228, 57);
             btnVender.TabIndex = 46;
             btnVender.Text = "    Vender";
             btnVender.TextAlign = ContentAlignment.MiddleLeft;
@@ -113,9 +114,9 @@
             btnHistorial.ForeColor = Color.White;
             btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
             btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
-            btnHistorial.Location = new Point(21, 352);
+            btnHistorial.Location = new Point(21, 327);
             btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(221, 57);
+            btnHistorial.Size = new Size(228, 57);
             btnHistorial.TabIndex = 48;
             btnHistorial.Text = "    Historial Ventas";
             btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
@@ -220,12 +221,31 @@
             lblVendedorEmail.TabIndex = 12;
             lblVendedorEmail.Text = "label1";
             // 
+            // btnVisualizarProductos
+            // 
+            btnVisualizarProductos.Anchor = AnchorStyles.Bottom;
+            btnVisualizarProductos.Cursor = Cursors.Hand;
+            btnVisualizarProductos.FlatStyle = FlatStyle.Popup;
+            btnVisualizarProductos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnVisualizarProductos.ForeColor = Color.White;
+            btnVisualizarProductos.Image = Properties.Resources.receipt_information_icon_1774012;
+            btnVisualizarProductos.ImageAlign = ContentAlignment.MiddleRight;
+            btnVisualizarProductos.Location = new Point(21, 422);
+            btnVisualizarProductos.Name = "btnVisualizarProductos";
+            btnVisualizarProductos.Size = new Size(228, 57);
+            btnVisualizarProductos.TabIndex = 53;
+            btnVisualizarProductos.Text = "Visualizar Productos";
+            btnVisualizarProductos.TextAlign = ContentAlignment.MiddleLeft;
+            btnVisualizarProductos.UseVisualStyleBackColor = true;
+            btnVisualizarProductos.Click += btnVisualizarProductos_Click;
+            // 
             // FrmMenuPrincipalVendedor
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(880, 573);
+            Controls.Add(btnVisualizarProductos);
             Controls.Add(panel1);
             Controls.Add(lblPrintHelp);
             Controls.Add(label2);
@@ -260,5 +280,6 @@
         private Label label1;
         private PictureBox pictureBoxVendedor;
         private Label lblVendedorEmail;
+        private Button btnVisualizarProductos;
     }
 }
