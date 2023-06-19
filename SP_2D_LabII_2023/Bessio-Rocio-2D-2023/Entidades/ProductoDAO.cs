@@ -23,8 +23,15 @@ namespace Entidades
         /// </summary>
         public ProductoDAO()
         {
-            this.conexion = new SqlConnection(IBaseDeDatos<Producto>.CadenaConexionBase());
-        }
+            try
+            {
+                this.conexion = new SqlConnection(IBaseDeDatos<Producto>.CadenaConexionBase());
+            }
+            catch(Exception)
+            {
+                throw new SQLConexionException("Error en la conexion con la base de datos.");
+            }
+       }
         #endregion
 
         #region METODOS 

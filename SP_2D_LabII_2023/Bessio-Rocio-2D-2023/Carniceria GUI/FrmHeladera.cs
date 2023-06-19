@@ -15,7 +15,7 @@ namespace Carniceria_GUI
     public partial class FrmHeladera : Form
     {
         #region ATRIBUTOS DEL FORM 
-
+        Repositor repositor;
         #region CARNE
         private Producto carneSeleccionada;
         private double peso;
@@ -29,10 +29,10 @@ namespace Carniceria_GUI
         int indexTablaProductos;
         int codigoProducto;
         #endregion
-
-        //  bool terminoDeReponer;  
+        
         private ProductoDAO productoDAO;
-        private List<Producto> listaProductos;
+        private List<Producto> listaProductos;    
+         
         #endregion
 
         #region CONSTRUCTOR
@@ -47,7 +47,8 @@ namespace Carniceria_GUI
             this.Text = "Heladera - Reponer Stock";
 
             this.tablaProductos = new DataTable();//-->Instancio la dataTable.
-            this.carneSeleccionada = new Producto();//-->Instancio par evitar nulls
+            this.repositor = new Repositor();
+            this.carneSeleccionada = new Producto();//-->Instancio par evitar nulls 
         }
 
         /// <summary>

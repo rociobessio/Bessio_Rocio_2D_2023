@@ -20,7 +20,14 @@ namespace Entidades
         #region CONSTRUCTOR
         public UsuariosDAO()
         {
-            this.conexion = new SqlConnection(IBaseDeDatos<Usuario>.CadenaConexionBase());
+            try
+            {
+                this.conexion = new SqlConnection(IBaseDeDatos<Usuario>.CadenaConexionBase());
+            }
+            catch (Exception)
+            {
+                throw new SQLConexionException("Error en la conexion con la base de datos.");
+            }
         }
         #endregion
 
