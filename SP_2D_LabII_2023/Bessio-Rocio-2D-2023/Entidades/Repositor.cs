@@ -8,132 +8,90 @@ namespace Entidades
 {
     public class Repositor
     {
+        #region ATRIBUTOS
         private List<Producto> productosExistentes;
         private ProductoDAO productoDAO;
 
-        public event Action<Producto> delegadoRepositorEvento;
+        /// <summary>
+        /// Declaro mi delegado de repositor,
+        /// retorna void y no recibe nada.
+        /// </summary>
+        public delegate void DelegadoRepositor();
 
+        /// <summary>
+        /// Declaro mi evento del tipo delegate
+        /// DelegadoRepositor DelegadoRepositorEvento.
+        /// </summary>
+        public event DelegadoRepositor DelegadoRepositorEvento;
+        #endregion
+
+        #region CONSTRUCTOR
         public Repositor()
         {
             productoDAO = new ProductoDAO();
-            productosExistentes = new List<Producto>();
-            delegadoRepositorEvento += ManejarReposicionStock;
+            productosExistentes = new List<Producto>(); 
         }
+        #endregion
 
-        public void IniciarComprobacionPeriodica()
+        #region METODOS
+        /// <summary>
+        /// El metodo comprobar stock:
+        /// 1. Me traigo la lista de productos
+        /// 2. Recorro en busca de aquellos productos
+        /// cuyo stock sea menor o igual a 0.
+        /// 3. Si ese es el caso, comienzo mi
+        /// reposicion pasandole el producto.
+        /// </summary>
+        /// <returns></returns>
+        public bool ComprobarStock()
         {
-            Thread thread = new Thread(() =>
-            {
-                while (true)
-                {
-                    ComprobarStock();
-                    Thread.Sleep(5000); // Intervalo de 5 segundos (puedes ajustarlo según tus necesidades)
-                }
-            });
-            thread.Start();
-        }
+            productosExistentes = productoDAO.ObtenerLista();//1.
 
-        public void ComprobarStock()
-        {
-            productosExistentes = productoDAO.ObtenerLista();
-
-            foreach (Producto producto in productosExistentes)
+            foreach (Producto producto in productosExistentes)//2.
             {
                 if (producto.Peso <= 0)
                 {
-                    this.Reponer(producto);
-                    delegadoRepositorEvento?.Invoke(producto); // Invoco al evento
+                    this.ComenzarReposicion(producto);//3.
                 }
-            }
+            } 
+            return true;
         }
 
+        /// <summary>
+        /// El metodo reponer me permite que:
+        /// 1. Mientras stock de producto sea menor
+        /// o igual a 10 siga reponiendo su stock.
+        /// 2. Lo modifico de mi base
+        /// 3. "Duermo"/Detengo el hilo por 3 segundos.
+        /// </summary>
+        /// <param name="producto"></param>
         public void Reponer(Producto producto)
         {
-            Thread thread = new Thread(() =>
+            //1.
+            while (producto.Peso <= 10)
             {
-                while (true)
-                {
-                    producto.Peso = 10;
-                    if (productoDAO.UpdateProducto(producto))
-                    {
-                        delegadoRepositorEvento?.Invoke(producto); // Invoco al evento
-                    }
-                    Thread.Sleep(10000); // Cada 10 segundos
-                }
-            });
-            thread.Start();
+                producto.Peso += 1;
+                productoDAO.UpdateProducto(producto);//2.
+                Thread.Sleep(3000);//3.
+            } 
         }
-        //#region ATRIBUTOS
-        //private  List<Producto> productosExistentes; 
-        //private ProductoDAO productoDAO;
 
-        //public delegate void DelegadoRepositor();
-        //public delegate void DelegadoRepositorDos(Producto p);
-        //public event DelegadoRepositor delegadoRepositorEvento;
-        //public event DelegadoRepositorDos delegadoRepositorEventoDos;
-        //#endregion
-
-        //public Repositor()
-        //{
-        //    productoDAO = new ProductoDAO();
-        //    productosExistentes = new List<Producto>();
-        //    //   delegadoRepositorEvento += Reponer;  
-        //    delegadoRepositorEvento += IniciarComprobacionPeriodica;
-        //}
-
-        //public void IniciarComprobacionPeriodica()
-        //{
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        while (true)
-        //        {
-        //            ComprobarStock();
-        //            Thread.Sleep(5000); // Intervalo de 5 segundos (puedes ajustarlo según tus necesidades)
-        //        }
-        //    });
-        //    thread.Start();
-        //}
-
-        static void ManejarReposicionStock(Producto producto)
+        /// <summary>
+        /// Este metodo me permite crear un nuevo hilo,
+        /// donde llamaré al metodo Reponer().
+        /// 1. Instancio el hilo utilizando 
+        ///    EXPRESIONES LAMBDA.
+        /// 2. Doy comienzo a este.
+        /// </summary>
+        /// <param name="producto"></param>
+        public void ComenzarReposicion(Producto producto)
         {
-            // Lógica para manejar la reposición de stock del producto
-            // Por ejemplo, podrías imprimir un mensaje indicando el producto que se está reponiendo
-            Console.WriteLine("Reponiendo stock del producto: " + producto.Tipo);
-            // También puedes realizar otras acciones como enviar notificaciones, registrar eventos, etc.
+            Thread hilo = new Thread(() =>
+                Reponer(producto)
+            );//1
+
+            hilo.Start();//2
         }
-
-        //public bool ComprobarStock()
-        //{
-        //    productosExistentes = productoDAO.ObtenerLista();
-
-        //    foreach (Producto producto in productosExistentes)
-        //    {
-        //        if (producto.Peso <= 0)
-        //        {
-        //           this.Reponer(producto); 
-        //           delegadoRepositorEventoDos?.Invoke(producto);//-->Invoco al evento 
-        //        }
-        //    }
-
-        //    return true;
-        //}
-
-        //public void Reponer(Producto producto)
-        //{
-        //    Thread thread = new Thread(() =>
-        //    {
-        //        while (true)
-        //        {
-        //            producto.Peso = 10;
-        //            if (productoDAO.UpdateProducto(producto))
-        //            {
-        //                delegadoRepositorEventoDos?.Invoke(producto);//-->Invoco al evento
-        //            }//-->Modifico
-        //            Thread.Sleep(10000);//-->Cada 10 segundos
-        //        }
-        //    });
-        //    thread.Start();
-        //} 
-
+        #endregion
     }
 }

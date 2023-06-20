@@ -59,6 +59,7 @@
             btnAgregar = new Button();
             btnEliminar = new Button();
             btnModificar = new Button();
+            btnRefresh = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -405,7 +406,7 @@
             btnEliminar.ImageAlign = ContentAlignment.MiddleRight;
             btnEliminar.Location = new Point(421, 749);
             btnEliminar.Name = "btnEliminar";
-            btnEliminar.Size = new Size(169, 61);
+            btnEliminar.Size = new Size(169, 62);
             btnEliminar.TabIndex = 45;
             btnEliminar.Text = "   Eliminar";
             btnEliminar.TextAlign = ContentAlignment.MiddleLeft;
@@ -429,12 +430,30 @@
             btnModificar.UseVisualStyleBackColor = true;
             btnModificar.Click += btnModificar_Click;
             // 
+            // btnRefresh
+            // 
+            btnRefresh.Cursor = Cursors.Hand;
+            btnRefresh.FlatStyle = FlatStyle.Popup;
+            btnRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnRefresh.ForeColor = SystemColors.ButtonHighlight;
+            btnRefresh.Image = Properties.Resources._1497619949_jd13_85182;
+            btnRefresh.ImageAlign = ContentAlignment.MiddleRight;
+            btnRefresh.Location = new Point(235, 749);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(169, 62);
+            btnRefresh.TabIndex = 47;
+            btnRefresh.Text = "    Refresh";
+            btnRefresh.TextAlign = ContentAlignment.MiddleLeft;
+            btnRefresh.UseVisualStyleBackColor = true;
+            btnRefresh.Click += btnRefresh_Click;
+            // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1184, 819);
+            Controls.Add(btnRefresh);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
             Controls.Add(btnAgregar);
@@ -495,5 +514,6 @@
         private Button btnAgregar;
         private Button btnEliminar;
         private Button btnModificar;
+        private Button btnRefresh;
     }
 }

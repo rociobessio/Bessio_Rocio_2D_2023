@@ -29,10 +29,10 @@ namespace Carniceria_GUI
         int indexTablaProductos;
         int codigoProducto;
         #endregion
-        
+
         private ProductoDAO productoDAO;
-        private List<Producto> listaProductos;    
-         
+        private List<Producto> listaProductos;
+
         #endregion
 
         #region CONSTRUCTOR
@@ -60,8 +60,7 @@ namespace Carniceria_GUI
             : this()
         {
             this.lblVendedorEmail.Text = vendedor;
-            this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString();
-
+            this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString(); 
 
             this.listaProductos = new List<Producto>();
             this.productoDAO = new ProductoDAO();
@@ -70,7 +69,10 @@ namespace Carniceria_GUI
             StringBuilder textoAyuda = new StringBuilder();
             textoAyuda.AppendLine("El vendedor podrá reponer el stock de un producto, modificarlo, agregar uno nuevo u eliminarlo, además podrá visualizarlos.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
-            #endregion       
+            #endregion
+
+            //-->Al evento le subscribo el metodo CargarProductosDataGrid, este coincide con su firma.
+            this.repositor.DelegadoRepositorEvento += CargarProductosDataGrid;
         }
         #endregion
 
@@ -106,8 +108,6 @@ namespace Carniceria_GUI
             this.dtpFechaVencimiento.CustomFormat = "dd/MM/yyyy";
             this.dtpFechaVencimiento.Format = DateTimePickerFormat.Custom;
 
-            this.listaProductos = productoDAO.ObtenerLista();//-->Obtengo la lista de la DB 
- 
             this.CargarProductosDataGrid();//-->Ponele que no quiero que me muestre los datos que quiero yo 
         }
 
@@ -128,7 +128,7 @@ namespace Carniceria_GUI
                 codigoProducto = int.Parse(this.dataGridViewProductos.Rows[indexTablaProductos].Cells[0].Value.ToString());//-->Obtengo el codigo
             }
 
-            //Recorro la lista en busca de ese producto y lo muestro en los textboxes
+            //-->Recorro la lista en busca de ese producto y lo muestro en los textboxes
             foreach (Producto producto in this.listaProductos)
             {
                 if (producto.Codigo == codigoProducto)
@@ -253,6 +253,8 @@ namespace Carniceria_GUI
         /// </summary>
         public void CargarProductosDataGrid()
         {
+            this.listaProductos = productoDAO.ObtenerLista();//-->Obtengo la lista de la DB 
+
             tablaProductos.Rows.Clear();
 
             foreach (Producto producto in this.listaProductos)
@@ -265,14 +267,15 @@ namespace Carniceria_GUI
                 auxFilaProduc[3] = $"{producto.Categoria.ToString().Replace("_", " ")}";
                 auxFilaProduc[4] = $"{producto.Peso}kgs";
                 auxFilaProduc[5] = $"${producto.PrecioCompraCliente:f}";
-                auxFilaProduc[6] = $"{producto.Proveedor}";
-                auxFilaProduc[7] = $"${producto.PrecioVentaProveedor:f}";
-                auxFilaProduc[8] = $"{producto.Vencimiento.ToShortDateString()}";
+                auxFilaProduc[6] = $"{producto.Vencimiento.ToShortDateString()}";
+                auxFilaProduc[7] = $"{producto.Proveedor}";
+                auxFilaProduc[8] = $"${producto.PrecioVentaProveedor:f}";
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
-            this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista
-        } 
+            this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista 
+            dataGridViewProductos.Refresh(); //-->Hago un refresh del datagrid
+        }
 
         /// <summary>
         /// Este metodo privado de me permite verificar los datos que ingrese el usuario.
@@ -312,7 +315,6 @@ namespace Carniceria_GUI
             {
                 esValido = false;//-->Producto vencido
             }
-
             return esValido;
         }
         #endregion
@@ -325,28 +327,15 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnReponer_Click_1(object sender, EventArgs e)
         {
-            if (ValidarDatos() && indexTablaProductos > 0)
-            {
-                carneSeleccionada.Peso += peso;//-->Le agrego el peso nuevo a lo que tenia. 
+            this.btnEliminar.Enabled = false;//-->Deshabilito los botones
+            this.btnModificar.Enabled = false;//-->Deshabilito los botones
 
-                if (productoDAO.UpdateProducto(carneSeleccionada))
-                {
-                    MessageBox.Show("Stock de producto modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show("Ocurrio un error, no se pudo modificar el stock del producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            this.repositor.ComprobarStock();//-->Me voy a fijar si hay stock para reponer...
+            this.CargarProductosDataGrid();//-->Actualizo el dataGrid  
 
-                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-                this.txtPesoCarne.Clear();
-                this.txtPrecioVentaClientes.Clear();
-            }
-            else
-            {
-                MessageBox.Show("Alguno de los datos es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            this.btnAgregar.Enabled = true;
+            this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
+            this.btnEliminar.Enabled = true;//-->Deshabilito los botones
+            this.btnModificar.Enabled = true;//-->Deshabilito los botones
         }
 
         /// <summary>
@@ -373,7 +362,7 @@ namespace Carniceria_GUI
                 MessageBox.Show("Debe de seleccionar un producto valido.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-            this.btnAgregar.Enabled = true;
+            this.btnAgregar.Enabled = true;//-->El agregar pasa a ser utilizable
         }
 
         /// <summary>
@@ -468,6 +457,17 @@ namespace Carniceria_GUI
         {
 
         }
-        #endregion 
+        #endregion
+
+        /// <summary>
+        /// Al presionar el boton se hará un refresh del
+        /// datagridview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.CargarProductosDataGrid();
+        }
     }
 }

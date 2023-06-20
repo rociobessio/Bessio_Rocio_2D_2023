@@ -73,6 +73,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1497619949_jd13_85182 {
+            get {
+                object obj = ResourceManager.GetObject("1497619949-jd13_85182", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _customer_service_agent_89777 {
             get {
                 object obj = ResourceManager.GetObject("-customer-service-agent_89777", resourceCulture);

@@ -228,10 +228,12 @@ namespace Entidades
                 {
                     puedeModificar = false;
                 }
+                this.conexion.Close();
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
+                this.conexion.Close();
             }
             finally
             {

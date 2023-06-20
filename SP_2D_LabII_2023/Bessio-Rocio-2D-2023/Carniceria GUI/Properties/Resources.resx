@@ -157,6 +157,9 @@
   <data name="delivery_payment_cash_service_price_icon_187251" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\delivery_payment_cash_service_price_icon_187251.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="shoppaymentorderbuy-04_icon-icons.com_73886" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shoppaymentorderbuy-04_icon-icons.com_73886.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="-customer-service-agent_89777" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\-customer-service-agent_89777.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,7 +208,7 @@
   <data name="receipt_information_icon_177401" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\receipt_information_icon_177401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="shoppaymentorderbuy-04_icon-icons.com_73886" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\shoppaymentorderbuy-04_icon-icons.com_73886.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1497619949-jd13_85182" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1497619949-jd13_85182.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

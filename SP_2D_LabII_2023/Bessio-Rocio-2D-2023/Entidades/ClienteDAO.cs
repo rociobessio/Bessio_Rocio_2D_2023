@@ -203,47 +203,46 @@ namespace Entidades
                this.comando.Connection = this.conexion;
                this.comando.Parameters.AddWithValue("@email", email);
 
-                this.conexion.Open();
+               this.conexion.Open();
 
-                this.lector = this.comando.ExecuteReader();
+               this.lector = this.comando.ExecuteReader();
 
-                this.lector.Read();
+               this.lector.Read();
 
-                //-->Cargo ese cliente.
-                string nombre  = (string)this.lector[0];
-                string apellido = (string)this.lector[1]; 
-                string dni = (string)this.lector[3];
-                string telefono = (string)this.lector[4];
-                string domicilio = (string)this.lector[5];
-                bool  conTarjeta = (bool)this.lector[6];
-                double dineroEfectivoDisponible = (double)this.lector[7];
-                int idCliente = (int)this.lector[15];
-                int idPersona = (int)this.lector[16];
+               //-->Cargo ese cliente.
+               string nombre  = (string)this.lector[0];
+               string apellido = (string)this.lector[1]; 
+               string dni = (string)this.lector[3];
+               string telefono = (string)this.lector[4];
+               string domicilio = (string)this.lector[5];
+               bool  conTarjeta = (bool)this.lector[6];
+               double dineroEfectivoDisponible = (double)this.lector[7];
+               int idCliente = (int)this.lector[15];
+               int idPersona = (int)this.lector[16];
 
-                if (conTarjeta)
-                {
-                    DateTime vencimientoTarjeta = (DateTime)this.lector[8];
-                    string entidadEmisora = (string)this.lector[9];
-                    string titularTarjeta = (string)this.lector[10];
-                    string numeroTarjeta = (string)this.lector[11];
-                    string cvv = (string)this.lector[12];
-                    double dineroDisponible = (double)this.lector[13];
-                    bool esDebito = (bool)this.lector[14];
+               if (conTarjeta)
+               {
+                   DateTime vencimientoTarjeta = (DateTime)this.lector[8];                    string entidadEmisora = (string)this.lector[9];
+                   string titularTarjeta = (string)this.lector[10];
+                   string numeroTarjeta = (string)this.lector[11];
+                   string cvv = (string)this.lector[12];
+                   double dineroDisponible = (double)this.lector[13];
+                   bool esDebito = (bool)this.lector[14];
 
-                    cliente = new Cliente(nombre, apellido, Sexo.No_Binario, Nacionalidad.Argentina, new DateTime(), dni,
-                              domicilio, telefono, new Usuario(email, string.Empty), new Carrito(), 
+                   cliente = new Cliente(nombre, apellido, Sexo.No_Binario, Nacionalidad.Argentina, new DateTime(), dni,
+                             domicilio, telefono, new Usuario(email, string.Empty), new Carrito(), 
                               new Tarjeta(vencimientoTarjeta,titularTarjeta, cvv, numeroTarjeta,entidadEmisora,dineroDisponible,esDebito),
                               conTarjeta);
-                }
-                else
-                {
-                    cliente = new Cliente(nombre,apellido,Sexo.No_Binario,Nacionalidad.Argentina,new DateTime(),dni,
-                              domicilio,telefono,new Usuario(email,string.Empty),new Carrito(),dineroEfectivoDisponible,conTarjeta);
-                }
-                cliente.IDCliente = idCliente;
-                cliente.IDPersona = idPersona;
+               }
+               else
+               {
+                   cliente = new Cliente(nombre,apellido,Sexo.No_Binario,Nacionalidad.Argentina,new DateTime(),dni,
+                             domicilio,telefono,new Usuario(email,string.Empty),new Carrito(),dineroEfectivoDisponible,conTarjeta);
+               }
+               cliente.IDCliente = idCliente;
+               cliente.IDPersona = idPersona;
 
-                this.lector.Close();//-->Cierro el lector.
+               this.lector.Close();//-->Cierro el lector.
             }
             catch (Exception e)
             {
