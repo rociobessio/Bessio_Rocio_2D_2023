@@ -72,4 +72,22 @@
       </Producto>
     </Productos>
   </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>5250</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Peso>2</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>5250</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
 </ArrayOfCarrito>

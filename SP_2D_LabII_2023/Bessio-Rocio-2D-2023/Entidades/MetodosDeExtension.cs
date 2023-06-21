@@ -21,7 +21,7 @@ namespace Entidades
         /// <returns></returns>
         public static string ExtensionFormatoTelefono(this string str)
         {
-            if (str.Length == 10)
+            if (str.Length >= 10 && str.Length <= 15)
             {
                 string codigoArea = str.Substring(0, 2);//-->Primeros dos numeros, codigo de area
                 string primerParte = str.Substring(2,4);
@@ -40,7 +40,7 @@ namespace Entidades
         /// <returns></returns>
         public static string ExtensionFormatoDNI(this string str)
         {
-            if (str.Length == 8)
+            if (str.Length >= 8 && str.Length <= 12)
             {
                 string primeraParte = str.Substring(0, 2);//-->Primeros dos numeros,
                 string segunda = str.Substring(2, 3);//-->2+3=5-->Donde termina el proximo .

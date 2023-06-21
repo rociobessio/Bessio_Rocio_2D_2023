@@ -256,10 +256,10 @@ namespace Entidades
 
             try
             {
-                string query = "INSERT INTO Producto VALUES (";
-                query += $"'{producto.Tipo}', '{producto.Corte}', '{producto.Categoria}', {producto.Peso}, ";
+                string query = "INSERT INTO Productos (Tipo, Corte, Categoria, Peso, PrecioCompraCliente, Proveedor, PrecioVentaProveedor, Vencimiento) ";
+                query += $"VALUES ('{producto.Tipo}', '{producto.Corte}', '{producto.Categoria}', {producto.Peso}, ";
                 query += $"{producto.PrecioCompraCliente}, '{producto.Proveedor}', {producto.PrecioVentaProveedor}, " +
-                    $"'{producto.Vencimiento.ToShortDateString()}'";
+                    $"'{producto.Vencimiento.ToShortDateString()}');";
 
                 this.comando = new SqlCommand();
 

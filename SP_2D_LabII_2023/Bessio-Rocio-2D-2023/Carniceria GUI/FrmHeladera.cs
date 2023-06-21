@@ -31,8 +31,7 @@ namespace Carniceria_GUI
         #endregion
 
         private ProductoDAO productoDAO;
-        private List<Producto> listaProductos;
-
+        private List<Producto> listaProductos; 
         #endregion
 
         #region CONSTRUCTOR
@@ -330,8 +329,21 @@ namespace Carniceria_GUI
             this.btnEliminar.Enabled = false;//-->Deshabilito los botones
             this.btnModificar.Enabled = false;//-->Deshabilito los botones
 
-            this.repositor.ComprobarStock();//-->Me voy a fijar si hay stock para reponer...
-            this.CargarProductosDataGrid();//-->Actualizo el dataGrid  
+            bool hayReposicion = false;
+            foreach (Producto item in listaProductos)
+            {
+                if (item.Peso <= 0)
+                    hayReposicion = true;
+            }
+
+            if (hayReposicion)//-->Si hay para reponer
+            {
+                this.repositor.ComprobarStock();//-->Me voy a fijar si hay stock para reponer...
+                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+                MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            }
+            else
+                MessageBox.Show("No hay productos que reponer.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones
@@ -431,6 +443,17 @@ namespace Carniceria_GUI
             }
             this.CargarProductosDataGrid();//-->Actualizo el dataGrid
         }
+
+        /// <summary>
+        /// Al presionar el boton se hará un refresh del
+        /// datagridview.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            this.CargarProductosDataGrid();
+        }
         #endregion
 
         #region EVENTOS Colgados 
@@ -459,15 +482,6 @@ namespace Carniceria_GUI
         }
         #endregion
 
-        /// <summary>
-        /// Al presionar el boton se hará un refresh del
-        /// datagridview.
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnRefresh_Click(object sender, EventArgs e)
-        {
-            this.CargarProductosDataGrid();
-        }
+
     }
 }
