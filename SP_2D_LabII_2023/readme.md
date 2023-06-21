@@ -80,4 +80,5 @@
 
 ## Diagrama de Clases
 ---------------------
-<img width="829" alt="DiagramaDeClases" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/a394cf64-7da4-448e-8726-9d56fe780972">
+<img width="829" alt="DiagramaDeClases" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/d34c929b-02ef-4fe6-be6f-dbabeabf7025">
+
