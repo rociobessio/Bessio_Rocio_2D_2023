@@ -222,7 +222,8 @@ namespace Entidades
 
                if (conTarjeta)
                {
-                   DateTime vencimientoTarjeta = (DateTime)this.lector[8];                    string entidadEmisora = (string)this.lector[9];
+                   DateTime vencimientoTarjeta = (DateTime)this.lector[8];                    
+                   string entidadEmisora = (string)this.lector[9];
                    string titularTarjeta = (string)this.lector[10];
                    string numeroTarjeta = (string)this.lector[11];
                    string cvv = (string)this.lector[12];
