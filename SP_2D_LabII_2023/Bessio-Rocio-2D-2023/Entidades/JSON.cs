@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class JSON : IArchivos<Carrito>//-->Implementa interfaz
+    public static class JSON //: IArchivos<Carrito>//-->Implementa interfaz
     {
         #region ATRIBUTOS
         public static StreamWriter writer;
@@ -20,7 +20,7 @@ namespace Entidades
         /// Contiene el path de donde esta
         /// el archivo.
         /// </summary>
-        public JSON()
+        static JSON()
         {
             if(!Directory.Exists("..\\Archivos"))//-->Pregunto si NO existe la ruta
             {
@@ -38,7 +38,7 @@ namespace Entidades
         /// </summary>
         /// <param name="carrito"></param>
         /// <returns></returns>
-        public bool Serializacion(Carrito carrito)
+        public static bool SerializacionJSON(Carrito carrito)
         {
             bool esValido = false;
 
@@ -66,7 +66,7 @@ namespace Entidades
         /// carritos para luego mostrarla.
         /// </summary>
         /// <returns></returns>
-        public List<Carrito> Deserializar()
+        public static List<Carrito> DeserializarJSON()
         {
             List<Carrito> carritos = new List<Carrito>();
             Carrito carritoAUX =  new Carrito();

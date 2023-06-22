@@ -16,7 +16,7 @@ namespace Entidades
     /// realizas con el Perfil 
     /// Cliente.
     /// </summary>
-    public class XML : IArchivos<Carrito>//-->Implemento Interfaz
+    public static  class XML 
     {
         #region ATRIBUTOS
         public static StreamWriter writer;
@@ -29,7 +29,7 @@ namespace Entidades
         /// Constructor estatico de la
         /// clase estatica XML.
         /// </summary>
-        public XML()
+        static  XML()
         {
             if (!Directory.Exists("..\\Archivos"))//-->Pregunto si NO existe la ruta
             {
@@ -41,7 +41,7 @@ namespace Entidades
         #endregion
 
         #region METODOS
-        public bool Serializacion(Carrito carrito)
+        public static bool SerializacionXML(Carrito carrito)
         {
             bool esValido = false;
             try
@@ -51,7 +51,7 @@ namespace Entidades
                 //-->Si existe el archivo..
                 if (File.Exists(XML.path))
                 {
-                    carritos = this.Deserializar();//-->Reutilizo mi metodo 
+                    carritos = XML.DeserializarXML();//-->Reutilizo mi metodo 
                 }
 
                 carritos.Add(carrito);//-->Agrego mi nuevo carrito a la lista que me traje, sino se pisa
@@ -77,7 +77,7 @@ namespace Entidades
         /// </summary>
         /// <param name="carrito"></param>
         /// <returns></returns>
-        public List<Carrito> Deserializar()
+        public  static List<Carrito> DeserializarXML()
         {
             List<Carrito> carritos = new List<Carrito>(); 
 

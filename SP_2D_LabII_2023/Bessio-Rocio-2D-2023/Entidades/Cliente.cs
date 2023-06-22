@@ -162,8 +162,7 @@ namespace Entidades
         public static bool Comprar(Cliente clienteIngresado, List<Producto> listaCarnesDisponibles,out bool updateBaseProducto)
         {
             bool puedeComprar = false;
-            ClienteDAO clienteDAO = new ClienteDAO();
-            XML xML = new XML();
+            ClienteDAO clienteDAO = new ClienteDAO(); 
 
             updateBaseProducto = false;
             ProductoDAO productoDAO = new ProductoDAO();    
@@ -216,7 +215,7 @@ namespace Entidades
                 puedeComprar = true;
 
                 clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;//-->Asigno el email 
-                xML.Serializacion(clienteIngresado.CarritoCompra);//-->Serializo en XML
+                XML.SerializacionXML(clienteIngresado.CarritoCompra);//-->Serializo en XML
             }
             else
             {

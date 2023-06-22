@@ -117,9 +117,7 @@ namespace Entidades
         public static bool Vender(double totalCompra, Cliente cliente, double peso,Producto carneSeleccionada,out bool updateBase)
         {
             bool pudoComprar = false;
-            updateBase = false;
-
-            JSON jSON = new JSON(); 
+            updateBase = false; 
             ProductoDAO productoDAO = new ProductoDAO();
             ClienteDAO clienteDAO = new ClienteDAO();
 
@@ -158,32 +156,14 @@ namespace Entidades
                     updateBase = true;
 
                 //-->Serializo en formato JSON el carrito, que seria como el ticket de compra
-                if (jSON.Serializacion(cliente.CarritoCompra) && pudoComprar == true)
+                if (JSON.SerializacionJSON(cliente.CarritoCompra) && pudoComprar == true)
                 {
                     pudoComprar = true;
                 }
             }
 
             return pudoComprar;
-        }
-
-        /// <summary>
-        /// Método estatico que me permite ver el historial de ventas,
-        /// recibo un cliente y creo una instancia carrito 
-        /// para pasarselo a mi lista.
-        /// </summary>
-        /// <param name="cliente"></param>
-        public static void ObtenerHistorialVentas(Cliente cliente)
-        {
-            Carrito carrito = new Carrito();
-            carrito.Productos = cliente.CarritoCompra.Productos;
-            carrito.PrecioTotal = cliente.CarritoCompra.PrecioTotal;
-            carrito.ConTarjeta = cliente.CarritoCompra.ConTarjeta;
-            if (!_historialVentas.Contains(carrito))
-            {
-                _historialVentas.Add(carrito);//-->Añado al historial del cliente pasandole el carrito
-            }
-        }
+        } 
         #endregion
 
         #region SOBRECARGA DE OPERADORES

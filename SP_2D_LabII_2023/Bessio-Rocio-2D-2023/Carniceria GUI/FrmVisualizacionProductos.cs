@@ -17,9 +17,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS FORM  
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        private List<Carrito> historial;
-        private JSON json;
-        private XML xML;
+        private List<Carrito> historial; 
         #endregion
 
         #region CONSTRUCTORES
@@ -32,9 +30,7 @@ namespace Carniceria_GUI
             this.Text = "Visualización Productos (Deserialización)";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
-            this.MaximizeBox = false;
-            this.json = new JSON();
-            this.xML = new XML();
+            this.MaximizeBox = false; 
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -120,7 +116,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerHTML_Click(object sender, EventArgs e)
         {
-            this.historial = json.Deserializar();//-->Deserializo la lista JSON
+            this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
             if (historial.Count <= 0)
             {
                 MessageBox.Show("No hay Carritos para visualizar en fomato JSON.", "Información",
@@ -138,7 +134,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerXML_Click(object sender, EventArgs e)
         {
-            this.historial = xML.Deserializar();//-->Deserializo en XML
+            this.historial = XML.DeserializarXML();//-->Deserializo en XML
             if (this.historial.Count <= 0)
             {
                 MessageBox.Show("No hay Carritos para visualizar en fomato XML.", "Información",

@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UnitTestingSQL
+namespace UnitTestings
 {
     [TestClass]
-    public class TestingJSON
+    public class TestingXML
     {
 
         [TestMethod]
-        public void DeserializarJSON_OK()
+        public void DeserializarXML_OK()
         {
             //-->Arrange -->Instancio 
-            List<Carrito> carritos = JSON.DeserializarJSON();
+            List<Carrito> carritos = XML.DeserializarXML();
 
             //-->Act -->Verifico 
             bool esValido = carritos.Count > 0;
@@ -25,10 +25,10 @@ namespace UnitTestingSQL
         }
 
         [TestMethod]
-        public void DeserializarJSON_FAIL()
+        public void DeserializarXML_FAIL()
         {
             //-->Arrange -->Instancio 
-            List<Carrito> carritos = JSON.DeserializarJSON();
+            List<Carrito> carritos = XML.DeserializarXML();
 
             //-->Act -->Verifico 
             bool esValido = carritos.Count == 0 || carritos == null;

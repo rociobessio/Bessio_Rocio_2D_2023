@@ -8,7 +8,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Cliente">
-    <Position X="3" Y="6.25" Width="1.5" />
+    <Position X="2.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAIAAAACAAAEiAAABAAQAAAAAIiAEABAggAAAiA=</HashCode>
       <FileName>Cliente.cs</FileName>
@@ -17,92 +17,94 @@
   <Class Name="Entidades.Vendedor">
     <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAABAAgAUEgABAAAAAAAAAAIAAQACBIgCAAiA=</HashCode>
+      <HashCode>EAAAAAAAABAAgAUEgABAAAAAAAAAAIAAQAABAgCAAiA=</HashCode>
       <FileName>Vendedor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Tarjeta">
-    <Position X="3" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAAAAABJAEgAIACAAAQAAAIIAAIIQAAABABiE=</HashCode>
       <FileName>Tarjeta.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Carrito">
-    <Position X="6.5" Y="0.5" Width="1.5" />
+    <Position X="6" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAIgAAIAAQAAAAAEQBACAQAiEACAAYAAAAAACACAAAA=</HashCode>
+      <HashCode>AAIgAAIAAAAAAAAEQBACAQAiEACAAYAAAAAACACAAAA=</HashCode>
       <FileName>Carrito.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Producto">
-    <Position X="6.5" Y="6" Width="1.5" />
+    <Position X="6" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAQIAIQBQBACsgABiABAhACAAAIAAAAAAAAAIAiQ=</HashCode>
+      <HashCode>AAAAAQIAIQAQBACsgABiABAhgCAAAIAAAAAAAAAIAiQ=</HashCode>
       <FileName>Producto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Usuario">
-    <Position X="4.75" Y="0.5" Width="1.5" />
+    <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAQAICAAACAAEAAEiEAABAAAQAAAAIAAAACAogAAAiE=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Repositor">
-    <Position X="8.25" Y="0.5" Width="1.5" />
+    <Position X="7.75" Y="0.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Delegate Name="Entidades.Repositor.DelegadoRepositor" Collapsed="true">
+      <Delegate Name="Entidades.Repositor.DelegadoReposicionFinalizada" Collapsed="true">
         <TypeIdentifier>
           <NewMemberFileName>Repositor.cs</NewMemberFileName>
         </TypeIdentifier>
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAgAAAAAAhAAAAAAAAAQAAQABAAAAAAAAAAAA=</HashCode>
+      <HashCode>AEAEAAAAAAACgAAQAAAAAAAAAQAAAAAAQAAAAAIAAAA=</HashCode>
       <FileName>Repositor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.MetodosDeExtension">
-    <Position X="8.25" Y="4.5" Width="1.5" />
+    <Position X="7.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>MetodosDeExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.SQLConexionException">
-    <Position X="8.25" Y="6" Width="1.5" />
+    <Position X="7.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Exceptions.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.XML">
-    <Position X="10" Y="6.5" Width="1.5" />
+    <Position X="9.5" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAwAAAAAQAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAACAAAAAAAAAAAAQQAAAAAQAAA=</HashCode>
       <FileName>XML.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.ArchivoDeTexto">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="9.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ACgAgAAAAAAAAAIAAAACAEAEAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ArchivoDeTexto.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.JSON">
-    <Position X="10" Y="3.75" Width="1.5" />
+    <Position X="9.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAQAAAAQQAAA=</HashCode>
+      <HashCode>AAgAAAAAAAAAAAAAAAACAAAAAAAAAAAAQQAAAAAQAAA=</HashCode>
       <FileName>JSON.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.ProductoDAO">
-    <Position X="8.25" Y="9.5" Width="1.5" />
+    <Position X="7.75" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEIAAAAAAAAEBAAAAAAAAAAAEAAAAAAAAAAgAAAE=</HashCode>
       <FileName>ProductoDAO.cs</FileName>
@@ -110,7 +112,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.UsuariosDAO">
-    <Position X="10" Y="9.25" Width="1.5" />
+    <Position X="9.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAEIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAE=</HashCode>
       <FileName>UsuariosDAO.cs</FileName>
@@ -118,7 +120,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.ClienteDAO">
-    <Position X="4.75" Y="8.5" Width="1.5" />
+    <Position X="4.25" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEIAAgAAAAAABAAAAAAAAAAAAAAAAABAAAAgAAAE=</HashCode>
       <FileName>ClienteDAO.cs</FileName>
@@ -126,28 +128,35 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Entidades.IBaseDeDatos&lt;T&gt;">
-    <Position X="8.25" Y="7.5" Width="1.5" />
+    <Position X="7.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>IBaseDeDatos.cs</FileName>
     </TypeIdentifier>
   </Interface>
+  <Interface Name="Entidades.IArchivos&lt;T&gt;">
+    <Position X="4.25" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>IArchivos.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
   <Enum Name="Tipo" Collapsed="true">
-    <Position X="4.75" Y="6" Width="1.5" />
+    <Position X="4.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>eTipo.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Corte" Collapsed="true">
-    <Position X="4.75" Y="6.75" Width="1.5" />
+    <Position X="4.25" Y="6.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAgAABAACIgEEAAAQAAAAAAAEKAIAgAAAAAA=</HashCode>
       <FileName>eCorte.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="CategoriaBovina" Collapsed="true">
-    <Position X="4.75" Y="7.5" Width="1.5" />
+    <Position X="4.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAACgAACAAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>eCategoriaBovina.cs</FileName>

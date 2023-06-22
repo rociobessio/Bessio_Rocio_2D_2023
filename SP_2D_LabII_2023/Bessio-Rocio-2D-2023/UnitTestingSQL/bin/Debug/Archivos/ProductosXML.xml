@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCarrito xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Carrito>
+    <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
+    <PrecioTotal>1000</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>4</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Peso>2</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-07-01T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Siga la Vaca</Proveedor>
+        <PrecioCompraCliente>1000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
+    <PrecioTotal>3000</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Costilla</Corte>
+        <Peso>2</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-10-23T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>3000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>1155</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>5</Codigo>
+        <Tipo>Pollo</Tipo>
+        <Corte>Pechuga</Corte>
+        <Peso>1</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-19T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>1155</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>1700</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>12</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Vacio</Corte>
+        <Peso>1</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-10-16T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Chascomus LA</Proveedor>
+        <PrecioCompraCliente>1700</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>5250</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Peso>2</Peso>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>5250</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+</ArrayOfCarrito>
