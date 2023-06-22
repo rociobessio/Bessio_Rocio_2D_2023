@@ -31,7 +31,7 @@ namespace Carniceria_GUI
         #endregion
 
         private ProductoDAO productoDAO;
-        private List<Producto> listaProductos; 
+        private List<Producto> listaProductos;
         #endregion
 
         #region CONSTRUCTOR
@@ -59,7 +59,7 @@ namespace Carniceria_GUI
             : this()
         {
             this.lblVendedorEmail.Text = vendedor;
-            this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString(); 
+            this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString();
 
             this.listaProductos = new List<Producto>();
             this.productoDAO = new ProductoDAO();
@@ -70,8 +70,6 @@ namespace Carniceria_GUI
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
 
-            //-->Al evento le subscribo el metodo CargarProductosDataGrid, este coincide con su firma.
-            this.repositor.DelegadoRepositorEvento += CargarProductosDataGrid;
         }
         #endregion
 
@@ -146,13 +144,19 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
-        /// Le preguntara al usuario si desea realmente cerrar el formulario.
+        /// Antes de cerrar el formulario se fija si se termino de
+        /// reponer.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FrmHeladera_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if (!this.repositor.ReposicionEnProgreso)
+            {
+                MessageBox.Show("Espere a que se complete la reposición antes de cerrar el programa.",
+                    "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Cancel = true;
+            }
         }
 
         /// <summary>
@@ -210,6 +214,16 @@ namespace Carniceria_GUI
         }
 
         /// <summary>
+        /// Al realizar doble click se habilita el btnAgregar.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void dataGridViewProductos_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            this.btnAgregar.Enabled = true;
+        }
+
+        /// <summary>
         /// Solo ingresará numeros
         /// </summary>
         /// <param name="sender"></param>
@@ -264,7 +278,7 @@ namespace Carniceria_GUI
                 auxFilaProduc[1] = $"{producto.Tipo.ToString().Replace("_", " ")}";
                 auxFilaProduc[2] = $"{producto.Corte.ToString().Replace("_", " ")}";
                 auxFilaProduc[3] = $"{producto.Categoria.ToString().Replace("_", " ")}";
-                auxFilaProduc[4] = $"{producto.Peso}kgs";
+                auxFilaProduc[4] = $"{producto.Stock}kgs";
                 auxFilaProduc[5] = $"${producto.PrecioCompraCliente:f}";
                 auxFilaProduc[6] = $"{producto.Vencimiento.ToShortDateString()}";
                 auxFilaProduc[7] = $"{producto.Proveedor}";
@@ -273,7 +287,7 @@ namespace Carniceria_GUI
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
             this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista 
-            dataGridViewProductos.Refresh(); //-->Hago un refresh del datagrid
+                                                                   //   dataGridViewProductos.Refresh(); //-->Hago un refresh del datagrid
         }
 
         /// <summary>
@@ -316,6 +330,27 @@ namespace Carniceria_GUI
             }
             return esValido;
         }
+
+        /// <summary>
+        /// Este metodo privado me dejará mostrar en un
+        /// label cuando se ha terminado  de reponer.
+        /// try-catch por las dudas.
+        /// </summary>
+        private void ReposicionFinalizada()
+        {
+            try
+            {
+                //-->Realizo Invoke del metodo y actualizo el label.
+                this.lblProductos.Invoke((MethodInvoker)(() =>
+                {
+                    this.lblReposicionTerminada.Text = "Se termino de reponer.";
+                }));
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Ocurrio un problema.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         #endregion
 
         #region BOTONES DEL FORM 
@@ -326,24 +361,23 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnReponer_Click_1(object sender, EventArgs e)
         {
-            this.btnEliminar.Enabled = false;//-->Deshabilito los botones
+            this.btnEliminar.Enabled = false;//-->Deshabilito los botones 
             this.btnModificar.Enabled = false;//-->Deshabilito los botones
 
-            bool hayReposicion = false;
-            foreach (Producto item in listaProductos)
-            {
-                if (item.Peso <= 0)
-                    hayReposicion = true;
-            }
+            //-->Suscribo el evento de la reposicion finalizada.
+            this.repositor.EventoReposicionFinalizada += this.ReposicionFinalizada;
 
-            if (hayReposicion)//-->Si hay para reponer
+            //--> Instancio un nuevo hilo
+            Thread reposicion = new Thread(() =>
+                 this.repositor.Reponiendo(listaProductos));
+
+            reposicion.Start();//-->Que comience el hilo 
+
+            this.Invoke((MethodInvoker)(() =>//-->Invoko a mi metodo
             {
-                this.repositor.ComprobarStock();//-->Me voy a fijar si hay stock para reponer...
-                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-                MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...","Información",MessageBoxButtons.OK,MessageBoxIcon.Information);
-            }
-            else
-                MessageBox.Show("No hay productos que reponer.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.lblReposicionTerminada.Text = "Reponiendo...";
+            }));
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones
@@ -394,7 +428,7 @@ namespace Carniceria_GUI
                 carneSeleccionada.PrecioVentaProveedor = int.Parse(this.txtPrecioCompraFrigorifico.Text);
                 carneSeleccionada.Proveedor = this.txtProveedor.Text;
                 carneSeleccionada.PrecioCompraCliente = int.Parse(this.txtPrecioVentaClientes.Text);
-                carneSeleccionada.Peso = peso;//Setteo nuevo precio
+                carneSeleccionada.Stock = peso;//Setteo nuevo precio
                 carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
                 carneSeleccionada.Corte = this.cbCorteCarne.SelectedItem.ToString();
 
@@ -480,8 +514,7 @@ namespace Carniceria_GUI
         {
 
         }
-        #endregion
-
+        #endregion 
 
     }
 }

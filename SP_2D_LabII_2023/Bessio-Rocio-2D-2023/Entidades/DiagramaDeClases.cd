@@ -51,6 +51,9 @@
   </Class>
   <Class Name="Entidades.Repositor">
     <Position X="8.25" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
     <NestedTypes>
       <Delegate Name="Entidades.Repositor.DelegadoRepositor" Collapsed="true">
         <TypeIdentifier>
@@ -64,14 +67,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.MetodosDeExtension">
-    <Position X="8.25" Y="3.75" Width="1.5" />
+    <Position X="8.25" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>MetodosDeExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.SQLConexionException">
-    <Position X="8.25" Y="5.25" Width="1.5" />
+    <Position X="8.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Exceptions.cs</FileName>
@@ -99,7 +102,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.ProductoDAO">
-    <Position X="8.25" Y="8.75" Width="1.5" />
+    <Position X="8.25" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAEIAAAAAAAAEBAAAAAAAAAAAEAAAAAAAAAAgAAAE=</HashCode>
       <FileName>ProductoDAO.cs</FileName>
@@ -123,7 +126,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Interface Name="Entidades.IBaseDeDatos&lt;T&gt;">
-    <Position X="8.25" Y="6.75" Width="1.5" />
+    <Position X="8.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAgAAAA=</HashCode>
       <FileName>IBaseDeDatos.cs</FileName>

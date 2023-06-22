@@ -100,40 +100,7 @@ namespace Entidades
         }
         #endregion
 
-        #region METODOS
-        /// <summary>
-        /// Este metodo estatico me permite hardcodear las listas de los vendedores.
-        /// </summary>
-        /// <param name="vendedor"></param>
-        /// <returns></returns>
-        public static Vendedor CargarDatosVendedor(Vendedor vendedor)
-        {
-            //#region INSTANCIO CARNES 
-            //vendedor._listaProductos.Add(1, new Producto("Lomo", 19, "Ternero", new DateTime(2023, 12, 10), 900, "Mingo CO", "Carne_Vacuna", 1200));
-            //vendedor._listaProductos.Add(2, new Producto("Pechuga", 17, "No_Es_Bovino", new DateTime(2023, 11, 22), 1100, "La Granjita", "Pollo", 2120));
-            //vendedor._listaProductos.Add(3, new Producto("Costilla", 190, "No_Es_Bovino", new DateTime(2023, 09, 08), 1230, "El Muelle Mardel", "Cerdo", 1400));
-            //vendedor._listaProductos.Add(4, new Producto("Asado", 10, "Ternero", new DateTime(2023, 05, 10), 190, "La mirona", "Carne_Vacuna", 1300));
-            //vendedor._listaProductos.Add(5, new Producto("Pollo_Entero", 90, "No_Es_Bovino", new DateTime(2023, 12, 07), 230, "La Granjita", "Pollo", 500));
-            //vendedor._listaProductos.Add(6, new Producto("Matambre", 50, "No_Es_Bovino", new DateTime(2023, 09, 08), 1000, "Chascomus LA", "Cerdo", 1300));
-            //vendedor._listaProductos.Add(7, new Producto("Pechuga", 100, "No_Es_Bovino", new DateTime(2023, 06, 18), 500, "La Granjita", "Pollo", 1000));
-            //vendedor._listaProductos.Add(8, new Producto("Pechito", 190, "No_Es_Bovino", new DateTime(2023, 10, 05), 2000, "La mirona", "Cerdo", 2500));
-            //vendedor._listaProductos.Add(9, new Producto("Bife_Angosto", 100, "Novillito", new DateTime(2023, 09, 08), 2000, "Siga la vaca", "Carne_Vacuna", 2300));
-            //#endregion 
-
-            //#region INSTANCIO CLIENTES 
-            //vendedor._listaClientes.Add(new Cliente("Pablo", "Fernandez", Sexo.Masculino, Nacionalidad.Chile, new DateTime(1979, 08, 12),
-            //            "18920129", "Alcorta 90", "10923891", new Usuario("paFer@yahoo.com.ar", "123"), new Carrito(),
-            //            new Tarjeta(new DateTime(2025, 04, 29), "Pablo Fernandez", "0900", "09691273892180328", "Banco Provincia", 5500, false), true));//-->Utiliza Tarjeta Débito
-            //vendedor._listaClientes.Add(new Cliente("Mariana", "Silveira", Sexo.Femenino, Nacionalidad.Argentina, new DateTime(1990, 10, 19),
-            //                        "22312335", "Formosa 2716", "77090989", new Usuario("mar@hotmail.com", "123"), new Carrito(),
-            //                        new Tarjeta(new DateTime(2025, 04, 29), "Mariana Silveira", "0033", "1892312901234124", "Banco Nacion", 10000, true), true));//-->Utiliza Tarjeta Credito
-            //vendedor._listaClientes.Add(new Cliente("Gaston", "Casares", Sexo.Masculino, Nacionalidad.Uruguay, new DateTime(1978, 12, 09),
-            //                        "20193123", "Rucci 2680", "11234124", new Usuario("gCasares@yahoo.com.ar", "123"), new Carrito(), 12000, false));//-->Utiliza Debito
-            //#endregion
-
-            return vendedor;
-        }
-
+        #region METODOS  
         /// <summary>
         /// Me permite verificar si el cliente cumple con los requisitios para comprar:
         /// 1.Si es con tarjeta que esta tenga saldo y que sea mayor al total de la compra.
@@ -152,6 +119,7 @@ namespace Entidades
             bool pudoComprar = false;
             updateBase = false;
 
+            JSON jSON = new JSON(); 
             ProductoDAO productoDAO = new ProductoDAO();
             ClienteDAO clienteDAO = new ClienteDAO();
 
@@ -164,7 +132,7 @@ namespace Entidades
                     {
                         cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
                         cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
-                        carneSeleccionada.Peso -= peso;//-->Descuento el peso
+                        carneSeleccionada.Stock -= peso;//-->Descuento el peso
                         pudoComprar = true;
                     } 
                 }
@@ -177,7 +145,7 @@ namespace Entidades
                     {
                         cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
                         cliente.DineroEfectivoDisponible -= totalCompra;
-                        carneSeleccionada.Peso -= peso;//-->Descuento el peso 
+                        carneSeleccionada.Stock -= peso;//-->Descuento el peso 
                         pudoComprar = true;
                     } 
                 }
@@ -190,7 +158,7 @@ namespace Entidades
                     updateBase = true;
 
                 //-->Serializo en formato JSON el carrito, que seria como el ticket de compra
-                if (JSON.SerializacionJSON(cliente.CarritoCompra) && pudoComprar == true)
+                if (jSON.Serializacion(cliente.CarritoCompra) && pudoComprar == true)
                 {
                     pudoComprar = true;
                 }

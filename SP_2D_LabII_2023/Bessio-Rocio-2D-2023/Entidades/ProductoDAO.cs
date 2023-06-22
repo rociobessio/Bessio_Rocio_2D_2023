@@ -64,7 +64,7 @@ namespace Entidades
                     producto.Tipo = (string)this.lector[1];
                     producto.Corte = (string)this.lector[2];
                     producto.Categoria = (string)this.lector[3];
-                    producto.Peso = (double)this.lector[4];
+                    producto.Stock = (double)this.lector[4];
                     producto.PrecioCompraCliente = (double)this.lector[5];
                     producto.Proveedor = (string)this.lector[6];
                     producto.PrecioVentaProveedor = (double)this.lector[7];
@@ -117,7 +117,7 @@ namespace Entidades
                 producto.Tipo = (string)this.lector[1];
                 producto.Corte = (string)this.lector[2];
                 producto.Categoria = (string)this.lector[3];
-                producto.Peso = (double)this.lector[4];
+                producto.Stock = (double)this.lector[4];
                 producto.PrecioCompraCliente = (double)this.lector[5];
                 producto.Proveedor = (string)this.lector[6];
                 producto.PrecioVentaProveedor = (double)this.lector[7];
@@ -205,7 +205,7 @@ namespace Entidades
                 this.comando.Parameters.AddWithValue("@Tipo", producto.Tipo);
                 this.comando.Parameters.AddWithValue("@Corte", producto.Corte);
                 this.comando.Parameters.AddWithValue("@Categoria", producto.Categoria);
-                this.comando.Parameters.AddWithValue("@Peso", producto.Peso);
+                this.comando.Parameters.AddWithValue("@Peso", producto.Stock);
                 this.comando.Parameters.AddWithValue("@PrecioCompraCliente", producto.PrecioCompraCliente);
                 this.comando.Parameters.AddWithValue("@Proveedor", producto.Proveedor);
                 this.comando.Parameters.AddWithValue("@PrecioVentaProveedor", producto.PrecioVentaProveedor);
@@ -257,7 +257,7 @@ namespace Entidades
             try
             {
                 string query = "INSERT INTO Productos (Tipo, Corte, Categoria, Peso, PrecioCompraCliente, Proveedor, PrecioVentaProveedor, Vencimiento) ";
-                query += $"VALUES ('{producto.Tipo}', '{producto.Corte}', '{producto.Categoria}', {producto.Peso}, ";
+                query += $"VALUES ('{producto.Tipo}', '{producto.Corte}', '{producto.Categoria}', {producto.Stock}, ";
                 query += $"{producto.PrecioCompraCliente}, '{producto.Proveedor}', {producto.PrecioVentaProveedor}, " +
                     $"'{producto.Vencimiento.ToShortDateString()}');";
 

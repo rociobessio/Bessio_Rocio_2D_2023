@@ -38,7 +38,7 @@ namespace Entidades
         /// <summary>
         /// Propiedad de lectura y escritura.
         /// </summary>
-        public double Peso { get { return this._peso; } set { this._peso = value; } }
+        public double Stock { get { return this._peso; } set { this._peso = value; } }
         /// <summary>
         /// Propiedad de lectura y escritura.
         /// </summary>

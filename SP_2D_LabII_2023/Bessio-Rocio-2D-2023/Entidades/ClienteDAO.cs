@@ -64,16 +64,16 @@ namespace Entidades
                     cliente.Nombre = (string)this.lector[0];
                     cliente.Apellido = (string)this.lector[1];
                     cliente.Usuario.Email = (string)lector[2];
-                    cliente.DNI = MetodosDeExtension.ExtensionFormatoDNI((string)this.lector[3]);
-                    cliente.Telefono = MetodosDeExtension.ExtensionFormatoTelefono((string)this.lector[4]);
+                    cliente.DNI = (string)this.lector[3];
+                    cliente.Telefono = (string)this.lector[4];
                     cliente.Domicilio = (string)this.lector[5];
                     cliente.ConTarjeta = (bool)this.lector[6];
                     cliente.DineroEfectivoDisponible = (double)this.lector[7];
 
                     if (cliente.ConTarjeta)//-->Si es con tarjeta la cargo
                     {
-                        Tarjeta tarjeta = new Tarjeta((DateTime)this.lector[8], (string)this.lector[9], (string)this.lector[10],
-                            (string)this.lector[11], (string)this.lector[12], (double)this.lector[13], (bool)this.lector[14]);
+                        Tarjeta tarjeta = new Tarjeta((DateTime)this.lector[8], (string)this.lector[10], (string)this.lector[12],
+                            (string)this.lector[11], (string)this.lector[9], (double)this.lector[13], (bool)this.lector[14]);
 
                         cliente.Tarjeta = tarjeta;//-->Se la paso, sino se instancia rompe.
                     }

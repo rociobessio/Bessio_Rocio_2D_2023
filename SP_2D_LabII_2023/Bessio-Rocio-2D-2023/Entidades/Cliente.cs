@@ -163,6 +163,7 @@ namespace Entidades
         {
             bool puedeComprar = false;
             ClienteDAO clienteDAO = new ClienteDAO();
+            XML xML = new XML();
 
             updateBaseProducto = false;
             ProductoDAO productoDAO = new ProductoDAO();    
@@ -188,9 +189,9 @@ namespace Entidades
                 foreach (Producto carneCarrito in clienteIngresado.CarritoCompra.Productos)
                 {
                     if ((carneDisponible == carneCarrito) &&
-                        (carneDisponible.Peso >= carneCarrito.Peso))//-->Busco que coincidan los codigos
+                        (carneDisponible.Stock >= carneCarrito.Stock))//-->Busco que coincidan los codigos
                     {
-                        carneDisponible.Peso -= carneCarrito.Peso;//-->Al stock le descuento la del carrito.
+                        carneDisponible.Stock -= carneCarrito.Stock;//-->Al stock le descuento la del carrito.
 
                         if (productoDAO.UpdateProducto(carneDisponible))
                         {
@@ -215,7 +216,7 @@ namespace Entidades
                 puedeComprar = true;
 
                 clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;//-->Asigno el email 
-                XML.SerializarXML(clienteIngresado.CarritoCompra);//-->Serializo en XML
+                xML.Serializacion(clienteIngresado.CarritoCompra);//-->Serializo en XML
             }
             else
             {

@@ -32,7 +32,7 @@
             lblVendedorEmail = new Label();
             pictureBoxVendedor = new PictureBox();
             dataGridViewProductos = new DataGridView();
-            label2 = new Label();
+            lblProductos = new Label();
             groupBoxReponer = new GroupBox();
             label11 = new Label();
             txtPrecioCompraFrigorifico = new TextBox();
@@ -60,6 +60,7 @@
             btnEliminar = new Button();
             btnModificar = new Button();
             btnRefresh = new Button();
+            lblReposicionTerminada = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -108,18 +109,19 @@
             dataGridViewProductos.Size = new Size(1147, 275);
             dataGridViewProductos.TabIndex = 12;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
+            dataGridViewProductos.CellDoubleClick += dataGridViewProductos_CellDoubleClick;
             // 
-            // label2
+            // lblProductos
             // 
-            label2.Anchor = AnchorStyles.Bottom;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.ForeColor = Color.White;
-            label2.Location = new Point(36, 421);
-            label2.Name = "label2";
-            label2.Size = new Size(323, 32);
-            label2.TabIndex = 3;
-            label2.Text = "PRODUCTOS DISPONIBLES:";
+            lblProductos.Anchor = AnchorStyles.Bottom;
+            lblProductos.AutoSize = true;
+            lblProductos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblProductos.ForeColor = Color.White;
+            lblProductos.Location = new Point(36, 421);
+            lblProductos.Name = "lblProductos";
+            lblProductos.Size = new Size(323, 32);
+            lblProductos.TabIndex = 3;
+            lblProductos.Text = "PRODUCTOS DISPONIBLES:";
             // 
             // groupBoxReponer
             // 
@@ -364,6 +366,7 @@
             // 
             // btnReponer
             // 
+            btnReponer.Anchor = AnchorStyles.Bottom;
             btnReponer.Cursor = Cursors.Hand;
             btnReponer.FlatStyle = FlatStyle.Popup;
             btnReponer.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -381,6 +384,7 @@
             // 
             // btnAgregar
             // 
+            btnAgregar.Anchor = AnchorStyles.Bottom;
             btnAgregar.Cursor = Cursors.Hand;
             btnAgregar.FlatStyle = FlatStyle.Popup;
             btnAgregar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -398,6 +402,7 @@
             // 
             // btnEliminar
             // 
+            btnEliminar.Anchor = AnchorStyles.Bottom;
             btnEliminar.Cursor = Cursors.Hand;
             btnEliminar.FlatStyle = FlatStyle.Popup;
             btnEliminar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -415,6 +420,7 @@
             // 
             // btnModificar
             // 
+            btnModificar.Anchor = AnchorStyles.Bottom;
             btnModificar.Cursor = Cursors.Hand;
             btnModificar.FlatStyle = FlatStyle.Popup;
             btnModificar.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -432,6 +438,7 @@
             // 
             // btnRefresh
             // 
+            btnRefresh.Anchor = AnchorStyles.Bottom;
             btnRefresh.Cursor = Cursors.Hand;
             btnRefresh.FlatStyle = FlatStyle.Popup;
             btnRefresh.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
@@ -447,12 +454,25 @@
             btnRefresh.UseVisualStyleBackColor = true;
             btnRefresh.Click += btnRefresh_Click;
             // 
+            // lblReposicionTerminada
+            // 
+            lblReposicionTerminada.Anchor = AnchorStyles.Bottom;
+            lblReposicionTerminada.AutoSize = true;
+            lblReposicionTerminada.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            lblReposicionTerminada.ForeColor = Color.White;
+            lblReposicionTerminada.Location = new Point(882, 421);
+            lblReposicionTerminada.Name = "lblReposicionTerminada";
+            lblReposicionTerminada.Size = new Size(24, 32);
+            lblReposicionTerminada.TabIndex = 48;
+            lblReposicionTerminada.Text = "_";
+            // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(1184, 819);
+            Controls.Add(lblReposicionTerminada);
             Controls.Add(btnRefresh);
             Controls.Add(btnModificar);
             Controls.Add(btnEliminar);
@@ -464,7 +484,7 @@
             Controls.Add(label1);
             Controls.Add(lblPrintHelp);
             Controls.Add(groupBoxReponer);
-            Controls.Add(label2);
+            Controls.Add(lblProductos);
             Controls.Add(dataGridViewProductos);
             Controls.Add(pictureBoxVendedor);
             Controls.Add(lblVendedorEmail);
@@ -487,7 +507,7 @@
         private Label lblVendedorEmail;
         private PictureBox pictureBoxVendedor;
         private DataGridView dataGridViewProductos;
-        private Label label2;
+        private Label lblProductos;
         private GroupBox groupBoxReponer;
         private Label label7;
         private DateTimePicker dtpFechaVencimiento;
@@ -515,5 +535,6 @@
         private Button btnEliminar;
         private Button btnModificar;
         private Button btnRefresh;
+        private Label lblReposicionTerminada;
     }
 }

@@ -10,7 +10,7 @@ namespace Entidades
     public class Carrito
     {
         #region ATRIBUTOS
-        private int _IDCarrito;
+        private static Guid _IDCarrito;
         private DateTime _fechaCompra;
         private double _precioTotal; 
         private bool _conTarjeta;
@@ -21,7 +21,7 @@ namespace Entidades
 
         #region PROPIEDADES
         public string UsuarioCompra { get { return this._usuarioCompra; } set { this._usuarioCompra = value; } }
-        public int IDCarrito { get { return _IDCarrito; } }
+        public Guid IDCarrito { get { return _IDCarrito; } }
         /// <summary>
         /// Propiedad de lectura que me permite obtener la fecha de compra.
         /// </summary>
@@ -39,7 +39,6 @@ namespace Entidades
         /// Propiedad de escritura y lectura de la Lista de Productos.
         /// </summary>
         public List<Producto> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
-        public static int UltimoID { get { return ultimoCodigo; } set { ultimoCodigo = value; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -47,21 +46,20 @@ namespace Entidades
         /// y setteo el ultimo codigo a 100
         /// </summary>
         static Carrito()
-        {
-            ultimoCodigo = 2000;
+        { 
+            _IDCarrito = Guid.NewGuid();
         }
 
         /// <summary>
         /// Este constructor inicializa todos los parametros
         /// </summary>
-        public Carrito()
+        public Carrito() 
         {
             this._conTarjeta = false;
             this._fechaCompra = DateTime.Today;
             this._precioTotal = 00;
             this._listaDeProductos = new List<Producto>();
-            this._IDCarrito = ultimoCodigo;
-            ultimoCodigo++;//Por cada instancia incrementa el numero del ultcodigo
+            _IDCarrito = Guid.NewGuid(); 
         }
 
         /// <summary>
@@ -126,12 +124,12 @@ namespace Entidades
             cliente.CarritoCompra._conTarjeta = cliente.ConTarjeta;//-->Paso si es con tarjeta la compra
 
             //-->Peso de la carne > 0 y mayor a lo que pide el cliente
-            if (carne.Peso > 0 && carne.Peso >= cantPesoCliente)
+            if (carne.Stock > 0 && carne.Stock >= cantPesoCliente)
             {
                 //--->Por alguna razón me pisaba la carne anterior, asi que instancio una nueva y le paso sus atributos
                 auxCarne.Codigo = carne.Codigo;
                 auxCarne.Proveedor = carne.Proveedor;
-                auxCarne.Peso = cantPesoCliente;
+                auxCarne.Stock = cantPesoCliente;
                 auxCarne.Tipo = carne.Tipo;
                 auxCarne.Corte = carne.Corte;
                 auxCarne.Categoria = carne.Categoria;
@@ -142,7 +140,7 @@ namespace Entidades
                 {
                     if(item == auxCarne)//-->Mediante el codigo comparo
                     {
-                        item.Peso += auxCarne.Peso;//-->Si son iguales sumo la cantidad
+                        item.Stock += auxCarne.Stock;//-->Si son iguales sumo la cantidad
                         item.PrecioCompraCliente += auxCarne.PrecioCompraCliente;//-->Sumo el precio
                     }
                 }
@@ -198,7 +196,7 @@ namespace Entidades
                     sb.AppendLine($"Tipo: {producto.Tipo.ToString().Replace("_", " ")}");
                     sb.AppendLine($"Corte: {producto.Corte.ToString().Replace("_", " ")}");
                     sb.AppendLine($"Categoría: {producto.Categoria.ToString().Replace("_", " ")}");
-                    sb.AppendLine($"Peso: {producto.Peso}kgs.");
+                    sb.AppendLine($"Peso: {producto.Stock}kgs.");
                     sb.AppendLine($"Precio: ${producto.PrecioCompraCliente:f}"); 
                 }
                 else

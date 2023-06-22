@@ -278,6 +278,7 @@
             dataGridViewProductos.Size = new Size(977, 189);
             dataGridViewProductos.TabIndex = 2;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
+            dataGridViewProductos.CellContentDoubleClick += dataGridViewProductos_CellContentDoubleClick;
             // 
             // btnVender
             // 

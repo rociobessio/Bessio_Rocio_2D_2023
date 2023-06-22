@@ -216,21 +216,21 @@ namespace Carniceria_GUI
         private void CargarDatosCliente()
         {
             this.txtEmail.Text = clienteFormulario.Usuario.Email;
-            this.txtTelefono.Text = clienteFormulario.Telefono;
+            this.txtTelefono.Text = MetodosDeExtension.ExtensionFormatoTelefono(clienteFormulario.Telefono);
             this.txtDomicilio.Text = clienteFormulario.Domicilio;
 
             if (clienteFormulario.ConTarjeta)
             {
                 this.checkboxTarjeta.Checked = true;
                 this.txtNumTarjeta.Text = clienteFormulario.Tarjeta.NumeroTarjeta;
-                this.txtSaldoDisponible.Text = clienteFormulario.Tarjeta.DineroDisponible.ToString();
+                this.txtSaldoDisponible.Text = $"${clienteFormulario.Tarjeta.DineroDisponible.ToString()}";
             }
             else
             {
                 this.checkBoxEfectivo.Checked = true;
-                this.txtSaldoDisponible.Text = clienteFormulario.DineroEfectivoDisponible.ToString();
+                this.txtSaldoDisponible.Text = $"${clienteFormulario.DineroEfectivoDisponible.ToString()}";
             }
-            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();//-->Cargo el total disponible del cliente
+            this.txtMontoDisponible.Text = $"${totalDisponibleCliente.ToString()}";//-->Cargo el total disponible del cliente
         }
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Carniceria_GUI
 
             for (int i = 0; i < this.productosDisponibles.Count; i++)
             {
-                if (this.productosDisponibles[i].Peso == 0)//Sino hay stock lo saco, rompe con foreach
+                if (this.productosDisponibles[i].Stock == 0)//Sino hay stock lo saco, rompe con foreach
                 {
                     this.productosDisponibles.RemoveAt(i);
                 }
@@ -326,10 +326,10 @@ namespace Carniceria_GUI
                     foreach (Producto carne in clienteFormulario.CarritoCompra.Productos)
                     {
                         this.richTextBoxCarrito.Text += $"Corte: {carne.Corte} - " +
-                                         $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Peso}kgs.\n";//-->Imprimo del prducto el corte
+                                         $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Stock}kgs.\n";//-->Imprimo del prducto el corte
                     }
 
-                    this.txtTotalCompra.Text = clienteFormulario.CarritoCompra.PrecioTotal.ToString();//-->Imprimo el total de la compra hasta el momento
+                    this.txtTotalCompra.Text = $"${clienteFormulario.CarritoCompra.PrecioTotal.ToString()}";//-->Imprimo el total de la compra hasta el momento
                     MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else

@@ -22,7 +22,7 @@ namespace Carniceria_GUI
         private Usuario _vendedorForm;
         private Producto carneSeleccionada;
         private Cliente clienteSeleccionado;
-        private SoundPlayer soundPlayer; 
+        private SoundPlayer soundPlayer;
 
         private ClienteDAO clienteDAO;
         private ProductoDAO productoDAO;
@@ -53,7 +53,7 @@ namespace Carniceria_GUI
             this.clienteDAO = new ClienteDAO();
 
             soundPlayer = new SoundPlayer();
-            soundPlayer.SoundLocation = "CompraSonido.wav"; 
+            soundPlayer.SoundLocation = "CompraSonido.wav";
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Carniceria_GUI
             //-->Instancio mediante el constructor sin parametros, de esta forma si no selecciona ninguna fila evito errores
             carneSeleccionada = new Producto();
             this.listaProductos = productoDAO.ObtenerLista();
-            this.listaClientes = clienteDAO.ObtenerLista(); 
+            this.listaClientes = clienteDAO.ObtenerLista();
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -184,22 +184,22 @@ namespace Carniceria_GUI
                 if (cliente.Usuario.Email == this.cbClientes.Text)//-->Si los emails coinciden
                 {//-->Muestro la informacion:
                     this.txtApellido.Text = cliente.Apellido;
-                    this.txtDNI.Text = cliente.DNI;
+                    this.txtDNI.Text = MetodosDeExtension.ExtensionFormatoDNI(cliente.DNI);
                     this.txtDomicilio.Text = cliente.Domicilio;
                     this.txtNombre.Text = cliente.Nombre;
-                    this.txtTelefono.Text = cliente.Telefono;
+                    this.txtTelefono.Text = MetodosDeExtension.ExtensionFormatoTelefono(cliente.Telefono);
 
                     if (cliente.ConTarjeta)
                     {
                         this.ckbTarjeta.Checked = true;
                         this.ckbEfectivo.Checked = false;
-                        this.txtSaldoDisponibleCliente.Text = cliente.Tarjeta.DineroDisponible.ToString();
+                        this.txtSaldoDisponibleCliente.Text = $"${cliente.Tarjeta.DineroDisponible.ToString()}";
                     }
                     else
                     {
                         this.ckbEfectivo.Checked = true;
                         this.ckbTarjeta.Checked = false;
-                        this.txtSaldoDisponibleCliente.Text = cliente.DineroEfectivoDisponible.ToString();
+                        this.txtSaldoDisponibleCliente.Text = $"${cliente.DineroEfectivoDisponible.ToString()}";
                     }
                     clienteSeleccionado = cliente;//-->Guardo ese cliente
                 }
@@ -247,7 +247,7 @@ namespace Carniceria_GUI
                 if (producto.Codigo == codigoProducto)
                 {
                     this.txtPrecioPorUnidad.Text = producto.PrecioCompraCliente.ToString();
-                    this.txtPesoTotalStock.Text = producto.Peso.ToString();
+                    this.txtPesoTotalStock.Text = producto.Stock.ToString();
                     carneSeleccionada = producto;//-->Guardo esa carne para realizar las modificaciones o calculos
                 }
             }
@@ -285,7 +285,7 @@ namespace Carniceria_GUI
                 esValido = false;
             }
 
-            if (peso > carneSeleccionada.Peso)
+            if (peso > carneSeleccionada.Stock)
             {
                 sb.AppendLine("La cantidad de peso que se quiere vender es mayor al peso total del stock.");
                 esValido = false;
@@ -324,7 +324,9 @@ namespace Carniceria_GUI
         {
             if (ValidarCampos())//-->Valido los datos que recibo
             {
-                double peso = double.Parse(this.txtPesoEspecificado.Text);
+                double peso = 0;
+                double.TryParse(this.txtPesoEspecificado.Text, out peso);
+
                 bool updateBase;
                 //-->Obtengo el total que deberá pagar el cliente.
                 totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
@@ -337,11 +339,11 @@ namespace Carniceria_GUI
 
                     if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
                     {
-                        this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.Tarjeta.DineroDisponible.ToString();
+                        this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
                     }
                     else
                     {
-                        this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.DineroEfectivoDisponible.ToString();
+                        this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
                     }
 
                     ArchivoDeTexto.GuardarVenta(clienteSeleccionado);//-->Guardo esa venta. 
@@ -379,7 +381,7 @@ namespace Carniceria_GUI
             }
             else//-->Selecciono
             {
-                double dinero =  double.Parse(this.txtSumarDineroCliente.Text);
+                double dinero = double.Parse(this.txtSumarDineroCliente.Text);
 
                 if (dinero > 1)
                 {
@@ -389,14 +391,14 @@ namespace Carniceria_GUI
 
                     }
                     else
-                        clienteSeleccionado.DineroEfectivoDisponible += dinero; 
-                        
-                    if(clienteDAO.ModificarCliente(clienteSeleccionado))//-->Lo modifico.
+                        clienteSeleccionado.DineroEfectivoDisponible += dinero;
+
+                    if (clienteDAO.ModificarCliente(clienteSeleccionado))//-->Lo modifico.
                     {
-                        if(clienteSeleccionado.ConTarjeta)
-                            this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.Tarjeta.DineroDisponible.ToString();
+                        if (clienteSeleccionado.ConTarjeta)
+                            this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
                         else
-                            this.txtSaldoDisponibleCliente.Text = clienteSeleccionado.DineroEfectivoDisponible.ToString(); 
+                            this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
                     }
                     this.txtSumarDineroCliente.Clear();
                 }
@@ -441,10 +443,11 @@ namespace Carniceria_GUI
         {
 
         }
-        #endregion
 
+        private void dataGridViewProductos_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
-
+        }
+        #endregion 
     }
 }

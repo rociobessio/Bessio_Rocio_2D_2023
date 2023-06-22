@@ -18,6 +18,8 @@ namespace Carniceria_GUI
         DataTable _dataTable;
         DataRow auxFilaProduc;
         private List<Carrito> historial;
+        private JSON json;
+        private XML xML;
         #endregion
 
         #region CONSTRUCTORES
@@ -31,6 +33,8 @@ namespace Carniceria_GUI
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
             this.MaximizeBox = false;
+            this.json = new JSON();
+            this.xML = new XML();
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -66,13 +70,13 @@ namespace Carniceria_GUI
         /// al datagrid se le puede pasar la lista y mostrara gracias a las propiedades
         /// de la clase.
         /// </summary>
-        private void CargarProductosDataGrid()
+        private void CargarProductosDataGridCarritos()
         {
             _dataTable.Rows.Clear();
 
             foreach (Carrito carrito in this.historial)
             {
-                auxFilaProduc = _dataTable.NewRow();
+                auxFilaProduc = _dataTable.NewRow(); 
                 auxFilaProduc[0] = $"{carrito.UsuarioCompra}";
                 auxFilaProduc[1] = $"{carrito.FechaCompra.ToShortDateString()}";
                 if (carrito.ConTarjeta)
@@ -83,11 +87,11 @@ namespace Carniceria_GUI
                     auxFilaProduc[2] = "No";
 
                 auxFilaProduc[3] = $"${carrito.PrecioTotal:f}";
-
+                 
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
 
-            this.dataGridViewProductos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
+            this.dataGridViewCarritos.DataSource = _dataTable;//-->Al dataGrid le paso la lista
         }
 
         /// <summary>
@@ -98,12 +102,12 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            #region COLUMNAS 
+            #region COLUMNAS  
             this._dataTable.Columns.Add("Comprador");
             this._dataTable.Columns.Add("Fecha De Compra");
             this._dataTable.Columns.Add("Con Tarjeta");
             this._dataTable.Columns.Add("Total de la compra");
-            #endregion
+            #endregion 
         }
         #endregion
 
@@ -116,14 +120,14 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerHTML_Click(object sender, EventArgs e)
         {
-            this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
+            this.historial = json.Deserializar();//-->Deserializo la lista JSON
             if (historial.Count <= 0)
             {
                 MessageBox.Show("No hay Carritos para visualizar en fomato JSON.", "Información",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                this.CargarProductosDataGrid();//-->Cargo los productos en el datagrid 
+                this.CargarProductosDataGridCarritos();//-->Cargo los productos en el datagrid 
         }
 
         /// <summary>
@@ -134,14 +138,18 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerXML_Click(object sender, EventArgs e)
         {
-            this.historial = XML.DeserializarXML();//-->Deserializo en XML
+            this.historial = xML.Deserializar();//-->Deserializo en XML
             if (this.historial.Count <= 0)
             {
                 MessageBox.Show("No hay Carritos para visualizar en fomato XML.", "Información",
                                  MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                this.CargarProductosDataGrid();//-->Cargo los productos
+                this.CargarProductosDataGridCarritos();//-->Cargo los productos
+        }
+
+        private void dataGridViewCarritos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }
