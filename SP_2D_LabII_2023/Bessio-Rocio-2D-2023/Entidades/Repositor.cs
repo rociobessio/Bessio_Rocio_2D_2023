@@ -26,13 +26,19 @@ namespace Entidades
 
         /// <summary>
         /// SemaphoreSlim me permite settear un maximo
-        /// de hilos concurrentes.
+        /// de hilos concurrentes que voy a poder utilizar.
         /// </summary>
-        private SemaphoreSlim _semaphore;
+        private SemaphoreSlim _semaphoreSlim;
         private List<Task> _reposicionTasks;
-        #endregion 
+        #endregion
 
+        #region PROPIEDAD
+        /// <summary>
+        /// Propiedad que me permite saber si la reposicion
+        /// esta en progreso.
+        /// </summary>
         public bool ReposicionEnProgreso { get { return this.reposicionEnProgreso; } }
+        #endregion
 
         #region CONSTRUCTOR
         /// <summary>
@@ -42,7 +48,7 @@ namespace Entidades
         public Repositor()
         {
             this._productoDAO = new ProductoDAO();  
-            this._semaphore = new SemaphoreSlim(8);//-->Maximo de hilos que podre usar
+            this._semaphoreSlim = new SemaphoreSlim(8);//-->Maximo de hilos que podre usar
             this._reposicionTasks = new List<Task>(); 
             this.reposicionEnProgreso = true;
         }
@@ -62,7 +68,7 @@ namespace Entidades
                 { 
                     if(producto.Stock == 0)//-->Verifico que Stock sea == 0
                     {
-                        this._semaphore.Wait(); //--->Espero a que el semaphoro tenga espacio
+                        this._semaphoreSlim.Wait(); //--->Espero a que el semaphoro tenga espacio
                         Task task = Task.Run(() =>//-->Runneo la Task
                         {
                             for (int i = 1; i <= 10; i++)//-->Reposicion maximo a 10
@@ -71,7 +77,7 @@ namespace Entidades
                                 producto.Stock = i;//-->Repongo
                                 this._productoDAO.UpdateProducto(producto);//-->Actualizo el producto en la base
                             }
-                            this._semaphore.Release();//-->Libero espacio en el "Semaforo" y permito que otro hilo lo utilice
+                            this._semaphoreSlim.Release();//-->Libero espacio en el "Semaforo" y permito que otro hilo lo utilice
                         });
                         this._reposicionTasks.Add(task);//-->Añado la tarea a la lista de tareas.
                     } 
@@ -80,9 +86,13 @@ namespace Entidades
                 this.reposicionEnProgreso = true;//-->Cambio a true
                 EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi metodo
             }
-            finally
+            catch(Exception e)
             {
-                Console.WriteLine("Ocurrio un problema.");
+                throw new Exception(e.Message);
+            }
+            finally//-->Por las dudas utilizo un try-catch-finally.
+            {
+                 Console.WriteLine("Ocurrio un problema.");
             }
       } 
     }
