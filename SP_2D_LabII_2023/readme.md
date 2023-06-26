@@ -29,7 +29,7 @@
 
 ## Heladera:
 -------------
-<img width="500" alt="Screenshot_98" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/49d817f4-e942-4037-9a15-6fab093518c6">
+<img width="592" alt="Screenshot_109" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/ee48e452-2eae-47fe-b64b-c6dca68db89b">
 
 
 1) El vendedor será capaz de agregar un nuevo producto a la lista.
