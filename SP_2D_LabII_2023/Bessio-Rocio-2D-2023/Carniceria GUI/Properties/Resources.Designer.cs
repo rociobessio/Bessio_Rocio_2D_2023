@@ -369,5 +369,15 @@ namespace Carniceria_GUI.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap zoom_plus_increase_view_icon_145868 {
+            get {
+                object obj = ResourceManager.GetObject("zoom_plus_increase_view_icon_145868", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

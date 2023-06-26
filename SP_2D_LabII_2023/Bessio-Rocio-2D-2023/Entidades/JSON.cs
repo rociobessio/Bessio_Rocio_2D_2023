@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public static class JSON //: IArchivos<Carrito>//-->Implementa interfaz
+    public static class JSON
     {
         #region ATRIBUTOS
         public static StreamWriter writer;
@@ -53,11 +53,16 @@ namespace Entidades
                     esValido = true;
                 }
             }
-            catch(Exception ex)
+            catch(JSONException)
             {
                 esValido = false;
-                throw new Exception(ex.Message);
+                throw new JSONException("Ocurrio un error al intentar serializar.");
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             return esValido;
         }
 
@@ -74,20 +79,27 @@ namespace Entidades
 
             try
             {
-                using (JSON.reader = new StreamReader(JSON.path))//-->Al reader le paso donde leera.
+                if(File.Exists(JSON.path))//-->Verifico si existe
                 {
-                    while ((json = JSON.reader.ReadLine()) is not null)//-->Mientras pueda leer y no sea null
+                    using (JSON.reader = new StreamReader(JSON.path))//-->Al reader le paso donde leera.
                     {
-                        carritoAUX = JsonSerializer.Deserialize<Carrito>(json);//-->Deserializo
+                        while ((json = JSON.reader.ReadLine()) is not null)//-->Mientras pueda leer y no sea null
+                        {
+                            carritoAUX = JsonSerializer.Deserialize<Carrito>(json);//-->Deserializo
 
-                        if (!(carritoAUX is null))//-->Si NO es null
-                            carritos.Add(carritoAUX);//-->Lo añado. 
+                            if (!(carritoAUX is null))//-->Si NO es null
+                                carritos.Add(carritoAUX);//-->Lo añado. 
+                        }
                     }
-                }
+                } 
             }
-            catch (Exception e)
+            catch (JSONException)
             {
-                throw new Exception(e.Message);
+                throw new JSONException("Ocurrio un error al intentar deserializar.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
 
             return carritos;//-->Retorno la lista.

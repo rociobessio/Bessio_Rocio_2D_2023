@@ -22,8 +22,7 @@ namespace Entidades
         /// me servirá para saber si finalizo la reposicion.
         /// </summary>
         public event DelegadoReposicionFinalizada EventoReposicionFinalizada;
-        private bool reposicionEnProgreso;
-
+        private bool reposicionEnProgreso; 
 
         /// <summary>
         /// SemaphoreSlim me permite settear un maximo
@@ -49,33 +48,7 @@ namespace Entidades
         }
         #endregion
 
-        #region METODOS 
-        /// <summary>
-        /// El metodo reponer me permite que:
-        /// 1. Mientras stock de producto sea menor
-        /// o igual a 10 siga reponiendo su stock.
-        /// 2. Lo modifico de mi base
-        /// 3. "Duermo"/Detengo el hilo por 3 segundos.
-        /// </summary>
-        /// <param name="producto"></param>
-        public void Reponer(Producto producto)
-        {
-            //1.
-            while (producto.Stock <= 10)
-            {
-                producto.Stock += 1;
-                _productoDAO.UpdateProducto(producto);//2.
-                
-                //-->Normalmente la reposcion llega hasta 11 a veces
-                if(producto.Stock == 10 || producto.Stock == 11)
-                {
-                    EventoReposicionFinalizada.Invoke();//-->Hago invoke de que se finaliza la reposicion.
-                } 
-                Thread.Sleep(3000);//3.
-            }
-        //    this.reposicionEnProgreso = false;
-        } 
-
+        #region METODOS  
         /// <summary>
         /// 
         /// </summary>

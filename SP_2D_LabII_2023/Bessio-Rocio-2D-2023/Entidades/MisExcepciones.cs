@@ -13,4 +13,11 @@ namespace Entidades
         { 
         } 
     }
+
+    public class JSONException : Exception
+    {
+        public JSONException(string? message) : base(message)
+        {
+        }
+    }
 }

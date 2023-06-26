@@ -130,7 +130,7 @@ namespace Carniceria_GUI
             {
                 totalDisponibleCliente = clienteFormulario.DineroEfectivoDisponible;
             }
-            this.txtMontoDisponible.Text = totalDisponibleCliente.ToString();
+            this.txtMontoDisponible.Text = $"${totalDisponibleCliente.ToString()}";
         }
 
         /// <summary>
@@ -375,9 +375,7 @@ namespace Carniceria_GUI
                             this.txtTotalCompra.Clear();
                             ArchivoDeTexto.GuardarVenta(clienteFormulario);//-->Guardo esa venta. 
 
-                            Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito.
-
-
+                            Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito. 
                         } 
                     }
                     else

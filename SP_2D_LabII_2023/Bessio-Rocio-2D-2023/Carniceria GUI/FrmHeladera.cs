@@ -363,21 +363,38 @@ namespace Carniceria_GUI
         {
             this.btnEliminar.Enabled = false;//-->Deshabilito los botones 
             this.btnModificar.Enabled = false;//-->Deshabilito los botones
+            bool hayQueReponer = false;
 
             //-->Suscribo el evento de la reposicion finalizada.
             this.repositor.EventoReposicionFinalizada += this.ReposicionFinalizada;
 
-            //--> Instancio un nuevo hilo
-            Thread reposicion = new Thread(() =>
-                 this.repositor.Reponiendo(listaProductos));
-
-            reposicion.Start();//-->Que comience el hilo 
-
-            this.Invoke((MethodInvoker)(() =>//-->Invoko a mi metodo
+            foreach (Producto producto in this.listaProductos)
             {
-                MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.lblReposicionTerminada.Text = "Reponiendo...";
-            }));
+                if (producto.Stock == 0)
+                {
+                    hayQueReponer = true;
+                    break;
+                }
+            }
+
+            if (hayQueReponer)
+            {
+                //--> Instancio un nuevo hilo
+                Thread reposicion = new Thread(() =>
+                     this.repositor.Reponiendo(listaProductos));
+
+                reposicion.Start();//-->Que comience el hilo 
+
+                this.Invoke((MethodInvoker)(() =>//-->Invoko a mi metodo
+                {
+                    MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.lblReposicionTerminada.Text = "Reponiendo...";
+                }));
+            }
+            else
+            {
+                MessageBox.Show("No hay productos para reponer.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            } 
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones

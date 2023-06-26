@@ -9,7 +9,7 @@
         <Codigo>4</Codigo>
         <Tipo>Cerdo</Tipo>
         <Corte>Bondiola</Corte>
-        <Peso>2</Peso>
+        <Stock>0</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-07-01T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
@@ -27,7 +27,7 @@
         <Codigo>8</Codigo>
         <Tipo>Cerdo</Tipo>
         <Corte>Costilla</Corte>
-        <Peso>2</Peso>
+        <Stock>0</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-10-23T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
@@ -45,7 +45,7 @@
         <Codigo>5</Codigo>
         <Tipo>Pollo</Tipo>
         <Corte>Pechuga</Corte>
-        <Peso>1</Peso>
+        <Stock>0</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-06-19T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
@@ -63,7 +63,7 @@
         <Codigo>12</Codigo>
         <Tipo>Cerdo</Tipo>
         <Corte>Vacio</Corte>
-        <Peso>1</Peso>
+        <Stock>0</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-10-16T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
@@ -81,12 +81,59 @@
         <Codigo>10</Codigo>
         <Tipo>Cerdo</Tipo>
         <Corte>Bondiola</Corte>
-        <Peso>2</Peso>
+        <Stock>0</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-08-21T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
         <Proveedor>La Granjita</Proveedor>
         <PrecioCompraCliente>5250</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>5500</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>1</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>2500</PrecioCompraCliente>
+      </Producto>
+      <Producto>
+        <Codigo>13</Codigo>
+        <Tipo>Pollo</Tipo>
+        <Corte>Pechuga</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2023-08-03T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>3000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>3150</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Pollo</Tipo>
+        <Corte>Pechuga</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-10-23T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>3150</PrecioCompraCliente>
       </Producto>
     </Productos>
   </Carrito>

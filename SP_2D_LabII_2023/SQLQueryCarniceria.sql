@@ -51,11 +51,7 @@ SELECT * FROM Usuarios u INNER JOIN Clientes c ON u.IDCliente = c.IDCliente;
 SELECT P.IDRol FROM Usuarios u INNER JOIN Personas P ON U.IDPersona = P.IDPersona WHERE
 u.Email = 'rocibessio@gmail.com' AND u.Contrasenia = '123';
 
-SELECT P.IDRol FROM Usuarios U INNER JOIN Personas P ON U.IdPersona = P.IDPersona WHERE U.Email = 'rocibessio@gmail.com' AND U.Contrasenia = '123';
-
-/*--> CREO USUARIOS*/
-
-
+SELECT P.IDRol FROM Usuarios U INNER JOIN Personas P ON U.IdPersona = P.IDPersona WHERE U.Email = 'rocibessio@gmail.com' AND U.Contrasenia = '123'; 
 
 USE CARNICERIA_DB;
 CREATE TABLE Vendedores/*-->CREO TABLA VENDEDORES*/
@@ -65,27 +61,7 @@ CREATE TABLE Vendedores/*-->CREO TABLA VENDEDORES*/
 	Apellido varchar(50) not null,
 	DNI varchar(50) not null,
 	FOREIGN KEY (IDVendedor) REFERENCES Usuarios(ID)/*Hago referencia al id de usuarios conectando tablas.*/
-);
-
-USE CARNICERIA_DB;
-/* CREO VENDEDORES */ 
-INSERT INTO Vendedores (Nombre,Apellido,DNI)
-Values ('Felipe','Bustos','39998192'),('Lucas','Ferrino','42091238');
-
-/*CREO CLIENTES*/
-INSERT INTO Clientes (Nombre,Apellido,Telefono,Domicilio,Dni,ConTarjeta,EfectivoDisponible,TarjetaVencimiento,
-					  TarjetaEntidadEmisora,TarjetaTitular,TarjetaNumTarjeta,TarjetaCVV,TarjetaDineroDisponible,TarjetaEsDebito)
-VALUES ('Claudia','Tagliani','8745563092','Mitre 1672','36238912',0,85000,'','','',
-'','',0,0);
-
-INSERT INTO Clientes (Nombre,Apellido,Telefono,Domicilio,Dni,ConTarjeta,EfectivoDisponible,TarjetaVencimiento,
-					  TarjetaEntidadEmisora,TarjetaTitular,TarjetaNumTarjeta,TarjetaCVV,TarjetaDineroDisponible,TarjetaEsDebito, Email)
-VALUES ('Rocio','Bessio','77090989','Formosa 2716','22312335',1,0,'2025-04-29','Banco Nacion','Rocio Soledad Bessio',
-		 '1892312901234124','0033',10000,1,'rocibessio@hotmail.com'),/*-->Con tarjeta de Debito*/
-		('Pablo','Fernandez','1982910923','AV. Alcorta 892','44012901',1,0,'2027-10-11','Banco Patagonia','Pablo Fernandez',
-		 '8927381926401923','7812',12000,0,'paFernan@gmail.com'),/*-->Con Tarjeta de Credito*/
-		('Claudia','Tagliani','8745563092','Mitre 1672','36238912',0,85000,'','','',
-		 '','',0,0,'cvTag@hotmail.com')/*-->Con EFECTIVO*/;
+); 
 
 USE CARNICERIA_DB;
 Create TABLE Productos/*-->CREO TABLA DE PRODUCTOS*/

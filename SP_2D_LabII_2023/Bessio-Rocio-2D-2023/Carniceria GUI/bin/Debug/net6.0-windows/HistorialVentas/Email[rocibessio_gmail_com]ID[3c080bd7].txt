@@ -1,0 +1,17 @@
+FECHA DE COMPRA: 24/6/2023
+Con tarjeta: NO.
+---------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Solomillo
+Categoría: No Es Bovino
+Peso: 1kgs.
+Precio: $2500,00
+---------PRODUCTO-------------
+Tipo: Pollo
+Corte: Pechuga
+Categoría: No Es Bovino
+Peso: 2kgs.
+Precio: $3000,00
+-----------------------------
+Total: $5500,00
+

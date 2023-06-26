@@ -190,7 +190,7 @@ namespace Entidades
             
             foreach (Producto producto in this._listaDeProductos)
             {
-                sb.AppendLine("---------PRODUCTO-------------");
+                sb.AppendLine("-------------PRODUCTO-------------");
                 if (this._listaDeProductos.Count > 0)
                 {
                     sb.AppendLine($"Tipo: {producto.Tipo.ToString().Replace("_", " ")}");

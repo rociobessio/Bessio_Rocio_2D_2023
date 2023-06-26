@@ -81,7 +81,7 @@
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
             btnReponer.Location = new Point(21, 219);
             btnReponer.Name = "btnReponer";
-            btnReponer.Size = new Size(228, 61);
+            btnReponer.Size = new Size(239, 61);
             btnReponer.TabIndex = 47;
             btnReponer.Text = "     Heladera";
             btnReponer.TextAlign = ContentAlignment.MiddleLeft;
@@ -98,7 +98,7 @@
             btnVender.ImageAlign = ContentAlignment.MiddleRight;
             btnVender.Location = new Point(21, 120);
             btnVender.Name = "btnVender";
-            btnVender.Size = new Size(228, 57);
+            btnVender.Size = new Size(239, 57);
             btnVender.TabIndex = 46;
             btnVender.Text = "    Vender";
             btnVender.TextAlign = ContentAlignment.MiddleLeft;
@@ -116,7 +116,7 @@
             btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
             btnHistorial.Location = new Point(21, 327);
             btnHistorial.Name = "btnHistorial";
-            btnHistorial.Size = new Size(228, 57);
+            btnHistorial.Size = new Size(239, 57);
             btnHistorial.TabIndex = 48;
             btnHistorial.Text = "    Historial Ventas";
             btnHistorial.TextAlign = ContentAlignment.MiddleLeft;
@@ -228,11 +228,11 @@
             btnVisualizarProductos.FlatStyle = FlatStyle.Popup;
             btnVisualizarProductos.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnVisualizarProductos.ForeColor = Color.White;
-            btnVisualizarProductos.Image = Properties.Resources.receipt_information_icon_1774012;
+            btnVisualizarProductos.Image = Properties.Resources.zoom_plus_increase_view_icon_145868;
             btnVisualizarProductos.ImageAlign = ContentAlignment.MiddleRight;
             btnVisualizarProductos.Location = new Point(21, 422);
             btnVisualizarProductos.Name = "btnVisualizarProductos";
-            btnVisualizarProductos.Size = new Size(228, 57);
+            btnVisualizarProductos.Size = new Size(239, 57);
             btnVisualizarProductos.TabIndex = 53;
             btnVisualizarProductos.Text = "Visualizar Productos";
             btnVisualizarProductos.TextAlign = ContentAlignment.MiddleLeft;
