@@ -246,8 +246,8 @@ namespace Carniceria_GUI
             {
                 if (producto.Codigo == codigoProducto)
                 {
-                    this.txtPrecioPorUnidad.Text = producto.PrecioCompraCliente.ToString();
-                    this.txtPesoTotalStock.Text = producto.Stock.ToString();
+                    this.txtPrecioPorUnidad.Text = $"${producto.PrecioCompraCliente.ToString():f}";
+                    this.txtPesoTotalStock.Text = $"{producto.Stock.ToString()} kgs";
                     carneSeleccionada = producto;//-->Guardo esa carne para realizar las modificaciones o calculos
                 }
             }
@@ -381,7 +381,8 @@ namespace Carniceria_GUI
             }
             else//-->Selecciono
             {
-                double dinero = double.Parse(this.txtSumarDineroCliente.Text);
+                double dinero = 0;
+                double.TryParse(this.txtSumarDineroCliente.Text,out dinero);
 
                 if (dinero > 1)
                 {
@@ -404,7 +405,7 @@ namespace Carniceria_GUI
                 }
                 else
                 {
-                    MessageBox.Show("Dinero ha agregar no valido.",
+                    MessageBox.Show("Dinero a agregar no valido.",
                                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -422,7 +423,7 @@ namespace Carniceria_GUI
             {
                 double peso = double.Parse(this.txtPesoEspecificado.Text);
                 double retorno = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
-                this.txtTotalAPagar.Text = retorno.ToString();
+                this.txtTotalAPagar.Text = $"${retorno.ToString():f}";
             }
         }
         #endregion
