@@ -139,6 +139,7 @@ namespace Carniceria_GUI
                     this.dtpFechaVencimiento.Value = producto.Vencimiento;
 
                     carneSeleccionada = producto;//-->Guardo esa carne para realizar las modificaciones o calculos
+                    break;
                 }
             }
         }
@@ -182,6 +183,7 @@ namespace Carniceria_GUI
                 this.cbCorteCarne.SelectedIndex = 0;//-->Selecciono el primero de esa opcion, si cambiase el Tipo me quedaria seleccionado el indice anterior
 
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillito);
+                this.cbTexturaCarne.Items.Add(CategoriaBovina.Novillo);
                 this.cbTexturaCarne.Items.Add(CategoriaBovina.Ternero);
                 this.cbTexturaCarne.SelectedIndex = 0;
                 this.cbTexturaCarne.Enabled = true;
@@ -436,7 +438,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos() && indexTablaProductos > 0)
+            if (ValidarDatos() && indexTablaProductos >= 0)
             {
                 //Selecciono una carne y le cargo los nuevos valores
                 carneSeleccionada.Categoria = this.cbTexturaCarne.SelectedItem.ToString();

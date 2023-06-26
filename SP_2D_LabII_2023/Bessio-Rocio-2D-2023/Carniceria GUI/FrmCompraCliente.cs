@@ -165,7 +165,7 @@ namespace Carniceria_GUI
                     auxFilaProduc[1] = $"{this.productosDisponibles[i].Tipo.ToString().Replace("_", " ")}";
                     auxFilaProduc[2] = $"{this.productosDisponibles[i].Corte.ToString().Replace("_", " ")}";
                     auxFilaProduc[3] = $"{this.productosDisponibles[i].Categoria.ToString().Replace("_", " ")}";
-                    auxFilaProduc[4] = $"{this.productosDisponibles[i].PrecioCompraCliente}";
+                    auxFilaProduc[4] = $"${this.productosDisponibles[i].PrecioCompraCliente:f}";
 
                     _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
                 }
