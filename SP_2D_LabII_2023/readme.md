@@ -16,8 +16,7 @@
 1) Se le abrirá un menu principal al vendedor en el cual podrá elegir las distintas acciones que puede realizar.
 2) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
-## Vender:
------------
+## Vender: 
 <img width="500" alt="Screenshot_98" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/949356b6-4821-49a0-8c9f-444b05c4bacd">
 
 1) Deberá de seleccionar a un cliente de la lista para venderle un producto que este disponible.
@@ -27,8 +26,7 @@
 5) Además podrá sumarle dinero al cliente seleccionado.
 6) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
-## Heladera:
--------------
+## Heladera: 
 <img width="592" alt="Screenshot_109" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/ee48e452-2eae-47fe-b64b-c6dca68db89b">
 
 
@@ -46,8 +44,7 @@
 2) Se utilizo txt.
 3) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
-## Visualizar Productos: 
---------------------------
+## Visualizar Productos:  
 <img width="445" alt="Screenshot_101" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/05056bec-cfaa-4513-9629-3ac54fb6247a">
 
 1) Será capaz de ver aquellos tickets guardados pero en este caso utilizando serialización y deserialización en XML y JSON.
@@ -57,8 +54,7 @@
 
 # Perfil Cliente:
 -------------------
-## Método de pago:
--------------------
+## Método de pago: 
 <img width="342" alt="Screenshot_102" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/2eae6e8b-8068-410a-b67f-a249972c754e">
 
 1) El cliente deberá de ingresar su método de pago.
@@ -67,8 +63,7 @@
 4) Por último, si pasa las validaciones es redireccionado a un formulario de Compra.
 5) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
-## Comprar:
--------------
+## Comprar: 
 <img width="478" alt="Screenshot_103" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/08c834e6-0ca5-4967-8117-73d7aff308b8">
 
 1) El cliente podrá comprar un producto disponible de la carnicería.
@@ -81,4 +76,8 @@
 ## Diagrama de Clases
 ---------------------
 <img width="829" alt="DiagramaDeClases" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/d34c929b-02ef-4fe6-be6f-dbabeabf7025">
+
+## ![medical-14_icon-icons com_73923 (1)](https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/4c538339-b72a-44df-a6d3-a014250561d0) Unit Testing:
+
+La aplicación cuenta con 5 clases de Unit Testings sobre métodos de SQL y Deserialización. 
 
