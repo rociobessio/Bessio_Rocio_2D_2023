@@ -87,8 +87,10 @@ namespace Entidades
                 { 
                     if(producto.Stock == 0)//-->Verifico que Stock sea == 0
                     {
-                        this._semaphoreSlim.Wait();//--->Espero a que el semaphoro tenga espacio, bloqueo el hilo actual hasta q entre el "semaforo"
-                        Task task = Task.Run(() =>//-->Runneo la Task
+                        //--->Bloqueo el hilo actual hasta q entre el "semaforo", controlando
+                        //la cantidad de hilos que se pueden tener con SemaphoreSlim
+                        this._semaphoreSlim.Wait();
+                        Task task = Task.Run(() =>//-->Creo/Runneo nueva Tarea
                         {
                             for (int i = 1; i <= 10; i++)//-->Reposicion maximo a 10
                             { 
@@ -103,7 +105,7 @@ namespace Entidades
                 } 
                 Task.WaitAll(this._reposicionTasks.ToArray());//-->Espero a que todas las tareas finalicen antes de seguir
                 this.reposicionEnProgreso = true;//-->Cambio a true
-                EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi metodo
+                EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi evento para avisar q termine de reponer
             }
             catch(Exception e)
             {

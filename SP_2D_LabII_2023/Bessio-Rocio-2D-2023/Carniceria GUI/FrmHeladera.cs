@@ -379,15 +379,15 @@ namespace Carniceria_GUI
                 }
             }
 
-            if (hayQueReponer)
+            if (hayQueReponer)//-->Si tiene para reponer
             {
-                //--> Instancio un nuevo hilo
+                //--> Instancio un nuevo hilo, pra ejecutarlo en paralelo al hilo principal y poder reponer
                 Thread reposicion = new Thread(() =>
                      this.repositor.Reponiendo(listaProductos));
 
-                reposicion.Start();//-->Que comience el hilo 
+                reposicion.Start();//-->Que comience el hilo recien creado
 
-                this.Invoke((MethodInvoker)(() =>//-->Invoko a mi metodo
+                this.Invoke((MethodInvoker)(() =>//-->Ejecuto esto en un SUBPROCESO secundario, sino tira excepcion
                 {
                     MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.lblReposicionTerminada.Text = "Reponiendo...";
