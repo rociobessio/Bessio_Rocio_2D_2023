@@ -56,7 +56,7 @@ namespace Entidades
                     Usuario usuario = new Usuario(string.Empty,string.Empty);
                     usuario.Email = (string)this.lector[1];
                     usuario.Contrasenia = (string)this.lector[2];
-                    usuario.EsCliente = (bool)this.lector[3];
+                    //usuario.EsCliente = (bool)this.lector[3];
 
                     listaUsuarios.Add(usuario);//-->Añado a la lista.
                 }
