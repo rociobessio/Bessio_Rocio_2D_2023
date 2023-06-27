@@ -204,6 +204,7 @@ namespace Carniceria_GUI
                 if (carne == codigoProducto)
                 {
                     carneSeleccionada = carne;//-->Guardo esa carne
+                    break;
                 }
             }
         }

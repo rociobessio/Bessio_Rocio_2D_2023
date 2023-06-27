@@ -408,8 +408,7 @@ namespace Carniceria_GUI
                     MessageBox.Show("Dinero a agregar no valido.",
                                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-
+            } 
         }
 
         /// <summary>

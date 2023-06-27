@@ -7,10 +7,16 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
+    /// <summary>
+    /// La clase repositor me permitirá
+    /// reponer en tiempo real, utilizando
+    /// delegados, eventos, hilos y concurrencia.
+    /// </summary>
     public class Repositor
     {
         #region ATRIBUTOS 
         private ProductoDAO _productoDAO; 
+
         /// <summary>
         /// Declaro mi delegado de repositor,
         /// retorna void y no recibe nada.
@@ -29,6 +35,9 @@ namespace Entidades
         /// de hilos concurrentes que voy a poder utilizar.
         /// </summary>
         private SemaphoreSlim _semaphoreSlim;
+        /// <summary>
+        /// La lista de tareas, tendrá.
+        /// </summary>
         private List<Task> _reposicionTasks;
         #endregion
 
@@ -56,7 +65,17 @@ namespace Entidades
 
         #region METODOS  
         /// <summary>
-        /// 
+        /// Este medoto Reponiendo,
+        /// me permite reponer mas de un producto a la vez
+        /// utilizando multiples hilos. Uso el objeto 
+        /// SemaphoreSlim que me deja settear un maximo de hilos
+        /// concurrentes que podre usar, 5 en este caso. 
+        /// Irá reponiendo cada 2 segundos hasta llegar a 10 en
+        /// su stock, a su vez ira realizando los cambios en la
+        /// tabla de la base de datos.
+        /// Una vez finalizado, la bandera vuelve a true, 
+        /// diciendo que termino e invoco a mi metodo
+        /// para avisar que ha terminado de reponer.
         /// </summary>
         /// <param name="productos"></param>
         public void Reponiendo(List<Producto> productos)
@@ -68,7 +87,7 @@ namespace Entidades
                 { 
                     if(producto.Stock == 0)//-->Verifico que Stock sea == 0
                     {
-                        this._semaphoreSlim.Wait(); //--->Espero a que el semaphoro tenga espacio
+                        this._semaphoreSlim.Wait();//--->Espero a que el semaphoro tenga espacio, bloqueo el hilo actual hasta q entre el "semaforo"
                         Task task = Task.Run(() =>//-->Runneo la Task
                         {
                             for (int i = 1; i <= 10; i++)//-->Reposicion maximo a 10

@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Entidades
 {
-    public class ClienteDAO : IBaseDeDatos<Cliente>
+    public class ClienteDAO : IDataBase<Cliente>
     {
         #region ATRIBUTOS
         private SqlConnection conexion;
@@ -21,7 +21,7 @@ namespace Entidades
         {
             try
             {
-                this.conexion = new SqlConnection(IBaseDeDatos<Cliente>.CadenaConexionBase());
+                this.conexion = new SqlConnection(IDataBase<Cliente>.CadenaConexionBase());
             }
             catch(Exception)
             {

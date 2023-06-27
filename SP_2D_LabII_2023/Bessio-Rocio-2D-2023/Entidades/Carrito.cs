@@ -204,7 +204,7 @@ namespace Entidades
                     sb.AppendLine("No hay productos seleccionados.");
                 }
             }
-            sb.AppendLine("-----------------------------");
+            sb.AppendLine("----------------------------------------");
             sb.AppendLine($"Total: ${this._precioTotal:f}");
 
             return sb.ToString();

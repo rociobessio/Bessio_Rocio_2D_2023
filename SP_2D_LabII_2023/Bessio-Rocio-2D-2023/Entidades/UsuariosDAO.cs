@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class UsuariosDAO : IBaseDeDatos<Usuario>
+    public class UsuariosDAO : IDataBase<Usuario>
     {
 
         #region ATRIBUTOS
@@ -22,7 +22,7 @@ namespace Entidades
         {
             try
             {
-                this.conexion = new SqlConnection(IBaseDeDatos<Usuario>.CadenaConexionBase());
+                this.conexion = new SqlConnection(IDataBase<Usuario>.CadenaConexionBase());
             }
             catch (Exception)
             {

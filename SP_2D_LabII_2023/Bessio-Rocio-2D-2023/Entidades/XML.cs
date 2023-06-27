@@ -41,6 +41,13 @@ namespace Entidades
         #endregion
 
         #region METODOS
+        /// <summary>
+        /// Me permite serializar UN carrito en
+        /// formato XML.
+        /// </summary>
+        /// <param name="carrito"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
         public static bool SerializacionXML(Carrito carrito)
         {
             bool esValido = false;
@@ -51,7 +58,7 @@ namespace Entidades
                 //-->Si existe el archivo..
                 if (File.Exists(XML.path))
                 {
-                    carritos = XML.DeserializarXML();//-->Reutilizo mi metodo 
+                    carritos = XML.DeserializarXML();//-->Reutilizo mi metodo, me traigo los carritos
                 }
 
                 carritos.Add(carrito);//-->Agrego mi nuevo carrito a la lista que me traje, sino se pisa

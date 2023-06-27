@@ -6,8 +6,17 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public interface IBaseDeDatos <T>
-        where T : class
+    /// <summary>
+    /// Esta interfaz me permite obtener
+    /// la cadena de la conexion a la base de datos,
+    /// el metodo ObtenerLista() el cual trae a todos
+    /// los objetos de la base y el ObtenerEspecifico
+    /// que me permite traer a un especificico de la tabla.
+    /// Se podría añadir el agregar, eliminar, modificar.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public interface IDataBase <T>
+        where T : class//-->T será una clase.
     {
         /// <summary>
         /// Metodo estatico me retorna la cadena de conexion de la base
