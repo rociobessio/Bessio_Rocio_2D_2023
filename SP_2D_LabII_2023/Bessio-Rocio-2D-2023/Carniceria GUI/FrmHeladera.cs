@@ -422,7 +422,7 @@ namespace Carniceria_GUI
         {
             if (codigoProducto > 0)
             {
-                if (productoDAO.DeleteProducto(codigoProducto))
+                if (productoDAO.DeleteDato(codigoProducto))
                 {
                     MessageBox.Show("El producto se ha eliminado de la Heladera.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -460,7 +460,7 @@ namespace Carniceria_GUI
                 carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
                 carneSeleccionada.Corte = this.cbCorteCarne.SelectedItem.ToString();
 
-                if (productoDAO.UpdateProducto(carneSeleccionada))
+                if (productoDAO.UpdateDato(carneSeleccionada))
                 {
                     MessageBox.Show("Producto modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }

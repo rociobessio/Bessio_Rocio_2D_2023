@@ -9,42 +9,14 @@ using Excepciones;
 
 namespace Entidades
 {
-    public class ProductoDAO : IDataBase<Producto>
-    {
-        #region ATRIBUTOS
-        private SqlConnection conexion;
-        private SqlCommand comando;
-        private SqlDataReader lector;
-        #endregion
-
-        #region Constructor
-        /// <summary>
-        /// Me permite obtener la conexion a la base de datos de la interfaz.
-        /// </summary>
-        public ProductoDAO()
-        {
-            try
-            {
-                this.conexion = new SqlConnection(CadenaConexionBase());
-            }
-            catch (Exception ex) 
-            {
-                
-            }
-        }
-        #endregion
-
-        #region METODOS 
-        /// <summary>
-        /// Me permite retornar la cadena de conexion
-        /// de la base de datos.
-        /// </summary>
-        /// <returns></returns>
-        public string CadenaConexionBase()
-        {
-            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
-        }
-
+    /// <summary>
+    /// La clase UsuariosDAO hereda de 
+    /// AccesoADataBase e implementa la interfaz
+    /// IDataBase<Producto>
+    /// </summary>
+    public class ProductoDAO : AccesoADataBase, IDataBase<Producto>
+    {  
+        #region METODOS   
         /// <summary>
         /// Me permite obtener TODOS los productos que se
         /// encuentran en la base de datos.
@@ -56,33 +28,33 @@ namespace Entidades
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = "SELECT * FROM Productos";
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = "SELECT * FROM Productos";
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();//-->Abro la conexion
+                base._conexion.Open();//-->Abro la conexion
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                while (this.lector.Read())//-->Mientras haya para leer.
+                while (base._lector.Read())//-->Mientras haya para leer.
                 {
                     Producto producto = new Producto();
 
-                    producto.Codigo = (int)this.lector[0];
-                    producto.Tipo = (string)this.lector[1];
-                    producto.Corte = (string)this.lector[2];
-                    producto.Categoria = (string)this.lector[3];
-                    producto.Stock = (double)this.lector[4];
-                    producto.PrecioCompraCliente = (double)this.lector[5];
-                    producto.Proveedor = (string)this.lector[6];
-                    producto.PrecioVentaProveedor = (double)this.lector[7];
-                    producto.Vencimiento = DateTime.Parse(this.lector[8].ToString());
+                    producto.Codigo = (int)base._lector[0];
+                    producto.Tipo = (string)base._lector[1];
+                    producto.Corte = (string)base._lector[2];
+                    producto.Categoria = (string)base._lector[3];
+                    producto.Stock = (double)base._lector[4];
+                    producto.PrecioCompraCliente = (double)base._lector[5];
+                    producto.Proveedor = (string)base._lector[6];
+                    producto.PrecioVentaProveedor = (double)base._lector[7];
+                    producto.Vencimiento = DateTime.Parse(base._lector[8].ToString());
 
                     listaProductos.Add(producto);
                 }
-                this.lector.Close();
+                base._lector.Close();
             }
             catch (Exception ex)
             {
@@ -90,9 +62,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return listaProductos;//-->Retorno la lista de productos.
@@ -110,30 +82,30 @@ namespace Entidades
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = $"SELECT * FROM Productos WHERE IdProducto {id}";
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = $"SELECT * FROM Productos WHERE IdProducto {id}";
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                this.lector.Read();
+                base._lector.Read();
 
                 //-->Cargo ese producto.
-                producto.Codigo = (int)this.lector[0];
-                producto.Tipo = (string)this.lector[1];
-                producto.Corte = (string)this.lector[2];
-                producto.Categoria = (string)this.lector[3];
-                producto.Stock = (double)this.lector[4];
-                producto.PrecioCompraCliente = (double)this.lector[5];
-                producto.Proveedor = (string)this.lector[6];
-                producto.PrecioVentaProveedor = (double)this.lector[7];
-                producto.Vencimiento = (DateTime)this.lector[8];
+                producto.Codigo = (int)base._lector[0];
+                producto.Tipo = (string)base._lector[1];
+                producto.Corte = (string)base._lector[2];
+                producto.Categoria = (string)base._lector[3];
+                producto.Stock = (double)base._lector[4];
+                producto.PrecioCompraCliente = (double)base._lector[5];
+                producto.Proveedor = (string)base._lector[6];
+                producto.PrecioVentaProveedor = (double)base._lector[7];
+                producto.Vencimiento = (DateTime)base._lector[8];
 
-                this.lector.Close();//-->Lo cargue lo cierro.
+                base._lector.Close();//-->Lo cargue lo cierro.
             }
             catch (Exception e)
             {
@@ -141,9 +113,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return producto;//-->Retorno el producto.
@@ -155,26 +127,26 @@ namespace Entidades
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public bool DeleteProducto(int id)
+        public bool DeleteDato(int id)
         {
             bool pudo = true;
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
                 //-->Atajo de parametros.
-                this.comando.Parameters.AddWithValue("@IdProducto", id);
+                base._comando.Parameters.AddWithValue("@IdProducto", id);
 
                 string query = "DELETE FROM Productos WHERE IdProducto = @IdProducto";
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = query;//-->Le paso la query.
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = query;//-->Le paso la query.
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                int filasActualizadas = this.comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
+                int filasActualizadas = base._comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
 
                 if (filasActualizadas == 0)//-->Quiere decir que no actualizo ninguna
                 {
@@ -187,14 +159,13 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return pudo;
-        }
-
+        } 
 
         /// <summary>
         /// Me permite recibir un producto y modificarlo
@@ -202,54 +173,54 @@ namespace Entidades
         /// </summary>
         /// <param name="producto"></param>
         /// <returns></returns>
-        public bool UpdateProducto(Producto producto)
+        public bool UpdateDato(Producto producto)
         {
             bool puedeModificar = true;
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
                 //-->Atajo de parametros.
-                this.comando.Parameters.AddWithValue("@IdProducto", producto.Codigo);
-                this.comando.Parameters.AddWithValue("@Tipo", producto.Tipo);
-                this.comando.Parameters.AddWithValue("@Corte", producto.Corte);
-                this.comando.Parameters.AddWithValue("@Categoria", producto.Categoria);
-                this.comando.Parameters.AddWithValue("@Peso", producto.Stock);
-                this.comando.Parameters.AddWithValue("@PrecioCompraCliente", producto.PrecioCompraCliente);
-                this.comando.Parameters.AddWithValue("@Proveedor", producto.Proveedor);
-                this.comando.Parameters.AddWithValue("@PrecioVentaProveedor", producto.PrecioVentaProveedor);
-                this.comando.Parameters.AddWithValue("@Vencimiento", producto.Vencimiento.ToShortDateString());
+                base._comando.Parameters.AddWithValue("@IdProducto", producto.Codigo);
+                base._comando.Parameters.AddWithValue("@Tipo", producto.Tipo);
+                base._comando.Parameters.AddWithValue("@Corte", producto.Corte);
+                base._comando.Parameters.AddWithValue("@Categoria", producto.Categoria);
+                base._comando.Parameters.AddWithValue("@Peso", producto.Stock);
+                base._comando.Parameters.AddWithValue("@PrecioCompraCliente", producto.PrecioCompraCliente);
+                base._comando.Parameters.AddWithValue("@Proveedor", producto.Proveedor);
+                base._comando.Parameters.AddWithValue("@PrecioVentaProveedor", producto.PrecioVentaProveedor);
+                base._comando.Parameters.AddWithValue("@Vencimiento", producto.Vencimiento.ToShortDateString());
 
                 //-->Le doy formato a la query.
                 string sqlQuery = "UPDATE Productos ";
                 sqlQuery += "SET Tipo = @Tipo, Corte = @Corte, Categoria = @Categoria, Peso = @Peso, PrecioCompraCliente = @PrecioCompraCliente, Proveedor = @Proveedor, PrecioVentaProveedor = @PrecioVentaProveedor, Vencimiento = @Vencimiento ";
                 sqlQuery += "WHERE IdProducto = @IdProducto";
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = sqlQuery;//-->Le paso la query.
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = sqlQuery;//-->Le paso la query.
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                int filasActualizadas = this.comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
+                int filasActualizadas = base._comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
 
                 if (filasActualizadas == 0)//-->Quiere decir que no actualizo ninguna
                 {
                     puedeModificar = false;
                 }
-                this.conexion.Close();
+                base._conexion.Close();
             }
             catch(Exception e)
             {
                 Console.WriteLine(e.Message);
-                this.conexion.Close();
+                base._conexion.Close();
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return puedeModificar;
@@ -271,15 +242,15 @@ namespace Entidades
                 query += $"{producto.PrecioCompraCliente}, '{producto.Proveedor}', {producto.PrecioVentaProveedor}, " +
                     $"'{producto.Vencimiento.ToShortDateString()}');";
 
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = query;
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = query;
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                int filasAfectadas = this.comando.ExecuteNonQuery();
+                int filasAfectadas = base._comando.ExecuteNonQuery();
 
                 if (filasAfectadas == 0)
                 {
@@ -292,9 +263,9 @@ namespace Entidades
             }
             finally 
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return pudo;

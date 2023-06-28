@@ -16,11 +16,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestings", "UnitTestingSQL\UnitTestings.csproj", "{E6E46A4B-9C64-455E-A825-43C47C924525}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excepciones", "Excepciones", "{370E1649-6634-41A9-A7E9-DEE5109BE1F8}"
-	ProjectSection(SolutionItems) = preProject
-		Entidades\AgregarAlCarritoException.cs = Entidades\AgregarAlCarritoException.cs
-	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excepciones", "Excepciones\Excepciones.csproj", "{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Excepciones", "Excepciones\Excepciones.csproj", "{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

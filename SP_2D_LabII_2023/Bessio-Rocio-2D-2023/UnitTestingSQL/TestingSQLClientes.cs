@@ -41,7 +41,7 @@ namespace UnitTestingSQL
             cliente.IDCliente = 2;
 
             //-->Act, hago Update del cliente
-            bool pudoModificar = clienteDAO.ModificarCliente(cliente);
+            bool pudoModificar = clienteDAO.UpdateDato(cliente);
 
             //-->Assert, Compruebo si el resultado obtenido es el esperado.
             Assert.IsTrue(pudoModificar);

@@ -8,39 +8,14 @@ using System.Threading.Tasks;
 
 namespace Entidades
 {
-    public class UsuariosDAO : IDataBase<Usuario>
-    { 
-        #region ATRIBUTOS
-        private SqlConnection conexion;
-        private SqlCommand comando;
-        private SqlDataReader lector;
-        #endregion
-
-        #region CONSTRUCTOR
-        public UsuariosDAO()
-        {
-            try
-            {
-                this.conexion = new SqlConnection(CadenaConexionBase());
-            }
-            catch (Exception)
-            {
-                throw; // new SQLConexionException("Error en la conexion con la base de datos.");
-            }
-        }
-        #endregion
-
-        #region METODOS 
-        /// <summary>
-        /// Me permite retornar la cadena de conexion
-        /// de la base de datos.
-        /// </summary>
-        /// <returns></returns>
-        public string CadenaConexionBase()
-        {
-            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
-        }
-
+    /// <summary>
+    /// La clase UsuariosDAO hereda de 
+    /// AccesoADataBase e implementa la interfaz
+    /// IDataBase<Usuario>
+    /// </summary>
+    public class UsuariosDAO : AccesoADataBase, IDataBase<Usuario>
+    {    
+        #region METODOS   
         /// <summary>
         /// Me permite obtener la lista de usuarios de la base de datos.
         /// </summary>
@@ -50,26 +25,26 @@ namespace Entidades
             List<Usuario> listaUsuarios = new List<Usuario>();
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = System.Data.CommandType.Text;
-                this.comando.CommandText = "SELECT * FROM Usuarios";//-->Traigo a todos de la base.
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = System.Data.CommandType.Text;
+                base._comando.CommandText = "SELECT * FROM Usuarios";//-->Traigo a todos de la base.
+                base._comando.Connection = _conexion;
 
-                this.conexion.Open();//-->Abro conexion.
+                base._conexion.Open();//-->Abro conexion.
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                while (this.lector.Read())//-->Seguira mientras haya para leer
+                while (base._lector.Read())//-->Seguira mientras haya para leer
                 {
                     Usuario usuario = new Usuario(string.Empty,string.Empty);
-                    usuario.Email = (string)this.lector[1];
-                    usuario.Contrasenia = (string)this.lector[2];
+                    usuario.Email = (string)base._lector[1];
+                    usuario.Contrasenia = (string)base._lector[2];
                     //usuario.EsCliente = (bool)this.lector[3];
 
                     listaUsuarios.Add(usuario);//-->Añado a la lista.
                 }
-                this.lector.Close();//-->Cierro el lector
+                base._lector.Close();//-->Cierro el lector
             }
             catch(Exception ex)
             {
@@ -77,38 +52,44 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return listaUsuarios;
         }
 
+        /// <summary>
+        /// Me permite obtener de la tabla un usuario
+        /// especifico mediante su ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Usuario ObtenerEspecifico(int id)
         {
             Usuario usuario = new Usuario(string.Empty, string.Empty);
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = $"SELECT * FROM Usuarios WHERE ID {id}";
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = $"SELECT * FROM Usuarios WHERE ID {id}";
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                this.lector.Read();
+                base._lector.Read();
 
                 //-->Cargo el usuario.
-                usuario.Email = (string)this.lector[1];
-                usuario.Contrasenia = (string)this.lector[2];
-                usuario.EsCliente = (bool)this.lector[3];
+                usuario.Email = (string)base._lector[1];
+                usuario.Contrasenia = (string)base._lector[2];
+                usuario.EsCliente = (bool)base._lector[3];
 
-                this.lector.Close();//-->Lo cargue lo cierro.
+                base._conexion.Close();//-->Lo cargue lo cierro.
             }
             catch (Exception ex) 
             {
@@ -116,9 +97,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return usuario;//-->Retorno el usuario.
@@ -138,25 +119,25 @@ namespace Entidades
            
             try
             {
-                this.comando = new SqlCommand(); 
+                base._comando = new SqlCommand();
 
-                comando.Parameters.AddWithValue("@Email", email);
-                comando.Parameters.AddWithValue("@Contrasenia", contrasenia);
+                base._comando.Parameters.AddWithValue("@Email", email);
+                base._comando.Parameters.AddWithValue("@Contrasenia", contrasenia);
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = $"SELECT P.IDRol FROM Usuarios U " +
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = $"SELECT P.IDRol FROM Usuarios U " +
                     $"INNER JOIN Personas P ON U.IdPersona = P.IDPersona " +
                     $"WHERE U.Email = @Email AND U.Contrasenia = @Contrasenia"; 
 
-                this.comando.Connection = this.conexion;
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                using (lector = comando.ExecuteReader())
+                using (base._lector = base._comando.ExecuteReader())
                 {
-                    if (lector.Read())
+                    if (base._lector.Read())
                     { 
-                        int idPuesto = lector.GetInt32(0);
+                        int idPuesto = base._lector.GetInt32(0);
                         
                         if (idPuesto == 2)
                         {
@@ -167,17 +148,83 @@ namespace Entidades
                 }
             }
             catch(Exception e)
-            { 
+            {
+                esCliente = false;
                 Console.WriteLine(e.Message);
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return false;
+        }
+
+        /// <summary>
+        /// Recibo al objeto usuario con el 
+        /// nuevo mail
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <returns></returns>
+        /// <exception cref="Exception"></exception>
+        public bool UpdateDato(Usuario usuario)
+        {
+            string sqlQuery = "UPDATE Usuarios SET Email = @NuevoEmail WHERE IDUsuario = @IDUsuario";
+
+            using (SqlConnection conexion = new SqlConnection(AccesoADataBase._cadenaDeConexion))
+            {
+                using (SqlCommand comando = new SqlCommand(sqlQuery, conexion))
+                {
+                    comando.Parameters.AddWithValue("@NuevoEmail", usuario.Email);
+                    comando.Parameters.AddWithValue("@IDUsuario", usuario.IDUsuario);
+
+                    try
+                    {
+                        conexion.Open();
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        return filasAfectadas > 0;//-->Retorna si pudo
+                    }
+                    catch (SqlException ex)
+                    { 
+                        throw new Exception("Error al actualizar el email del usuario.", ex);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Implemento el metodo de la interfaz
+        /// DeleteDato().
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool DeleteDato(int id)
+        {
+            bool pudoEliminar = false;
+
+            using (SqlConnection conexion = new SqlConnection(CadenaDeConexion))
+            {
+                string query = "DELETE FROM Usuarios WHERE IDUsuario = @IDUsuario";//-->Elimino de la tabla Usuarios.
+
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("@IDUsuario", id);
+
+                    try
+                    {
+                        conexion.Open();
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        pudoEliminar = filasAfectadas > 0;//-->Si elimino hubo una fila afectada, retornando true 
+                    }
+                    catch (Exception ex)
+                    { 
+                        Console.WriteLine("Error al eliminar el usuario: " + ex.Message);
+                    }
+                }
+            }//-->Con el using se cierra la conexion al terminar.
+            return pudoEliminar;
         }
         #endregion
     }

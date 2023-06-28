@@ -9,38 +9,14 @@ using Excepciones;
 
 namespace Entidades
 {
-    public class ClienteDAO : IDataBase<Cliente>
-    {
-        #region ATRIBUTOS
-        private SqlConnection conexion;
-        private SqlCommand comando;
-        private SqlDataReader lector;
-        #endregion
-
-        #region CONSTRUCTOR
-        public ClienteDAO()
-        {
-            try
-            {
-                this.conexion = new SqlConnection(CadenaConexionBase());
-            }
-            catch(Exception)
-            {
-                throw new SQLConexionException("Error en la conexion con la base de datos.");
-            }
-        }
-        #endregion
-
-        #region METODOS 
-        /// <summary>
-        /// Me permite retornar la cadena de conexion
-        /// de la base de datos.
-        /// </summary>
-        /// <returns></returns>
-        public string CadenaConexionBase()
-        {
-            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
-        }
+    /// <summary>
+    /// La clase UsuariosDAO hereda de 
+    /// AccesoADataBase e implementa la interfaz
+    /// IDataBase<Cliente>
+    /// </summary>
+    public class ClienteDAO : AccesoADataBase, IDataBase<Cliente>
+    {  
+        #region METODOS  
 
         /// <summary>
         /// Me permite obtener una lista de Clientes de la 
@@ -53,47 +29,47 @@ namespace Entidades
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
                                              "c.TarjetaVencimiento, c.TarjetaEntidadEmisora, c.TarjetaTitular, c.TarjetaNumTarjeta, c.TarjetaCVV, " +
                                              "c.TarjetaDineroDisponible, c.TarjetaEsDebito, c.IDCliente, p.IDPersona " +
                                              "FROM Usuarios u " +
                                              "JOIN Personas p ON u.IDPersona = p.IDPersona " +
                                              "JOIN Clientes c ON u.IDCliente = c.IDCliente";
-                this.comando.Connection = this.conexion;
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();//-->Abro la conexion
+                base._conexion.Open();//-->Abro la conexion
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                while (this.lector.Read())//-->Mientras pueda leer, obtengo los clientes de la base
+                while (base._lector.Read())//-->Mientras pueda leer, obtengo los clientes de la base
                 {
                     Cliente cliente = new Cliente(new Usuario("", ""));
 
-                    cliente.Nombre = (string)this.lector[0];
-                    cliente.Apellido = (string)this.lector[1];
-                    cliente.Usuario.Email = (string)lector[2];
-                    cliente.DNI = (string)this.lector[3];
-                    cliente.Telefono = (string)this.lector[4];
-                    cliente.Domicilio = (string)this.lector[5];
-                    cliente.ConTarjeta = (bool)this.lector[6];
-                    cliente.DineroEfectivoDisponible = (double)this.lector[7];
+                    cliente.Nombre = (string)base._lector[0];
+                    cliente.Apellido = (string)base._lector[1];
+                    cliente.Usuario.Email = (string)base._lector[2];
+                    cliente.DNI = (string)base._lector[3];
+                    cliente.Telefono = (string)base._lector[4];
+                    cliente.Domicilio = (string)base._lector[5];
+                    cliente.ConTarjeta = (bool)base._lector[6];
+                    cliente.DineroEfectivoDisponible = (double)base._lector[7];
 
                     if (cliente.ConTarjeta)//-->Si es con tarjeta la cargo
                     {
-                        Tarjeta tarjeta = new Tarjeta((DateTime)this.lector[8], (string)this.lector[10], (string)this.lector[12],
-                            (string)this.lector[11], (string)this.lector[9], (double)this.lector[13], (bool)this.lector[14]);
+                        Tarjeta tarjeta = new Tarjeta((DateTime)base._lector[8], (string)base._lector[10], (string)base._lector[12],
+                            (string)base._lector[11], (string)base._lector[9], (double)base._lector[13], (bool)base._lector[14]);
 
                         cliente.Tarjeta = tarjeta;//-->Se la paso, sino se instancia rompe.
                     }
-                    cliente.IDCliente = (int)this.lector[15];
-                    cliente.IDPersona = (int)this.lector[16];
+                    cliente.IDCliente = (int)base._lector[15];
+                    cliente.IDPersona = (int)base._lector[16];
 
                     listaClientes.Add(cliente);//-->Añado a la lista
                 }
-                this.lector.Close();//-->Cierro el lector
+                base._lector.Close();//-->Cierro el lector
             }
             catch (Exception e)
             {
@@ -101,9 +77,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return listaClientes;//-->Retorno la lista de clientes.
@@ -121,43 +97,43 @@ namespace Entidades
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
                                              "c.TarjetaVencimiento, c.TarjetaEntidadEmisora, c.TarjetaTitular, c.TarjetaNumTarjeta, c.TarjetaCVV, " +
                                              "c.TarjetaDineroDisponible, c.TarjetaEsDebito, c.IDCliente, p.IDPersona " +
                                              "FROM Usuarios u " +
                                              "JOIN Personas p ON u.IDPersona = p.IDPersona " +
                                              "JOIN Clientes c ON u.IDCliente = c.IDCliente " +
                                              $"WHERE c.IDCliente = {id}";
-                this.comando.Connection = this.conexion;
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                this.lector = this.comando.ExecuteReader();
+                base._lector = base._comando.ExecuteReader();
 
-                this.lector.Read();
+                base._lector.Read();
 
                 //-->Cargo ese cliente. 
-                string nombre = (string)this.lector[0];
-                string apellido = (string)this.lector[1];
-                string email = (string)this.lector[2];
-                string dni = (string)this.lector[3];
-                string telefono = (string)this.lector[4];
-                string domicilio = (string)this.lector[5];
-                bool conTarjeta = (bool)this.lector[6];
-                double dineroEfectivoDisponible = (double)this.lector[7];
+                string nombre = (string)base._lector[0];
+                string apellido = (string)base._lector[1];
+                string email = (string)base._lector[2];
+                string dni = (string)base._lector[3];
+                string telefono = (string)base._lector[4];
+                string domicilio = (string)base._lector[5];
+                bool conTarjeta = (bool)base._lector[6];
+                double dineroEfectivoDisponible = (double)base._lector[7];
 
                 if (conTarjeta)
                 {
-                    DateTime vencimientoTarjeta = (DateTime)this.lector[8];
-                    string entidadEmisora = (string)this.lector[9];
-                    string titularTarjeta = (string)this.lector[10];
-                    string numeroTarjeta = (string)this.lector[11];
-                    string cvv = (string)this.lector[12];
-                    double dineroDisponible = (double)this.lector[13];
-                    bool esDebito = (bool)this.lector[14];
+                    DateTime vencimientoTarjeta = (DateTime)base._lector[8];
+                    string entidadEmisora = (string)base._lector[9];
+                    string titularTarjeta = (string)base._lector[10];
+                    string numeroTarjeta = (string)base._lector[11];
+                    string cvv = (string)base._lector[12];
+                    double dineroDisponible = (double)base._lector[13];
+                    bool esDebito = (bool)base._lector[14];
 
                     cliente = new Cliente(nombre, apellido, Sexo.No_Binario, Nacionalidad.Argentina, new DateTime(), dni,
                               domicilio, telefono, new Usuario(email, string.Empty), new Carrito(),
@@ -169,10 +145,10 @@ namespace Entidades
                     cliente = new Cliente(nombre, apellido, Sexo.No_Binario, Nacionalidad.Argentina, new DateTime(), dni,
                               domicilio, telefono, new Usuario(email, string.Empty), new Carrito(), dineroEfectivoDisponible, conTarjeta);
                 }
-                cliente.IDCliente = (int)this.lector[15];
-                cliente.IDPersona = (int)this.lector[16];
+                cliente.IDCliente = (int)base._lector[15];
+                cliente.IDPersona = (int)base._lector[16];
 
-                this.lector.Close();//-->Cierro el lector.
+                base._lector.Close();//-->Cierro el lector.
             }
             catch (Exception e)
             {
@@ -180,9 +156,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return cliente;//-->Retorno al cliente.
@@ -200,10 +176,10 @@ namespace Entidades
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = "SELECT p.Nombre, p.Apellido, u.Email, p.DNI, p.Telefono, p.Domicilio, c.ConTarjeta, c.EfectivoDisponible, " +
                                              "c.TarjetaVencimiento, c.TarjetaEntidadEmisora, c.TarjetaTitular, c.TarjetaNumTarjeta, c.TarjetaCVV, " +
                                              "c.TarjetaDineroDisponible, c.TarjetaEsDebito, c.IDCliente, p.IDPersona  " +
                                              "FROM Usuarios u " +
@@ -211,35 +187,35 @@ namespace Entidades
                                              "JOIN Clientes c ON u.IDCliente = c.IDCliente " +
                                              "WHERE u.Email = @email";
 
-               this.comando.Connection = this.conexion;
-               this.comando.Parameters.AddWithValue("@email", email);
+                base._comando.Connection = base._conexion;
+                base._comando.Parameters.AddWithValue("@email", email);
 
-               this.conexion.Open();
+                base._conexion.Open();
 
-               this.lector = this.comando.ExecuteReader();
+               base._lector = base._comando.ExecuteReader();
 
-               this.lector.Read();
+               base._lector.Read();
 
                //-->Cargo ese cliente.
-               string nombre  = (string)this.lector[0];
-               string apellido = (string)this.lector[1]; 
-               string dni = (string)this.lector[3];
-               string telefono = (string)this.lector[4];
-               string domicilio = (string)this.lector[5];
-               bool  conTarjeta = (bool)this.lector[6];
-               double dineroEfectivoDisponible = (double)this.lector[7];
-               int idCliente = (int)this.lector[15];
-               int idPersona = (int)this.lector[16];
+               string nombre  = (string)base._lector[0];
+               string apellido = (string)base._lector[1]; 
+               string dni = (string)base._lector[3];
+               string telefono = (string)base._lector[4];
+               string domicilio = (string)base._lector[5];
+               bool  conTarjeta = (bool)base._lector[6];
+               double dineroEfectivoDisponible = (double)base._lector[7];
+               int idCliente = (int)base._lector[15];
+               int idPersona = (int)base._lector[16];
 
                if (conTarjeta)
                {
-                   DateTime vencimientoTarjeta = (DateTime)this.lector[8];                    
-                   string entidadEmisora = (string)this.lector[9];
-                   string titularTarjeta = (string)this.lector[10];
-                   string numeroTarjeta = (string)this.lector[11];
-                   string cvv = (string)this.lector[12];
-                   double dineroDisponible = (double)this.lector[13];
-                   bool esDebito = (bool)this.lector[14];
+                   DateTime vencimientoTarjeta = (DateTime)base._lector[8];                    
+                   string entidadEmisora = (string)base._lector[9];
+                   string titularTarjeta = (string)base._lector[10];
+                   string numeroTarjeta = (string)base._lector[11];
+                   string cvv = (string)base._lector[12];
+                   double dineroDisponible = (double)base._lector[13];
+                   bool esDebito = (bool)base._lector[14];
 
                    cliente = new Cliente(nombre, apellido, Sexo.No_Binario, Nacionalidad.Argentina, new DateTime(), dni,
                              domicilio, telefono, new Usuario(email, string.Empty), new Carrito(), 
@@ -254,7 +230,7 @@ namespace Entidades
                cliente.IDCliente = idCliente;
                cliente.IDPersona = idPersona;
 
-               this.lector.Close();//-->Cierro el lector.
+               base._lector.Close();//-->Cierro el lector.
             }
             catch (Exception e)
             {
@@ -262,9 +238,9 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return cliente;//-->Retorno al cliente.
@@ -276,22 +252,22 @@ namespace Entidades
         /// </summary>
         /// <param name="cliente"></param>
         /// <returns></returns>
-        public bool ModificarCliente(Cliente cliente)
+        public bool UpdateDato(Cliente cliente)
         {
             bool pudo = true;
 
             try
             {
-                this.comando = new SqlCommand();
+                base._comando = new SqlCommand();
                 //-->Parametros: 
-                this.comando.Parameters.AddWithValue("@IDCliente", cliente.IDCliente);
-                this.comando.Parameters.AddWithValue("@Nombre", cliente.Nombre);
-                this.comando.Parameters.AddWithValue("@Apellido", cliente.Apellido);
-                this.comando.Parameters.AddWithValue("@DNI", cliente.DNI);
-                this.comando.Parameters.AddWithValue("@Telefono", cliente.Telefono);
-                this.comando.Parameters.AddWithValue("@Domicilio", cliente.Domicilio);
-                this.comando.Parameters.AddWithValue("@ConTarjeta", cliente.ConTarjeta);
-                this.comando.Parameters.AddWithValue("@EfectivoDisponible", cliente.DineroEfectivoDisponible);
+                base._comando.Parameters.AddWithValue("@IDCliente", cliente.IDCliente);
+                base._comando.Parameters.AddWithValue("@Nombre", cliente.Nombre);
+                base._comando.Parameters.AddWithValue("@Apellido", cliente.Apellido);
+                base._comando.Parameters.AddWithValue("@DNI", cliente.DNI);
+                base._comando.Parameters.AddWithValue("@Telefono", cliente.Telefono);
+                base._comando.Parameters.AddWithValue("@Domicilio", cliente.Domicilio);
+                base._comando.Parameters.AddWithValue("@ConTarjeta", cliente.ConTarjeta);
+                base._comando.Parameters.AddWithValue("@EfectivoDisponible", cliente.DineroEfectivoDisponible);
 
                 string sqlQuery = "UPDATE Personas SET " +
                                   "Nombre = @Nombre, " +
@@ -306,13 +282,13 @@ namespace Entidades
 
                 if (cliente.ConTarjeta)//-->Me fijo con que paga.
                 {
-                    this.comando.Parameters.AddWithValue("@TarjetaTitular", cliente.Tarjeta.Titular);
-                    this.comando.Parameters.AddWithValue("@TarjetaNumTarjeta", cliente.Tarjeta.NumeroTarjeta);
-                    this.comando.Parameters.AddWithValue("@TarjetaEntidadEmisora", cliente.Tarjeta.EntidadEmisora);
-                    this.comando.Parameters.AddWithValue("@TarjetaCVV", cliente.Tarjeta.CVV);
-                    this.comando.Parameters.AddWithValue("@TarjetaEsDebito", cliente.Tarjeta.EsDebito);
-                    this.comando.Parameters.AddWithValue("@TarjetaDineroDisponible", cliente.Tarjeta.DineroDisponible);
-                    this.comando.Parameters.AddWithValue("@VencimientoTarjeta", cliente.Tarjeta.FechaVencimiento);
+                    base._comando.Parameters.AddWithValue("@TarjetaTitular", cliente.Tarjeta.Titular);
+                    base._comando.Parameters.AddWithValue("@TarjetaNumTarjeta", cliente.Tarjeta.NumeroTarjeta);
+                    base._comando.Parameters.AddWithValue("@TarjetaEntidadEmisora", cliente.Tarjeta.EntidadEmisora);
+                    base._comando.Parameters.AddWithValue("@TarjetaCVV", cliente.Tarjeta.CVV);
+                    base._comando.Parameters.AddWithValue("@TarjetaEsDebito", cliente.Tarjeta.EsDebito);
+                    base._comando.Parameters.AddWithValue("@TarjetaDineroDisponible", cliente.Tarjeta.DineroDisponible);
+                    base._comando.Parameters.AddWithValue("@VencimientoTarjeta", cliente.Tarjeta.FechaVencimiento);
 
                     sqlQuery += ", TarjetaVencimiento = @VencimientoTarjeta, " +
                                   "TarjetaEntidadEmisora = @TarjetaEntidadEmisora, " +
@@ -325,13 +301,13 @@ namespace Entidades
 
                 sqlQuery += " WHERE IDCliente = @IDCliente;"; 
 
-                this.comando.CommandType = CommandType.Text;
-                this.comando.CommandText = sqlQuery;//-->Le paso la query.
-                this.comando.Connection = this.conexion;
+                base._comando.CommandType = CommandType.Text;
+                base._comando.CommandText = sqlQuery;//-->Le paso la query.
+                base._comando.Connection = base._conexion;
 
-                this.conexion.Open();
+                base._conexion.Open();
 
-                int filasActualizadas = this.comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
+                int filasActualizadas = base._comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
 
                 if (filasActualizadas == 0)//-->Quiere decir que no actualizo ninguna
                 {
@@ -345,12 +321,47 @@ namespace Entidades
             }
             finally
             {
-                if (this.conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
+                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
                 {
-                    this.conexion.Close();//-->La cierro
+                    base._conexion.Close();//-->La cierro
                 }
             }
             return pudo;
+        }
+
+        /// <summary>
+        /// Implemento el metodo DeleteDato de la 
+        /// interfaz, el cual me permitira eliminar 
+        /// a un usuario mediante su ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public bool DeleteDato(int id)
+        {
+            bool pudoEliminar = false;
+
+            using (SqlConnection conexion = new SqlConnection(CadenaDeConexion))
+            {
+                string query = "DELETE FROM Clientes WHERE IDCliente = @IDCliente";//-->Elimino de la tabla Clientes.
+
+                using (SqlCommand comando = new SqlCommand(query, conexion))
+                {
+                    comando.Parameters.AddWithValue("@IDCliente", id);
+
+                    try
+                    {
+                        conexion.Open();
+                        int filasAfectadas = comando.ExecuteNonQuery();
+                        pudoEliminar = filasAfectadas > 0;//-->Si elimino hubo una fila afectada, retornando true 
+                    }
+                    catch (Exception ex)
+                    { 
+                        Console.WriteLine("Error al eliminar el cliente: " + ex.Message);
+                    }
+                }
+            }//-->Con el using se cierra la conexion al terminar.
+
+            return pudoEliminar;
         }
         #endregion
     }

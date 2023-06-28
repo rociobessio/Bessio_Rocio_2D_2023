@@ -134,7 +134,7 @@ namespace Entidades
                 ClienteDAO clienteDAO = new ClienteDAO();
 
                 //-->Modifico las tablas correspondientes
-                if (productoDAO.UpdateProducto(carneSeleccionada) && clienteDAO.ModificarCliente(cliente))
+                if (productoDAO.UpdateDato(carneSeleccionada) && clienteDAO.UpdateDato(cliente))
                     updateBase = true;
 
                 //-->Serializo en formato JSON el carrito, que seria como el ticket de compra

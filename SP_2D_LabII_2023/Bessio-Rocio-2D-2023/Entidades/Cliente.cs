@@ -189,7 +189,7 @@ namespace Entidades
                 ActualizarDineroCliente(clienteIngresado);
                 ClienteDAO clienteDAO = new ClienteDAO();
 
-                if (clienteDAO.ModificarCliente(clienteIngresado))
+                if (clienteDAO.UpdateDato(clienteIngresado))
                 {
                     clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;
                     XML.SerializacionXML(clienteIngresado.CarritoCompra);
@@ -246,7 +246,7 @@ namespace Entidades
         private static bool ActualizarStockProducto(Producto producto)
         {
             ProductoDAO productoDAO = new ProductoDAO();
-            return productoDAO.UpdateProducto(producto);
+            return productoDAO.UpdateDato(producto);
         }
 
         /// <summary>

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excepciones;
 
 namespace Carniceria_GUI
 {
@@ -304,14 +305,17 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            if (this.ValidarInput())//-->Valido los ingresos
+            try
             {
-                if (this.rbTarjetaDebito.Checked || this.rbTarjetaCredito.Checked)//-->Me fijo de que es
+                if (this.ValidarInput())//-->Valido los ingresos
                 {
-                    tarjetaCliente = this.CargarTarjeta();//-->Cargo la tarjeta
-
-                    if (Tarjeta.ValidarTarjeta(tarjetaCliente))
+                    if (this.rbTarjetaDebito.Checked || this.rbTarjetaCredito.Checked)//-->Me fijo de que es
                     {
+                        tarjetaCliente = this.CargarTarjeta();//-->Cargo la tarjeta
+
+                        if (!Tarjeta.ValidarTarjeta(tarjetaCliente))
+                            throw new TarjetaNoValidaException("Error al generar tarjeta, datos no validos.");
+
                         clienteForm.Tarjeta = tarjetaCliente;//-->Le asigno la tarjeta
                         clienteForm.ConTarjeta = true;
 
@@ -319,21 +323,25 @@ namespace Carniceria_GUI
                         frmCompraCliente.ShowDialog();//-->Abro el form de compra
                         this.Hide();
                     }
-                    else
+
+                    if (this.rbEfectivo.Checked)//-->Efectivo, le asigno el valor
                     {
-                        MessageBox.Show("Error al generar la tarjeta.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        clienteForm.DineroEfectivoDisponible = double.Parse(this.txtEfectivoAGastar.Text);
+                        clienteForm.ConTarjeta = false;
+
+                        frmCompraCliente = new FrmCompraCliente(clienteForm);
+                        frmCompraCliente.ShowDialog();//-->Abro el form de compra
+                        this.Hide();
                     }
                 }
-
-                if (this.rbEfectivo.Checked)//-->Efectivo, le asigno el valor
-                {
-                    clienteForm.DineroEfectivoDisponible = double.Parse(this.txtEfectivoAGastar.Text);
-                    clienteForm.ConTarjeta = false;
-
-                    frmCompraCliente = new FrmCompraCliente(clienteForm);
-                    frmCompraCliente.ShowDialog();//-->Abro el form de compra
-                    this.Hide();
-                }
+            }
+            catch(TarjetaNoValidaException ex)
+            {
+                MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ocurrio un problema, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         #endregion 

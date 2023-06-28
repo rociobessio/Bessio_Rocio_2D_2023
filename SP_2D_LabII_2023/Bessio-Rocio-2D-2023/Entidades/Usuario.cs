@@ -15,9 +15,11 @@ namespace Entidades
         private bool _esCliente;
         private int _idCliente;
         private int _idPersona;
+        private int _idUsuario;
         #endregion
 
         #region PROPIEDADES
+        public int IDUsuario { get { return this.IDUsuario; } }
         /// <summary>
         /// Esta propiedad de lectura me permitira imprimir en los textboxes
         /// la contrasenia.

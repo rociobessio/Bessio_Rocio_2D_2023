@@ -418,7 +418,7 @@ namespace Carniceria_GUI
                     else
                         clienteSeleccionado.DineroEfectivoDisponible += dinero;
 
-                    if (clienteDAO.ModificarCliente(clienteSeleccionado))//-->Lo modifico.
+                    if (clienteDAO.UpdateDato(clienteSeleccionado))//-->Lo modifico.
                     {
                         if (clienteSeleccionado.ConTarjeta)
                             this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";

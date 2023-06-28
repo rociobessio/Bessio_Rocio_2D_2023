@@ -96,7 +96,7 @@ namespace Entidades
                             { 
                                 Thread.Sleep(2000);//-->Cada 2 segundos
                                 producto.Stock = i;//-->Repongo
-                                this._productoDAO.UpdateProducto(producto);//-->Actualizo el producto en la base
+                                this._productoDAO.UpdateDato(producto);//-->Actualizo el producto en la base
                             }
                             this._semaphoreSlim.Release();//-->Libero espacio en el "Semaforo" y permito que otro hilo lo utilice
                         });

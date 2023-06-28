@@ -110,48 +110,26 @@ namespace UnitTestingSQL
             Assert.IsTrue(pudoAgregar);
         }
 
-        ///// <summary>
-        ///// Unit testing del metodo UpdateProducto
-        ///// de la clase ProductoDAO.
-        ///// </summary>
-        //[TestMethod]
-        //public void ModificarProducto_OK()
-        //{
-        //    //-->Arrange, instancio
-        //    ProductoDAO productoDAO = new ProductoDAO();
-        //    List<Producto> productos = productoDAO.ObtenerLista();
+        /// <summary>
+        /// Unit testing del metodo UpdateProducto
+        /// de la clase ProductoDAO.
+        /// </summary>
+        [TestMethod]
+        public void ModificarProducto_OK()
+        {
+            //-->Arrange, instancio
+            ProductoDAO productoDAO = new ProductoDAO();
+            List<Producto> productos = productoDAO.ObtenerLista();
 
-        //    Producto producto = new Producto("Bondiola", 12, "No Es Bovino", new DateTime(2025, 6, 12),
-        //                                     1700, "Mingo CO", "Cerdo", 2501);
-        //    producto.Codigo = 15;
+            Producto producto = new Producto("Bondiola", 12, "No Es Bovino", new DateTime(2025, 6, 12),
+                                             1700, "Mingo CO", "Cerdo", 2501);
+            producto.Codigo = 8;
 
-        //    //-->Act, hago Update del producto
-        //    bool pudoModificar = productoDAO.UpdateProducto(producto);
+            //-->Act, hago Update del producto
+            bool pudoModificar = productoDAO.UpdateDato(producto);
 
-        //    //-->Assert, Compruebo si el resultado obtenido es el esperado.
-        //    Assert.IsTrue(pudoModificar);
-        //}
-
-        ///// <summary>
-        ///// Unit testing del metodo DeleteProducto
-        ///// de la clase ProductoDAO.
-        ///// </summary>
-        //[TestMethod]
-        //public void DeleteProducto_OK()
-        //{
-        //    //-->Arrange, instancio
-        //    ProductoDAO productoDAO = new ProductoDAO();
-        //    List<Producto> productos = productoDAO.ObtenerLista();
-
-        //    Producto producto = new Producto("Pechito", 12, "No Es Bovino", new DateTime(2025, 6, 12),
-        //                                     1300, "Mingo CO", "Cerdo", 2100);
-        //    producto.Codigo = 15;
-
-        //    //-->Act, compruebo si se elimino el producto de la tabla
-        //    bool pudoEliminar = productoDAO.DeleteProducto(producto.Codigo);
-
-        //    //-->Assert, Compruebo si el resultado obtenido es el esperado.
-        //    Assert.IsTrue(pudoEliminar);
-        //} 
+            //-->Assert, Compruebo si el resultado obtenido es el esperado.
+            Assert.IsTrue(pudoModificar);
+        }
     }
 }

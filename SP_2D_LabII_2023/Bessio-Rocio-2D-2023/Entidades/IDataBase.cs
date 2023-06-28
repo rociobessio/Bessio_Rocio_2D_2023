@@ -19,11 +19,22 @@ namespace Entidades
         where T : class//-->T será una clase.
     {
         /// <summary>
-        /// Metodo estatico me retorna la cadena de conexion de la base
-        /// de datos.
+        /// Este metodo lo implentare en
+        /// aquellas clases que tengan dicha interfaz.
         /// </summary>
+        /// <param name="clase"></param>
         /// <returns></returns>
-        string CadenaConexionBase();
+        bool UpdateDato(T clase);
+
+        /// <summary>
+        /// Este metodo lo implementare en aquellas
+        /// clases que tengan la interfaz, me permitira
+        /// eliminar un dato de alguna tabla mediante
+        /// su ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        bool DeleteDato(int id);
 
         /// <summary>
         /// Metodo que me permitira devolveer una lista del

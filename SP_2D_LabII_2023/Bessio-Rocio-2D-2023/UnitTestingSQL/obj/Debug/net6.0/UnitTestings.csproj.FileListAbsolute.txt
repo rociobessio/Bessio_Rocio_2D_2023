@@ -212,3 +212,6 @@ C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabI
 C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\obj\Debug\net6.0\UnitTestings.pdb
 C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\obj\Debug\net6.0\UnitTestings.genruntimeconfig.cache
 C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\obj\Debug\net6.0\ref\UnitTestings.dll
+C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\bin\Debug\net6.0\nunit.framework.dll
+C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\bin\Debug\net6.0\Excepciones.dll
+C:\Users\Rocio\Desktop\Laboratorio II Parciales 2023\PP_2D_LabII_2023\SP_2D_LabII_2023\Bessio-Rocio-2D-2023\UnitTestingSQL\bin\Debug\net6.0\Excepciones.pdb
