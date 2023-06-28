@@ -10,14 +10,14 @@
   <Class Name="Entidades.Cliente">
     <Position X="2.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAAAIAAAACAAAEiAAABAAQAAAAAIiAEABAggAAAiA=</HashCode>
+      <HashCode>BAAAQAIAAAACAAAEqAAABAAQAAAAAIiAEABgggAAAiA=</HashCode>
       <FileName>Cliente.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Vendedor">
     <Position X="0.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAABAAgAUEgABAAAAAAAAAAIAAQAABAgCAAiA=</HashCode>
+      <HashCode>EAIAAACAABAAgAUEgABAAAAAAAAAAIAAQAABAgCAAiA=</HashCode>
       <FileName>Vendedor.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -36,7 +36,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.Producto">
-    <Position X="6" Y="6" Width="1.5" />
+    <Position X="9.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQIAIQAQBACsgABiABAhgCAAAIAAAAAAAAAIAiQ=</HashCode>
       <FileName>Producto.cs</FileName>
@@ -45,7 +45,7 @@
   <Class Name="Entidades.Usuario">
     <Position X="4.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAICAAACAAEAAEiEAABAAAQAAAAIAAAACAogAAAiE=</HashCode>
+      <HashCode>AAQAICAAACAAEAAEiEAABAQAQAAAAIAAAACAogAAAiE=</HashCode>
       <FileName>Usuario.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -55,38 +55,30 @@
       <Compartment Name="Nested Types" Collapsed="false" />
     </Compartments>
     <NestedTypes>
-      <Delegate Name="Entidades.Repositor.DelegadoReposicionFinalizada" Collapsed="true">
+      <Delegate Name="Entidades.Repositor.DelegadoReposicionFinalizada">
         <TypeIdentifier>
           <NewMemberFileName>Repositor.cs</NewMemberFileName>
         </TypeIdentifier>
       </Delegate>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AEAEAAAAAAACgAAQAAAAAAAAAQAAAAAAQAAAAAIAAAA=</HashCode>
+      <HashCode>AAAEAAAAAAACgAAQAAAAAAAAAAAAAAAAQAAAAAIAAgA=</HashCode>
       <FileName>Repositor.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.MetodosDeExtension">
-    <Position X="7.75" Y="5" Width="1.5" />
+    <Position X="7.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>MetodosDeExtension.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Entidades.SQLConexionException">
-    <Position X="7.75" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Exceptions.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Entidades.XML">
-    <Position X="9.5" Y="6.5" Width="1.5" />
+    <Position X="7.75" Y="6.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAACAAAAAAAAAAAAQQAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAAwAAAAAQAAA=</HashCode>
       <FileName>XML.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.ArchivoDeTexto">
     <Position X="9.5" Y="0.5" Width="1.5" />
@@ -96,25 +88,24 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Entidades.JSON">
-    <Position X="9.5" Y="3.75" Width="1.5" />
+    <Position X="9.5" Y="3.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAACAAAAAAAAAAAAQQAAAAAQAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAgAAAQAAAAQQAAA=</HashCode>
       <FileName>JSON.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.ProductoDAO">
-    <Position X="7.75" Y="10" Width="1.5" />
+    <Position X="6" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEIAAAAAAAAEBAAAAAAAAAAAEAAAAAAAAAAgAAAE=</HashCode>
+      <HashCode>AAAAAIAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAE=</HashCode>
       <FileName>ProductoDAO.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Entidades.UsuariosDAO">
-    <Position X="9.75" Y="9.25" Width="1.5" />
+    <Position X="7.75" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAAAEIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAgAAAE=</HashCode>
+      <HashCode>BAAAAIAAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAA=</HashCode>
       <FileName>UsuariosDAO.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -122,34 +113,27 @@
   <Class Name="Entidades.ClienteDAO">
     <Position X="4.25" Y="10" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAEIAAgAAAAAABAAAAAAAAAAAAAAAAABAAAAgAAAE=</HashCode>
+      <HashCode>AAAAAIAAgAQAAAAAAAAAAAAAAAAAAQAAAAAAAAgAAAA=</HashCode>
       <FileName>ClienteDAO.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="Entidades.IBaseDeDatos&lt;T&gt;">
-    <Position X="7.75" Y="8" Width="1.5" />
+  <Class Name="Entidades.AccesoADataBase">
+    <Position X="6" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAgAAAA=</HashCode>
-      <FileName>IBaseDeDatos.cs</FileName>
+      <HashCode>EAAAAEAAAAAAAAAAAAAAAAAAAAgAAIAAABAAAIAAAAA=</HashCode>
+      <FileName>AccesoADataBase.cs</FileName>
     </TypeIdentifier>
-  </Interface>
-  <Interface Name="Entidades.IArchivos&lt;T&gt;">
-    <Position X="4.25" Y="8.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
-      <FileName>IArchivos.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
+  </Class>
   <Enum Name="Tipo" Collapsed="true">
-    <Position X="4.25" Y="6" Width="1.5" />
+    <Position X="4.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
       <FileName>eTipo.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="Corte" Collapsed="true">
-    <Position X="4.25" Y="6.75" Width="1.5" />
+    <Position X="4.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAQAAAgAABAACIgEEAAAQAAAAAAAEKAIAgAAAAAA=</HashCode>
       <FileName>eCorte.cs</FileName>
