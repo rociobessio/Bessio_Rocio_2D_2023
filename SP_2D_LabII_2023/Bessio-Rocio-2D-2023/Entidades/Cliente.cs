@@ -159,71 +159,111 @@ namespace Entidades
         /// <param name="clienteIngresado"></param>
         /// <param name="listaCarnesDisponibles"></param> 
         /// <returns></returns>
-        public static bool Comprar(Cliente clienteIngresado, List<Producto> listaCarnesDisponibles,out bool updateBaseProducto)
+        public static bool Comprar(Cliente clienteIngresado, List<Producto> listaCarnesDisponibles, out bool updateBaseProducto)
         {
             bool puedeComprar = false;
-            ClienteDAO clienteDAO = new ClienteDAO(); 
-
             updateBaseProducto = false;
-            ProductoDAO productoDAO = new ProductoDAO();    
 
-            if (clienteIngresado.ConTarjeta)
+            if (!VerificarDisponibilidadPago(clienteIngresado))
             {
-                if ((clienteIngresado.Tarjeta.DineroDisponible < clienteIngresado._carritoCompra.PrecioTotal) ||
-                         (clienteIngresado.Tarjeta.DineroDisponible < 0))
-                {
-                    return false;
-                }
+                return false;
             }
-            else
-            {
-                if ((clienteIngresado._dineroEfectivoDisponible < 0) || (clienteIngresado._dineroEfectivoDisponible < clienteIngresado.CarritoCompra.PrecioTotal))
-                {
-                    return false;
-                }
-            } 
 
-            foreach (Producto carneDisponible in listaCarnesDisponibles)//-->Recorro la lista para descontar productos
+            foreach (Producto carneDisponible in listaCarnesDisponibles)
             {
                 foreach (Producto carneCarrito in clienteIngresado.CarritoCompra.Productos)
                 {
-                    if ((carneDisponible == carneCarrito) &&
-                        (carneDisponible.Stock >= carneCarrito.Stock))//-->Busco que coincidan los codigos
+                    if (DescontarStock(carneDisponible, carneCarrito))
                     {
-                        carneDisponible.Stock -= carneCarrito.Stock;//-->Al stock le descuento la del carrito.
-
-                        if (productoDAO.UpdateProducto(carneDisponible))
+                        if (ActualizarStockProducto(carneDisponible))
                         {
                             updateBaseProducto = true;
-                            puedeComprar = true;//-->Solo aca cambio a true
+                            puedeComprar = true;
                         }
                     }
                 }
-            } 
-
-            //-->Termine de descontar del stock, entonces resto el dinero de los clientes.
-            if (clienteIngresado.ConTarjeta && puedeComprar == true)
-            {
-                clienteIngresado.Tarjeta.DineroDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
             }
-            else if(!clienteIngresado.ConTarjeta && puedeComprar == true)
-                clienteIngresado.DineroEfectivoDisponible -= clienteIngresado.CarritoCompra.PrecioTotal;
 
-            //-->Si no lo puede modificar hubo error.
-            if (clienteDAO.ModificarCliente(clienteIngresado) && puedeComprar == true)
+            if (puedeComprar)
             {
-                puedeComprar = true;
+                ActualizarDineroCliente(clienteIngresado);
+                ClienteDAO clienteDAO = new ClienteDAO();
 
-                clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;//-->Asigno el email 
-                XML.SerializacionXML(clienteIngresado.CarritoCompra);//-->Serializo en XML
+                if (clienteDAO.ModificarCliente(clienteIngresado))
+                {
+                    clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;
+                    XML.SerializacionXML(clienteIngresado.CarritoCompra);
+                }
+                else
+                {
+                    return false;
+                }
+            } 
+            return puedeComprar;
+        }
+
+        /// <summary>
+        /// Me permite verificar con que paga
+        /// y si puede,
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
+        private static bool VerificarDisponibilidadPago(Cliente cliente)
+        {
+            if (cliente.ConTarjeta)
+            {
+                return cliente.Tarjeta.DineroDisponible >= cliente.CarritoCompra.PrecioTotal && cliente.Tarjeta.DineroDisponible >= 0;
             }
             else
             {
-                return false;
-            } 
+                return cliente.DineroEfectivoDisponible >= 0 && cliente.DineroEfectivoDisponible >= cliente.CarritoCompra.PrecioTotal;
+            }
+        }
 
-            return puedeComprar;
-        } 
+        /// <summary>
+        /// Me permite descontar el stock
+        /// </summary>
+        /// <param name="carneDisponible"></param>
+        /// <param name="carneCarrito"></param>
+        /// <returns></returns>
+        private static bool DescontarStock(Producto carneDisponible, Producto carneCarrito)
+        {
+            if (carneDisponible == carneCarrito && carneDisponible.Stock >= carneCarrito.Stock)
+            {
+                carneDisponible.Stock -= carneCarrito.Stock;
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Me permite actualizar stock 
+        /// del producto.
+        /// </summary>
+        /// <param name="producto"></param>
+        /// <returns></returns>
+        private static bool ActualizarStockProducto(Producto producto)
+        {
+            ProductoDAO productoDAO = new ProductoDAO();
+            return productoDAO.UpdateProducto(producto);
+        }
+
+        /// <summary>
+        /// Me permite actualizar el saldo del cliente.
+        /// </summary>
+        /// <param name="cliente"></param>
+        private static void ActualizarDineroCliente(Cliente cliente)
+        {
+            if (cliente.ConTarjeta)
+            {
+                cliente.Tarjeta.DineroDisponible -= cliente.CarritoCompra.PrecioTotal;
+            }
+            else
+            {
+                cliente.DineroEfectivoDisponible -= cliente.CarritoCompra.PrecioTotal;
+            }
+        }
         #endregion 
 
         #region POLIMORFISMO

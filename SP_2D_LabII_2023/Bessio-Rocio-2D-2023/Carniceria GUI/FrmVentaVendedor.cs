@@ -9,6 +9,7 @@ using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excepciones;
 
 namespace Carniceria_GUI
 {
@@ -322,46 +323,69 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVender_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())//-->Valido los datos que recibo
+            try
             {
-                double peso = 0;
-                double.TryParse(this.txtPesoEspecificado.Text, out peso);
-
-                bool updateBase;
-                //-->Obtengo el total que deberá pagar el cliente.
-                totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
-
-                if (Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada, out updateBase))//-->Intenta comprar.
+                if (ValidarCampos())//-->Valido los datos que recibo
                 {
+                    double peso = 0;
+                    double.TryParse(this.txtPesoEspecificado.Text, out peso);
+
+                    bool updateBase;
+                    //-->Obtengo el total que deberá pagar el cliente.
+                    totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
+
+                    if (!Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada, out updateBase))//-->Intenta comprar. 
+                        throw new NoPudoVenderException("Ocurrio un error al intentar vender"); 
+
                     soundPlayer.Play();
-                    MessageBox.Show("Venta generada",
-                        "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.ActualizarVentaGenerada();
 
-                    if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
-                    {
-                        this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
-                    }
-                    else
-                    {
-                        this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
-                    }
+                    if (!ArchivoDeTexto.GuardarVenta(clienteSeleccionado))
+                        throw new ArchivoDeTextoException("Error al guardar archivo de Texto");//-->Guardo esa venta. 
 
-                    ArchivoDeTexto.GuardarVenta(clienteSeleccionado);//-->Guardo esa venta. 
+                    if (!updateBase) 
+                        throw new SQLUpdateException("Ocurrio un error al modificar las tablas."); 
 
-                    if (!updateBase)
-                    {
-                        MessageBox.Show("Ocurrio un error al modificar las tablas.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    this.CargarProductosDataGrid();//-->Recargo el datagrid 
+                    this.CargarProductosDataGrid();//-->Recargo el datagrid  
                 }
-                else//-->No pudo comprar.
-                {
-                    MessageBox.Show("Ocurrio un problema al intentar vender el producto. Probablemente el cliente no tenga saldo.",
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                this.Limpiar();
             }
-            this.Limpiar();
+            catch (ArchivoDeTextoException ex)//-->Atrapo
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (NoPudoVenderException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Actualizo los txt e imprimo 
+        /// que la venta se pudo generar.
+        /// </summary>
+        private void ActualizarVentaGenerada()
+        {
+            MessageBox.Show("Venta generada",
+                "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            if (clienteSeleccionado.ConTarjeta)//-->Actualizo el mostrar saldo.
+            {
+                this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
+            }
+            else
+            {
+                this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
+            }
         }
 
         /// <summary>

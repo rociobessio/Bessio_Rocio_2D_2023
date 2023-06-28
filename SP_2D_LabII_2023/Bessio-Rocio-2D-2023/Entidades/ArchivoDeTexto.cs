@@ -51,10 +51,9 @@ namespace Entidades
                 }
                 esValido = true;
             }
-            catch (Exception ex)
-            { 
-                Console.WriteLine(ex.Message);
-                esValido =false;
+            catch (Exception)
+            {  
+                esValido =false;//-->Entra igual
             }
             return esValido;
         }

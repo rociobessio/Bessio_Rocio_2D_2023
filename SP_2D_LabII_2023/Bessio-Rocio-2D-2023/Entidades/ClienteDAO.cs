@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using Excepciones; 
 
 namespace Entidades
 {
@@ -21,7 +22,7 @@ namespace Entidades
         {
             try
             {
-                this.conexion = new SqlConnection(IDataBase<Cliente>.CadenaConexionBase());
+                this.conexion = new SqlConnection(CadenaConexionBase());
             }
             catch(Exception)
             {
@@ -30,7 +31,17 @@ namespace Entidades
         }
         #endregion
 
-        #region METODOS
+        #region METODOS 
+        /// <summary>
+        /// Me permite retornar la cadena de conexion
+        /// de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public string CadenaConexionBase()
+        {
+            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
+        }
+
         /// <summary>
         /// Me permite obtener una lista de Clientes de la 
         /// base de datos.

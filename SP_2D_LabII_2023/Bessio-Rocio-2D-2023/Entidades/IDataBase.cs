@@ -23,10 +23,7 @@ namespace Entidades
         /// de datos.
         /// </summary>
         /// <returns></returns>
-        static string CadenaConexionBase()
-        {
-            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
-        } 
+        string CadenaConexionBase();
 
         /// <summary>
         /// Metodo que me permitira devolveer una lista del

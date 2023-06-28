@@ -9,8 +9,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     public class UsuariosDAO : IDataBase<Usuario>
-    {
-
+    { 
         #region ATRIBUTOS
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -22,16 +21,26 @@ namespace Entidades
         {
             try
             {
-                this.conexion = new SqlConnection(IDataBase<Usuario>.CadenaConexionBase());
+                this.conexion = new SqlConnection(CadenaConexionBase());
             }
             catch (Exception)
             {
-                throw new SQLConexionException("Error en la conexion con la base de datos.");
+                throw; // new SQLConexionException("Error en la conexion con la base de datos.");
             }
         }
         #endregion
 
-        #region METODOS
+        #region METODOS 
+        /// <summary>
+        /// Me permite retornar la cadena de conexion
+        /// de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public string CadenaConexionBase()
+        {
+            return @"Integrated Security=SSPI;Persist Security Info=False;Initial Catalog=CARNICERIA_DB;Data Source=DESKTOP-S8KBDM2;Trusted_Connection=True;";
+        }
+
         /// <summary>
         /// Me permite obtener la lista de usuarios de la base de datos.
         /// </summary>

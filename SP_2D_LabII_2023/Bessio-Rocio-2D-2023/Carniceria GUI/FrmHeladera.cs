@@ -3,12 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excepciones;
 
 namespace Carniceria_GUI
 {
@@ -62,7 +64,15 @@ namespace Carniceria_GUI
             this.lblHoraIngreso.Text = vendedor.HoraIngreso.ToShortTimeString();
 
             this.listaProductos = new List<Producto>();
-            this.productoDAO = new ProductoDAO();
+
+            try
+            {
+                this.productoDAO = new ProductoDAO();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
 
             #region PRINT AYUDA
             StringBuilder textoAyuda = new StringBuilder();
@@ -288,8 +298,7 @@ namespace Carniceria_GUI
 
                 tablaProductos.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
-            this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista 
-                                                                   //   dataGridViewProductos.Refresh(); //-->Hago un refresh del datagrid
+            this.dataGridViewProductos.DataSource = tablaProductos;//-->Al dataGrid le paso la lista  
         }
 
         /// <summary>
@@ -396,7 +405,7 @@ namespace Carniceria_GUI
             else
             {
                 MessageBox.Show("No hay productos para reponer.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } 
+            }
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones

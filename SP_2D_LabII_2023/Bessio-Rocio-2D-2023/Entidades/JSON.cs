@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Excepciones;
 
 namespace Entidades
 {
@@ -56,11 +57,11 @@ namespace Entidades
             catch(JSONException)
             {
                 esValido = false;
-                throw new JSONException("Ocurrio un error al intentar serializar.");
+                throw new JSONException("Ocurrio un error al intentar serializar JSON.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
 
             return esValido;
@@ -97,9 +98,9 @@ namespace Entidades
             {
                 throw new JSONException("Ocurrio un error al intentar deserializar.");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
 
             return carritos;//-->Retorno la lista.

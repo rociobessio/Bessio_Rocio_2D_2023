@@ -15,6 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Testing", "Unit Testin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTestings", "UnitTestingSQL\UnitTestings.csproj", "{E6E46A4B-9C64-455E-A825-43C47C924525}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excepciones", "Excepciones", "{370E1649-6634-41A9-A7E9-DEE5109BE1F8}"
+	ProjectSection(SolutionItems) = preProject
+		Entidades\AgregarAlCarritoException.cs = Entidades\AgregarAlCarritoException.cs
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Excepciones", "Excepciones\Excepciones.csproj", "{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +40,10 @@ Global
 		{E6E46A4B-9C64-455E-A825-43C47C924525}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6E46A4B-9C64-455E-A825-43C47C924525}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E6E46A4B-9C64-455E-A825-43C47C924525}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD78CA5D-B7E0-4190-81CA-862FD88E00B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -41,6 +52,7 @@ Global
 		{E130CE07-5DED-4370-B7BF-C09FF5E4D3ED} = {83E277FC-999F-47AE-B1CB-764FED170B80}
 		{FAE5FA8F-E52D-47FB-838F-BD653D6A7F77} = {77D8720B-6BA3-4F0C-97C3-03EF67B56CDE}
 		{E6E46A4B-9C64-455E-A825-43C47C924525} = {88F3DDB9-DBCB-439A-AD43-F21DD02A554C}
+		{DD78CA5D-B7E0-4190-81CA-862FD88E00B9} = {370E1649-6634-41A9-A7E9-DEE5109BE1F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5F463D51-C3F7-4111-9E4F-2A5F631C87F7}

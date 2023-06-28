@@ -151,6 +151,7 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v6.0",
         "dependencies": {
+          "Excepciones": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "compile": {
@@ -158,6 +159,16 @@
         },
         "runtime": {
           "bin/placeholder/Entidades.dll": {}
+        }
+      },
+      "Excepciones/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Excepciones.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Excepciones.dll": {}
         }
       }
     }
@@ -480,11 +491,17 @@
       "type": "project",
       "path": "../Entidades/Entidades.csproj",
       "msbuildProject": "../Entidades/Entidades.csproj"
+    },
+    "Excepciones/1.0.0": {
+      "type": "project",
+      "path": "../Excepciones/Excepciones.csproj",
+      "msbuildProject": "../Excepciones/Excepciones.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0-windows7.0": [
-      "Entidades >= 1.0.0"
+      "Entidades >= 1.0.0",
+      "Excepciones >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -516,6 +533,9 @@
           "projectReferences": {
             "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Entidades\\Entidades.csproj": {
               "projectPath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Entidades\\Entidades.csproj"
+            },
+            "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Excepciones\\Excepciones.csproj": {
+              "projectPath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Excepciones\\Excepciones.csproj"
             }
           }
         }

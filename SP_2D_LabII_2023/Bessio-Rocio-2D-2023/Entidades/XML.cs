@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using Excepciones;
 
 namespace Entidades
 {
@@ -70,10 +71,10 @@ namespace Entidades
                     serializer.Serialize(writer, carritos);
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 esValido = false;
-                throw new Exception(ex.Message);
+                throw new XMLException("Ocurrio un error al intentar serializar en XML.");
             }
             return esValido;
         }
@@ -99,11 +100,19 @@ namespace Entidades
                         carritos = (List<Carrito>)xmlSerializer.Deserialize(reader);//-->Traigo
                     } 
                 }
+                else
+                {
+                    throw new XMLException("Ocurrio un error al intentar deserializar.");
+                }
             }
-            catch (Exception e)
+            catch (XMLException)
             {
-                throw new Exception(e.Message);
-            } 
+                throw;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
             return carritos;//-->Retorno la lista.
         }
         #endregion

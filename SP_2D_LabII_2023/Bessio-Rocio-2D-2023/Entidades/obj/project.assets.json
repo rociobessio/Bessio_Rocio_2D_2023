@@ -146,6 +146,16 @@
             "rid": "win"
           }
         }
+      },
+      "Excepciones/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/Excepciones.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Excepciones.dll": {}
+        }
       }
     }
   },
@@ -462,10 +472,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "Excepciones/1.0.0": {
+      "type": "project",
+      "path": "../Excepciones/Excepciones.csproj",
+      "msbuildProject": "../Excepciones/Excepciones.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
+      "Excepciones >= 1.0.0",
       "System.Data.SqlClient >= 4.8.5"
     ]
   },
@@ -495,7 +511,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Excepciones\\Excepciones.csproj": {
+              "projectPath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Excepciones\\Excepciones.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

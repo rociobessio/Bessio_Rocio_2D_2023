@@ -149,7 +149,7 @@
             groupBoxReponer.Size = new Size(1147, 261);
             groupBoxReponer.TabIndex = 4;
             groupBoxReponer.TabStop = false;
-            groupBoxReponer.Text = "Reponer Carne";
+            groupBoxReponer.Text = "Información Producto";
             // 
             // label11
             // 

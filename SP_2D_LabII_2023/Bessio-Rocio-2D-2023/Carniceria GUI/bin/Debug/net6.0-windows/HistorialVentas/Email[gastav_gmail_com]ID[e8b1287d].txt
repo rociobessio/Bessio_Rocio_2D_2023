@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 28/6/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Pollo
+Corte: Pechuga
+Categoría: No Es Bovino
+Peso: 10kgs.
+Precio: $15750,00
+----------------------------------------
+Total: $15750,00
+

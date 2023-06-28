@@ -118,39 +118,21 @@ namespace Entidades
         {
             bool pudoComprar = false;
             updateBase = false; 
-            ProductoDAO productoDAO = new ProductoDAO();
-            ClienteDAO clienteDAO = new ClienteDAO();
 
-            if (cliente.ConTarjeta)//-->Chequeo que sea con tarjeta
+            if (cliente.ConTarjeta)
             {
-                if (cliente.Tarjeta.DineroDisponible >= 0 &&
-                     cliente.Tarjeta.DineroDisponible >= totalCompra)
-                {
-                    if (Carrito.AgregarAlCarrito(carneSeleccionada,peso,cliente))
-                    {
-                        cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
-                        cliente.Tarjeta.DineroDisponible -= totalCompra;//-->Descuento la plata
-                        carneSeleccionada.Stock -= peso;//-->Descuento el peso
-                        pudoComprar = true;
-                    } 
-                }
+                pudoComprar = VenderConTarjeta(totalCompra, cliente, peso, carneSeleccionada);
             }
-            else//Es con efectivo
+            else
             {
-                if (cliente.DineroEfectivoDisponible >= 0 && cliente.DineroEfectivoDisponible >= totalCompra)
-                {
-                    if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, cliente))
-                    {
-                        cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;//-->Asigno el email 
-                        cliente.DineroEfectivoDisponible -= totalCompra;
-                        carneSeleccionada.Stock -= peso;//-->Descuento el peso 
-                        pudoComprar = true;
-                    } 
-                }
-            }   
+                pudoComprar = VenderConEfectivo(totalCompra, cliente, peso, carneSeleccionada);
+            } 
 
-            if(pudoComprar == true)//-->Si pudo comprar
+            if (pudoComprar == true)//-->Si pudo comprar
             {
+                ProductoDAO productoDAO = new ProductoDAO();
+                ClienteDAO clienteDAO = new ClienteDAO();
+
                 //-->Modifico las tablas correspondientes
                 if (productoDAO.UpdateProducto(carneSeleccionada) && clienteDAO.ModificarCliente(cliente))
                     updateBase = true;
@@ -163,7 +145,57 @@ namespace Entidades
             }
 
             return pudoComprar;
-        } 
+        }
+
+        /// <summary>
+        /// Metodo privado estatico que realiza la venta si el
+        /// cliente cuenta con tarjeta.
+        /// </summary>
+        /// <param name="totalCompra"></param>
+        /// <param name="cliente"></param>
+        /// <param name="peso"></param>
+        /// <param name="carneSeleccionada"></param>
+        /// <returns></returns>
+        private static bool VenderConTarjeta(double totalCompra, Cliente cliente, double peso, Producto carneSeleccionada)
+        {
+            if (cliente.Tarjeta.DineroDisponible >= 0 && cliente.Tarjeta.DineroDisponible >= totalCompra)
+            {
+                if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, cliente))
+                {
+                    cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;
+                    cliente.Tarjeta.DineroDisponible -= totalCompra;
+                    carneSeleccionada.Stock -= peso;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Metod privado estatico que realiza la venta si el
+        /// cliente cuenta con tarjeta.
+        /// </summary>
+        /// <param name="totalCompra"></param>
+        /// <param name="cliente"></param>
+        /// <param name="peso"></param>
+        /// <param name="carneSeleccionada"></param>
+        /// <returns></returns>
+        private static bool VenderConEfectivo(double totalCompra, Cliente cliente, double peso, Producto carneSeleccionada)
+        {
+            if (cliente.DineroEfectivoDisponible >= 0 && cliente.DineroEfectivoDisponible >= totalCompra)
+            {
+                if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, cliente))
+                {
+                    cliente.CarritoCompra.UsuarioCompra = cliente.Usuario.Email;
+                    cliente.DineroEfectivoDisponible -= totalCompra;
+                    carneSeleccionada.Stock -= peso;
+                    return true;
+                }
+            }
+
+            return false;
+        }
         #endregion
 
         #region SOBRECARGA DE OPERADORES

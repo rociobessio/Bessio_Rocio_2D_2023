@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Carniceria GUI/1.0.0": {
         "dependencies": {
-          "Entidades": "1.0.0"
+          "Entidades": "1.0.0",
+          "Excepciones": "1.0.0"
         },
         "runtime": {
           "Carniceria GUI.dll": {}
@@ -91,10 +92,16 @@
       "System.Security.Principal.Windows/4.7.0": {},
       "Entidades/1.0.0": {
         "dependencies": {
+          "Excepciones": "1.0.0",
           "System.Data.SqlClient": "4.8.5"
         },
         "runtime": {
           "Entidades.dll": {}
+        }
+      },
+      "Excepciones/1.0.0": {
+        "runtime": {
+          "Excepciones.dll": {}
         }
       }
     }
@@ -169,6 +176,11 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "Entidades/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Excepciones/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

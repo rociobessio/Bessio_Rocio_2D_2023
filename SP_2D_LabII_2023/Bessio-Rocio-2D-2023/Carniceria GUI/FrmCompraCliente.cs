@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using Excepciones;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
@@ -318,26 +319,35 @@ namespace Carniceria_GUI
         {
             this.richTextBoxCarrito.Clear();//-->Limpio el carrito
 
-            if (Validar())//-->Valido que haya tocado un producto
+            try
             {
-                double.TryParse(this.txtPesoRequerido.Text, out peso);
-
-                if (Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
+                if (Validar())//-->Valido que haya tocado un producto
                 {
+                    double.TryParse(this.txtPesoRequerido.Text, out peso);
+
+                    if (!Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
+                    {
+                        throw new AgregarAlCarritoException("Ocurrio un error al agregar al carrito.");
+                    }
+
                     foreach (Producto carne in clienteFormulario.CarritoCompra.Productos)
                     {
                         this.richTextBoxCarrito.Text += $"Corte: {carne.Corte} - " +
-                                         $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Stock}kgs.\n";//-->Imprimo del prducto el corte
+                                            $"${carne.PrecioCompraCliente:f} - Kilos: {carne.Stock}kgs.\n";//-->Imprimo del prducto el corte
                     }
 
                     this.txtTotalCompra.Text = $"${clienteFormulario.CarritoCompra.PrecioTotal.ToString()}";//-->Imprimo el total de la compra hasta el momento
-                    MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Producto agregado", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                    this.txtPesoRequerido.Clear();
                 }
-                else
-                {
-                    MessageBox.Show("No se pudo agregar al carrito, puede ser que ya exista o el peso no sea valido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                this.txtPesoRequerido.Clear();
+            }
+            catch (AgregarAlCarritoException ex)
+            {
+                MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);//-->La muestro
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
             }
         }
 
@@ -350,19 +360,24 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnComprar_Click(object sender, EventArgs e)
         {
-            if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
+            try
             {
-                DialogResult respuesta = MessageBox.Show("¿Desea realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (DialogResult.Yes == respuesta)
+                if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
                 {
-                    bool pudoModificarBase;
+                    DialogResult respuesta = MessageBox.Show("¿Desea realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                    if (Cliente.Comprar(clienteFormulario, productosDisponibles, out pudoModificarBase))
+                    if (DialogResult.Yes == respuesta)
                     {
-                        if (!pudoModificarBase)
+                        bool pudoModificarBase;
+
+                        if (!Cliente.Comprar(clienteFormulario, productosDisponibles, out pudoModificarBase)) 
+                            throw new NoPudoComprarException("No puede comprar"); 
+
+
+                        if (!pudoModificarBase)//-->No pudo lanzo excepcion.
                         {
-                            MessageBox.Show("Ocurrio un problema con la base de datos.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            throw new SQLUpdateException("Ocurrio un problema al intentar actualizar la tabla."); 
                         }
                         else
                         {
@@ -377,23 +392,35 @@ namespace Carniceria_GUI
                             ArchivoDeTexto.GuardarVenta(clienteFormulario);//-->Guardo esa venta. 
 
                             Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito. 
-                        } 
-                    }
+                        }
+                    } 
                     else
                     {
-                        MessageBox.Show("Ocurrio un problema, no tiene saldo disponible.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.button1_Click(sender, e);//-->Cancelo la compra, llamo al boton 'Cancelar' reutilizando codigo        
                     }
                 }
                 else
                 {
-                    this.button1_Click(sender, e);//-->Cancelo la compra, llamo al boton 'Cancelar' reutilizando codigo        
+                    MessageBox.Show("No hay productos en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                this.CargarProductosDataGrid();//-->Actualizo el datagrid.
             }
-            else
+            catch (NoHayStockException)
             {
-                MessageBox.Show("No hay productos en el carrito.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error");
             }
-            this.CargarProductosDataGrid();//-->Actualizo el datagrid. 
+            catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (NoPudoComprarException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error");
+            } 
         }
 
         /// <summary>

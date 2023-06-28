@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excepciones;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Carniceria_GUI
@@ -116,14 +117,25 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerHTML_Click(object sender, EventArgs e)
         {
-            this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
-            if (historial.Count <= 0)
+            try
             {
-                MessageBox.Show("No hay Carritos para visualizar en fomato JSON.", "Información",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
+
+                if (historial.Count <= 0)
+                {
+                    throw new JSONException("No hay Carritos para visualizar en fomato JSON."); 
+                }
+                else
+                    this.CargarProductosDataGridCarritos();//-->Cargo los productos en el datagrid 
             }
-            else
-                this.CargarProductosDataGridCarritos();//-->Cargo los productos en el datagrid 
+            catch (JSONException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         /// <summary>
@@ -134,14 +146,24 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerXML_Click(object sender, EventArgs e)
         {
-            this.historial = XML.DeserializarXML();//-->Deserializo en XML
-            if (this.historial.Count <= 0)
+            try
             {
-                MessageBox.Show("No hay Carritos para visualizar en fomato XML.", "Información",
-                                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.historial = XML.DeserializarXML();//-->Deserializo en XML
+                if (this.historial.Count <= 0)
+                {
+                    throw new XMLException("No hay Carritos para visualizar en fomato XML.");
+                }
+                else
+                    this.CargarProductosDataGridCarritos();//-->Cargo los productos
             }
-            else
-                this.CargarProductosDataGridCarritos();//-->Cargo los productos
+            catch (XMLException ex)
+            {
+                MessageBox.Show($"{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+
+            }
         }
 
         private void dataGridViewCarritos_CellClick(object sender, DataGridViewCellEventArgs e)
