@@ -75,17 +75,19 @@
 
 ## Diagrama de Clases
 ---------------------
-<img width="829" alt="DiagramaDeClases" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/d34c929b-02ef-4fe6-be6f-dbabeabf7025">
+<img width="770" alt="DiagramaDeClases" src="https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/2b1033d6-c122-4f70-9bb2-05871901e732">
+
 
 ## ![medical-14_icon-icons com_73923 (1)](https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/4c538339-b72a-44df-a6d3-a014250561d0) Unit Testing:
 
-La aplicación cuenta con 5 clases de Unit Testings sobre métodos de SQL y Deserialización. 
+La aplicación cuenta con 6 clases de Unit Testings sobre métodos de SQL y Deserialización. 
 
 ## Correcciones para el recuperatorio:
-Manejo y creación de excepciones. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/0a821968-ec37-4016-b6fc-fefd26bef1f8)
+Lanzar y atrapar las excepciones propias. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/0a821968-ec37-4016-b6fc-fefd26bef1f8)
 
 
 Hay uno de los metodos de la interfaz que implementa codigo y no debe de pasar. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/f71c962d-5b2d-4d23-8d93-fac8380f7ac7)
 
 
-try-catch en formularios.
+try-catch en formularios. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/0381f08e-cb0f-401f-9faa-dd5ff9c65fde)
+
