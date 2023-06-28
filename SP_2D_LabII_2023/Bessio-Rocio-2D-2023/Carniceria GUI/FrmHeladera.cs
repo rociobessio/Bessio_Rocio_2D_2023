@@ -357,7 +357,7 @@ namespace Carniceria_GUI
                     this.lblReposicionTerminada.Text = "Se termino de reponer.";
                 }));
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 MessageBox.Show("Ocurrio un problema.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -388,8 +388,11 @@ namespace Carniceria_GUI
                 }
             }
 
-            if (hayQueReponer)//-->Si tiene para reponer
+            try
             {
+                if (!hayQueReponer)//-->Si NO tiene para reponer
+                    throw new NoHayReposicionException("No hay stock que reponer.");//-->Lanzo excepcion.
+
                 //--> Instancio un nuevo hilo, pra ejecutarlo en paralelo al hilo principal y poder reponer
                 Thread reposicion = new Thread(() =>
                      this.repositor.Reponiendo(listaProductos));
@@ -402,10 +405,14 @@ namespace Carniceria_GUI
                     this.lblReposicionTerminada.Text = "Reponiendo...";
                 }));
             }
-            else
+            catch(NoHayReposicionException ex)
             {
-                MessageBox.Show("No hay productos para reponer.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar reponer los productos, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones
@@ -420,23 +427,30 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            if (codigoProducto > 0)
+            try
             {
-                if (productoDAO.DeleteDato(codigoProducto))
+                if (codigoProducto > 0)
                 {
+                    if (!productoDAO.DeleteDato(codigoProducto))//-->Si no pudo lanzo excepcion propia
+                        throw new SQLDeleteException("Error al intentar eliminar el producto.");
+
                     MessageBox.Show("El producto se ha eliminado de la Heladera.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Error al intentar eliminar el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Debe de seleccionar un producto valido.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+                this.btnAgregar.Enabled = true;//-->El agregar pasa a ser utilizable
             }
-            else
+            catch(SQLDeleteException ex)
             {
-                MessageBox.Show("Debe de seleccionar un producto valido.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.CargarProductosDataGrid();//-->Actualizo el dataGrid
-            this.btnAgregar.Enabled = true;//-->El agregar pasa a ser utilizable
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar eliminar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
         }
 
         /// <summary>
@@ -447,32 +461,39 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos() && indexTablaProductos >= 0)
+            try
             {
-                //Selecciono una carne y le cargo los nuevos valores
-                carneSeleccionada.Categoria = this.cbTexturaCarne.SelectedItem.ToString();
-                carneSeleccionada.Tipo = this.cbTipoDeCarneReponer.SelectedItem.ToString();
-                carneSeleccionada.Vencimiento = this.dtpFechaVencimiento.Value;
-                carneSeleccionada.PrecioVentaProveedor = int.Parse(this.txtPrecioCompraFrigorifico.Text);
-                carneSeleccionada.Proveedor = this.txtProveedor.Text;
-                carneSeleccionada.PrecioCompraCliente = int.Parse(this.txtPrecioVentaClientes.Text);
-                carneSeleccionada.Stock = peso;//Setteo nuevo precio
-                carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
-                carneSeleccionada.Corte = this.cbCorteCarne.SelectedItem.ToString();
-
-                if (productoDAO.UpdateDato(carneSeleccionada))
+                if (ValidarDatos() && indexTablaProductos >= 0)
                 {
+                    //Selecciono una carne y le cargo los nuevos valores
+                    carneSeleccionada.Categoria = this.cbTexturaCarne.SelectedItem.ToString();
+                    carneSeleccionada.Tipo = this.cbTipoDeCarneReponer.SelectedItem.ToString();
+                    carneSeleccionada.Vencimiento = this.dtpFechaVencimiento.Value;
+                    carneSeleccionada.PrecioVentaProveedor = int.Parse(this.txtPrecioCompraFrigorifico.Text);
+                    carneSeleccionada.Proveedor = this.txtProveedor.Text;
+                    carneSeleccionada.PrecioCompraCliente = int.Parse(this.txtPrecioVentaClientes.Text);
+                    carneSeleccionada.Stock = peso;//Setteo nuevo precio
+                    carneSeleccionada.PrecioCompraCliente = precioCompraCliente;//-->Setteo nuevo precio
+                    carneSeleccionada.Corte = this.cbCorteCarne.SelectedItem.ToString();
+
+                    if (!productoDAO.UpdateDato(carneSeleccionada))//-->Si no pudo modificar lanzo excepcion.
+                        throw new SQLUpdateException("Ocurrio un error al intentar modificar el producto, reintente.");  
+
                     MessageBox.Show("Producto modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrio un error, no se pudo modificar el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Alguno de los datos ingresado es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
+            catch (SQLUpdateException ex)
             {
-                MessageBox.Show("Alguno de los datos es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar modificar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            } 
             this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             this.btnAgregar.Enabled = true;
         }
@@ -484,26 +505,33 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (ValidarDatos())
+            try
             {
-                productoNuevo = new Producto(this.cbCorteCarne.SelectedItem.ToString(), double.Parse(this.txtPesoCarne.Text),
-                    this.cbTexturaCarne.Text, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
-                    this.txtProveedor.Text, this.cbTipoDeCarneReponer.Text, double.Parse(this.txtPrecioVentaClientes.Text));
-
-                if (productoDAO.AgregarProducto(productoNuevo))
+                if (ValidarDatos())
                 {
+                    productoNuevo = new Producto(this.cbCorteCarne.SelectedItem.ToString(), double.Parse(this.txtPesoCarne.Text),
+                        this.cbTexturaCarne.Text, this.dtpFechaVencimiento.Value, double.Parse(this.txtPrecioCompraFrigorifico.Text),
+                        this.txtProveedor.Text, this.cbTipoDeCarneReponer.Text, double.Parse(this.txtPrecioVentaClientes.Text));
+
+                    if (!productoDAO.AgregarProducto(productoNuevo))//-->Si no pudo agregar lanzo excepcion.
+                        throw new SQLAgregarException("Ocurrio un error, no se pudo agregar el producto."); 
+
                     MessageBox.Show("Producto agregado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    MessageBox.Show("Ocurrio un error, no se pudo agregar el producto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Alguno de los datos ingresados es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             }
-            else
+            catch (SQLAgregarException ex)
             {
-                MessageBox.Show("Alguno de los datos es incorrecto.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            this.CargarProductosDataGrid();//-->Actualizo el dataGrid
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar agregar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>

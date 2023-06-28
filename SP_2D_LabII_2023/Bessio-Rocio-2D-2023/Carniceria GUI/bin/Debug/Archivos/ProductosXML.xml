@@ -303,4 +303,40 @@
       </Producto>
     </Productos>
   </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>3400</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>3</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Lucas</Proveedor>
+        <PrecioCompraCliente>3400</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>2000</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>6</Codigo>
+        <Tipo>Carne_Vacuna</Tipo>
+        <Corte>Nalga</Corte>
+        <Stock>1</Stock>
+        <Categoria>Novillito</Categoria>
+        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Siga la Vaca</Proveedor>
+        <PrecioCompraCliente>2000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
 </ArrayOfCarrito>

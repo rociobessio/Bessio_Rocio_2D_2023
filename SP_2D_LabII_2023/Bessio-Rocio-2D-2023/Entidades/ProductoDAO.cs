@@ -155,6 +155,7 @@ namespace Entidades
             }
             catch (Exception e)
             {
+                pudo = false;
                 Console.WriteLine(e.Message);
             }
             finally
@@ -213,6 +214,7 @@ namespace Entidades
             }
             catch(Exception e)
             {
+                puedeModificar = false;
                 Console.WriteLine(e.Message);
                 base._conexion.Close();
             }

@@ -148,11 +148,6 @@ namespace Entidades
                     } 
                 }
             }
-            catch(IngresoUsuarioException)
-            {
-                esCliente = false;
-                throw;
-            }
             catch (Exception)
             {
                 esCliente = false;
@@ -192,7 +187,7 @@ namespace Entidades
                         int filasAfectadas = comando.ExecuteNonQuery();
                         return filasAfectadas > 0;//-->Retorna si pudo
                     }
-                    catch (SqlException ex)
+                    catch (Exception ex)
                     { 
                         throw new Exception("Error al actualizar el email del usuario.", ex);
                     }
