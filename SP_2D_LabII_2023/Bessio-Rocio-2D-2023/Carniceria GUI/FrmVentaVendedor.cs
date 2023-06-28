@@ -250,6 +250,7 @@ namespace Carniceria_GUI
                     this.txtPrecioPorUnidad.Text = $"${producto.PrecioCompraCliente.ToString():f}";
                     this.txtPesoTotalStock.Text = $"{producto.Stock.ToString()} kgs";
                     carneSeleccionada = producto;//-->Guardo esa carne para realizar las modificaciones o calculos
+                    break;
                 }
             }
         }
@@ -335,20 +336,19 @@ namespace Carniceria_GUI
                     totalAPagar = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
 
                     if (!Vendedor.Vender(totalAPagar, clienteSeleccionado, peso, carneSeleccionada, out updateBase))//-->Intenta comprar. 
-                        throw new NoPudoVenderException("Ocurrio un error al intentar vender"); 
+                        throw new NoPudoVenderException("Ocurrio un error al intentar vender el producto, vuelva a intentarlo."); 
 
                     soundPlayer.Play();
                     this.ActualizarVentaGenerada();
 
-                    if (!ArchivoDeTexto.GuardarVenta(clienteSeleccionado))
-                        throw new ArchivoDeTextoException("Error al guardar archivo de Texto");//-->Guardo esa venta. 
+                    if (!ArchivoDeTexto.GuardarVenta(clienteSeleccionado))//-->Guardo esa venta si puedo.
+                        throw new ArchivoDeTextoException("Error al guardar archivo de Texto"); 
 
                     if (!updateBase) 
                         throw new SQLUpdateException("Ocurrio un error al modificar las tablas."); 
 
                     this.CargarProductosDataGrid();//-->Recargo el datagrid  
-                }
-
+                } 
                 this.Limpiar();
             }
             catch (ArchivoDeTextoException ex)//-->Atrapo
@@ -363,9 +363,9 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Algo inesperado sucedio, vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -398,41 +398,56 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnModDineroCliente_Click(object sender, EventArgs e)
         {
-            if (this.cbClientes.SelectedIndex <= -1)//-->Primero verifico que haya seleccionado.
+            try
             {
-                MessageBox.Show("No se ha seleccionado a un cliente.",
-                 "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            else//-->Selecciono
-            {
-                double dinero = 0;
-                double.TryParse(this.txtSumarDineroCliente.Text,out dinero);
-
-                if (dinero > 1)
+                if (this.cbClientes.SelectedIndex <= -1)//-->Primero verifico que haya seleccionado.
                 {
-                    if (clienteSeleccionado.ConTarjeta)
-                    {
-                        clienteSeleccionado.Tarjeta.DineroDisponible += dinero;
+                    MessageBox.Show("No se ha seleccionado a un cliente.",
+                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else//-->Selecciono
+                {
+                    double dinero = 0;
+                    double.TryParse(this.txtSumarDineroCliente.Text, out dinero);
 
-                    }
-                    else
-                        clienteSeleccionado.DineroEfectivoDisponible += dinero;
-
-                    if (clienteDAO.UpdateDato(clienteSeleccionado))//-->Lo modifico.
+                    if (dinero > 1)
                     {
                         if (clienteSeleccionado.ConTarjeta)
-                            this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
+                        {
+                            clienteSeleccionado.Tarjeta.DineroDisponible += dinero;
+
+                        }
                         else
-                            this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
+                            clienteSeleccionado.DineroEfectivoDisponible += dinero;
+
+                        if (!clienteDAO.UpdateDato(clienteSeleccionado))//-->Lo modifico.
+                        {
+                            throw new SQLUpdateException("Error al intentar modificar la tabla, reintente.");
+                        }
+                        else
+                        {
+                            if (clienteSeleccionado.ConTarjeta)
+                                this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.Tarjeta.DineroDisponible.ToString()}";
+                            else
+                                this.txtSaldoDisponibleCliente.Text = $"${clienteSeleccionado.DineroEfectivoDisponible.ToString()}";
+                        }
+                        this.txtSumarDineroCliente.Clear();
                     }
-                    this.txtSumarDineroCliente.Clear();
+                    else
+                    {
+                        MessageBox.Show("Dinero a agregar no valido.",
+                                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                else
-                {
-                    MessageBox.Show("Dinero a agregar no valido.",
-                                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            } 
+            }
+            catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio, vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
+            }
         }
 
         /// <summary>

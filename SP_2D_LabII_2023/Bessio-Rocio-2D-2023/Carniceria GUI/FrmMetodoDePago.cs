@@ -313,8 +313,8 @@ namespace Carniceria_GUI
                     {
                         tarjetaCliente = this.CargarTarjeta();//-->Cargo la tarjeta
 
-                        if (!Tarjeta.ValidarTarjeta(tarjetaCliente))
-                            throw new TarjetaNoValidaException("Error al generar tarjeta, datos no validos.");
+                        if (!Tarjeta.ValidarTarjeta(tarjetaCliente))//-->Si no pudo validarla, lanzo una excepcion
+                            throw new TarjetaNoValidaException("Ocurrio un error al generar la tarjeta, datos no validos. Reintente.");
 
                         clienteForm.Tarjeta = tarjetaCliente;//-->Le asigno la tarjeta
                         clienteForm.ConTarjeta = true;

@@ -316,8 +316,8 @@ namespace Entidades
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.Message);
                 pudo = false;
+                Console.WriteLine(e.Message);
             }
             finally
             {

@@ -53,7 +53,7 @@ namespace Entidades
             }
             catch (Exception)
             {  
-                esValido =false;//-->Entra igual
+                esValido = false;//-->Entra igual
             }
             return esValido;
         }

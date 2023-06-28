@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Excepciones;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -147,10 +148,15 @@ namespace Entidades
                     } 
                 }
             }
-            catch(Exception e)
+            catch(IngresoUsuarioException)
             {
                 esCliente = false;
-                Console.WriteLine(e.Message);
+                throw;
+            }
+            catch (Exception)
+            {
+                esCliente = false;
+                throw;
             }
             finally
             {

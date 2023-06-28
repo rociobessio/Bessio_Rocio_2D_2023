@@ -3,6 +3,7 @@ using Microsoft.VisualBasic.Logging;
 using System.Media;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using Excepciones;
 
 namespace Carniceria_GUI
 {
@@ -25,8 +26,7 @@ namespace Carniceria_GUI
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             this.usuariosDAO = new UsuariosDAO();
-            this.listaUsuarios = new List<Usuario>();
-
+            this.listaUsuarios = new List<Usuario>(); 
 
             #region INSTANCIO USUARIOS
             this.listaUsuarios = new List<Usuario>();
@@ -98,33 +98,44 @@ namespace Carniceria_GUI
             bool esCliente;
             ClienteDAO clienteDAO = new ClienteDAO();
 
-            if (ValidarCampos())//-->Verifico que haya ingresado email y contraseña
+            try
             {
-                bool pasa = usuariosDAO.VerificarUser(this.txtEmail.Text, this.txtContrasenia.Text,out esCliente);
-
-                if (pasa)
+                if (ValidarCampos())//-->Verifico que haya ingresado email y contraseña
                 {
-                     if (esCliente)//-->Utilizo la propiedad abstracta para saber si es Cliente
-                     {
-                        this.BackColor = Color.DarkKhaki;
-                        soundPlayer.Play();
-                        Cliente cliente = clienteDAO.ObtenerPorEmail(this.txtEmail.Text);
-                        frmMetodoDePago = new FrmMetodoDePago(cliente);
-                        frmMetodoDePago.Show();
-                     }
-                    else//-->Si no lo es, quiere decir que es Vendedor
+                    bool pasa = usuariosDAO.VerificarUser(this.txtEmail.Text, this.txtContrasenia.Text, out esCliente);
+
+                    if (!pasa)//-->Lanzo una excepcion propia sino es valido el usuario
                     {
-                         this.BackColor = Color.MediumPurple;
-                         soundPlayer.Play();
-                         frmMenuPrincipalVendedor = new FrmMenuPrincipalVendedor(
-                                                    new Usuario(this.txtEmail.Text,this.txtContrasenia.Text));
-                         frmMenuPrincipalVendedor.Show();
+                        throw new IngresoUsuarioException("Ocurrio un error al verificar usuario, reintente.");
+                    }
+                    else
+                    {
+                        if (esCliente)//-->Utilizo la propiedad abstracta para saber si es Cliente
+                        {
+                            this.BackColor = Color.DarkKhaki;
+                            soundPlayer.Play();
+                            Cliente cliente = clienteDAO.ObtenerPorEmail(this.txtEmail.Text);
+                            frmMetodoDePago = new FrmMetodoDePago(cliente);
+                            frmMetodoDePago.Show();
+                        }
+                        else//-->Si no lo es, quiere decir que es Vendedor
+                        {
+                            this.BackColor = Color.MediumPurple;
+                            soundPlayer.Play();
+                            frmMenuPrincipalVendedor = new FrmMenuPrincipalVendedor(
+                                                       new Usuario(this.txtEmail.Text, this.txtContrasenia.Text));
+                            frmMenuPrincipalVendedor.Show();
+                        }
                     }
                 }
-                else
-                {
-                     MessageBox.Show("Usuario o contraseña incorrectos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                } 
+            }
+            catch (IngresoUsuarioException ex)
+            {
+                MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo salio mal.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

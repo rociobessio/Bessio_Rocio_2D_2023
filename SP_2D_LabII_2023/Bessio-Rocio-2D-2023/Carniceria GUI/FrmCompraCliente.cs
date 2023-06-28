@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using Excepciones;
+using Excepciones;//-->Mi biblioteca de Excepciones
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Status;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
@@ -205,7 +205,7 @@ namespace Carniceria_GUI
                 if (carne == codigoProducto)
                 {
                     carneSeleccionada = carne;//-->Guardo esa carne
-                    break;
+                    break;//-->Dejo de iterar
                 }
             }
         }
@@ -325,9 +325,9 @@ namespace Carniceria_GUI
                 {
                     double.TryParse(this.txtPesoRequerido.Text, out peso);
 
-                    if (!Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))
+                    if (!Carrito.AgregarAlCarrito(carneSeleccionada, peso, clienteFormulario))//-->Si no pudo lanzo excepcion propia
                     {
-                        throw new AgregarAlCarritoException("Ocurrio un error al agregar al carrito.");
+                        throw new AgregarAlCarritoException("Ocurrio un error al agregar el producto al carrito.");
                     }
 
                     foreach (Producto carne in clienteFormulario.CarritoCompra.Productos)
@@ -345,9 +345,9 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);//-->La muestro
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
+                MessageBox.Show("Ocurrio un problema, vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
             }
         }
 
@@ -361,8 +361,7 @@ namespace Carniceria_GUI
         private void btnComprar_Click(object sender, EventArgs e)
         {
             try
-            {
-
+            { 
                 if (clienteFormulario.CarritoCompra.Productos.Count > 0)//-->Hay productos
                 {
                     DialogResult respuesta = MessageBox.Show("¿Desea realizar la compra?" + $"\n\n{clienteFormulario.CarritoCompra.ToString()}", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -371,8 +370,8 @@ namespace Carniceria_GUI
                     {
                         bool pudoModificarBase;
 
-                        if (!Cliente.Comprar(clienteFormulario, productosDisponibles, out pudoModificarBase)) 
-                            throw new NoPudoComprarException("No puede comprar"); 
+                        if (!Cliente.Comprar(clienteFormulario, productosDisponibles, out pudoModificarBase))//-->Si no pudo comprar lanzo excepcion 
+                            throw new NoPudoComprarException("Ocurrio un problema al intentar generar su compra."); 
 
 
                         if (!pudoModificarBase)//-->No pudo lanzo excepcion.
@@ -389,7 +388,9 @@ namespace Carniceria_GUI
                             this.CargarDatosCliente();
                             this.richTextBoxCarrito.Clear();//-->Limpio el richtextbox con info del carrito
                             this.txtTotalCompra.Clear();
-                            ArchivoDeTexto.GuardarVenta(clienteFormulario);//-->Guardo esa venta. 
+
+                            if (!ArchivoDeTexto.GuardarVenta(clienteFormulario))//-->Guardo esa venta. 
+                                throw new ArchivoDeTextoException("Error al guardar la compra en txt.");
 
                             Carrito.LimpiarCarrito(clienteFormulario);//-->Ya compro, limpio el carrito. 
                         }
@@ -407,9 +408,13 @@ namespace Carniceria_GUI
             }
             catch (NoHayStockException)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Error no hay stock de producto.","Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (ArchivoDeTextoException ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -419,7 +424,7 @@ namespace Carniceria_GUI
             }
             catch (Exception)
             {
-                MessageBox.Show("Error");
+                MessageBox.Show("Ocurrio un problema inesperado al intentar comprar, vuelva a intentarlo.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
         }
 

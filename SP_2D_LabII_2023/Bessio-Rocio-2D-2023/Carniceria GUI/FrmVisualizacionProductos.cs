@@ -28,7 +28,7 @@ namespace Carniceria_GUI
         public FrmVisualizacionProductos()
         {
             InitializeComponent();
-            this.Text = "Visualización Productos (Deserialización)";
+            this.Text = "Visualización Productos (Deserialización en XML y JSON)";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
             this.MaximizeBox = false; 
@@ -134,7 +134,7 @@ namespace Carniceria_GUI
             }
             catch (Exception)
             {
-
+                MessageBox.Show($"Ocurrio un problema al intentar mostrar el historial.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -162,7 +162,7 @@ namespace Carniceria_GUI
             }
             catch (Exception)
             {
-
+                MessageBox.Show($"Ocurrio un problema al intentar mostrar el historial.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

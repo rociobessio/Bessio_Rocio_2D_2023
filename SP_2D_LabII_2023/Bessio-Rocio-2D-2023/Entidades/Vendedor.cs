@@ -142,8 +142,7 @@ namespace Entidades
                 {
                     pudoComprar = true;
                 }
-            }
-
+            } 
             return pudoComprar;
         }
 
@@ -167,8 +166,7 @@ namespace Entidades
                     carneSeleccionada.Stock -= peso;
                     return true;
                 }
-            }
-
+            } 
             return false;
         }
 
@@ -192,8 +190,7 @@ namespace Entidades
                     carneSeleccionada.Stock -= peso;
                     return true;
                 }
-            }
-
+            } 
             return false;
         }
         #endregion
