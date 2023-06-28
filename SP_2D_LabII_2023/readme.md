@@ -82,6 +82,10 @@
 La aplicación cuenta con 5 clases de Unit Testings sobre métodos de SQL y Deserialización. 
 
 ## Correcciones para el recuperatorio:
-Manejo y creación de excepciones.
-Hay uno de los metodos de la interfaz que implementa codigo y no debe de pasar.
+Manejo y creación de excepciones. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/0a821968-ec37-4016-b6fc-fefd26bef1f8)
+
+
+Hay uno de los metodos de la interfaz que implementa codigo y no debe de pasar. ![tickcircleregular_106336](https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/f71c962d-5b2d-4d23-8d93-fac8380f7ac7)
+
+
 try-catch en formularios.
