@@ -81,3 +81,7 @@
 
 La aplicación cuenta con 5 clases de Unit Testings sobre métodos de SQL y Deserialización. 
 
+## Correcciones para el recuperatorio:
+Manejo y creación de excepciones.
+Hay uno de los metodos de la interfaz que implementa codigo y no debe de pasar.
+try-catch en formularios.
