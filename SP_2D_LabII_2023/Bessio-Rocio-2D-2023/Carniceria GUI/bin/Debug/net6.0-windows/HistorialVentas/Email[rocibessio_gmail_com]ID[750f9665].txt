@@ -1,0 +1,17 @@
+FECHA DE COMPRA: 29/6/2023
+Con tarjeta: NO.
+-------------PRODUCTO-------------
+Tipo: Pollo
+Corte: Pollo Entero
+Categoría: No Es Bovino
+Peso: 3kgs.
+Precio: $6000,00
+-------------PRODUCTO-------------
+Tipo: Carne Vacuna
+Corte: Vacio
+Categoría: Novillito
+Peso: 1kgs.
+Precio: $1700,00
+----------------------------------------
+Total: $7700,00
+

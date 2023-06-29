@@ -37,6 +37,8 @@
             label9 = new Label();
             rtbHistorial = new RichTextBox();
             lstbArchivosNombres = new ListBox();
+            label2 = new Label();
+            lblPrintHelp = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             SuspendLayout();
             // 
@@ -129,11 +131,37 @@
             lstbArchivosNombres.ForeColor = Color.White;
             lstbArchivosNombres.FormattingEnabled = true;
             lstbArchivosNombres.ItemHeight = 30;
-            lstbArchivosNombres.Location = new Point(12, 108);
+            lstbArchivosNombres.Location = new Point(12, 138);
             lstbArchivosNombres.Name = "lstbArchivosNombres";
-            lstbArchivosNombres.Size = new Size(339, 304);
+            lstbArchivosNombres.Size = new Size(339, 514);
             lstbArchivosNombres.TabIndex = 47;
             lstbArchivosNombres.SelectedIndexChanged += lstbArchivosNombres_SelectedIndexChanged;
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(12, 103);
+            label2.Name = "label2";
+            label2.Size = new Size(229, 32);
+            label2.TabIndex = 48;
+            label2.Text = "Tickets de compra:";
+            // 
+            // lblPrintHelp
+            // 
+            lblPrintHelp.Anchor = AnchorStyles.None;
+            lblPrintHelp.AutoSize = true;
+            lblPrintHelp.Cursor = Cursors.Hand;
+            lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
+            lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
+            lblPrintHelp.Location = new Point(12, 655);
+            lblPrintHelp.MinimumSize = new Size(37, 60);
+            lblPrintHelp.Name = "lblPrintHelp";
+            lblPrintHelp.Size = new Size(37, 60);
+            lblPrintHelp.TabIndex = 49;
+            lblPrintHelp.Text = " ";
             // 
             // FrmHistorialVentas
             // 
@@ -141,6 +169,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(895, 711);
+            Controls.Add(lblPrintHelp);
+            Controls.Add(label2);
             Controls.Add(lstbArchivosNombres);
             Controls.Add(rtbHistorial);
             Controls.Add(label12);
@@ -168,5 +198,7 @@
         private Label label9;
         private RichTextBox rtbHistorial;
         private ListBox lstbArchivosNombres;
+        private Label label2;
+        private Label lblPrintHelp;
     }
 }

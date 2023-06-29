@@ -14,7 +14,7 @@ namespace Carniceria_GUI
     public partial class FrmHistorialVentas : Form
     {
         #region ATRIBUTOS
-        private Usuario usuarioForm; 
+        private Usuario usuarioForm;
         private string[] archivos;
         #endregion
 
@@ -23,7 +23,7 @@ namespace Carniceria_GUI
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Text = "Historial de Ventas"; 
+            this.Text = "Historial de Ventas";
 
             //-->Obtengo TODOS los archivos .txt del directorio.
             this.archivos = Directory.GetFiles(ArchivoDeTexto.path, "*.txt");
@@ -39,7 +39,14 @@ namespace Carniceria_GUI
         {
             this.usuarioForm = user;
             this.lblVendedorEmail.Text = user;
-            this.lblHoraIngreso.Text = user.HoraIngreso.ToShortTimeString(); 
+            this.lblHoraIngreso.Text = user.HoraIngreso.ToShortTimeString();
+
+            #region CREO LA AYUDA
+            StringBuilder textoAyuda = new StringBuilder();
+            textoAyuda.AppendLine("Se podrán visualizar los tickets de compra y venta generados, ");
+            textoAyuda.AppendLine("seleccionando uno del listbox se verá el detalle de factura en el richbox. ");
+            FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
+            #endregion
         }
         #endregion
 
@@ -55,7 +62,7 @@ namespace Carniceria_GUI
             this.MinimizeBox = false;
             this.MaximizeBox = false;
             this.rtbHistorial.ReadOnly = true;//-->No podrá escribir en el richtextbox
-            
+
             //-->Cargo los nombres de los archivos que tengo en mi array de strings
             foreach (string archivo in this.archivos)
             {
@@ -63,7 +70,7 @@ namespace Carniceria_GUI
 
                 //-->Lo agrego al listbox
                 lstbArchivosNombres.Items.Add(nombreArchivo);
-            }  
+            }
         }
 
         /// <summary>
