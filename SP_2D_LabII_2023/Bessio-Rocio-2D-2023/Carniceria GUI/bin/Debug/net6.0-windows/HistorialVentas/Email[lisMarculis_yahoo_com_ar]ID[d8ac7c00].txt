@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 29/6/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Carne Vacuna
+Corte: Lomo
+Categoría: Ternero
+Peso: 1kgs.
+Precio: $1200,00
+----------------------------------------
+Total: $1200,00
+

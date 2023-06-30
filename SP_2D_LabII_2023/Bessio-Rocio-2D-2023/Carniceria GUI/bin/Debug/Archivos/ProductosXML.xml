@@ -386,4 +386,22 @@
       </Producto>
     </Productos>
   </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>1200</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>1</Codigo>
+        <Tipo>Carne Vacuna</Tipo>
+        <Corte>Lomo</Corte>
+        <Stock>1</Stock>
+        <Categoria>Ternero</Categoria>
+        <Vencimiento>2025-06-29T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>1200</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
 </ArrayOfCarrito>

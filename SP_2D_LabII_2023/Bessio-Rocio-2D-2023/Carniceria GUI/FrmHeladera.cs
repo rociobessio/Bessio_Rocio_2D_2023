@@ -355,6 +355,8 @@ namespace Carniceria_GUI
                 this.lblProductos.Invoke((MethodInvoker)(() =>
                 {
                     this.lblReposicionTerminada.Text = "Se termino de reponer.";
+                    this.lblReposicionTerminada.BackColor = Color.DarkGreen;
+                    this.CargarProductosDataGrid();//-->Vuelvo a cargar el datagrid
                 }));
             }
             catch (Exception)
@@ -403,6 +405,7 @@ namespace Carniceria_GUI
                 {
                     MessageBox.Show("Reponiendo stock puede demorar unos segundos, refresque...", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.lblReposicionTerminada.Text = "Reponiendo...";
+                    this.lblReposicionTerminada.BackColor = Color.DarkRed;
                 }));
             }
             catch(NoHayReposicionException ex)

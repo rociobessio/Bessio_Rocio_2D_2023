@@ -287,11 +287,11 @@ namespace Carniceria_GUI
                 esValido = false;
             }
 
-            if (peso > carneSeleccionada.Stock)
-            {
-                sb.AppendLine("La cantidad de peso que se quiere vender es mayor al peso total del stock.");
-                esValido = false;
-            }
+            //if (peso > carneSeleccionada.Stock)
+            //{
+            //    sb.AppendLine("La cantidad de peso que se quiere vender es mayor al peso total del stock.");
+            //    esValido = false;
+            //}
 
             if (!esValido)
             {
@@ -350,6 +350,10 @@ namespace Carniceria_GUI
                     this.CargarProductosDataGrid();//-->Recargo el datagrid  
                 } 
                 this.Limpiar();
+            }
+            catch(NoHayStockException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (ArchivoDeTextoException ex)//-->Atrapo
             {
@@ -457,11 +461,18 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnCalcularCosto_Click(object sender, EventArgs e)
         {
-            if (ValidarCampos())
+            try
             {
-                double peso = double.Parse(this.txtPesoEspecificado.Text);
-                double retorno = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
-                this.txtTotalAPagar.Text = $"${retorno.ToString():f}";
+                if (ValidarCampos())
+                {
+                    double peso = double.Parse(this.txtPesoEspecificado.Text);
+                    double retorno = Producto.CalcularPrecioTotalProducto(clienteSeleccionado, carneSeleccionada, peso);
+                    this.txtTotalAPagar.Text = $"${retorno.ToString():f}";
+                }
+            } 
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio, vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
             }
         }
         #endregion

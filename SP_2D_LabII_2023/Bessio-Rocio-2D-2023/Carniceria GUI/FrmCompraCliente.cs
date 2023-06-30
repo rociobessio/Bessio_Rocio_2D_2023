@@ -341,6 +341,10 @@ namespace Carniceria_GUI
                     this.txtPesoRequerido.Clear();
                 }
             }
+            catch(NoHayStockException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);//-->La muestro
+            }
             catch (AgregarAlCarritoException ex)
             {
                 MessageBox.Show(ex.Message,"Error",MessageBoxButtons.OK,MessageBoxIcon.Error);//-->La muestro
@@ -406,9 +410,9 @@ namespace Carniceria_GUI
                 }
                 this.CargarProductosDataGrid();//-->Actualizo el datagrid.
             }
-            catch (NoHayStockException)
+            catch (NoHayStockException ex)
             {
-                MessageBox.Show("Error no hay stock de producto.","Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show(ex.Message,"Atención", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
             catch (SQLUpdateException ex)
             {

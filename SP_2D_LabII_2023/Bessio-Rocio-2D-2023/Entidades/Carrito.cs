@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Excepciones;
 
 namespace Entidades
 {
@@ -151,6 +152,10 @@ namespace Entidades
 
                     pudoAgregar = true;//-->Si puede retorno true
                 }
+            }
+            else
+            {
+                throw new NoHayStockException("No hay stock del producto.");
             }
             return pudoAgregar;
         }

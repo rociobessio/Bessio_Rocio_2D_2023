@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excepciones;
 
 namespace Entidades
 {
@@ -125,7 +126,7 @@ namespace Entidades
         {
             double precioCarne = 0;
             double precioFinalTarjeta;
-            double precio = carne.PrecioCompraCliente;
+            double precio = carne.PrecioCompraCliente; 
 
             precioCarne = (peso) * precio;
 
