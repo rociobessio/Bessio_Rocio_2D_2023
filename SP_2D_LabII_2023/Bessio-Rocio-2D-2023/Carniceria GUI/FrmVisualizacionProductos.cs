@@ -123,7 +123,7 @@ namespace Carniceria_GUI
 
                 if (historial.Count <= 0)
                 {
-                    throw new JSONException("No hay Carritos para visualizar en fomato JSON."); 
+                    throw new JSONException("No hay Carritos para visualizar en formato JSON."); 
                 }
                 else
                     this.CargarProductosDataGridCarritos();//-->Cargo los productos en el datagrid 
@@ -151,7 +151,7 @@ namespace Carniceria_GUI
                 this.historial = XML.DeserializarXML();//-->Deserializo en XML
                 if (this.historial.Count <= 0)
                 {
-                    throw new XMLException("No hay Carritos para visualizar en fomato XML.");
+                    throw new XMLException("No hay Carritos para visualizar en formato XML.");
                 }
                 else
                     this.CargarProductosDataGridCarritos();//-->Cargo los productos
