@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Excepciones;
 
 namespace Entidades
 {
@@ -92,11 +93,12 @@ namespace Entidades
                         this._semaphoreSlim.Wait();
                         Task task = Task.Run(() =>//-->Creo/Runneo nueva Tarea
                         {
-                            for (int i = 1; i <= 10; i++)//-->Reposicion maximo a 10
+                            for (int i = 1; i < 15; i++)//-->Reposicion maximo a 14
                             { 
                                 Thread.Sleep(2000);//-->Cada 2 segundos
                                 producto.Stock = i;//-->Repongo
-                                this._productoDAO.UpdateDato(producto);//-->Actualizo el producto en la base
+                                if (!this._productoDAO.UpdateDato(producto))//-->Actualizo el producto en la base, si no pudo lanzo exception
+                                    throw new SQLUpdateException("Ocurrio un error al intentar actualizar el producto.");
                             }
                             this._semaphoreSlim.Release();//-->Libero espacio en el "Semaforo" y permito que otro hilo lo utilice
                         });
@@ -106,8 +108,8 @@ namespace Entidades
                 Task.WaitAll(this._reposicionTasks.ToArray());//-->Espero a que todas las tareas finalicen antes de seguir
                 this.reposicionEnProgreso = true;//-->Cambio a true
                 EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi evento para avisar q termine de reponer
-            }
-            catch(Exception e)
+            } 
+            catch (Exception e)
             {
                 throw new Exception(e.Message);
             }

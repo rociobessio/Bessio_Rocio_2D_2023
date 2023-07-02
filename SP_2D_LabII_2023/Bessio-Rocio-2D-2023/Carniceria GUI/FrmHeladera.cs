@@ -412,6 +412,10 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+            catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio al intentar reponer los productos, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);

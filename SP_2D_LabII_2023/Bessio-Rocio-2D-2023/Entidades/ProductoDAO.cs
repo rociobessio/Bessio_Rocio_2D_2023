@@ -166,7 +166,7 @@ namespace Entidades
                 }
             }
             return pudo;
-        } 
+        }
 
         /// <summary>
         /// Me permite recibir un producto y modificarlo
@@ -174,59 +174,44 @@ namespace Entidades
         /// </summary>
         /// <param name="producto"></param>
         /// <returns></returns>
+        /// 
         public bool UpdateDato(Producto producto)
         {
-            bool puedeModificar = true;
-
             try
             {
-                base._comando = new SqlCommand();
-
-                //-->Atajo de parametros.
-                base._comando.Parameters.AddWithValue("@IdProducto", producto.Codigo);
-                base._comando.Parameters.AddWithValue("@Tipo", producto.Tipo);
-                base._comando.Parameters.AddWithValue("@Corte", producto.Corte);
-                base._comando.Parameters.AddWithValue("@Categoria", producto.Categoria);
-                base._comando.Parameters.AddWithValue("@Peso", producto.Stock);
-                base._comando.Parameters.AddWithValue("@PrecioCompraCliente", producto.PrecioCompraCliente);
-                base._comando.Parameters.AddWithValue("@Proveedor", producto.Proveedor);
-                base._comando.Parameters.AddWithValue("@PrecioVentaProveedor", producto.PrecioVentaProveedor);
-                base._comando.Parameters.AddWithValue("@Vencimiento", producto.Vencimiento.ToShortDateString());
-
-                //-->Le doy formato a la query.
-                string sqlQuery = "UPDATE Productos ";
-                sqlQuery += "SET Tipo = @Tipo, Corte = @Corte, Categoria = @Categoria, Peso = @Peso, PrecioCompraCliente = @PrecioCompraCliente, Proveedor = @Proveedor, PrecioVentaProveedor = @PrecioVentaProveedor, Vencimiento = @Vencimiento ";
-                sqlQuery += "WHERE IdProducto = @IdProducto";
-
-                base._comando.CommandType = CommandType.Text;
-                base._comando.CommandText = sqlQuery;//-->Le paso la query.
-                base._comando.Connection = base._conexion;
-
-                base._conexion.Open();
-
-                int filasActualizadas = base._comando.ExecuteNonQuery();//-->Me devolvera la cantidad de filas actualizadas
-
-                if (filasActualizadas == 0)//-->Quiere decir que no actualizo ninguna
+                using (SqlConnection conexion = new SqlConnection(AccesoADataBase.CadenaDeConexion))
                 {
-                    puedeModificar = false;
+                    string sqlQuery = "UPDATE Productos " +
+                                      "SET Tipo = @Tipo, Corte = @Corte, Categoria = @Categoria, Peso = @Peso, " +
+                                      "PrecioCompraCliente = @PrecioCompraCliente, Proveedor = @Proveedor, " +
+                                      "PrecioVentaProveedor = @PrecioVentaProveedor, Vencimiento = @Vencimiento " +
+                                      "WHERE IdProducto = @IdProducto";
+
+                    using (SqlCommand comando = new SqlCommand(sqlQuery, conexion))
+                    {
+                        comando.Parameters.AddWithValue("@Tipo", producto.Tipo);
+                        comando.Parameters.AddWithValue("@Corte", producto.Corte);
+                        comando.Parameters.AddWithValue("@Categoria", producto.Categoria);
+                        comando.Parameters.AddWithValue("@Peso", producto.Stock);
+                        comando.Parameters.AddWithValue("@PrecioCompraCliente", producto.PrecioCompraCliente);
+                        comando.Parameters.AddWithValue("@Proveedor", producto.Proveedor);
+                        comando.Parameters.AddWithValue("@PrecioVentaProveedor", producto.PrecioVentaProveedor);
+                        comando.Parameters.AddWithValue("@Vencimiento", producto.Vencimiento);
+                        comando.Parameters.AddWithValue("@IdProducto", producto.Codigo);
+
+                        conexion.Open();
+                        comando.ExecuteNonQuery();
+                    }
                 }
-                base._conexion.Close();
+
+                return true;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                puedeModificar = false;
                 Console.WriteLine(e.Message);
-                base._conexion.Close();
+                return false;
             }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
-            return puedeModificar;
-        }
+        } 
 
         /// <summary>
         /// Me permite realizar un insert en la base de datos.
