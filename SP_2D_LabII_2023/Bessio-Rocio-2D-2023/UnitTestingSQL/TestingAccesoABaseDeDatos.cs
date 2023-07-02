@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks; 
 using Entidades;
 
-namespace UnitTestings
+namespace UnitTestingSQL
 {
     /// <summary>
     /// Como mi clase AccesoADataBase es abstracta,
