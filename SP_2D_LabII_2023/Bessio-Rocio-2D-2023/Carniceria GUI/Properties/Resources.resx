@@ -130,11 +130,11 @@
   <data name="security-protection-protect-key-password-login_1085541" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\security-protection-protect-key-password-login_1085541.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="savedisk_floppydisk_guardar_1543" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\savedisk_floppydisk_guardar_1543.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="support_call_center_help_information_customer_service_icon_140644" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\support_call_center_help_information_customer_service_icon_140644.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="receipt_information_icon_1774012" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\receipt_information_icon_1774012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1486485588-add-create-new-math-sign-cross-plus_81186" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1486485588-add-create-new-math-sign-cross-plus_81186.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,6 +196,9 @@
   <data name="call_center_contact_information_service_icon_1872701" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\call_center_contact_information_service_icon_1872701.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="1455554314_line-15_icon-icons.com_53330" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1455554314_line-15_icon-icons.com_53330.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="save_file_disk_open_searsh_loading_clipboard_1513" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_file_disk_open_searsh_loading_clipboard_1513.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -205,8 +208,8 @@
   <data name="edit_icon-icons.com_52382" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_icon-icons.com_52382.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="savedisk_floppydisk_guardar_1543" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\savedisk_floppydisk_guardar_1543.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="receipt_information_icon_1774012" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\receipt_information_icon_1774012.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cancel_icon-icons.com_54824" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cancel_icon-icons.com_54824.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -223,7 +226,7 @@
   <data name="1497619949-jd13_85182" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1497619949-jd13_85182.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="1455554314_line-15_icon-icons.com_53330" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1455554314_line-15_icon-icons.com_53330.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="savedisk_floppydisk_guardar_15432" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\savedisk_floppydisk_guardar_15432.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

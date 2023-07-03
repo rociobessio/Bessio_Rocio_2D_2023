@@ -43,6 +43,7 @@
             pictureBoxVendedor = new PictureBox();
             lblVendedorEmail = new Label();
             btnVisualizarProductos = new Button();
+            btnCopiaSeguridad = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
@@ -79,7 +80,7 @@
             btnReponer.ForeColor = SystemColors.ButtonHighlight;
             btnReponer.Image = Properties.Resources.Fridge_icon_icons_com_53204;
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
-            btnReponer.Location = new Point(21, 201);
+            btnReponer.Location = new Point(21, 171);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(239, 61);
             btnReponer.TabIndex = 47;
@@ -96,7 +97,7 @@
             btnVender.ForeColor = Color.White;
             btnVender.Image = Properties.Resources.delivery_payment_cash_service_price_icon_187251;
             btnVender.ImageAlign = ContentAlignment.MiddleRight;
-            btnVender.Location = new Point(21, 109);
+            btnVender.Location = new Point(20, 96);
             btnVender.Name = "btnVender";
             btnVender.Size = new Size(239, 57);
             btnVender.TabIndex = 46;
@@ -114,7 +115,7 @@
             btnHistorial.ForeColor = Color.White;
             btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
             btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
-            btnHistorial.Location = new Point(21, 303);
+            btnHistorial.Location = new Point(21, 260);
             btnHistorial.Name = "btnHistorial";
             btnHistorial.Size = new Size(239, 57);
             btnHistorial.TabIndex = 48;
@@ -230,14 +231,32 @@
             btnVisualizarProductos.ForeColor = Color.White;
             btnVisualizarProductos.Image = Properties.Resources.zoom_plus_increase_view_icon_145868;
             btnVisualizarProductos.ImageAlign = ContentAlignment.MiddleRight;
-            btnVisualizarProductos.Location = new Point(21, 416);
+            btnVisualizarProductos.Location = new Point(21, 342);
             btnVisualizarProductos.Name = "btnVisualizarProductos";
-            btnVisualizarProductos.Size = new Size(239, 57);
+            btnVisualizarProductos.Size = new Size(239, 67);
             btnVisualizarProductos.TabIndex = 53;
-            btnVisualizarProductos.Text = "Visualizar Productos";
+            btnVisualizarProductos.Text = "Deserialización de\r\n      Facturas";
             btnVisualizarProductos.TextAlign = ContentAlignment.MiddleLeft;
             btnVisualizarProductos.UseVisualStyleBackColor = true;
             btnVisualizarProductos.Click += btnVisualizarProductos_Click;
+            // 
+            // btnCopiaSeguridad
+            // 
+            btnCopiaSeguridad.Anchor = AnchorStyles.Bottom;
+            btnCopiaSeguridad.Cursor = Cursors.Hand;
+            btnCopiaSeguridad.FlatStyle = FlatStyle.Popup;
+            btnCopiaSeguridad.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCopiaSeguridad.ForeColor = Color.White;
+            btnCopiaSeguridad.Image = Properties.Resources.savedisk_floppydisk_guardar_15432;
+            btnCopiaSeguridad.ImageAlign = ContentAlignment.MiddleRight;
+            btnCopiaSeguridad.Location = new Point(20, 430);
+            btnCopiaSeguridad.Name = "btnCopiaSeguridad";
+            btnCopiaSeguridad.Size = new Size(239, 71);
+            btnCopiaSeguridad.TabIndex = 54;
+            btnCopiaSeguridad.Text = "Ver Copia \r\nde Seguridad";
+            btnCopiaSeguridad.TextAlign = ContentAlignment.MiddleLeft;
+            btnCopiaSeguridad.UseVisualStyleBackColor = true;
+            btnCopiaSeguridad.Click += btnCopiaSeguridad_Click;
             // 
             // FrmMenuPrincipalVendedor
             // 
@@ -245,6 +264,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
             ClientSize = new Size(880, 573);
+            Controls.Add(btnCopiaSeguridad);
             Controls.Add(btnVisualizarProductos);
             Controls.Add(panel1);
             Controls.Add(lblPrintHelp);
@@ -281,5 +301,6 @@
         private PictureBox pictureBoxVendedor;
         private Label lblVendedorEmail;
         private Button btnVisualizarProductos;
+        private Button btnCopiaSeguridad;
     }
 }

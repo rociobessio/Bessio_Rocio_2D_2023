@@ -343,6 +343,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap savedisk_floppydisk_guardar_15432 {
+            get {
+                object obj = ResourceManager.GetObject("savedisk_floppydisk_guardar_15432", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap security_protection_protect_key_password_login_108554 {
             get {
                 object obj = ResourceManager.GetObject("security-protection-protect-key-password-login_108554", resourceCulture);

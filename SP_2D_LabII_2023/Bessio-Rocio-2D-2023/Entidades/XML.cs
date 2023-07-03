@@ -140,38 +140,38 @@ namespace Entidades
             return carritos;//-->Retorno la lista.
         }
 
-        ///// <summary>
-        ///// Este metodo me permitira deserializar la lista
-        ///// del archivo de la copia de seguridad.
-        ///// </summary>
-        ///// <returns></returns>
-        ///// <exception cref="XMLException"></exception>
-        //public static List<Producto> TraerCopiaDeSeguridadXML()
-        //{
-        //    List<Producto> productos = new List<Producto>();
+        /// <summary>
+        /// Este metodo me permitira deserializar la lista
+        /// del archivo de la copia de seguridad.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="XMLException"></exception>
+        public static List<Producto> TraerCopiaDeSeguridadXML()
+        {
+            List<Producto> productos = new List<Producto>();
 
-        //    try
-        //    {
-        //        XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Producto>));
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Producto>));
 
-        //        if (File.Exists("..\\Archivos\\CopiaSeguridadXML.xml"))
-        //        {
-        //            using (StreamReader reader = new StreamReader("..\\Archivos\\CopiaSeguridadXML.xml"))
-        //            {
-        //                productos = (List<Producto>)xmlSerializer.Deserialize(reader);
-        //            }
-        //        }
-        //    }
-        //    catch (XMLException)
-        //    {
-        //        throw new XMLException("Ocurrió un error al intentar deserializar el XML.");
-        //    }
-        //    catch (Exception)
-        //    {
-        //        throw;
-        //    }
-        //    return productos;
-        //}
+                if (File.Exists("..\\Archivos\\CopiaSeguridadXML.xml"))
+                {
+                    using (StreamReader reader = new StreamReader("..\\Archivos\\CopiaSeguridadXML.xml"))
+                    {
+                        productos = (List<Producto>)xmlSerializer.Deserialize(reader);
+                    }
+                }
+            }
+            catch (XMLException)
+            {
+                throw new XMLException("Ocurrió un error al intentar deserializar el XML.");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return productos;
+        }
         #endregion
     }
 }

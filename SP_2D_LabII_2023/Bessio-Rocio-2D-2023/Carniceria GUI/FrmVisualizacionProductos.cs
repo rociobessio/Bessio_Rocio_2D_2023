@@ -28,7 +28,7 @@ namespace Carniceria_GUI
         public FrmVisualizacionProductos()
         {
             InitializeComponent();
-            this.Text = "Visualización Productos (Deserialización en XML y JSON)";
+            this.Text = "Visualización Productos Vendidos (Deserialización en XML y JSON)";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
             this.MaximizeBox = false;

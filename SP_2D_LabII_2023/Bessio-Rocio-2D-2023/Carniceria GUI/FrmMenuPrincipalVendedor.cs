@@ -19,6 +19,7 @@ namespace Carniceria_GUI
         private FrmVentaVendedor frmVentaVendedor;
         private FrmVisualizacionProductos frmVisualizarProductos;
         private FrmHistorialVentas frmHistorialVentas;
+        private FrmCopiaSeguridad frmCopiaSeguridad;
         #endregion
 
         #region CONSTRUCTORES
@@ -97,9 +98,19 @@ namespace Carniceria_GUI
         {
             frmVisualizarProductos = new FrmVisualizacionProductos(vendedorForm);
             frmVisualizarProductos.ShowDialog();
-        } 
-        #endregion
+        }
 
-
+        /// <summary>
+        /// Me permite ver los datos de la
+        /// ultima copia de seguridad.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCopiaSeguridad_Click(object sender, EventArgs e)
+        {
+            frmCopiaSeguridad = new FrmCopiaSeguridad(vendedorForm);
+            frmCopiaSeguridad.ShowDialog();
+        }
+        #endregion 
     }
 }
