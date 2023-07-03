@@ -416,9 +416,9 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Algo inesperado sucedio al intentar reponer los productos, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar

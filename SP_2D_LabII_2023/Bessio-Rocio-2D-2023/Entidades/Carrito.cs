@@ -10,8 +10,7 @@ namespace Entidades
 {
     public class Carrito
     {
-        #region ATRIBUTOS
-        private static Guid _IDCarrito;
+        #region ATRIBUTOS 
         private DateTime _fechaCompra;
         private double _precioTotal; 
         private bool _conTarjeta;
@@ -21,8 +20,7 @@ namespace Entidades
         #endregion
 
         #region PROPIEDADES
-        public string UsuarioCompra { get { return this._usuarioCompra; } set { this._usuarioCompra = value; } }
-        public Guid IDCarrito { get { return _IDCarrito; } }
+        public string UsuarioCompra { get { return this._usuarioCompra; } set { this._usuarioCompra = value; } } 
         /// <summary>
         /// Propiedad de lectura que me permite obtener la fecha de compra.
         /// </summary>
@@ -42,14 +40,7 @@ namespace Entidades
         public List<Producto> Productos { get { return this._listaDeProductos; } set { this._listaDeProductos = value; } }
         #endregion
 
-        #region CONSTRUCTOR
-        /// Se llama la primera vez que creo una instancia
-        /// y setteo el ultimo codigo a 100
-        /// </summary>
-        static Carrito()
-        { 
-            _IDCarrito = Guid.NewGuid();
-        }
+        #region CONSTRUCTOR 
 
         /// <summary>
         /// Este constructor inicializa todos los parametros
@@ -57,10 +48,9 @@ namespace Entidades
         public Carrito() 
         {
             this._conTarjeta = false;
-            //this._fechaCompra = DateTime.Today;
+            this._fechaCompra = DateTime.Today;
             this._precioTotal = 00;
-            this._listaDeProductos = new List<Producto>();
-            _IDCarrito = Guid.NewGuid(); 
+            this._listaDeProductos = new List<Producto>(); 
         }
 
         /// <summary>

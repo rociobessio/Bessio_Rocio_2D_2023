@@ -111,12 +111,9 @@ namespace Entidades
             } 
             catch (Exception e)
             {
-                throw new Exception(e.Message);
-            }
-            finally//-->Por las dudas utilizo un try-catch-finally.
-            {
-                 Console.WriteLine("Ocurrio un problema.");
-            }
+                this.reposicionEnProgreso = false;
+                throw new Exception("Sucedio algo inesperado al intentar reponer.");
+            } 
         } 
     }
     #endregion

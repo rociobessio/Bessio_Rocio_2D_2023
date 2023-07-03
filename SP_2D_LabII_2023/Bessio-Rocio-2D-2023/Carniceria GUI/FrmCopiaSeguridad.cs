@@ -31,7 +31,7 @@ namespace Carniceria_GUI
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
-            textoAyuda.AppendLine("Podrá ver la última copia de seguridad (XML) y ver aquellos productos seleccionados y guardados (JSON).");
+            textoAyuda.AppendLine("Podrá ver la última copia de seguridad (XML).");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
