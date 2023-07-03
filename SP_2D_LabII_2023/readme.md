@@ -11,7 +11,7 @@
 # Perfil Vendedor:
 -------------------
 ## Menu Principal: 
-<img width="440" alt="Screenshot_97" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/bd796303-63b2-4d09-9bfa-d31065c0d8f8">
+<img width="440" alt="Screenshot_116" src="https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/c5c4ab31-8b59-4347-9b48-c0f5d437bd0b">
 
 1) Se le abrirá un menu principal al vendedor en el cual podrá elegir las distintas acciones que puede realizar.
 2) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
@@ -27,14 +27,16 @@
 6) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
 ## Heladera: 
-<img width="592" alt="Screenshot_109" src="https://github.com/rociobessio/PP_2D_LabII_2023/assets/98594436/ee48e452-2eae-47fe-b64b-c6dca68db89b">
-
+ <img width="674" alt="Screenshot_117" src="https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/a9899985-e520-44a5-9c46-f28187e86d54">
 
 1) El vendedor será capaz de agregar un nuevo producto a la lista.
 2) Podrá eliminar/modificar un producto seleccionado.
-3) Será capaz de reponer productos si hay stock en 0 de algún producto, simulando una reposición en tiempo real.
+3) Será capaz de reponer productos si hay stock en 0 de algún producto, simulando una reposición en tiempo real, utilizando
+delegados, eventos, hilos y concurrencia.
 4) Para ver los cambios de la reposición se le facilitará ir refrescando el datagridview.
-5) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
+5) A su vez, se podrá generar una copia de seguridad de la lista actual si lo requiere, esta se guarda en formato XML para
+luego ser deserializada y mostrada en el form correspondiente.
+6) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
 
 ## Historial de Ventas (.txt):
 -------------------------------
@@ -51,6 +53,12 @@
 2) Aquellas ventas realizadas por el perfil del VENDEDOR fueron serializadas y deserializadas en JSON.
 3) Y las compras realizadas bajo el perfil de CLIENTE serán serializadas y deserializadas en XML.
 4) Al pararse sobre el icono 'Ayuda/Call-Center' abajo a la izquierda, imprime un mensaje de ayuda para el usuario.
+
+## Ver Copia de Seguridad:
+ <img width="523" alt="Screenshot_118" src="https://github.com/rociobessio/Bessio_Rocio_2D_2023/assets/98594436/ff235939-52e4-463a-ac71-a5b093a7beb5">
+
+1) Le permitirá al usuario visualizar la última copia de seguridad realizada por el vendedor.
+
 
 # Perfil Cliente:
 -------------------
