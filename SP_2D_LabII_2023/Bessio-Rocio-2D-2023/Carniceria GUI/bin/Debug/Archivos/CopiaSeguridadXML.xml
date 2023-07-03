@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfProducto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Producto>
+    <Codigo>1</Codigo>
+    <Tipo>Carne Vacuna</Tipo>
+    <Corte>Lomo</Corte>
+    <Stock>7</Stock>
+    <Categoria>Ternero</Categoria>
+    <Vencimiento>2025-06-29T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>900</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>1200</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>3</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Bondiola</Corte>
+    <Stock>12</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1200</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>1700</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>6</Codigo>
+    <Tipo>Carne_Vacuna</Tipo>
+    <Corte>Nalga</Corte>
+    <Stock>12</Stock>
+    <Categoria>Novillito</Categoria>
+    <Vencimiento>2025-08-08T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>800</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>2000</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>8</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Costilla</Corte>
+    <Stock>14</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1700</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>2501</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>9</Codigo>
+    <Tipo>Pollo</Tipo>
+    <Corte>Suprema</Corte>
+    <Stock>11</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-11-16T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>790</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>1200</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>10</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Solomillo</Corte>
+    <Stock>5</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1250</PrecioVentaProveedor>
+    <Proveedor>La Granjita</Proveedor>
+    <PrecioCompraCliente>2500</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>11</Codigo>
+    <Tipo>Pollo</Tipo>
+    <Corte>Pechuga</Corte>
+    <Stock>14</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-08-27T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1250</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>2000</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>12</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Bondiola</Corte>
+    <Stock>10</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-10-16T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1050</PrecioVentaProveedor>
+    <Proveedor>Chascomus LA</Proveedor>
+    <PrecioCompraCliente>1700</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>13</Codigo>
+    <Tipo>Pollo</Tipo>
+    <Corte>Pechuga</Corte>
+    <Stock>8</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2023-08-03T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1200</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>1500</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>14</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Bondiola</Corte>
+    <Stock>7</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1300</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>2100</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>16</Codigo>
+    <Tipo>Carne_Vacuna</Tipo>
+    <Corte>Nalga</Corte>
+    <Stock>14</Stock>
+    <Categoria>Novillito</Categoria>
+    <Vencimiento>2023-11-29T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1290</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>2300</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>17</Codigo>
+    <Tipo>Carne_Vacuna</Tipo>
+    <Corte>Vacio</Corte>
+    <Stock>10</Stock>
+    <Categoria>Novillito</Categoria>
+    <Vencimiento>2023-10-31T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1200</PrecioVentaProveedor>
+    <Proveedor>Chascomus LA</Proveedor>
+    <PrecioCompraCliente>1700</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>18</Codigo>
+    <Tipo>Pollo</Tipo>
+    <Corte>Suprema</Corte>
+    <Stock>17</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2023-10-18T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1300</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>2000</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>21</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Pechito</Corte>
+    <Stock>12</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1300</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>2100</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>22</Codigo>
+    <Tipo>Pollo</Tipo>
+    <Corte>Pollo Entero</Corte>
+    <Stock>20</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-10-28T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1100</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>1900</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>23</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Solomillo</Corte>
+    <Stock>21</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-10-21T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1900</PrecioVentaProveedor>
+    <Proveedor>Chascomus LA</Proveedor>
+    <PrecioCompraCliente>2100</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>24</Codigo>
+    <Tipo>Cerdo</Tipo>
+    <Corte>Pechito</Corte>
+    <Stock>12</Stock>
+    <Categoria>No Es Bovino</Categoria>
+    <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1300</PrecioVentaProveedor>
+    <Proveedor>Mingo CO</Proveedor>
+    <PrecioCompraCliente>2100</PrecioCompraCliente>
+  </Producto>
+  <Producto>
+    <Codigo>27</Codigo>
+    <Tipo>Carne_Vacuna</Tipo>
+    <Corte>Vacio</Corte>
+    <Stock>23</Stock>
+    <Categoria>Novillito</Categoria>
+    <Vencimiento>2025-11-20T00:00:00</Vencimiento>
+    <PrecioVentaProveedor>1900</PrecioVentaProveedor>
+    <Proveedor>Siga la Vaca</Proveedor>
+    <PrecioCompraCliente>2500</PrecioCompraCliente>
+  </Producto>
+</ArrayOfProducto>

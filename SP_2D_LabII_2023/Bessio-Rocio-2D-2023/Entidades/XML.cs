@@ -42,6 +42,36 @@ namespace Entidades
         #endregion
 
         #region METODOS
+        public static bool SerializacionXML(List<Producto> listaProductos)
+        {
+            try
+            {
+                List<Producto> productos = new List<Producto>();
+
+                //-->Me fijo si existe.
+                if (File.Exists("..\\Archivos\\CopiaSeguridadXML.xml"))
+                {
+                    productos = XML.TraerCopiaDeSeguridad();
+                }
+
+                // Agregar los productos a la lista existente
+                productos.AddRange(listaProductos);
+
+                // Serializar la lista de productos en XML
+                XmlSerializer serializer = new XmlSerializer(typeof(List<Producto>));
+                using (StreamWriter writer = new StreamWriter("..\\Archivos\\CopiaSeguridadXML.xml"))
+                {
+                    serializer.Serialize(writer, productos);
+                }
+
+                return true;
+            }
+            catch (Exception)
+            {
+                throw new XMLException("Ocurrió un error al intentar serializar en XML.");
+            }
+        }
+
         /// <summary>
         /// Me permite serializar UN carrito en
         /// formato XML.
@@ -99,21 +129,44 @@ namespace Entidades
                     {
                         carritos = (List<Carrito>)xmlSerializer.Deserialize(reader);//-->Traigo
                     } 
-                }
-                else
-                {
-                    throw new XMLException("Ocurrio un error al intentar deserializar.");
-                }
+                } 
             }
             catch (XMLException)
             {
-                throw;
+                throw new XMLException();
             }
             catch (Exception)
             {
                 throw;
             }
             return carritos;//-->Retorno la lista.
+        }
+
+        public static List<Producto> TraerCopiaDeSeguridad()
+        {
+            List<Producto> productos = new List<Producto>();
+
+            try
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<Producto>));
+
+                if (File.Exists("..\\Archivos\\CopiaSeguridadXML.xml"))
+                {
+                    using (StreamReader reader = new StreamReader("..\\Archivos\\CopiaSeguridadXML.xml"))
+                    {
+                        productos = (List<Producto>)xmlSerializer.Deserialize(reader);
+                    }
+                }
+            }
+            catch (XMLException)
+            {
+                throw new XMLException("Ocurrió un error al intentar deserializar el XML.");
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return productos;
         }
         #endregion
     }

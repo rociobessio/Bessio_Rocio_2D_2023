@@ -77,9 +77,9 @@ namespace Carniceria_GUI
             #region PRINT AYUDA
             StringBuilder textoAyuda = new StringBuilder();
             textoAyuda.AppendLine("El vendedor podrá reponer el stock de un producto, modificarlo, agregar uno nuevo u eliminarlo, además podrá visualizarlos.");
+            textoAyuda.AppendLine("A su vez será capaz de guardar (en JSON) el estado de un producto seleccionado o generar (en XML) una copia de seguridad de todos los productos.");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
-            #endregion
-
+            #endregion 
         }
         #endregion
 
@@ -408,7 +408,7 @@ namespace Carniceria_GUI
                     this.lblReposicionTerminada.BackColor = Color.DarkRed;
                 }));
             }
-            catch(NoHayReposicionException ex)
+            catch (NoHayReposicionException ex)
             {
                 MessageBox.Show(ex.Message, "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -419,7 +419,7 @@ namespace Carniceria_GUI
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio al intentar reponer los productos, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
 
             this.btnAgregar.Enabled = true;//-->Vuelvo a habilitar el Agregar
             this.btnEliminar.Enabled = true;//-->Deshabilito los botones
@@ -450,14 +450,14 @@ namespace Carniceria_GUI
                 this.CargarProductosDataGrid();//-->Actualizo el dataGrid
                 this.btnAgregar.Enabled = true;//-->El agregar pasa a ser utilizable
             }
-            catch(SQLDeleteException ex)
+            catch (SQLDeleteException ex)
             {
                 MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio al intentar eliminar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
         }
 
         /// <summary>
@@ -484,7 +484,7 @@ namespace Carniceria_GUI
                     carneSeleccionada.Corte = this.cbCorteCarne.SelectedItem.ToString();
 
                     if (!productoDAO.UpdateDato(carneSeleccionada))//-->Si no pudo modificar lanzo excepcion.
-                        throw new SQLUpdateException("Ocurrio un error al intentar modificar el producto, reintente.");  
+                        throw new SQLUpdateException("Ocurrio un error al intentar modificar el producto, reintente.");
 
                     MessageBox.Show("Producto modificado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -500,7 +500,7 @@ namespace Carniceria_GUI
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio al intentar modificar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            } 
+            }
             this.CargarProductosDataGrid();//-->Actualizo el dataGrid
             this.btnAgregar.Enabled = true;
         }
@@ -521,7 +521,7 @@ namespace Carniceria_GUI
                         this.txtProveedor.Text, this.cbTipoDeCarneReponer.Text, double.Parse(this.txtPrecioVentaClientes.Text));
 
                     if (!productoDAO.AgregarProducto(productoNuevo))//-->Si no pudo agregar lanzo excepcion.
-                        throw new SQLAgregarException("Ocurrio un error, no se pudo agregar el producto."); 
+                        throw new SQLAgregarException("Ocurrio un error, no se pudo agregar el producto.");
 
                     MessageBox.Show("Producto agregado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -538,6 +538,59 @@ namespace Carniceria_GUI
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio al intentar agregar el producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Me permite guardar el estado de un producto.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnGuardarEstadoProducto_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (indexTablaProductos >= 0)
+                {
+                    if (!JSON.SerializacionJSON(carneSeleccionada))
+                        throw new JSONException("Ocurrio un problema al intentar guardar el estado del producto, reintente.");
+
+                    MessageBox.Show("Se ha guardado el Estado del producto.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (JSONException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar guardar el estado del producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Me permite generar una copia de seguridad de la
+        /// lista de productos, guardar su estado actual en 
+        /// un archivo XML para luego mostrarlo.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnCopiaSeguridad_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!XML.SerializacionXML(listaProductos))
+                    throw new XMLException("Ocurrio un problema al intentar generar su copia de seguridad, vuelva a intentarlo.");
+
+                MessageBox.Show("Se ha generado la copia de seguridad.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+            }
+            catch (XMLException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Algo inesperado sucedio al intentar generar la copia de seguridad, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -578,6 +631,5 @@ namespace Carniceria_GUI
 
         }
         #endregion 
-
     }
 }

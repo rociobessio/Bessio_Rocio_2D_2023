@@ -63,6 +63,16 @@ namespace Carniceria_GUI.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1455554314_line_15_icon_icons_com_53330 {
+            get {
+                object obj = ResourceManager.GetObject("1455554314_line-15_icon-icons.com_53330", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _1486485588_add_create_new_math_sign_cross_plus_81186 {
             get {
                 object obj = ResourceManager.GetObject("1486485588-add-create-new-math-sign-cross-plus_81186", resourceCulture);
@@ -296,6 +306,36 @@ namespace Carniceria_GUI.Properties {
         internal static System.Drawing.Bitmap salesman_avatar_icon_133993 {
             get {
                 object obj = ResourceManager.GetObject("salesman_avatar_icon_133993", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap save_file_disk_open_searsh_loading_clipboard_1513 {
+            get {
+                object obj = ResourceManager.GetObject("save_file_disk_open_searsh_loading_clipboard_1513", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap savedisk_floppydisk_guardar_1543 {
+            get {
+                object obj = ResourceManager.GetObject("savedisk_floppydisk_guardar_1543", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap savedisk_floppydisk_guardar_15431 {
+            get {
+                object obj = ResourceManager.GetObject("savedisk_floppydisk_guardar_15431", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

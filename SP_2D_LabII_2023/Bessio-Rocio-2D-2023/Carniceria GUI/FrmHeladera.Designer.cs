@@ -34,6 +34,7 @@
             dataGridViewProductos = new DataGridView();
             lblProductos = new Label();
             groupBoxReponer = new GroupBox();
+            btnGuardarEstadoProducto = new Button();
             label11 = new Label();
             txtPrecioCompraFrigorifico = new TextBox();
             label10 = new Label();
@@ -61,6 +62,7 @@
             btnModificar = new Button();
             btnRefresh = new Button();
             lblReposicionTerminada = new Label();
+            btnCopiaSeguridad = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxVendedor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewProductos).BeginInit();
             groupBoxReponer.SuspendLayout();
@@ -72,7 +74,7 @@
             lblVendedorEmail.AutoSize = true;
             lblVendedorEmail.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblVendedorEmail.ForeColor = Color.White;
-            lblVendedorEmail.Location = new Point(289, 44);
+            lblVendedorEmail.Location = new Point(272, 44);
             lblVendedorEmail.Name = "lblVendedorEmail";
             lblVendedorEmail.Size = new Size(65, 28);
             lblVendedorEmail.TabIndex = 0;
@@ -82,7 +84,7 @@
             // 
             pictureBoxVendedor.Anchor = AnchorStyles.None;
             pictureBoxVendedor.Image = Properties.Resources.call_center_contact_information_service_icon_187270;
-            pictureBoxVendedor.Location = new Point(30, 24);
+            pictureBoxVendedor.Location = new Point(12, 18);
             pictureBoxVendedor.Name = "pictureBoxVendedor";
             pictureBoxVendedor.Size = new Size(82, 72);
             pictureBoxVendedor.SizeMode = PictureBoxSizeMode.Zoom;
@@ -101,12 +103,12 @@
             dataGridViewProductos.BackgroundColor = Color.MediumPurple;
             dataGridViewProductos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewProductos.GridColor = Color.MediumPurple;
-            dataGridViewProductos.Location = new Point(16, 456);
+            dataGridViewProductos.Location = new Point(18, 456);
             dataGridViewProductos.Name = "dataGridViewProductos";
             dataGridViewProductos.ReadOnly = true;
             dataGridViewProductos.RowHeadersWidth = 62;
             dataGridViewProductos.RowTemplate.Height = 33;
-            dataGridViewProductos.Size = new Size(1147, 275);
+            dataGridViewProductos.Size = new Size(1315, 275);
             dataGridViewProductos.TabIndex = 12;
             dataGridViewProductos.CellClick += dataGridViewProductos_CellClick;
             dataGridViewProductos.CellDoubleClick += dataGridViewProductos_CellDoubleClick;
@@ -117,7 +119,7 @@
             lblProductos.AutoSize = true;
             lblProductos.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblProductos.ForeColor = Color.White;
-            lblProductos.Location = new Point(36, 421);
+            lblProductos.Location = new Point(18, 421);
             lblProductos.Name = "lblProductos";
             lblProductos.Size = new Size(323, 32);
             lblProductos.TabIndex = 3;
@@ -126,6 +128,7 @@
             // groupBoxReponer
             // 
             groupBoxReponer.Anchor = AnchorStyles.None;
+            groupBoxReponer.Controls.Add(btnGuardarEstadoProducto);
             groupBoxReponer.Controls.Add(label11);
             groupBoxReponer.Controls.Add(txtPrecioCompraFrigorifico);
             groupBoxReponer.Controls.Add(label10);
@@ -144,18 +147,36 @@
             groupBoxReponer.Controls.Add(label3);
             groupBoxReponer.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             groupBoxReponer.ForeColor = Color.White;
-            groupBoxReponer.Location = new Point(21, 102);
+            groupBoxReponer.Location = new Point(12, 102);
             groupBoxReponer.Name = "groupBoxReponer";
-            groupBoxReponer.Size = new Size(1147, 261);
+            groupBoxReponer.Size = new Size(1321, 261);
             groupBoxReponer.TabIndex = 4;
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Información Producto";
+            // 
+            // btnGuardarEstadoProducto
+            // 
+            btnGuardarEstadoProducto.Anchor = AnchorStyles.Bottom;
+            btnGuardarEstadoProducto.Cursor = Cursors.Hand;
+            btnGuardarEstadoProducto.FlatStyle = FlatStyle.Popup;
+            btnGuardarEstadoProducto.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnGuardarEstadoProducto.ForeColor = SystemColors.ButtonHighlight;
+            btnGuardarEstadoProducto.Image = Properties.Resources.save_file_disk_open_searsh_loading_clipboard_1513;
+            btnGuardarEstadoProducto.ImageAlign = ContentAlignment.MiddleRight;
+            btnGuardarEstadoProducto.Location = new Point(1132, 177);
+            btnGuardarEstadoProducto.Name = "btnGuardarEstadoProducto";
+            btnGuardarEstadoProducto.Size = new Size(169, 62);
+            btnGuardarEstadoProducto.TabIndex = 48;
+            btnGuardarEstadoProducto.Text = "    Guardar";
+            btnGuardarEstadoProducto.TextAlign = ContentAlignment.MiddleLeft;
+            btnGuardarEstadoProducto.UseVisualStyleBackColor = true;
+            btnGuardarEstadoProducto.Click += btnGuardarEstadoProducto_Click;
             // 
             // label11
             // 
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label11.Location = new Point(6, 177);
+            label11.Location = new Point(18, 177);
             label11.Name = "label11";
             label11.Size = new Size(156, 50);
             label11.TabIndex = 22;
@@ -164,7 +185,7 @@
             // 
             // txtPrecioCompraFrigorifico
             // 
-            txtPrecioCompraFrigorifico.Location = new Point(168, 190);
+            txtPrecioCompraFrigorifico.Location = new Point(193, 190);
             txtPrecioCompraFrigorifico.Name = "txtPrecioCompraFrigorifico";
             txtPrecioCompraFrigorifico.Size = new Size(157, 37);
             txtPrecioCompraFrigorifico.TabIndex = 8;
@@ -175,7 +196,7 @@
             // 
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(758, 114);
+            label10.Location = new Point(797, 114);
             label10.Name = "label10";
             label10.Size = new Size(98, 25);
             label10.TabIndex = 20;
@@ -184,7 +205,7 @@
             // 
             // txtProveedor
             // 
-            txtProveedor.Location = new Point(861, 107);
+            txtProveedor.Location = new Point(917, 108);
             txtProveedor.Name = "txtProveedor";
             txtProveedor.Size = new Size(151, 37);
             txtProveedor.TabIndex = 7;
@@ -193,7 +214,7 @@
             // 
             cbTipoDeCarneReponer.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbTipoDeCarneReponer.FormattingEnabled = true;
-            cbTipoDeCarneReponer.Location = new Point(168, 41);
+            cbTipoDeCarneReponer.Location = new Point(193, 42);
             cbTipoDeCarneReponer.Name = "cbTipoDeCarneReponer";
             cbTipoDeCarneReponer.Size = new Size(157, 36);
             cbTipoDeCarneReponer.TabIndex = 4;
@@ -203,7 +224,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(6, 38);
+            label8.Location = new Point(18, 48);
             label8.Name = "label8";
             label8.Size = new Size(126, 25);
             label8.TabIndex = 15;
@@ -213,7 +234,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(413, 177);
+            label7.Location = new Point(425, 177);
             label7.Name = "label7";
             label7.Size = new Size(113, 50);
             label7.TabIndex = 14;
@@ -222,7 +243,7 @@
             // 
             // dtpFechaVencimiento
             // 
-            dtpFechaVencimiento.Location = new Point(523, 188);
+            dtpFechaVencimiento.Location = new Point(577, 187);
             dtpFechaVencimiento.Name = "dtpFechaVencimiento";
             dtpFechaVencimiento.Size = new Size(156, 37);
             dtpFechaVencimiento.TabIndex = 11;
@@ -231,7 +252,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 8F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(413, 102);
+            label6.Location = new Point(425, 102);
             label6.Name = "label6";
             label6.Size = new Size(102, 42);
             label6.TabIndex = 12;
@@ -239,7 +260,7 @@
             // 
             // txtPrecioVentaClientes
             // 
-            txtPrecioVentaClientes.Location = new Point(523, 107);
+            txtPrecioVentaClientes.Location = new Point(577, 102);
             txtPrecioVentaClientes.Name = "txtPrecioVentaClientes";
             txtPrecioVentaClientes.Size = new Size(156, 37);
             txtPrecioVentaClientes.TabIndex = 10;
@@ -249,7 +270,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(413, 44);
+            label5.Location = new Point(425, 45);
             label5.Name = "label5";
             label5.Size = new Size(58, 28);
             label5.TabIndex = 10;
@@ -257,7 +278,7 @@
             // 
             // txtPesoCarne
             // 
-            txtPesoCarne.Location = new Point(523, 40);
+            txtPesoCarne.Location = new Point(577, 41);
             txtPesoCarne.Name = "txtPesoCarne";
             txtPesoCarne.Size = new Size(156, 37);
             txtPesoCarne.TabIndex = 9;
@@ -267,7 +288,7 @@
             // 
             cbTexturaCarne.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbTexturaCarne.FormattingEnabled = true;
-            cbTexturaCarne.Location = new Point(168, 108);
+            cbTexturaCarne.Location = new Point(193, 108);
             cbTexturaCarne.Name = "cbTexturaCarne";
             cbTexturaCarne.Size = new Size(157, 36);
             cbTexturaCarne.TabIndex = 6;
@@ -277,7 +298,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(6, 99);
+            label4.Location = new Point(18, 99);
             label4.Name = "label4";
             label4.Size = new Size(93, 50);
             label4.TabIndex = 7;
@@ -287,7 +308,7 @@
             // 
             cbCorteCarne.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             cbCorteCarne.FormattingEnabled = true;
-            cbCorteCarne.Location = new Point(861, 44);
+            cbCorteCarne.Location = new Point(917, 47);
             cbCorteCarne.Name = "cbCorteCarne";
             cbCorteCarne.Size = new Size(150, 36);
             cbCorteCarne.TabIndex = 5;
@@ -296,7 +317,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(758, 47);
+            label3.Location = new Point(797, 47);
             label3.Name = "label3";
             label3.Size = new Size(59, 25);
             label3.TabIndex = 5;
@@ -310,7 +331,7 @@
             lblPrintHelp.Cursor = Cursors.Hand;
             lblPrintHelp.Font = new Font("Segoe UI", 22F, FontStyle.Regular, GraphicsUnit.Point);
             lblPrintHelp.Image = Properties.Resources.support_call_center_help_information_customer_service_icon_140644;
-            lblPrintHelp.Location = new Point(21, 750);
+            lblPrintHelp.Location = new Point(18, 751);
             lblPrintHelp.Name = "lblPrintHelp";
             lblPrintHelp.Size = new Size(37, 60);
             lblPrintHelp.TabIndex = 9;
@@ -322,7 +343,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.White;
-            label1.Location = new Point(131, 40);
+            label1.Location = new Point(101, 41);
             label1.Name = "label1";
             label1.Size = new Size(152, 32);
             label1.TabIndex = 11;
@@ -334,7 +355,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label9.ForeColor = Color.White;
-            label9.Location = new Point(961, 18);
+            label9.Location = new Point(1074, 18);
             label9.Name = "label9";
             label9.Size = new Size(128, 21);
             label9.TabIndex = 40;
@@ -346,7 +367,7 @@
             lblHoraIngreso.AutoSize = true;
             lblHoraIngreso.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             lblHoraIngreso.ForeColor = Color.White;
-            lblHoraIngreso.Location = new Point(1083, 18);
+            lblHoraIngreso.Location = new Point(1223, 18);
             lblHoraIngreso.Name = "lblHoraIngreso";
             lblHoraIngreso.Size = new Size(30, 21);
             lblHoraIngreso.TabIndex = 41;
@@ -358,7 +379,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(1133, 18);
+            label12.Location = new Point(1283, 18);
             label12.Name = "label12";
             label12.Size = new Size(30, 21);
             label12.TabIndex = 42;
@@ -373,7 +394,7 @@
             btnReponer.ForeColor = SystemColors.ButtonHighlight;
             btnReponer.Image = Properties.Resources.shoppaymentorderbuy_08_icon_icons_com_73885;
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
-            btnReponer.Location = new Point(994, 750);
+            btnReponer.Location = new Point(1164, 746);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(169, 61);
             btnReponer.TabIndex = 43;
@@ -391,7 +412,7 @@
             btnAgregar.ForeColor = SystemColors.ButtonHighlight;
             btnAgregar.Image = Properties.Resources._1486485588_add_create_new_math_sign_cross_plus_81186;
             btnAgregar.ImageAlign = ContentAlignment.MiddleRight;
-            btnAgregar.Location = new Point(807, 750);
+            btnAgregar.Location = new Point(973, 746);
             btnAgregar.Name = "btnAgregar";
             btnAgregar.Size = new Size(169, 61);
             btnAgregar.TabIndex = 44;
@@ -409,7 +430,7 @@
             btnEliminar.ForeColor = SystemColors.ButtonHighlight;
             btnEliminar.Image = Properties.Resources.delete_icon_129320;
             btnEliminar.ImageAlign = ContentAlignment.MiddleRight;
-            btnEliminar.Location = new Point(421, 749);
+            btnEliminar.Location = new Point(589, 745);
             btnEliminar.Name = "btnEliminar";
             btnEliminar.Size = new Size(169, 62);
             btnEliminar.TabIndex = 45;
@@ -427,7 +448,7 @@
             btnModificar.ForeColor = SystemColors.ButtonHighlight;
             btnModificar.Image = Properties.Resources.edit_icon_icons_com_52382;
             btnModificar.ImageAlign = ContentAlignment.MiddleRight;
-            btnModificar.Location = new Point(614, 749);
+            btnModificar.Location = new Point(781, 746);
             btnModificar.Name = "btnModificar";
             btnModificar.Size = new Size(169, 61);
             btnModificar.TabIndex = 46;
@@ -445,7 +466,7 @@
             btnRefresh.ForeColor = SystemColors.ButtonHighlight;
             btnRefresh.Image = Properties.Resources._1497619949_jd13_85182;
             btnRefresh.ImageAlign = ContentAlignment.MiddleRight;
-            btnRefresh.Location = new Point(235, 749);
+            btnRefresh.Location = new Point(399, 745);
             btnRefresh.Name = "btnRefresh";
             btnRefresh.Size = new Size(169, 62);
             btnRefresh.TabIndex = 47;
@@ -460,18 +481,37 @@
             lblReposicionTerminada.AutoSize = true;
             lblReposicionTerminada.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblReposicionTerminada.ForeColor = Color.White;
-            lblReposicionTerminada.Location = new Point(882, 421);
+            lblReposicionTerminada.Location = new Point(1074, 421);
             lblReposicionTerminada.Name = "lblReposicionTerminada";
             lblReposicionTerminada.Size = new Size(24, 32);
             lblReposicionTerminada.TabIndex = 48;
             lblReposicionTerminada.Text = "_";
+            // 
+            // btnCopiaSeguridad
+            // 
+            btnCopiaSeguridad.Anchor = AnchorStyles.Bottom;
+            btnCopiaSeguridad.Cursor = Cursors.Hand;
+            btnCopiaSeguridad.FlatStyle = FlatStyle.Popup;
+            btnCopiaSeguridad.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnCopiaSeguridad.ForeColor = SystemColors.ButtonHighlight;
+            btnCopiaSeguridad.Image = Properties.Resources._1455554314_line_15_icon_icons_com_53330;
+            btnCopiaSeguridad.ImageAlign = ContentAlignment.MiddleRight;
+            btnCopiaSeguridad.Location = new Point(205, 745);
+            btnCopiaSeguridad.Name = "btnCopiaSeguridad";
+            btnCopiaSeguridad.Size = new Size(169, 62);
+            btnCopiaSeguridad.TabIndex = 49;
+            btnCopiaSeguridad.Text = "Copia de Seguridad";
+            btnCopiaSeguridad.TextAlign = ContentAlignment.MiddleLeft;
+            btnCopiaSeguridad.UseVisualStyleBackColor = true;
+            btnCopiaSeguridad.Click += btnCopiaSeguridad_Click;
             // 
             // FrmHeladera
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.MediumPurple;
-            ClientSize = new Size(1184, 819);
+            ClientSize = new Size(1345, 819);
+            Controls.Add(btnCopiaSeguridad);
             Controls.Add(lblReposicionTerminada);
             Controls.Add(btnRefresh);
             Controls.Add(btnModificar);
@@ -536,5 +576,7 @@
         private Button btnModificar;
         private Button btnRefresh;
         private Label lblReposicionTerminada;
+        private Button btnGuardarEstadoProducto;
+        private Button btnCopiaSeguridad;
     }
 }
