@@ -33,39 +33,39 @@ namespace Entidades
         #endregion
 
         #region METODOS
-        /// <summary>
-        /// Este metodo me permite serializar un producto.
-        /// </summary>
-        /// <param name="producto"></param>
-        /// <returns></returns>
-        /// <exception cref="JSONException"></exception>
-        public static bool SerializacionJSON(Producto producto)
-        {
-            bool esValido = false;
+        ///// <summary>
+        ///// Este metodo me permite serializar un producto.
+        ///// </summary>
+        ///// <param name="producto"></param>
+        ///// <returns></returns>
+        ///// <exception cref="JSONException"></exception>
+        //public static bool SerializacionJSON(Producto producto)
+        //{
+        //    bool esValido = false;
 
-            try
-            {
-                //-->Si existe hace append con el true, y escribe en el, no elimina lo que habia
-                using (JSON.writer = new StreamWriter($"..\\Archivos\\ProductosGuardados.json", true))//-->Escribo en el archivo JSON
-                {
-                    string json = JsonSerializer.Serialize(producto);//-->Serializo carrito en formato JSON.
+        //    try
+        //    {
+        //        //-->Si existe hace append con el true, y escribe en el, no elimina lo que habia
+        //        using (JSON.writer = new StreamWriter($"..\\Archivos\\ProductosGuardados.json", true))//-->Escribo en el archivo JSON
+        //        {
+        //            string json = JsonSerializer.Serialize(producto);//-->Serializo carrito en formato JSON.
 
-                    JSON.writer.WriteLine(json);//-->Salto de linea
-                    esValido = true;
-                }
-            }
-            catch (JSONException)
-            {
-                esValido = false;
-                throw new JSONException("Ocurrio un error al intentar serializar JSON.");
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+        //            JSON.writer.WriteLine(json);//-->Salto de linea
+        //            esValido = true;
+        //        }
+        //    }
+        //    catch (JSONException)
+        //    {
+        //        esValido = false;
+        //        throw new JSONException("Ocurrio un error al intentar serializar JSON.");
+        //    }
+        //    catch (Exception)
+        //    {
+        //        throw;
+        //    }
 
-            return esValido;
-        }
+        //    return esValido;
+        //}
 
         /// <summary>
         /// Metodo que me permitirá serializar una

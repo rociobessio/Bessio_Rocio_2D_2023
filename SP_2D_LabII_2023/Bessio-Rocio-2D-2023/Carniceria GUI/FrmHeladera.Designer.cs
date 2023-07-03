@@ -34,7 +34,6 @@
             dataGridViewProductos = new DataGridView();
             lblProductos = new Label();
             groupBoxReponer = new GroupBox();
-            btnGuardarEstadoProducto = new Button();
             label11 = new Label();
             txtPrecioCompraFrigorifico = new TextBox();
             label10 = new Label();
@@ -128,7 +127,6 @@
             // groupBoxReponer
             // 
             groupBoxReponer.Anchor = AnchorStyles.None;
-            groupBoxReponer.Controls.Add(btnGuardarEstadoProducto);
             groupBoxReponer.Controls.Add(label11);
             groupBoxReponer.Controls.Add(txtPrecioCompraFrigorifico);
             groupBoxReponer.Controls.Add(label10);
@@ -153,24 +151,6 @@
             groupBoxReponer.TabIndex = 4;
             groupBoxReponer.TabStop = false;
             groupBoxReponer.Text = "Información Producto";
-            // 
-            // btnGuardarEstadoProducto
-            // 
-            btnGuardarEstadoProducto.Anchor = AnchorStyles.Bottom;
-            btnGuardarEstadoProducto.Cursor = Cursors.Hand;
-            btnGuardarEstadoProducto.FlatStyle = FlatStyle.Popup;
-            btnGuardarEstadoProducto.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnGuardarEstadoProducto.ForeColor = SystemColors.ButtonHighlight;
-            btnGuardarEstadoProducto.Image = Properties.Resources.save_file_disk_open_searsh_loading_clipboard_1513;
-            btnGuardarEstadoProducto.ImageAlign = ContentAlignment.MiddleRight;
-            btnGuardarEstadoProducto.Location = new Point(1132, 177);
-            btnGuardarEstadoProducto.Name = "btnGuardarEstadoProducto";
-            btnGuardarEstadoProducto.Size = new Size(169, 62);
-            btnGuardarEstadoProducto.TabIndex = 48;
-            btnGuardarEstadoProducto.Text = "    Guardar";
-            btnGuardarEstadoProducto.TextAlign = ContentAlignment.MiddleLeft;
-            btnGuardarEstadoProducto.UseVisualStyleBackColor = true;
-            btnGuardarEstadoProducto.Click += btnGuardarEstadoProducto_Click;
             // 
             // label11
             // 
@@ -481,7 +461,7 @@
             lblReposicionTerminada.AutoSize = true;
             lblReposicionTerminada.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
             lblReposicionTerminada.ForeColor = Color.White;
-            lblReposicionTerminada.Location = new Point(1074, 421);
+            lblReposicionTerminada.Location = new Point(1055, 421);
             lblReposicionTerminada.Name = "lblReposicionTerminada";
             lblReposicionTerminada.Size = new Size(24, 32);
             lblReposicionTerminada.TabIndex = 48;
@@ -500,7 +480,7 @@
             btnCopiaSeguridad.Name = "btnCopiaSeguridad";
             btnCopiaSeguridad.Size = new Size(169, 62);
             btnCopiaSeguridad.TabIndex = 49;
-            btnCopiaSeguridad.Text = "Copia de Seguridad";
+            btnCopiaSeguridad.Text = "Crear copia de Seguridad";
             btnCopiaSeguridad.TextAlign = ContentAlignment.MiddleLeft;
             btnCopiaSeguridad.UseVisualStyleBackColor = true;
             btnCopiaSeguridad.Click += btnCopiaSeguridad_Click;
@@ -576,7 +556,6 @@
         private Button btnModificar;
         private Button btnRefresh;
         private Label lblReposicionTerminada;
-        private Button btnGuardarEstadoProducto;
         private Button btnCopiaSeguridad;
     }
 }

@@ -476,4 +476,22 @@
       </Producto>
     </Productos>
   </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>5000</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>5000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
 </ArrayOfCarrito>

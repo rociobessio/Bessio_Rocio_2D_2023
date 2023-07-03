@@ -172,9 +172,9 @@
             btnVerXML.ImageAlign = ContentAlignment.MiddleRight;
             btnVerXML.Location = new Point(821, 504);
             btnVerXML.Name = "btnVerXML";
-            btnVerXML.Size = new Size(169, 51);
+            btnVerXML.Size = new Size(169, 60);
             btnVerXML.TabIndex = 48;
-            btnVerXML.Text = "   Ver XML";
+            btnVerXML.Text = " Ver Facturas\r\n       XML";
             btnVerXML.TextAlign = ContentAlignment.MiddleLeft;
             btnVerXML.UseVisualStyleBackColor = true;
             btnVerXML.Click += btnVerXML_Click;
@@ -188,11 +188,11 @@
             btnVerJSON.ForeColor = SystemColors.ButtonHighlight;
             btnVerJSON.Image = Properties.Resources.shoppaymentorderbuy_08_icon_icons_com_73885;
             btnVerJSON.ImageAlign = ContentAlignment.MiddleRight;
-            btnVerJSON.Location = new Point(636, 504);
+            btnVerJSON.Location = new Point(646, 504);
             btnVerJSON.Name = "btnVerJSON";
-            btnVerJSON.Size = new Size(169, 51);
+            btnVerJSON.Size = new Size(169, 60);
             btnVerJSON.TabIndex = 49;
-            btnVerJSON.Text = "   Ver JSON";
+            btnVerJSON.Text = " Ver Facturas\r\n       JSON";
             btnVerJSON.TextAlign = ContentAlignment.MiddleLeft;
             btnVerJSON.UseVisualStyleBackColor = true;
             btnVerJSON.Click += btnVerHTML_Click;
@@ -226,17 +226,16 @@
         }
 
         #endregion
-
-        private DataGridView dataGridViewCarritos;
-        private Label lblPrintHelp;
-        private Label label2;
         private Label label8;
-        private Label lblVendedorEmail;
         private PictureBox pictureBox1;
         private Label label15;
-        private Label lblHoraIngreso;
         private Label label14;
-        private Button btnVerXML;
-        private Button btnVerJSON;
+        protected DataGridView dataGridViewCarritos;
+        protected Label lblPrintHelp;
+        protected Label label2;
+        protected Button btnVerXML;
+        protected Button btnVerJSON;
+        protected Label lblVendedorEmail;
+        protected Label lblHoraIngreso;
     }
 }

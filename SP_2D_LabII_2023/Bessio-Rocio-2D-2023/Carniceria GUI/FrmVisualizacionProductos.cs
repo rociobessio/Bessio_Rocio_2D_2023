@@ -18,7 +18,7 @@ namespace Carniceria_GUI
         #region ATRIBUTOS FORM  
         DataTable _dataTable;
         DataRow auxFilaProduc;
-        private List<Carrito> historial; 
+        private List<Carrito> historial;
         #endregion
 
         #region CONSTRUCTORES
@@ -31,13 +31,15 @@ namespace Carniceria_GUI
             this.Text = "Visualización Productos (Deserialización en XML y JSON)";
             this.StartPosition = FormStartPosition.CenterScreen;
             _dataTable = new DataTable();
-            this.MaximizeBox = false; 
+            this.MaximizeBox = false;
 
             #region INSTANCIO AYUDA
             StringBuilder textoAyuda = new StringBuilder();
             textoAyuda.AppendLine("El Vendedor podrá elegir en que formato ver los carritos guardados.");
             textoAyuda.AppendLine("El Carrito ingresado como cliente esta en XML.");
             textoAyuda.AppendLine("Y el Carrito ingresado como Vendedor esta en JSON.");
+            textoAyuda.AppendLine("A su vez, para reutilizar un formulario que cumple una unica funcion, se podrá: ");
+            textoAyuda.AppendLine("ver la últma copia de seguridad (XML) y ver aquellos productos seleccionados y guardados (JSON).");
             FrmLogin.MostrarAyuda(this.lblPrintHelp, textoAyuda.ToString());
             #endregion
         }
@@ -73,7 +75,7 @@ namespace Carniceria_GUI
 
             foreach (Carrito carrito in this.historial)
             {
-                auxFilaProduc = _dataTable.NewRow(); 
+                auxFilaProduc = _dataTable.NewRow();
                 auxFilaProduc[0] = $"{carrito.UsuarioCompra}";
                 auxFilaProduc[1] = $"{carrito.FechaCompra.ToShortDateString()}";
                 if (carrito.ConTarjeta)
@@ -84,7 +86,7 @@ namespace Carniceria_GUI
                     auxFilaProduc[2] = "No";
 
                 auxFilaProduc[3] = $"${carrito.PrecioTotal:f}";
-                 
+
                 _dataTable.Rows.Add(auxFilaProduc);//-->Añado las Filas
             }
 
@@ -99,7 +101,8 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmHistorial_Load(object sender, EventArgs e)
         {
-            #region COLUMNAS  
+            #region COLUMNAS
+            this._dataTable.Clear();//-->Limpio para evitar conflictos
             this._dataTable.Columns.Add("Comprador");
             this._dataTable.Columns.Add("Fecha De Compra");
             this._dataTable.Columns.Add("Con Tarjeta");
@@ -117,13 +120,14 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void btnVerHTML_Click(object sender, EventArgs e)
         {
+
             try
             {
                 this.historial = JSON.DeserializarJSON();//-->Deserializo la lista JSON
 
                 if (historial.Count <= 0)
                 {
-                    throw new JSONException("No hay Carritos para visualizar en formato JSON."); 
+                    throw new JSONException("No hay Carritos para visualizar en formato JSON.");
                 }
                 else
                     this.CargarProductosDataGridCarritos();//-->Cargo los productos en el datagrid 

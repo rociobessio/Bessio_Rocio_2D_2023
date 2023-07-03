@@ -97,7 +97,9 @@ namespace Carniceria_GUI
         {
             frmVisualizarProductos = new FrmVisualizacionProductos(vendedorForm);
             frmVisualizarProductos.ShowDialog();
-        }
-        #endregion 
+        } 
+        #endregion
+
+
     }
 }

@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 3/7/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Carne Vacuna
+Corte: Nalga
+Categoría: Novillito
+Peso: 1kgs.
+Precio: $2100,00
+----------------------------------------
+Total: $2100,00
+

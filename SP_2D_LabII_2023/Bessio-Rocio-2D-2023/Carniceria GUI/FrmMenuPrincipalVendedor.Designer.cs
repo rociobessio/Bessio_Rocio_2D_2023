@@ -79,7 +79,7 @@
             btnReponer.ForeColor = SystemColors.ButtonHighlight;
             btnReponer.Image = Properties.Resources.Fridge_icon_icons_com_53204;
             btnReponer.ImageAlign = ContentAlignment.MiddleRight;
-            btnReponer.Location = new Point(21, 219);
+            btnReponer.Location = new Point(21, 201);
             btnReponer.Name = "btnReponer";
             btnReponer.Size = new Size(239, 61);
             btnReponer.TabIndex = 47;
@@ -96,7 +96,7 @@
             btnVender.ForeColor = Color.White;
             btnVender.Image = Properties.Resources.delivery_payment_cash_service_price_icon_187251;
             btnVender.ImageAlign = ContentAlignment.MiddleRight;
-            btnVender.Location = new Point(21, 120);
+            btnVender.Location = new Point(21, 109);
             btnVender.Name = "btnVender";
             btnVender.Size = new Size(239, 57);
             btnVender.TabIndex = 46;
@@ -114,7 +114,7 @@
             btnHistorial.ForeColor = Color.White;
             btnHistorial.Image = Properties.Resources.receipt_information_icon_1774012;
             btnHistorial.ImageAlign = ContentAlignment.MiddleRight;
-            btnHistorial.Location = new Point(21, 327);
+            btnHistorial.Location = new Point(21, 303);
             btnHistorial.Name = "btnHistorial";
             btnHistorial.Size = new Size(239, 57);
             btnHistorial.TabIndex = 48;
@@ -230,7 +230,7 @@
             btnVisualizarProductos.ForeColor = Color.White;
             btnVisualizarProductos.Image = Properties.Resources.zoom_plus_increase_view_icon_145868;
             btnVisualizarProductos.ImageAlign = ContentAlignment.MiddleRight;
-            btnVisualizarProductos.Location = new Point(21, 422);
+            btnVisualizarProductos.Location = new Point(21, 416);
             btnVisualizarProductos.Name = "btnVisualizarProductos";
             btnVisualizarProductos.Size = new Size(239, 57);
             btnVisualizarProductos.TabIndex = 53;

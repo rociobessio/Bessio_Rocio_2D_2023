@@ -546,27 +546,29 @@ namespace Carniceria_GUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnGuardarEstadoProducto_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (indexTablaProductos >= 0)
-                {
-                    if (!JSON.SerializacionJSON(carneSeleccionada))
-                        throw new JSONException("Ocurrio un problema al intentar guardar el estado del producto, reintente.");
+        //private void btnGuardarEstadoProducto_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (codigoProducto > 0)
+        //        {
+        //            if (!JSON.SerializacionJSON(carneSeleccionada))
+        //                throw new JSONException("Ocurrio un problema al intentar guardar el estado del producto, reintente.");
 
-                    MessageBox.Show("Se ha guardado el Estado del producto.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (JSONException ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Algo inesperado sucedio al intentar guardar el estado del producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //            MessageBox.Show("Se ha guardado el Estado del producto.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //        else
+        //            MessageBox.Show("No se ha seleccionado un producto para guardar, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (JSONException ex)
+        //    {
+        //        MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        MessageBox.Show("Algo inesperado sucedio al intentar guardar el estado del producto, reintente.", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
 
         /// <summary>
         /// Me permite generar una copia de seguridad de la
@@ -582,7 +584,7 @@ namespace Carniceria_GUI
                 if (!XML.SerializacionXML(listaProductos))
                     throw new XMLException("Ocurrio un problema al intentar generar su copia de seguridad, vuelva a intentarlo.");
 
-                MessageBox.Show("Se ha generado la copia de seguridad.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information); 
+                MessageBox.Show("Se ha generado la copia de seguridad.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (XMLException ex)
             {
