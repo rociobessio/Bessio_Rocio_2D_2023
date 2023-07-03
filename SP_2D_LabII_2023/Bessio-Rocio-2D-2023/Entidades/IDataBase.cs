@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 namespace Entidades
 {
     /// <summary>
-    /// Esta interfaz me permite obtener
-    /// la cadena de la conexion a la base de datos,
+    /// Esta interfaz me permite obtener 
     /// el metodo ObtenerLista() el cual trae a todos
     /// los objetos de la base y el ObtenerEspecifico
     /// que me permite traer a un especificico de la tabla.

@@ -458,4 +458,22 @@
       </Producto>
     </Productos>
   </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <PrecioTotal>4000</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>6</Codigo>
+        <Tipo>Carne_Vacuna</Tipo>
+        <Corte>Nalga</Corte>
+        <Stock>2</Stock>
+        <Categoria>Novillito</Categoria>
+        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Siga la Vaca</Proveedor>
+        <PrecioCompraCliente>4000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
 </ArrayOfCarrito>

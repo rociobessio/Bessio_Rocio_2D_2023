@@ -18,6 +18,7 @@ namespace Carniceria_GUI
         private Cliente clienteForm;
         private Tarjeta tarjetaCliente;
         private FrmCompraCliente frmCompraCliente;
+        private ClienteDAO clienteDAO;
         #endregion 
 
         #region CONSTRUCTOR FORM
@@ -36,6 +37,7 @@ namespace Carniceria_GUI
 
             clienteForm = cliente;//-->Paso al cliente que recibo
             tarjetaCliente = null;
+            clienteDAO = new ClienteDAO();
 
             #region DESHABILITO TEXTBOXES
             this.DeshabilitarDatosTarjeta();
@@ -319,6 +321,9 @@ namespace Carniceria_GUI
                         clienteForm.Tarjeta = tarjetaCliente;//-->Le asigno la tarjeta
                         clienteForm.ConTarjeta = true;
 
+                        if (!clienteDAO.UpdateDato(clienteForm))//-->Intento actualizar al cliente.
+                            throw new SQLUpdateException("Ocurrio un problema al intentar actualizar el saldo del cliente.");
+
                         frmCompraCliente = new FrmCompraCliente(clienteForm);
                         frmCompraCliente.ShowDialog();//-->Abro el form de compra
                         this.Hide();
@@ -329,6 +334,9 @@ namespace Carniceria_GUI
                         clienteForm.DineroEfectivoDisponible = double.Parse(this.txtEfectivoAGastar.Text);
                         clienteForm.ConTarjeta = false;
 
+                        if (!clienteDAO.UpdateDato(clienteForm))//-->Intento actualizar al cliente
+                            throw new SQLUpdateException("Ocurrio un problema al intentar actualizar el saldo del cliente.");
+
                         frmCompraCliente = new FrmCompraCliente(clienteForm);
                         frmCompraCliente.ShowDialog();//-->Abro el form de compra
                         this.Hide();
@@ -338,6 +346,10 @@ namespace Carniceria_GUI
             catch(TarjetaNoValidaException ex)
             {
                 MessageBox.Show(ex.Message,"ERROR",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            catch (SQLUpdateException ex)
+            {
+                MessageBox.Show(ex.Message, "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception)
             {
