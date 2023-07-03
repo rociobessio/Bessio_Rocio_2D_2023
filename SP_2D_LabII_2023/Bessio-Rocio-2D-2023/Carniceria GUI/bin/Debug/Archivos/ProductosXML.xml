@@ -2,6 +2,7 @@
 <ArrayOfCarrito xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Carrito>
     <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>1000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -20,6 +21,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -38,6 +40,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>1155</PrecioTotal>
     <ConTarjeta>true</ConTarjeta>
     <Productos>
@@ -56,6 +59,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>1700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -74,6 +78,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>5250</PrecioTotal>
     <ConTarjeta>true</ConTarjeta>
     <Productos>
@@ -92,6 +97,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>5500</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -121,6 +127,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3150</PrecioTotal>
     <ConTarjeta>true</ConTarjeta>
     <Productos>
@@ -139,6 +146,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>4500</PrecioTotal>
     <ConTarjeta>true</ConTarjeta>
     <Productos>
@@ -157,6 +165,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>4000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -175,6 +184,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -193,6 +203,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>5145</PrecioTotal>
     <ConTarjeta>true</ConTarjeta>
     <Productos>
@@ -222,6 +233,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>8400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -251,6 +263,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -269,6 +282,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -287,6 +301,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -305,6 +320,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -323,6 +339,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>2000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -341,6 +358,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>7700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -370,6 +388,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>1700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -388,6 +407,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>1200</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -406,6 +426,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>4000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -424,6 +445,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>2700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -442,6 +464,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -460,6 +483,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>4000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -478,6 +502,7 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>5000</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -491,6 +516,101 @@
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
         <Proveedor>La Granjita</Proveedor>
         <PrecioCompraCliente>5000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T18:15:29.4461132-03:00</FechaCompra>
+    <PrecioTotal>3400</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>3</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Costilla</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>3400</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T18:31:25.8015967-03:00</FechaCompra>
+    <PrecioTotal>7503</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Stock>3</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>7503</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T18:32:42.3921993-03:00</FechaCompra>
+    <PrecioTotal>7503</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Stock>3</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>7503</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T18:35:33.1047666-03:00</FechaCompra>
+    <PrecioTotal>7800</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>3</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>7800</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-03T18:36:38.4956287-03:00</FechaCompra>
+    <PrecioTotal>5200</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>8</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>5200</PrecioCompraCliente>
       </Producto>
     </Productos>
   </Carrito>

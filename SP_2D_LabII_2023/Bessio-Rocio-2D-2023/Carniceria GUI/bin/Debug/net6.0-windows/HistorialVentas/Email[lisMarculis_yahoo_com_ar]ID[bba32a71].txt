@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 3/7/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Costilla
+Categoría: No Es Bovino
+Peso: 1kgs.
+Precio: $1700,00
+----------------------------------------
+Total: $1700,00
+

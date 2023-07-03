@@ -189,11 +189,13 @@ namespace Entidades
             {
                 ActualizarDineroCliente(clienteIngresado);
                 ClienteDAO clienteDAO = new ClienteDAO();
+                clienteIngresado.CarritoCompra.FechaCompra = DateTime.Now;//-->Lo guardo con la fecha actual.
 
                 if (clienteDAO.UpdateDato(clienteIngresado))
                 {
                     clienteIngresado.CarritoCompra.UsuarioCompra = clienteIngresado.Usuario.Email;
-                    XML.SerializacionXML(clienteIngresado.CarritoCompra);
+                    if (!XML.SerializacionXML(clienteIngresado.CarritoCompra))
+                        throw new XMLException("Ocurrio un problema al intentar serializar en formato XML.");
                 }
                 else
                 {

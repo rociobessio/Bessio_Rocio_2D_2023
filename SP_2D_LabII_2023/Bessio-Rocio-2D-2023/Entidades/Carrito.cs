@@ -26,7 +26,7 @@ namespace Entidades
         /// <summary>
         /// Propiedad de lectura que me permite obtener la fecha de compra.
         /// </summary>
-        public DateTime FechaCompra { get { return this._fechaCompra; } }
+        public DateTime FechaCompra { get { return this._fechaCompra; } set { this._fechaCompra = value; } }
         /// <summary>
         /// Propiedad de lectura y escritura.
         /// </summary>
@@ -57,7 +57,7 @@ namespace Entidades
         public Carrito() 
         {
             this._conTarjeta = false;
-            this._fechaCompra = DateTime.Today;
+            //this._fechaCompra = DateTime.Today;
             this._precioTotal = 00;
             this._listaDeProductos = new List<Producto>();
             _IDCarrito = Guid.NewGuid(); 
@@ -136,6 +136,7 @@ namespace Entidades
                 auxCarne.Categoria = carne.Categoria;
                 auxCarne.Vencimiento = carne.Vencimiento; 
                 auxCarne.PrecioCompraCliente = precioCarne;//-->Setteo su precio ya calculado
+                cliente.CarritoCompra.FechaCompra = DateTime.Now;//-->Guardo esa fecha de compra.
 
                 foreach (Producto item in cliente.CarritoCompra.Productos)//-->Recorro si son coincidentes
                 {
@@ -143,6 +144,7 @@ namespace Entidades
                     {
                         item.Stock += auxCarne.Stock;//-->Si son iguales sumo la cantidad
                         item.PrecioCompraCliente += auxCarne.PrecioCompraCliente;//-->Sumo el precio
+                        break;
                     }
                 }
 

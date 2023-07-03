@@ -367,6 +367,10 @@ namespace Carniceria_GUI
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (JSONException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception)
             {
                 MessageBox.Show("Algo inesperado sucedio, vuelva a intentarlo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

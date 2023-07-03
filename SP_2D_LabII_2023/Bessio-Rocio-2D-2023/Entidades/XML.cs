@@ -98,6 +98,7 @@ namespace Entidades
                 {
                     serializer.Serialize(writer, carritos);
                 }
+                esValido = true;
             }
             catch (Exception)
             {
