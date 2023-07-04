@@ -41,63 +41,6 @@
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
     <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>1155</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>5</Codigo>
-        <Tipo>Pollo</Tipo>
-        <Corte>Pechuga</Corte>
-        <Stock>0</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-19T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>La Granjita</Proveedor>
-        <PrecioCompraCliente>1155</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>1700</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>12</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Vacio</Corte>
-        <Stock>0</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-10-16T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Chascomus LA</Proveedor>
-        <PrecioCompraCliente>1700</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>5250</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>10</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>0</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>La Granjita</Proveedor>
-        <PrecioCompraCliente>5250</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>5500</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -122,112 +65,6 @@
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
         <Proveedor>Mingo CO</Proveedor>
         <PrecioCompraCliente>3000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3150</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Pollo</Tipo>
-        <Corte>Pechuga</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-10-23T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>3150</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>4500</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Pollo</Tipo>
-        <Corte>Pechuga</Corte>
-        <Stock>3</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-10-23T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>4500</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>4000</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>6</Codigo>
-        <Tipo>Carne_Vacuna</Tipo>
-        <Corte>Nalga</Corte>
-        <Stock>2</Stock>
-        <Categoria>Novillito</Categoria>
-        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Siga la Vaca</Proveedor>
-        <PrecioCompraCliente>4000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Chascomus LA</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>clautav@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>5145</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Chascomus LA</Proveedor>
-        <PrecioCompraCliente>3570</PrecioCompraCliente>
-      </Producto>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Pollo</Tipo>
-        <Corte>Pechuga</Corte>
-        <Stock>1</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-10-23T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>1575</PrecioCompraCliente>
       </Producto>
     </Productos>
   </Carrito>
@@ -264,101 +101,6 @@
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
     <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Pechito</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Chascomus LA</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Costilla</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Lucas</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Lucas</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Lucas</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>2000</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>6</Codigo>
-        <Tipo>Carne_Vacuna</Tipo>
-        <Corte>Nalga</Corte>
-        <Stock>1</Stock>
-        <Categoria>Novillito</Categoria>
-        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Siga la Vaca</Proveedor>
-        <PrecioCompraCliente>2000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>7700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -389,82 +131,6 @@
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
     <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>1700</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>17</Codigo>
-        <Tipo>Carne_Vacuna</Tipo>
-        <Corte>Vacio</Corte>
-        <Stock>1</Stock>
-        <Categoria>Novillito</Categoria>
-        <Vencimiento>2023-10-31T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Chascomus LA</Proveedor>
-        <PrecioCompraCliente>1700</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>1200</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>1</Codigo>
-        <Tipo>Carne Vacuna</Tipo>
-        <Corte>Lomo</Corte>
-        <Stock>1</Stock>
-        <Categoria>Ternero</Categoria>
-        <Vencimiento>2025-06-29T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>1200</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>4000</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>6</Codigo>
-        <Tipo>Carne_Vacuna</Tipo>
-        <Corte>Nalga</Corte>
-        <Stock>2</Stock>
-        <Categoria>Novillito</Categoria>
-        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Siga la Vaca</Proveedor>
-        <PrecioCompraCliente>4000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>2700</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>1</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>2700</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
     <PrecioTotal>3400</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
@@ -478,101 +144,6 @@
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
         <Proveedor>Mingo CO</Proveedor>
         <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>4000</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>6</Codigo>
-        <Tipo>Carne_Vacuna</Tipo>
-        <Corte>Nalga</Corte>
-        <Stock>2</Stock>
-        <Categoria>Novillito</Categoria>
-        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Siga la Vaca</Proveedor>
-        <PrecioCompraCliente>4000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T00:00:00-03:00</FechaCompra>
-    <PrecioTotal>5000</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>10</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Solomillo</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>La Granjita</Proveedor>
-        <PrecioCompraCliente>5000</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T18:15:29.4461132-03:00</FechaCompra>
-    <PrecioTotal>3400</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>3</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Costilla</Corte>
-        <Stock>2</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>3400</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T18:31:25.8015967-03:00</FechaCompra>
-    <PrecioTotal>7503</PrecioTotal>
-    <ConTarjeta>true</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>3</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>7503</PrecioCompraCliente>
-      </Producto>
-    </Productos>
-  </Carrito>
-  <Carrito>
-    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T18:32:42.3921993-03:00</FechaCompra>
-    <PrecioTotal>7503</PrecioTotal>
-    <ConTarjeta>false</ConTarjeta>
-    <Productos>
-      <Producto>
-        <Codigo>8</Codigo>
-        <Tipo>Cerdo</Tipo>
-        <Corte>Bondiola</Corte>
-        <Stock>3</Stock>
-        <Categoria>No Es Bovino</Categoria>
-        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
-        <PrecioVentaProveedor>0</PrecioVentaProveedor>
-        <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>7503</PrecioCompraCliente>
       </Producto>
     </Productos>
   </Carrito>
@@ -597,20 +168,99 @@
   </Carrito>
   <Carrito>
     <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
-    <FechaCompra>2023-07-03T18:36:38.4956287-03:00</FechaCompra>
-    <PrecioTotal>5200</PrecioTotal>
+    <FechaCompra>2023-07-04T20:03:22.5441616-03:00</FechaCompra>
+    <PrecioTotal>5700</PrecioTotal>
     <ConTarjeta>false</ConTarjeta>
     <Productos>
       <Producto>
-        <Codigo>8</Codigo>
+        <Codigo>32</Codigo>
+        <Tipo>Pollo</Tipo>
+        <Corte>Suprema</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2023-11-10T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Chascomus LA</Proveedor>
+        <PrecioCompraCliente>3400</PrecioCompraCliente>
+      </Producto>
+      <Producto>
+        <Codigo>29</Codigo>
         <Tipo>Cerdo</Tipo>
         <Corte>Solomillo</Corte>
-        <Stock>2</Stock>
+        <Stock>1</Stock>
         <Categoria>No Es Bovino</Categoria>
         <Vencimiento>2025-06-12T00:00:00</Vencimiento>
         <PrecioVentaProveedor>0</PrecioVentaProveedor>
         <Proveedor>Mingo CO</Proveedor>
-        <PrecioCompraCliente>5200</PrecioCompraCliente>
+        <PrecioCompraCliente>2300</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>rocibessio@gmail.com</UsuarioCompra>
+    <FechaCompra>2023-07-04T20:05:01.1965136-03:00</FechaCompra>
+    <PrecioTotal>9100</PrecioTotal>
+    <ConTarjeta>false</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>3</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Bondiola</Corte>
+        <Stock>3</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-06-12T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Mingo CO</Proveedor>
+        <PrecioCompraCliente>5100</PrecioCompraCliente>
+      </Producto>
+      <Producto>
+        <Codigo>6</Codigo>
+        <Tipo>Carne_Vacuna</Tipo>
+        <Corte>Nalga</Corte>
+        <Stock>2</Stock>
+        <Categoria>Novillito</Categoria>
+        <Vencimiento>2025-08-08T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>Siga la Vaca</Proveedor>
+        <PrecioCompraCliente>4000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>lisMarculis@yahoo.com.ar</UsuarioCompra>
+    <FechaCompra>2023-07-04T20:13:41.3422314-03:00</FechaCompra>
+    <PrecioTotal>5000</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>2</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>5000</PrecioCompraCliente>
+      </Producto>
+    </Productos>
+  </Carrito>
+  <Carrito>
+    <UsuarioCompra>lisMarculis@yahoo.com.ar</UsuarioCompra>
+    <FechaCompra>2023-07-04T20:13:49.9842548-03:00</FechaCompra>
+    <PrecioTotal>2500</PrecioTotal>
+    <ConTarjeta>true</ConTarjeta>
+    <Productos>
+      <Producto>
+        <Codigo>10</Codigo>
+        <Tipo>Cerdo</Tipo>
+        <Corte>Solomillo</Corte>
+        <Stock>1</Stock>
+        <Categoria>No Es Bovino</Categoria>
+        <Vencimiento>2025-08-21T00:00:00</Vencimiento>
+        <PrecioVentaProveedor>0</PrecioVentaProveedor>
+        <Proveedor>La Granjita</Proveedor>
+        <PrecioCompraCliente>2500</PrecioCompraCliente>
       </Producto>
     </Productos>
   </Carrito>

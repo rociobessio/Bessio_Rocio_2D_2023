@@ -1,0 +1,17 @@
+FECHA DE COMPRA: 4/7/2023
+Con tarjeta: NO.
+-------------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Bondiola
+Categoría: No Es Bovino
+Peso: 3kgs.
+Precio: $5100,00
+-------------PRODUCTO-------------
+Tipo: Carne Vacuna
+Corte: Nalga
+Categoría: Novillito
+Peso: 2kgs.
+Precio: $4000,00
+----------------------------------------
+Total: $9100,00
+

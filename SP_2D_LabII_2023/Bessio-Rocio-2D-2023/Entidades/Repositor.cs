@@ -109,7 +109,7 @@ namespace Entidades
                 this.reposicionEnProgreso = true;//-->Cambio a true
                 EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi evento para avisar q termine de reponer
             } 
-            catch (Exception e)
+            catch (Exception)
             {
                 this.reposicionEnProgreso = false;
                 throw new Exception("Sucedio algo inesperado al intentar reponer.");

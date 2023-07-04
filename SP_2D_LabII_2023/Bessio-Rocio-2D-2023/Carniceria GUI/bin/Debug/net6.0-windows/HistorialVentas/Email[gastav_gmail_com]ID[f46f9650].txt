@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 4/7/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Bondiola
+Categoría: No Es Bovino
+Peso: 3kgs.
+Precio: $5355,00
+----------------------------------------
+Total: $5355,00
+
