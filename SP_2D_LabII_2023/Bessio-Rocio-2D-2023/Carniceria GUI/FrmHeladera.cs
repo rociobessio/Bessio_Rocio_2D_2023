@@ -162,7 +162,7 @@ namespace Carniceria_GUI
         /// <param name="e"></param>
         private void FrmHeladera_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!this.repositor.ReposicionEnProgreso)
+            if (!this.repositor.ReposicionTerminada)
             {
                 MessageBox.Show("Espere a que se complete la reposición antes de cerrar el programa.",
                     "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

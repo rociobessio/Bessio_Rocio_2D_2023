@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 5/7/2023
+Con tarjeta: NO.
+-------------PRODUCTO-------------
+Tipo: Cerdo
+Corte: Solomillo
+Categoría: No Es Bovino
+Peso: 2kgs.
+Precio: $5000,00
+----------------------------------------
+Total: $5000,00
+

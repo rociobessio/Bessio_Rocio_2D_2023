@@ -1,0 +1,11 @@
+FECHA DE COMPRA: 5/7/2023
+Con tarjeta: SI.
+-------------PRODUCTO-------------
+Tipo: Pollo
+Corte: Suprema
+Categoría: No Es Bovino
+Peso: 1kgs.
+Precio: $1200,00
+----------------------------------------
+Total: $1200,00
+

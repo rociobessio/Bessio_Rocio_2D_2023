@@ -29,7 +29,7 @@ namespace Entidades
         /// me servirá para saber si finalizo la reposicion.
         /// </summary>
         public event DelegadoReposicionFinalizada EventoReposicionFinalizada;
-        private bool reposicionEnProgreso; 
+        private bool reposicionTerminada; 
 
         /// <summary>
         /// SemaphoreSlim me permite settear un maximo
@@ -47,7 +47,7 @@ namespace Entidades
         /// Propiedad que me permite saber si la reposicion
         /// esta en progreso.
         /// </summary>
-        public bool ReposicionEnProgreso { get { return this.reposicionEnProgreso; } }
+        public bool ReposicionTerminada { get { return this.reposicionTerminada; } }
         #endregion
 
         #region CONSTRUCTOR
@@ -60,7 +60,7 @@ namespace Entidades
             this._productoDAO = new ProductoDAO();  
             this._semaphoreSlim = new SemaphoreSlim(8);//-->Maximo de hilos que podre usar
             this._reposicionTasks = new List<Task>(); 
-            this.reposicionEnProgreso = true;
+            this.reposicionTerminada = true;
         }
         #endregion
 
@@ -81,7 +81,7 @@ namespace Entidades
         /// <param name="productos"></param>
         public void Reponiendo(List<Producto> productos)
         {
-            this.reposicionEnProgreso = false;
+            this.reposicionTerminada = false;
             try
             {
                 foreach (Producto producto in productos)//-->recorro la lista de productos.
@@ -106,12 +106,12 @@ namespace Entidades
                     } 
                 } 
                 Task.WaitAll(this._reposicionTasks.ToArray());//-->Espero a que todas las tareas finalicen antes de seguir
-                this.reposicionEnProgreso = true;//-->Cambio a true
+                this.reposicionTerminada = true;//-->Cambio a true
                 EventoReposicionFinalizada?.Invoke();//-->Finalice, invoco a mi evento para avisar q termine de reponer
             } 
             catch (Exception)
             {
-                this.reposicionEnProgreso = false;
+                this.reposicionTerminada = false;
                 throw new Exception("Sucedio algo inesperado al intentar reponer.");
             } 
         } 
