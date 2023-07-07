@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "dgSpecHash": "hlklMgVOvixY9c1e/kd4K4ScnEPUZ1krce6GvpWbQ19dzuXpQjbCVH14ZvBBG2JQS3ROGKdBnEFj3Hqfzjafew==",
+  "success": false,
+  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Proyectos con C#\\Repositorio\\MAQUINA_EXPENDEDORA_SIMPSONS\\GUI MAQUINA EXPENDEDORA\\EJERCICIO C03 UNIDAD 06.csproj",
+  "expectedPackageFiles": [],
+  "logs": [
+    {
+      "code": "NU1104",
+      "level": "Error",
+      "message": "Unable to find project 'C:\\Users\\Rocio\\Desktop\\Proyectos con C#\\Repositorio\\MAQUINA_EXPENDEDORA_SIMPSONS\\UNIDAD 06 ENTIDADES\\UNIDAD 06 ENTIDADES.csproj'. Check that the project reference is valid and that the project file exists.",
+      "libraryId": "C:\\Users\\Rocio\\Desktop\\Proyectos con C#\\Repositorio\\MAQUINA_EXPENDEDORA_SIMPSONS\\UNIDAD 06 ENTIDADES\\UNIDAD 06 ENTIDADES.csproj",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
+}

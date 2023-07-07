@@ -1,0 +1,36 @@
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.deps.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\ref\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\ref\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\ref\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.deps.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\ref\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.deps.json
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\bin\Debug\net5.0\Entidades.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfoInputs.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.AssemblyInfo.cs
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\ref\Entidades.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\Entidades.csproj.AssemblyReference.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\Entidades\obj\Debug\net5.0\refint\Entidades.dll

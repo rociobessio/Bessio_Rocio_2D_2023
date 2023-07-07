@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Entidades.Crucero">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQgIAAEAAAAACkgCBAgADACJAAAIAACAAAIAgpAiA=</HashCode>
+      <FileName>Crucero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Viaje">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYhaEAABQABAYEAGwBAAAAAAgIgAAICBiAAAJiGAgiI=</HashCode>
+      <FileName>Viaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Pasajero">
+    <Position X="4.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAEgAAAAAAAAAAAAoAAAIMAAACBAiA=</HashCode>
+      <FileName>Pasajero.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Pasaporte">
+    <Position X="6.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAABAQQAAACEAAAAgDJCAQAiAAAAAAAEABAIBAA=</HashCode>
+      <FileName>Pasaporte.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Compañia">
+    <Position X="8.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAABAAAAgAAAAAQQAAAgAAAAAAACABAAAAAAAMAAAA=</HashCode>
+      <FileName>Compañia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Vendedor">
+    <Position X="10" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAAAAAAAAAIACAQAAAgEAAiA=</HashCode>
+      <FileName>Vendedor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Entidades.Equipaje">
+    <Position X="4.5" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAAAAAAAAAAAAAAAIAAAgAAAAIAAAAAAIAAAAA=</HashCode>
+      <FileName>Equipaje.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Clase" Collapsed="true">
+    <Position X="8.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>EClases.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Genero" Collapsed="true">
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>EGenero.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DestinoRegional" Collapsed="true">
+    <Position X="10" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAEEAKEIAAAIAAAAAAAAEAIAAAA=</HashCode>
+      <FileName>EDestinoRegional.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="EDestinoExtraRegional" Collapsed="true">
+    <Position X="10" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAICAAAAAAgAAAEAAAACEEAAAAAAAAAAAA=</HashCode>
+      <FileName>EDestinoExtraRegional.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Tipo" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAACAAAAAAIAAgAAAAA=</HashCode>
+      <FileName>ETipoPasaporte.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Nacionalidades" Collapsed="true">
+    <Position X="8.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>61U7b4OeBnKuBPq+zc+eHC/SVA5Ut/h+vZ+tTGTeyGc=</HashCode>
+      <FileName>ENacionalidades.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

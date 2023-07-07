@@ -1,0 +1,115 @@
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.AssemblyReference.cache
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmLogin.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMenuPrincipal.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.Properties.Resources.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.GenerateResource.cache
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfoInputs.cache
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfo.cs
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.exe
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.deps.json
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.json
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.dev.json
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CopyComplete
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.genruntimeconfig.cache
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmVentaPasaje.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarInformacion.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmViajesDisponibles.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmAgrega.resources
+C:\Users\WIN10\source\repos\Bessio.Rocio.TP.Parcial.Crude\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarPasajeros.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.exe
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.deps.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.dev.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmAgrega.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmLogin.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMenuPrincipal.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarInformacion.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarPasajeros.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmVentaPasaje.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmViajesDisponibles.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.Properties.Resources.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.GenerateResource.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CopyComplete
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.genruntimeconfig.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.exe
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.deps.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.dev.json
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.AssemblyReference.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmAgrega.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmLogin.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMenuPrincipal.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarInformacion.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMostrarPasajeros.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmVentaPasaje.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmViajesDisponibles.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.Properties.Resources.resources
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.GenerateResource.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfoInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfo.cs
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CoreCompileInputs.cache
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CopyComplete
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\WIN10\Desktop\FACULTAD ROCIO\SEGUNDO CUATRIMESTRE 2022\LABORATORIO PARCIALES\PRIMER PARCIAL II\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.genruntimeconfig.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.exe
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.deps.json
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.json
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.runtimeconfig.dev.json
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\bin\Debug\net5.0-windows\Entidades.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.AssemblyReference.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmLogin.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.Properties.Resources.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.GenerateResource.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfoInputs.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.AssemblyInfo.cs
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CoreCompileInputs.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.csproj.CopyComplete
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\ref\AplicacionForms.dll
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.pdb
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.genruntimeconfig.cache
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmMenu.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmCrearViaje.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmVentaCrucero.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmInformacionViajes.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmContendorEstadisticas.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmEstadisticasPasajeros.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmPadreEstadisticas.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmEstadisticasCruceros.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\AplicacionForms.FrmEstadisticasDestinos.resources
+C:\Users\Rocio\Desktop\C#\Primer Parcial\Bessio.Rocio.Lab.RPP.2A\Bessio.Rocio.PP.2A\AplicacionForms\obj\Debug\net5.0-windows\refint\AplicacionForms.dll
