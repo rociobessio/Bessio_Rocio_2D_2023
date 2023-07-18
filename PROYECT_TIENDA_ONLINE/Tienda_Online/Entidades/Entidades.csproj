@@ -46,6 +46,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="DetalleVenta.cs" />
     <Compile Include="Direccion.cs" />
+    <Compile Include="IBaseDeDatos.cs" />
     <Compile Include="Localidad.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Producto.cs" />

@@ -138,3 +138,11 @@ C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLIN
 C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\obj\Debug\Presentacion_Admin.csproj.CopyComplete
 C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\obj\Debug\Presentacion_Admin.dll
 C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\obj\Debug\Presentacion_Admin.pdb
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\Entidades.dll
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\Negocio.dll
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\CapaDatos.dll
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\Entidades.pdb
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\Negocio.pdb
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\Negocio.dll.config
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\CapaDatos.pdb
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Presentacion_Admin\bin\CapaDatos.dll.config

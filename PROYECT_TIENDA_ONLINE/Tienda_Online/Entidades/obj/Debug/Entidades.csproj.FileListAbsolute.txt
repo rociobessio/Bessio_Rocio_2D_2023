@@ -1,0 +1,6 @@
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\bin\Debug\Entidades.dll
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\bin\Debug\Entidades.pdb
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\obj\Debug\Entidades.csproj.AssemblyReference.cache
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\obj\Debug\Entidades.csproj.CoreCompileInputs.cache
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\obj\Debug\Entidades.dll
+C:\Users\Rocio\Desktop\Proyectos Propios con C#\Repositorio\PROYECT_TIENDA_ONLINE\Tienda_Online\Entidades\obj\Debug\Entidades.pdb
