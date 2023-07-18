@@ -36,6 +36,7 @@ namespace Presentacion_Admin.Controllers
             return View();
         }
 
+        [HttpGet]//-->Evito errores,son url que devuelve datos al ejecutarlo.
         /// <summary>
         /// Si luego pongo en Chrome: https://localhost:44320/Home/ListarUsuarios viene
         /// a este metodo si pongo un punto de quiebre.
@@ -44,7 +45,7 @@ namespace Presentacion_Admin.Controllers
         public JsonResult ListarUsuarios()
         {
             List<Usuario> listaUsuarios = new CN_Usuarios().Listar();//-->Instancio CN_Usuarios y llamo al metodo
-            return Json(listaUsuarios,JsonRequestBehavior.AllowGet);
+            return Json(new { data = listaUsuarios },JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

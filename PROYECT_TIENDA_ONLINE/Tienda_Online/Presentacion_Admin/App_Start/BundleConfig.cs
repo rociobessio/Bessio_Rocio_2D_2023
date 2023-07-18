@@ -13,7 +13,10 @@ namespace Presentacion_Admin
 
             bundles.Add(new Bundle("~/bundles/complementos").Include(//-->Agrego los complementos
                         "~/Scripts/scripts.js",
-                        "~/Scripts/fontawesome/all.min.js"));//-->fontawesome me permite agregar que pueda ver los iconos, paquete nuget installado
+                        "~/Scripts/fontawesome/all.min.js",
+                        "~/Scripts/DataTables/jquery.dataTables.js",
+                        "~/Scripts/DataTables/dataTables.responsive.js"
+                        ));//-->fontawesome me permite agregar que pueda ver los iconos, paquete nuget installado
 
 
             //-->No los utilizo lo elimino
@@ -29,7 +32,10 @@ namespace Presentacion_Admin
                       "~/Scripts/bootstrap.bundle.js"));//-->Agregue bootstrap.bundle.js
 
             bundles.Add(new StyleBundle("~/Content/css").Include( 
-                      "~/Content/site.css"));//-->Elimine "~/Content/bootstrap.css"
+                      "~/Content/site.css",
+                      "~/Content/DataTables/css/jquery.dataTables.css",
+                      "~/Content/DataTables/css/responsive.dataTables.css"
+                      ));//-->Elimine "~/Content/bootstrap.css"
         }
     }
 }

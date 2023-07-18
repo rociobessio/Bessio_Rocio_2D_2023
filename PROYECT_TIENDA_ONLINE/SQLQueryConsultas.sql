@@ -4,7 +4,18 @@ USE db_Carrito/*--->Selecciono la DB_Carrito*/
 GO
 /*AÑADO UN USUARIO DE PRUEBA*/
 INSERT INTO USUARIOS(Nombres,Apellidos,Correo,Clave)/*Activo y reestablecer son por default al momento de este INSERT*/
-VALUES ('Gaston','Ramiréz','gastrami@gmail.com','5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');/*Clave es encriptada y que no sea visualizada por un programador*/
+/*Clave es encriptada y que no sea visualizada por un programador, la d este usuario es 123456 o 12345 o 123*/
+VALUES ('Gaston','Ramiréz','gastrami@gmail.com','5994471abb01112afcc18159f6cc74b4f511b99806da59b3caf5a9c173cacfc5');
+SELECT * FROM USUARIOS
+
+INSERT INTO USUARIOS(Nombres,Apellidos,Correo,Clave)/*Activo y reestablecer son por default al momento de este INSERT*/
+/*Clave es encriptada y que no sea visualizada por un programador, la de este usuario es 456*/
+VALUES ('Federico Valentín','Estevanez','fedvalest@yahoo.com.ar','b3a8e0e1f9ab1bfe3a36f231f676f78bb30a519d2b21e6c530c0eee8ebb4a5d0');
+SELECT * FROM USUARIOS
+
+INSERT INTO USUARIOS(Nombres,Apellidos,Correo,Clave)/*Activo y reestablecer son por default al momento de este INSERT*/
+/*Clave es encriptada y que no sea visualizada por un programador, la de este usuario es 678*/
+VALUES ('Carla','Bolgne','carbol@gmail.com','cebe3d9d614ba5c19f633566104315854a11353a333bf96f16b5afa0e90abdc4');
 SELECT * FROM USUARIOS
 
 /*AÑADO ALGUNAS CATEGORIAS*/

@@ -10,22 +10,24 @@ using Entidades;
 namespace CapaDatos
 {
     public class UsuariosDAO : AccesoABaseDatos//, IBaseDeDatos<Usuario>
-    {
+    { 
+        #region METODOS
         /// <summary>
         /// Me permite obtener la lista de usuarios de la base de datos.
         /// </summary>
-        /// <returns></returns>
+        /// <returns></returns>  
         public List<Usuario> ObtenerLista()
         {
             List<Usuario> listaUsuarios = new List<Usuario>();
             try
             {
-                using (base._conexion = new SqlConnection(AccesoABaseDatos.CadenaDeConexion))
-                { 
+                using (base._conexion = new SqlConnection())
+                {
+                    base._conexion.ConnectionString = AccesoABaseDatos.CadenaDeConexion;
                     string query = "SELECT * FROM Usuarios";//-->Traigo a todos de la base.
-                    base._comando = new SqlCommand(query,base._conexion);//-->Le paso la query y la conexion
+                    base._comando = new SqlCommand(query, base._conexion);//-->Le paso la query y la conexion
                     base._comando.CommandType = System.Data.CommandType.Text;
-                    
+
                     base._conexion.Open();//-->Abro conexion.
 
                     using (base._lector = base._comando.ExecuteReader())
@@ -46,7 +48,9 @@ namespace CapaDatos
                             );
                         }
                     }
-                }  
+
+                    base._conexion.Close();//-->Cierro conexion.
+                }
             }
             catch
             {
@@ -61,5 +65,6 @@ namespace CapaDatos
             }
             return listaUsuarios;
         }
+        #endregion
     }
 }

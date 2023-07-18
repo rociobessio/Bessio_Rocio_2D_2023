@@ -19,10 +19,6 @@ namespace CapaDatos
 
         #region PROPIEDAD
         public static string CadenaDeConexion { get { return AccesoABaseDatos._cadenaDeConexion; } set { AccesoABaseDatos._cadenaDeConexion = value; } }
-        /// <summary>
-        /// Obtengo la cadena d conexion
-        /// </summary>
-       // public static string cadenaDeConexion = ConfigurationManager.ConnectionStrings["cadenaConexion"].ToString();
         #endregion
 
         #region CONSTRUCTOR
@@ -43,8 +39,8 @@ namespace CapaDatos
         /// </summary>
         public AccesoABaseDatos()
         {
-            this._conexion = new SqlConnection(AccesoABaseDatos._cadenaDeConexion);
-        }
+            _conexion = new SqlConnection(_cadenaDeConexion);
+        } 
 
         /// <summary>
         /// Constructor parametrizado que me servirá para 

@@ -17,14 +17,7 @@ namespace Negocio
         #region ATRIBUTOS
         private static UsuariosDAO usuariosDAO;
         public List<Usuario> listaUsuarios;
-        #endregion
-
-        #region CONSTRUCTOR
-        static CN_Usuarios()
-        {
-            usuariosDAO = new UsuariosDAO();
-        }
-        #endregion
+        #endregion 
 
         #region METODOS
         /// <summary>
@@ -34,6 +27,7 @@ namespace Negocio
         /// <returns></returns>
         public List<Usuario> Listar()
         {
+            usuariosDAO = new UsuariosDAO();
             return usuariosDAO.ObtenerLista();
         }
         #endregion
