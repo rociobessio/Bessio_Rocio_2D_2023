@@ -15,7 +15,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success">Crear Nuevo</button>
+                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear Nuevo</button>
             </div>
         </div>
         <hr />
@@ -30,25 +30,55 @@
                     <th></th>
                 </tr>
             </thead>
-            <tbody> 
+            <tbody>
             </tbody>
-        </table> 
+        </table>
+    </div>
+</div>
+
+<!-- Modal para abrir otro formulario al presionar 'Crear Usuario' -->
+<div class="modal fade" id="FormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title" id="staticBackdropLabel">Usuario</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body g-2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label for="exampleFormControlInput1" class="form-label">Nombres</label>
+                        <input type="text" class="form-control" id="txtNombres" placeholder="José Ricardo">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
+                        <input type="text" class="form-control" id="txtApellidos" placeholder="Maldonado">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
+                        <input type="email" class="form-control" id="txtCorreElectronico" placeholder="nombre@ejemplo.com">
+                    </div>
+                    <div class="col-sm-6">
+                        <label for="exampleFormControlInput1" class="form-label">Activo</label>
+                        <select id ="cbActivo" class="form-select">
+                            <option selected>Seleccione una opción</option>
+                            <option value="1">Si</option>
+                            <option value="0">No</option> 
+                        </select>
+                    </div> 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
     </div>
 </div>
 
 @section scripts{
     <script>
-        var tablaData;
-
-        jQuery.ajax({
-            url: '@Url.Action("ListarUsuarios","Home")',
-            type: "GET",
-            dataType: "json",
-            contentType: "application/json; charset=utf-8",
-            success: function (data) {
-                console.log(data)
-            }
-        })
+        var tablaData; 
 
         tablaData = $("#tabla").DataTable({
 
@@ -73,16 +103,33 @@
                     }
                 },
                 {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm"><i class=" fas fa-pen me-1"> </i></button>' + 
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class=" fas fa-pen me-1"> </i></button>' +
                         '<button type="button" class="btn btn-danger btn-sm ms-3"><i class=" fas fa-trash me-1"> </i></button>',
                     "orderable": false,
                     "searchtable": false,
                     "width": "70px"
                 }
-            ]
+            ],//-->Cambiar idioma d datatable a español:
+            "language": {
+                "url":"https://cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
+            }
 
         });//-->llamo a la tabla id hago referencia
+
+        //Metodo para abrir formulario nuevo
+        function abrirModal(){
+            $("#FormModal").modal("show");//--> #FormModal referencio al modal
+        };
+
+        $("#tabla tbody").on("click", '.btn-editar', function () {//-->Cuerpo de funcion que al presionar el btn de editar ahce algo
+
+            var filaSeleccionada = $(this).closest("tr");//-->Fila seleccionada
+
+            tablaData.row(filaSeleccionada).data();//-->Selecciono los datos d la fila elegida en la dataTable
+
+            alert("hola");
+        });
     </script>
-    
-    } 
+
+}
 
