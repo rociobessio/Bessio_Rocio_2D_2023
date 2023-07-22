@@ -15,7 +15,7 @@ namespace Entidades
         /// </summary>
         /// <param name="clase"></param>
         /// <returns></returns>
-        bool UpdateDato(T clase);
+        bool UpdateDato(T clase, out string mss);
 
         /// <summary>
         /// Este metodo lo implementare en aquellas
@@ -25,7 +25,7 @@ namespace Entidades
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        bool DeleteDato(int id);
+        bool DeleteDato(int id, out string mss);
 
         /// <summary>
         /// Metodo que me permitira devolveer una lista del
@@ -35,11 +35,22 @@ namespace Entidades
         List<T> ObtenerLista();
 
         /// <summary>
+        /// Me permitirá registrar un objeto
+        /// en la base que será del tipo T (una clase).
+        /// Tendrá un mensaje de salida en caso de
+        /// excepcion.
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="mss"></param>
+        /// <returns></returns>
+        int RegistrarDato(T usuario, out string mss);
+
+        /// <summary>
         /// Metodo que me permitira retornar un objeto
         /// de la base.
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        T ObtenerEspecifico(int id);
+      //  T ObtenerEspecifico(int id);
     }
 }

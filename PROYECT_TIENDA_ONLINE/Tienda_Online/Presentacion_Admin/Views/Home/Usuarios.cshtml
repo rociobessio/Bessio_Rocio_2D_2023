@@ -15,7 +15,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModal()">Crear Nuevo</button>
+                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Crear Nuevo</button>
             </div>
         </div>
         <hr />
@@ -37,7 +37,7 @@
 </div>
 
 <!-- Modal para abrir otro formulario al presionar 'Crear Usuario' -->
-<div class="modal fade" id="FormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="FormModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
@@ -45,23 +45,23 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body g-2">
+                <input id="txtID" type="text" value="0"/>
                 <div class="row">
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="txtNombres" placeholder="José Ricardo">
+                        <input type="text" class="form-control" id="txtNombres" placeholder="Ej: José Ricardo">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="txtApellidos" placeholder="Maldonado">
+                        <input type="text" class="form-control" id="txtApellidos" placeholder="Ej: Maldonado">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="txtCorreElectronico" placeholder="nombre@ejemplo.com">
+                        <input type="email" class="form-control" id="txtCorreElectronico" placeholder="Ej: nombre@ejemplo.com">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Activo</label>
-                        <select id ="cbActivo" class="form-select">
-                            <option selected>Seleccione una opción</option>
+                        <select id ="cbActivo" class="form-select"> 
                             <option value="1">Si</option>
                             <option value="0">No</option> 
                         </select>
@@ -70,7 +70,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
@@ -79,6 +79,7 @@
 @section scripts{
     <script>
         var tablaData; 
+        var filaSeleccionada;
 
         tablaData = $("#tabla").DataTable({
 
@@ -104,10 +105,10 @@
                 },
                 {
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class=" fas fa-pen me-1"> </i></button>' +
-                        '<button type="button" class="btn btn-danger btn-sm ms-3"><i class=" fas fa-trash me-1"> </i></button>',
+                        '<button type="button" class="btn btn-danger btn-sm ms-2"><i class=" fas fa-trash me-1"> </i></button>',
                     "orderable": false,
                     "searchtable": false,
-                    "width": "70px"
+                    "width": "90px"
                 }
             ],//-->Cambiar idioma d datatable a español:
             "language": {
@@ -116,19 +117,56 @@
 
         });//-->llamo a la tabla id hago referencia
 
-        //Metodo para abrir formulario nuevo
-        function abrirModal(){
+        //Metodo para abrir formulario nuevo, recibe un OBJETO LLAMADO JSON
+        function abrirModal(json) {
+
+            $("#txtID").val(0);
+            $("#txtNombres").val("");
+            $("#txtApellidos").val("");
+            $("#txtCorreElectronico").val("");
+            $("#cbActivo").val(1);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
+
+            if (json != null) {
+                $("#txtID").val(json.IDUsuario);
+                $("#txtNombres").val(json.Nombres);
+                $("#txtApellidos").val(json.Apellidos);
+                $("#txtCorreElectronico").val(json.Correo);
+                $("#cbActivo").val(json.Activo == true ? 1 : 0);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
+            } 
+
             $("#FormModal").modal("show");//--> #FormModal referencio al modal
         };
 
         $("#tabla tbody").on("click", '.btn-editar', function () {//-->Cuerpo de funcion que al presionar el btn de editar ahce algo
 
-            var filaSeleccionada = $(this).closest("tr");//-->Fila seleccionada
+            filaSeleccionada = $(this).closest("tr");//-->Fila seleccionada
 
-            tablaData.row(filaSeleccionada).data();//-->Selecciono los datos d la fila elegida en la dataTable
+            var data = tablaData.row(filaSeleccionada).data();//-->Selecciono los datos d la fila elegida en la dataTable
 
-            alert("hola");
+            console.log(data);
+
+            abrirModal(data);//-->Vuelvo a abrir el modal pasandole la fila SELECCIONADA
         });
+
+        //-->Guardara el usuario nuevo o editado
+        function Guardar() {
+            var usuario = {//-->Creo un nuevo Usuario
+                IDUsuario: $("#txtID").val(),
+                Activo: $("#cbActivo").val() == 1 ? true : false,//-->Si es uno q retorne true sino retorna false
+                Apellidos: $("#txtApellidos").val(), 
+                Correo: $("#txtCorreElectronico").val(), 
+                Nombres: $("#txtNombres").val() 
+            }
+
+            if (usuario.IDUsuario == 0) {//-->Si ID es 0 entonces estoy creando uno nuevo
+                tablaData.row.add(usuario).draw(false);//-->Agrego una nueva fila de usuarios
+            }
+            else {
+                tablaData.row(filaSeleccionada).data(usuario).draw(false);//-->Acutalizaoel usuario de la fila seleccionada
+            }
+
+            $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
+        }
     </script>
 
 }
