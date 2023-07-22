@@ -15,7 +15,9 @@ namespace Presentacion_Admin
                         "~/Scripts/scripts.js",
                         "~/Scripts/fontawesome/all.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
-                        "~/Scripts/DataTables/dataTables.responsive.js"
+                        "~/Scripts/DataTables/dataTables.responsive.js",
+                        "~/Scripts/loadingoverlay/loadingoverlay.min.js",
+                        "~/Scripts/sweetalert.min.js"
                         ));//-->fontawesome me permite agregar que pueda ver los iconos, paquete nuget installado
 
 
@@ -34,7 +36,8 @@ namespace Presentacion_Admin
             bundles.Add(new StyleBundle("~/Content/css").Include( 
                       "~/Content/site.css",
                       "~/Content/DataTables/css/jquery.dataTables.css",
-                      "~/Content/DataTables/css/responsive.dataTables.css"
+                      "~/Content/DataTables/css/responsive.dataTables.css",
+                      "~/Content/sweetalert.css"
                       ));//-->Elimine "~/Content/bootstrap.css"
         }
     }

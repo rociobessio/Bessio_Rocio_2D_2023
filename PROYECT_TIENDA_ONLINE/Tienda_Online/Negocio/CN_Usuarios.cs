@@ -50,10 +50,25 @@ namespace Negocio
 
             if (string.IsNullOrEmpty(mss))
             {
-                string clave = "test123";//-->Clave a encriptar
-                usuario.Clave = CN_Recursos.EncriptarClavesSha256(clave);//-->Recibe la clave encriptada
+                string clave = CN_Recursos.GenerarClaveAutomatica();//-->Devuelve una clave 
 
-                return usuariosDAO.RegistrarDato(usuario, out mss);
+                string asunto = "Registro de cuenta";
+                //-->Formato HTML del mensaje
+                string mensajeCorreo = $"<h3>Su cuenta fue creada correctamente</h3></br>Su contraseña para acceder es: {clave}</p>";
+
+                bool pudoEnviarCorreo = CN_Recursos.EnviarCorreo(usuario.Correo,asunto,mensajeCorreo);
+
+                if (pudoEnviarCorreo)
+                {
+                    usuario.Clave = CN_Recursos.EncriptarClavesSha256(clave);//-->Recibe la clave y la devuelve encriptada
+                    return usuariosDAO.RegistrarDato(usuario, out mss); 
+                }
+                else
+                {
+                    mss = "No se ha podido enviar el correo.";
+                    return 0;
+                }
+
             }
             else
                 return 0; 

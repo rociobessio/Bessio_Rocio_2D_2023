@@ -60,12 +60,27 @@ namespace Presentacion_Admin.Controllers
             object resultado;
             string mensaje = string.Empty;
 
-            if (usuario.IDUsuario == 0)//-->Significa que es un nuevo usuario
+            if (usuario.IDUsuario == 0)//-->Significa que es un nuevo usuario y se tiene que registrar
                 resultado = new CN_Usuarios().RegistrarDato(usuario, out mensaje);
             else
                 resultado = new CN_Usuarios().EditarDato(usuario,out mensaje);
 
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
-        } 
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite ELIMINAR un usuario 
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult EliminarUsuario(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Usuarios().DeleteDato(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
     }
 }
