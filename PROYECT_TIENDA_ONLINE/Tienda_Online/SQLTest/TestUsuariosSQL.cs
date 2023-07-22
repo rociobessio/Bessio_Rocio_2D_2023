@@ -21,7 +21,7 @@ namespace SQLTest
         public void ObtenerListaUsuarios_OK()
         {
             //-->Arrange preparar variables
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            CategoriaDAO usuariosDAO = new CategoriaDAO();
             List<Usuario> usuarios = usuariosDAO.ObtenerLista();
 
             //-->Act verifico que cargue en la lista
@@ -40,7 +40,7 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            CategoriaDAO usuariosDAO = new CategoriaDAO();
             Usuario usuarioNuevo = new Usuario()//-->Instancio un nuevo usuario
             {
                 IDUsuario = 5,
@@ -67,7 +67,7 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            CategoriaDAO usuariosDAO = new CategoriaDAO();
             Usuario usuarioEditar = new Usuario()//-->Instancio el usuario
             {
                 IDUsuario = 4,
@@ -94,7 +94,7 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
+            CategoriaDAO usuariosDAO = new CategoriaDAO();
             Usuario usuarioAEliminar = new Usuario()//-->Instancio un nuevo usuario para luego eliminarlo
             {  
                 Nombres = "Pepito",

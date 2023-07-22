@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Entidades;
+using Negocio;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.Mvc;
+using System.Web.Mvc; 
 
 namespace Presentacion_Admin.Controllers
 {
@@ -13,6 +15,7 @@ namespace Presentacion_Admin.Controllers
     /// </summary>
     public class MantenedorController : Controller
     {
+        #region CATEGORIAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -26,6 +29,55 @@ namespace Presentacion_Admin.Controllers
             return View();
         }
 
+        [HttpGet]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Si luego pongo en Chrome: https://localhost:44320/Home/ListarUsuarios viene
+        /// a este metodo si pongo un punto de quiebre.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult ListarCategorias()
+        {
+            List<Categoria> listaCategorias = new CN_Categorias().Listar();//-->Instancio CN_Categorias y llamo al metodo
+            return Json(new { data = listaCategorias }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite guardar o editar una categoria
+        /// mediante la web y almacenarlo en la tabla
+        /// de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GuardarCategoria(Categoria categoria)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (categoria.IDCategoria == 0)//-->Significa que es un nuevo usuario y se tiene que registrar
+                resultado = new CN_Categorias().RegistrarDato(categoria, out mensaje);
+            else
+                resultado = new CN_Categorias().EditarDato(categoria, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite ELIMINAR una Categoria 
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult EliminarCategoria(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Categorias().DeleteDato(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region MARCAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -38,7 +90,9 @@ namespace Presentacion_Admin.Controllers
         {
             return View();
         }
+        #endregion
 
+        #region PRODUCTOS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -51,5 +105,6 @@ namespace Presentacion_Admin.Controllers
         {
             return View();
         }
+        #endregion
     }
 }

@@ -27,8 +27,8 @@ namespace Negocio
         /// <returns></returns>
         public List<Usuario> Listar()
         {
-            usuariosDAO = new UsuariosDAO();
-            return usuariosDAO.ObtenerLista();
+            CN_Usuarios.usuariosDAO = new UsuariosDAO();
+            return CN_Usuarios.usuariosDAO.ObtenerLista();
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Negocio
         public int RegistrarDato(Usuario usuario, out string mss)
         {
             mss = string.Empty;
-            usuariosDAO = new UsuariosDAO();
+            CN_Usuarios.usuariosDAO = new UsuariosDAO();
 
             if (string.IsNullOrEmpty(usuario.Nombres) || string.IsNullOrEmpty(usuario.Apellidos)
                 || string.IsNullOrEmpty(usuario.Correo))
@@ -61,14 +61,13 @@ namespace Negocio
                 if (pudoEnviarCorreo)
                 {
                     usuario.Clave = CN_Recursos.EncriptarClavesSha256(clave);//-->Recibe la clave y la devuelve encriptada
-                    return usuariosDAO.RegistrarDato(usuario, out mss); 
+                    return CN_Usuarios.usuariosDAO.RegistrarDato(usuario, out mss); 
                 }
                 else
                 {
                     mss = "No se ha podido enviar el correo.";
                     return 0;
-                }
-
+                } 
             }
             else
                 return 0; 
@@ -85,14 +84,14 @@ namespace Negocio
         public bool EditarDato(Usuario usuario, out string mss)
         {
             mss = string.Empty;
-            usuariosDAO = new UsuariosDAO();
+            CN_Usuarios.usuariosDAO = new UsuariosDAO();
 
             if (string.IsNullOrEmpty(usuario.Nombres) || string.IsNullOrEmpty(usuario.Apellidos)
                 || string.IsNullOrEmpty(usuario.Correo))
                 mss = "No pueden existir campos vacios.";
 
             if (string.IsNullOrEmpty(mss))
-                return usuariosDAO.UpdateDato(usuario, out mss);
+                return CN_Usuarios.usuariosDAO.UpdateDato(usuario, out mss);
             else
                 return false;
         }
@@ -107,8 +106,8 @@ namespace Negocio
         /// <returns></returns>
         public bool DeleteDato(int id, out string mss)
         {
-            usuariosDAO = new UsuariosDAO();
-            return usuariosDAO.DeleteDato(id, out mss);
+            CN_Usuarios.usuariosDAO = new UsuariosDAO();
+            return CN_Usuarios.usuariosDAO.DeleteDato(id, out mss);
         }
         #endregion
     }
