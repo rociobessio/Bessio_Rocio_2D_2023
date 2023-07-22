@@ -86,14 +86,12 @@
             responsive: true,
             ordering: false,
             "ajax": {
-                url: '@Url.Action("ListarUsuarios","Home")',
+                url: '@Url.Action("ListarCategorias", "Mantenedor")',
                 type: "GET",
                 dataType: "json"
             },
             "columns": [
-                {"data":"Nombres"},//-->Data es el de HomeController
-                { "data": "Apellidos"},
-                { "data": "Correo"},
+                {"data":"Descripcion"},//-->Data es el de MantenedorController
                 {
                     "data": "Activo", "render": function (valor) {
                         if (valor) {
@@ -121,17 +119,13 @@
         function abrirModal(json) {
 
             $("#txtID").val(0);
-            $("#txtNombres").val("");
-            $("#txtApellidos").val("");
-            $("#txtCorreElectronico").val("");
+            $("#txtDescripcion").val("");
             $("#cbActivo").val(1);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
             $("#mensajeError").hide();//-->Oculto el msg de error
 
             if (json != null) {
-                $("#txtID").val(json.IDUsuario);
-                $("#txtNombres").val(json.Nombres);
-                $("#txtApellidos").val(json.Apellidos);
-                $("#txtCorreElectronico").val(json.Correo);
+                $("#txtID").val(json.IDCategoria);
+                $("#txtDescripcion").val(json.Descripcion);
                 $("#cbActivo").val(json.Activo == true ? 1 : 0);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
             }
 
@@ -147,73 +141,61 @@
             abrirModal(data);//-->Vuelvo a abrir el modal pasandole la fila SELECCIONADA
         });
 
-        $("#tabla tbody").on("click", '.btn-eliminar', function () {//-->Cuerpo de funcion que al presionar el btn de ELIMINAR ahce algo
-
-            var usuarioSeleccionado = $(this).closest("tr");//-->Fila seleccionada
-
-            var data = tablaData.row(usuarioSeleccionado).data();//-->Selecciono los datos d la fila elegida en la dataTable
-
-            swal({//-->Modal que pregunta si desea eliminarlo o no.
-                title: "¿Esta Seguro?",
-                text: "¿Desea elimnar al usuario?",
+        $("#tabla tbody").on("click", '.btn-eliminar', function () {
+            var categoriaSeleccionada = $(this).closest("tr");
+            var data = tablaData.row(categoriaSeleccionada).data();
+            swal({
+                title: "¿Está seguro?",
+                text: "¿Desea eliminar la categoría?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
-                confirmButtonText: "Si, deseo eliminarlo!",
-                cancelButtonText: "No, cancelar!",
-                closeOnConfirm: false,
-                closeOnCancel: false
+                confirmButtonText: "Si, deseo eliminarla!",
+                closeOnConfirm: false
             },
-                function (isConfirm) {
-
-                    jQuery.ajax({
-                        url: '@Url.Action("EliminarUsuario","Home")',
-                        type: "POST",
-                        data: JSON.stringify({ id: data.IDUsuario }), //-->Paso id de usuario
-                        dataType: "json",
-                        contentType: "application/json; charset=itf-8",
-                        success: function (data) {
-                            if (data.resultado) {
-                                if (isConfirm) {//-->Si confirma
-                                    tablaData.row(usuarioSeleccionado).remove().draw();
-                                    swal("Eliminado!", "El usuario seleccionado ha sido eliminado.", "success");
-                                }
-                                else
-                                    swal("Cancelado", "El usuario no ha sido eliminado", "error");
-                            }
-                            else
-                                swal("No se pudo eliminar", data.mensaje, "error");
-                        },
-                        error: function () {
-                            console.log(data);
+            function () {
+                jQuery.ajax({
+                    url: '@Url.Action("EliminarCategoria","Mantenedor")',
+                    type: "POST",
+                    data: JSON.stringify({ id: data.IDCategoria }),
+                    dataType: "json",
+                    contentType: "application/json; charset=itf-8",
+                    success: function (data) {
+                        if (data.resultado) {
+                            tablaData.row(categoriaSeleccionada).remove().draw();
+                            swal("Eliminada!", "La categoría seleccionada ha sido eliminada.", "success");
+                        } else {
+                            swal("No se pudo eliminar la categoría seleccionada.", data.mensaje, "error");
                         }
-                    });
+                    },
+                    error: function (error) { // Cambio aquí
+                        console.log(error);
+                    }
                 });
+            });
         });
 
         function Guardar() {
-            var usuario = {
-                IDUsuario: $("#txtID").val(),
+            var categoria = {
+                IDCategoria: $("#txtID").val(),
                 Activo: $("#cbActivo").val() == 1 ? true : false,
-                Apellidos: $("#txtApellidos").val(),
-                Correo: $("#txtCorreElectronico").val(),
-                Nombres: $("#txtNombres").val()
+                Descripcion: $("#txtDescripcion").val(),
             }
 
-            // Estructura AJAX para llamar al método que está en el HomeController.
+            // Estructura AJAX para llamar al método que está en el MantenedorController.
             jQuery.ajax({
-                url: '@Url.Action("GuardarUsuario", "Home")',
+                url: '@Url.Action("GuardarCategoria", "Mantenedor")',
                 type: "POST",
-                data: JSON.stringify({ usuario: usuario }), // Cambia "objecto" a "usuario" aquí
+                data: JSON.stringify({ categoria: categoria }), // Cambia "objecto" a "categoria" aquí
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (data) {
                     $(".modal-body").LoadingOverlay("hide");//-->Ocultara el circulo de 'Cargando...'
-                    if (usuario.IDUsuario == 0) {//-->Si ID es 0 entonces estoy creando uno nuevo
+                    if (categoria.IDCategoria == 0) {//-->Si ID es 0 entonces estoy creando uno nuevo
 
                         if (data.resultado != 0) {//-->si es distinto
-                            usuario.IDUsuario = data.resultado;//-->Le setteo el resultado
-                            tablaData.row.add(usuario).draw(false);//-->Agrego una nueva fila de usuarios
+                            categoria.IDCategoria = data.resultado;//-->Le setteo el resultado
+                            tablaData.row.add(categoria).draw(false);//-->Agrego una nueva fila de categorias
                             $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
                         }
                         else {
@@ -223,7 +205,7 @@
                     }
                     else {//-->Para MODIFICAR un usuario
                         if (data.resultado) {
-                            tablaData.row(filaSeleccionada).data(usuario).draw(false);//-->Acutaliza el usuario de la fila seleccionada
+                            tablaData.row(filaSeleccionada).data(categoria).draw(false);//-->Acutaliza el usuario de la fila seleccionada
                             filaSeleccionada = null;
                             $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
                         }
