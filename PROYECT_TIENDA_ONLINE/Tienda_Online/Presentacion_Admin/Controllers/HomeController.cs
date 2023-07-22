@@ -48,23 +48,24 @@ namespace Presentacion_Admin.Controllers
             return Json(new { data = listaUsuarios },JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
         /// <summary>
-        /// Será del tipo ActionResult y
-        /// referencia al apartado 'TEST',
-        /// 1. primero tuve que ir a _Layout.cshtml 
-        /// en la carpeta Shared.
-        /// 2. Luego de crear este metodo: 
-        /// 3. Tuve que crear la vista, me paro sobre
-        ///    el nombre del metodo click derecho y 
-        ///    crear vista.
-        /// 4. Tengo que, de momento, seleccionar del
-        ///    tipo _Layout.
+        /// Me permite guardar o editar un usuario
+        /// mediante la web y almacenarlo en la tabla
+        /// de la base de datos.
         /// </summary>
         /// <returns></returns>
-        //public ActionResult TEST()
-        //{ 
+        public JsonResult GuardarUsuario(Usuario usuario)
+        {
+            object resultado;
+            string mensaje = string.Empty;
 
-        //    return View();
-        //}
+            if (usuario.IDUsuario == 0)//-->Significa que es un nuevo usuario
+                resultado = new CN_Usuarios().RegistrarDato(usuario, out mensaje);
+            else
+                resultado = new CN_Usuarios().EditarDato(usuario,out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        } 
     }
 }

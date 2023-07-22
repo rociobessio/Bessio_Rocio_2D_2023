@@ -44,20 +44,20 @@
                 <h5 class="modal-title" id="staticBackdropLabel">Usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
-            <div class="modal-body g-2">
+            <div class="modal-body">
                 <input id="txtID" type="text" value="0"/>
-                <div class="row">
+                <div class="row g-2">
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="txtNombres" placeholder="Ej: José Ricardo">
+                        <input type="text" class="form-control" id="txtNombres" placeholder="Ej: José Ricardo" autocomplete="off">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="txtApellidos" placeholder="Ej: Maldonado">
+                        <input type="text" class="form-control" id="txtApellidos" placeholder="Ej: Maldonado" autocomplete="off">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Correo electrónico</label>
-                        <input type="email" class="form-control" id="txtCorreElectronico" placeholder="Ej: nombre@ejemplo.com">
+                        <input type="email" class="form-control" id="txtCorreElectronico" placeholder="Ej: nombre@ejemplo.com" autocomplete="off">
                     </div>
                     <div class="col-sm-6">
                         <label for="exampleFormControlInput1" class="form-label">Activo</label>
@@ -67,6 +67,14 @@
                         </select>
                     </div> 
                 </div>
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -78,7 +86,7 @@
 
 @section scripts{
     <script>
-        var tablaData; 
+        var tablaData;
         var filaSeleccionada;
 
         tablaData = $("#tabla").DataTable({
@@ -125,6 +133,7 @@
             $("#txtApellidos").val("");
             $("#txtCorreElectronico").val("");
             $("#cbActivo").val(1);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
+            $("#mensajeError").hide();//-->Oculto el msg de error
 
             if (json != null) {
                 $("#txtID").val(json.IDUsuario);
@@ -132,7 +141,7 @@
                 $("#txtApellidos").val(json.Apellidos);
                 $("#txtCorreElectronico").val(json.Correo);
                 $("#cbActivo").val(json.Activo == true ? 1 : 0);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
-            } 
+            }
 
             $("#FormModal").modal("show");//--> #FormModal referencio al modal
         };
@@ -147,26 +156,55 @@
 
             abrirModal(data);//-->Vuelvo a abrir el modal pasandole la fila SELECCIONADA
         });
-
-        //-->Guardara el usuario nuevo o editado
         function Guardar() {
-            var usuario = {//-->Creo un nuevo Usuario
+            var usuario = {
                 IDUsuario: $("#txtID").val(),
-                Activo: $("#cbActivo").val() == 1 ? true : false,//-->Si es uno q retorne true sino retorna false
-                Apellidos: $("#txtApellidos").val(), 
-                Correo: $("#txtCorreElectronico").val(), 
-                Nombres: $("#txtNombres").val() 
+                Activo: $("#cbActivo").val() == 1 ? true : false,
+                Apellidos: $("#txtApellidos").val(),
+                Correo: $("#txtCorreElectronico").val(),
+                Nombres: $("#txtNombres").val()
             }
 
-            if (usuario.IDUsuario == 0) {//-->Si ID es 0 entonces estoy creando uno nuevo
-                tablaData.row.add(usuario).draw(false);//-->Agrego una nueva fila de usuarios
-            }
-            else {
-                tablaData.row(filaSeleccionada).data(usuario).draw(false);//-->Acutalizaoel usuario de la fila seleccionada
-            }
+            // Estructura AJAX para llamar al método que está en el HomeController.
+            jQuery.ajax({
+                url: '@Url.Action("GuardarUsuario", "Home")',
+                type: "POST",
+                data: JSON.stringify({ usuario: usuario }), // Cambia "objecto" a "usuario" aquí
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) { 
+                    if (usuario.IDUsuario == 0) {//-->Si ID es 0 entonces estoy creando uno nuevo
 
-            $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
-        }
+                        if (data.resultado != 0) {//-->si es distinto
+                            usuario.IDUsuario = data.resultado;//-->Le setteo el resultado
+                            tablaData.row.add(usuario).draw(false);//-->Agrego una nueva fila de usuarios
+                            $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
+                        }
+                        else {
+                            $("#mensajeError").text(data.mensaje);//Imprimo el mensaje de eeror
+                            $("#mensajeError").show();//-->Muestro el mensaje de error.
+                        }
+                    }
+                    else {//-->Para MODIFICAR un usuario
+                        if (data.resultado) {
+                            tablaData.row(filaSeleccionada).data(usuario).draw(false);//-->Acutaliza el usuario de la fila seleccionada
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");//--> #FormModal referencio al modal y lo oculto asi no se sigue mostrando.
+                        }
+                        else {
+                            $("#mensajeError").text(data.mensaje);//Imprimo el mensaje de eeror
+                            $("#mensajeError").show();//-->Muestro el mensaje de error
+                        }
+                    }
+                },
+                error: function (error) {
+                    console.log(error);
+                },
+                beforeSend: function () {
+                    // Código para ejecutar antes de enviar la solicitud
+                },
+            });
+        } 
     </script>
 
 }
