@@ -9,7 +9,7 @@ using Entidades;
 
 namespace CapaDatos
 {
-    public class MarcasDAO : AccesoABaseDatos//, IBaseDeDatos<Usuario>
+    public class MarcasDAO : AccesoABaseDatos, IBaseDeDatos<Marca>
     {
         #region METODOS
         /// <summary>

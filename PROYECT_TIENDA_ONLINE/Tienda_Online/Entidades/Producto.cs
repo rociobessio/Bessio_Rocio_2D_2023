@@ -25,8 +25,8 @@ namespace Entidades
         public int IDProducto { get { return this._IDProducto; } set { this._IDProducto = value; } }
         public string Nombre { get {  return this._nombre; } set { this._nombre = value; } }
         public string Descripcion { get {  return this._descripcion; }set { this._descripcion = value;} }
-        public Marca Marca { get { return this._marca; } set { this._marca = value; } }
-        public Categoria Categoria { get { return this._Categoria; } set { this._Categoria = value; } }
+        public Marca oMarca { get { return this._marca; } set { this._marca = value; } }
+        public Categoria oCategoria { get { return this._Categoria; } set { this._Categoria = value; } }
         public double Precio { get { return this._precio; } set { this._precio = value; } }
         public string RutaImagen { get {  return this._rutaImagen; } set { this._rutaImagen = value; } }
         public int Stock { get { return this._stock; }  set { this._stock = value; } }
