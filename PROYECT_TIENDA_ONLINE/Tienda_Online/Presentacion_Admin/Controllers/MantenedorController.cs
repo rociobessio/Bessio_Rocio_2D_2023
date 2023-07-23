@@ -90,6 +90,53 @@ namespace Presentacion_Admin.Controllers
         {
             return View();
         }
+
+        [HttpGet]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Si luego pongo en Chrome: https://localhost:44320/Home/ListarUsuarios viene
+        /// a este metodo si pongo un punto de quiebre.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult ListarMarcas()
+        {
+            List<Marca> listaMarcas = new CN_Marcas().Listar();//-->Instancio CN_Marcas y llamo al metodo
+            return Json(new { data = listaMarcas }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite guardar o editar una marca
+        /// mediante la web y almacenarlo en la tabla
+        /// de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GuardarMarca(Marca marca)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (marca.IDMarca == 0)//-->Significa que es una nueva marca y se tiene que registrar
+                resultado = new CN_Marcas().RegistrarDato(marca, out mensaje);
+            else
+                resultado = new CN_Marcas().EditarDato(marca, out mensaje);
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite ELIMINAR una Marca 
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult EliminarMarca(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Marcas().DeleteDato(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region PRODUCTOS
