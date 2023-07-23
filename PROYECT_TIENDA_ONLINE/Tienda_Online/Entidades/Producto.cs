@@ -19,6 +19,9 @@ namespace Entidades
         private string _rutaImagen;
         private string _nombreImagen;
         private bool _activo;
+
+        private string _precioTexto;
+        private string _base64;//-->Formato q mostraré las imagenes  
         #endregion
 
         #region PROPIEDADES
@@ -31,7 +34,9 @@ namespace Entidades
         public string RutaImagen { get {  return this._rutaImagen; } set { this._rutaImagen = value; } }
         public int Stock { get { return this._stock; }  set { this._stock = value; } }
         public string NombreImagen { get { return this._nombreImagen; } set { this._nombreImagen = value; } }
-        public bool Activo { get { return this._activo; }  set { this._activo = value; } }
+        public bool Activo { get { return this._activo; }  set { this._activo = value; } } 
+        public string PrecioTexto { get => this._precioTexto; set => this._precioTexto = value; }
+        public string Base64 { get => this._base64; set => this._base64 = value; }
         #endregion
     }
 }

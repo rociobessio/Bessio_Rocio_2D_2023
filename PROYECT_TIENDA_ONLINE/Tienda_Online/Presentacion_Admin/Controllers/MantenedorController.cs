@@ -1,7 +1,11 @@
 ﻿using Entidades;
 using Negocio;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc; 
@@ -15,6 +19,7 @@ namespace Presentacion_Admin.Controllers
     /// </summary>
     public class MantenedorController : Controller
     {
+        //++++++++++++++++++++++++++++++++++++++++ CATEGORÍAS ++++++++++++++++++++++++++++++++++++++++ 
         #region CATEGORIAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
@@ -77,6 +82,7 @@ namespace Presentacion_Admin.Controllers
         }
         #endregion
 
+        //++++++++++++++++++++++++++++++++++++++++ MARCAS ++++++++++++++++++++++++++++++++++++++++ 
         #region MARCAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
@@ -139,6 +145,7 @@ namespace Presentacion_Admin.Controllers
         }
         #endregion
 
+        //++++++++++++++++++++++++++++++++++++++++ PRODUCTOS ++++++++++++++++++++++++++++++++++++++++ 
         #region PRODUCTOS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
@@ -151,6 +158,98 @@ namespace Presentacion_Admin.Controllers
         public ActionResult Producto()
         {
             return View();
+        }
+
+        [HttpGet]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Si luego pongo en Chrome: https://localhost:44320/Home/ListarUsuarios viene
+        /// a este metodo si pongo un punto de quiebre.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult ListarProductos()
+        {
+            List<Producto> listaProductos = new CN_Productos().Listar();//-->Instancio CN_Productos y llamo al metodo
+            return Json(new { data = listaProductos }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite guardar o editar un producto
+        /// mediante la web y almacenarlo en la tabla
+        /// de la base de datos.
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult GuardarProducto(string producto, HttpPostedFileBase archivoImagen)
+        { 
+            string mensaje = string.Empty;
+            bool operacionExitosa = true;
+            bool pudoGuardarImagen = true;
+            Producto oProducto = new Producto();
+            oProducto = JsonConvert.DeserializeObject<Producto>(producto);
+            double precio;
+
+            if (double.TryParse(oProducto.PrecioTexto, NumberStyles.AllowDecimalPoint, new CultureInfo("es-ARG"), out precio))
+                oProducto.Precio = precio;
+            else
+                return Json(new { operacionExitosa = false, mensaje = "El formato del precio debe ser ##.##" },JsonRequestBehavior.AllowGet);
+
+            //-->Significa que es un nuevo producto y se tiene que registrar
+            if (oProducto.IDProducto == 0)
+            {
+                int idProductoGenerado = new CN_Productos().RegistrarDato(oProducto, out mensaje);
+
+                if (idProductoGenerado != 0)
+                    oProducto.IDProducto = idProductoGenerado;//-->Toma el id generado
+                else
+                    operacionExitosa = false;
+            }
+            else
+                operacionExitosa = new CN_Productos().EditarDato(oProducto, out mensaje);
+
+            //-->Logica para registrar la imagen:
+            if (operacionExitosa)
+            {
+                if(archivoImagen != null)
+                {
+                    string rutaGuardar = ConfigurationManager.AppSettings["ServidorDeFotos"];
+                    string extensionAGuardar = Path.GetExtension(archivoImagen.FileName);
+                    string nombre_Imagen = string.Concat(oProducto.IDProducto.ToString());//-->El nombre d la imgen se guarda con la id del producto y su extension
+                    try
+                    {
+                        archivoImagen.SaveAs(Path.Combine(rutaGuardar,nombre_Imagen));
+                    }
+                    catch (Exception ex)
+                    {
+                        string error = ex.Message;
+                        pudoGuardarImagen = false;
+                    }
+
+                    if (pudoGuardarImagen)
+                    {
+                        oProducto.RutaImagen = rutaGuardar;
+                        oProducto.NombreImagen = nombre_Imagen;
+                        bool rta = new CN_Productos().GuardarDatosImagen(oProducto, out mensaje);
+                    }
+                    else
+                        mensaje = "Se ha guardado el producto pero ocurrío un error al guardar la imagen.";
+                }
+            }
+            return Json(new { operacionExitosa = operacionExitosa,idGenerado = oProducto.IDProducto ,mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]//-->Evito errores,son url que devuelve datos al ejecutarlo.
+        /// <summary>
+        /// Me permite ELIMINAR un Producto 
+        /// </summary>
+        /// <returns></returns>
+        public JsonResult EliminarProducto(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new CN_Productos().DeleteDato(id, out mensaje);
+
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
         #endregion
     }
