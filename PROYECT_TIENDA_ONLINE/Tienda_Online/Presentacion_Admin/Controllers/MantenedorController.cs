@@ -20,7 +20,7 @@ namespace Presentacion_Admin.Controllers
     public class MantenedorController : Controller
     {
         //++++++++++++++++++++++++++++++++++++++++ CATEGORÍAS ++++++++++++++++++++++++++++++++++++++++ 
-        #region CATEGORIAS
+        #region                                    CATEGORIAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -83,7 +83,7 @@ namespace Presentacion_Admin.Controllers
         #endregion
 
         //++++++++++++++++++++++++++++++++++++++++ MARCAS ++++++++++++++++++++++++++++++++++++++++ 
-        #region MARCAS
+        #region                                    MARCAS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -146,7 +146,7 @@ namespace Presentacion_Admin.Controllers
         #endregion
 
         //++++++++++++++++++++++++++++++++++++++++ PRODUCTOS ++++++++++++++++++++++++++++++++++++++++ 
-        #region PRODUCTOS
+        #region                                    PRODUCTOS
         /// <summary>
         /// 1. Me paro sobre la carpeta controllers
         /// 2. Me paro sobre el nombre del metodo
@@ -188,7 +188,7 @@ namespace Presentacion_Admin.Controllers
             oProducto = JsonConvert.DeserializeObject<Producto>(producto);
             double precio;
 
-            if (double.TryParse(oProducto.PrecioTexto, NumberStyles.AllowDecimalPoint, new CultureInfo("es-ARG"), out precio))
+            if (double.TryParse(oProducto.PrecioTexto, NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
                 oProducto.Precio = precio;
             else
                 return Json(new { operacionExitosa = false, mensaje = "El formato del precio debe ser ##.##" },JsonRequestBehavior.AllowGet);
@@ -250,6 +250,18 @@ namespace Presentacion_Admin.Controllers
             respuesta = new CN_Productos().DeleteDato(id, out mensaje);
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        } 
+
+        [HttpPost]
+        public JsonResult ImagenProducto(int idProducto)
+        {
+            bool conversion;
+            Producto producto = new CN_Productos().Listar().Where(p => p.IDProducto == idProducto).FirstOrDefault();
+
+            string txtBase64 = CN_Recursos.ConvertirBase64(Path.Combine(producto.RutaImagen,producto.NombreImagen), out conversion);
+
+            return Json(new { conversion = conversion, txtBase64 = txtBase64, extension = Path.GetExtension(producto.NombreImagen)},
+                   JsonRequestBehavior.AllowGet);
         }
         #endregion
     }

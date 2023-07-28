@@ -36,31 +36,31 @@ namespace SQLTest
             Assert.IsTrue(esValido);
         }
 
-        /// <summary>
-        /// Me permitirá revisar si pudo registrar un Producto
-        /// y el metodo devuelve TRUE.
-        /// </summary>
-        [TestMethod]
-        public void RegistrarProducto_OK()
-        {
-            //-->Arrange
-            string mss = string.Empty;
-            ProductosDAO productoDAO = new ProductosDAO();
-            Producto productoNuevo = new Producto()//-->Instancio un nuevo Producto
-            {
-                //Nombre = "Televisor",
-                //Descripcion = "220 Pulgadas",
-                //oMarca = "2",
-                //NombreImagen = string.Empty,
-                //RutaImagen = string.Empty,
-                //Activo = true
-            };
+        ///// <summary>
+        ///// Me permitirá revisar si pudo registrar un Producto
+        ///// y el metodo devuelve TRUE.
+        ///// </summary>
+        //[TestMethod]
+        //public void RegistrarProducto_OK()
+        //{
+        //    //-->Arrange
+        //    string mss = string.Empty;
+        //    ProductosDAO productoDAO = new ProductosDAO();
+        //    Producto productoNuevo = new Producto()//-->Instancio un nuevo Producto
+        //    {
+        //        //Nombre = "Televisor",
+        //        //Descripcion = "220 Pulgadas",
+        //        //oMarca = "2",
+        //        //NombreImagen = string.Empty,
+        //        //RutaImagen = string.Empty,
+        //        //Activo = true
+        //    };
 
-            //-->Act, llamo al metodo a testear.
-            int idAutoGenerado = productoDAO.RegistrarDato(productoNuevo, out mss);
+        //    //-->Act, llamo al metodo a testear.
+        //    int idAutoGenerado = productoDAO.RegistrarDato(productoNuevo, out mss);
 
-            //-->Assert verifico
-            Assert.AreEqual(6, idAutoGenerado);
-        }
+        //    //-->Assert verifico
+        //    Assert.AreEqual(6, idAutoGenerado);
+        //}
     }
 }

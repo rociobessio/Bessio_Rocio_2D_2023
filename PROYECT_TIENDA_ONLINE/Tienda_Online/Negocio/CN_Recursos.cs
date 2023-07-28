@@ -44,6 +44,7 @@ namespace Negocio
         }
         #endregion
 
+        #region CONTROL DE CORREOS ELECTRONICOS
         /// <summary>
         /// Me permitirá enviar un correo al usuario
         /// mediante GMAIL.
@@ -83,5 +84,31 @@ namespace Negocio
             }
             return pudoEnviar;
         }
+        #endregion
+
+        #region ARCHIVOS - IMAGENES
+        /// <summary>
+        /// Me permite convertir una imagen.
+        /// </summary>
+        /// <param name="ruta"></param>
+        /// <param name="conversionExitosa"></param>
+        /// <returns></returns>
+        public static string ConvertirBase64(string ruta, out bool conversionExitosa)
+        {
+            string textoBase64 = string.Empty;
+            conversionExitosa = true;
+
+            try
+            {
+                byte[] bytes = File.ReadAllBytes(ruta);
+                textoBase64 = Convert.ToBase64String(bytes);
+            }
+            catch(Exception e)
+            {
+                conversionExitosa = false;
+            }
+            return textoBase64;
+        }
+        #endregion
     }
 }
