@@ -17,18 +17,9 @@ namespace Presentacion_Admin
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
                         "~/Scripts/loadingoverlay/loadingoverlay.min.js",
-                        "~/Scripts/sweetalert.min.js"
-                        ));//-->fontawesome me permite agregar que pueda ver los iconos, paquete nuget installado
-
-
-            //-->No los utilizo lo elimino
-            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-            //            "~/Scripts/jquery.validate*"));
-
-            //// Use the development version of Modernizr to develop with and learn from. Then, when you're
-            //// ready for production, use the build tool at https://modernizr.com to pick only the tests you need.
-            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-            //            "~/Scripts/modernizr-*"));
+                        "~/Scripts/sweetalert.min.js",
+                        "~/Scripts/jquery.validate.js"
+                        ));//-->fontawesome me permite agregar que pueda ver los iconos, paquete nuget installado 
 
             bundles.Add(new Bundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.bundle.js"));//-->Agregue bootstrap.bundle.js
