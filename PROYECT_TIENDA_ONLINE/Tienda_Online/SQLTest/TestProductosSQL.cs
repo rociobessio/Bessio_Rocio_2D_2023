@@ -18,6 +18,36 @@ namespace SQLTest
     public class TestProductosSQL
     {
         /// <summary>
+        /// Este metodo me permitira retornar un producto cargado 
+        /// de esta forma no se repetira codigo instanciandolo
+        /// en todos los metodos de test unitarios de la clase.
+        /// </summary>
+        /// <returns></returns>
+        private Producto CrearProductoPrueba()
+        {
+            return new Producto()
+            {
+                Nombre = "Prueba de Producto II",
+                Descripcion = "Descripción de prueba",
+                oMarca = new Marca()
+                {
+                    IDMarca = 3,
+                    Descripcion = "Descripción de prueba de marca"
+                },
+                oCategoria = new Categoria()
+                {
+                    IDCategoria = 2,
+                    Descripcion = "Descripción de prueba de categoría"
+                },
+                Precio = 1000,
+                Stock = 12,
+                NombreImagen = string.Empty,
+                RutaImagen = string.Empty,
+                Activo = true
+            };
+        }
+
+        /// <summary>
         /// Me permite verificar si el metodo
         /// ObtenerLista de la clase ProductosDAO
         /// retorna al menos un elemento en la lista.
@@ -36,31 +66,70 @@ namespace SQLTest
             Assert.IsTrue(esValido);
         }
 
-        ///// <summary>
-        ///// Me permitirá revisar si pudo registrar un Producto
-        ///// y el metodo devuelve TRUE.
-        ///// </summary>
+        /// <summary>
+        /// Me permitirá revisar si pudo registrar un Producto
+        /// y el metodo devuelve TRUE.
+        /// </summary>
         //[TestMethod]
         //public void RegistrarProducto_OK()
         //{
         //    //-->Arrange
         //    string mss = string.Empty;
         //    ProductosDAO productoDAO = new ProductosDAO();
-        //    Producto productoNuevo = new Producto()//-->Instancio un nuevo Producto
-        //    {
-        //        //Nombre = "Televisor",
-        //        //Descripcion = "220 Pulgadas",
-        //        //oMarca = "2",
-        //        //NombreImagen = string.Empty,
-        //        //RutaImagen = string.Empty,
-        //        //Activo = true
-        //    };
+        //    Producto productoNuevo = this.CrearProductoPrueba();
+        //    List<Producto> listaProductos = productoDAO.ObtenerLista();//-->Obtengo la lista
 
         //    //-->Act, llamo al metodo a testear.
+        //    Producto ultimoProducto = listaProductos.Last();//-->Obtengo el ultimo producto
+        //    int ultimaID = ultimoProducto.IDProducto;//-->Obtengo la ID
+
         //    int idAutoGenerado = productoDAO.RegistrarDato(productoNuevo, out mss);
 
-        //    //-->Assert verifico
-        //    Assert.AreEqual(6, idAutoGenerado);
+        //    //-->Assert verifico, que IDAutoGenerado que retorna el metodo a probar es igual
+        //    // a la ultima ID registrada en la base  + 1.  
+        //    Assert.AreEqual(idAutoGenerado,ultimaID + 1);
+        //    //-->Si registro lo elimino.
+        //    productoDAO.DeleteDato(productoNuevo.IDProducto,out mss);
         //}
+
+        /// <summary>
+        /// Me permitirá revisar si pudo editar un Producto
+        /// y el metodo devuelve TRUE.
+        /// </summary>
+        [TestMethod]
+        public void UpdateProducto_OK()
+        {
+            //-->Arrange
+            string mss = string.Empty;
+            ProductosDAO productoDAO = new ProductosDAO();
+            Producto productoEditar = this.CrearProductoPrueba();
+            productoDAO.RegistrarDato(productoEditar,out mss);//-->Lo registro primero
+
+            //-->Act, llamo al metodo a testear.
+            productoEditar.Nombre = "Este producto esta editado";//-->Modifico su Nombre
+            bool pudoEditar = productoDAO.UpdateDato(productoEditar, out mss);//-->Lo modifico
+
+            //-->Assert verifico si pudo editar
+            Assert.IsTrue(pudoEditar);
+        }
+
+        /// <summary>
+        /// Me permitirá revisar si pudo ELIMINAR un PRODUCTO
+        /// y el metodo devuelve TRUE.
+        /// </summary>
+        [TestMethod]
+        public void DeleteProducto_OK()
+        {
+            //-->Arrange
+            string mss = string.Empty;
+            ProductosDAO productosDAO = new ProductosDAO();
+            Producto producto = this.CrearProductoPrueba();
+
+            //-->Act testeo los metodos 
+            bool pudoEliminar = productosDAO.DeleteDato(producto.IDProducto, out mss);
+
+            //-->Assert verifico que devolvio.
+            Assert.IsTrue(pudoEliminar);
+        }
     }
 }

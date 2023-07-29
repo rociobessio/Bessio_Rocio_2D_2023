@@ -188,23 +188,25 @@ namespace Presentacion_Admin.Controllers
             oProducto = JsonConvert.DeserializeObject<Producto>(producto);
             double precio;
 
-            if (double.TryParse(oProducto.PrecioTexto, NumberStyles.AllowDecimalPoint, new CultureInfo("es-PE"), out precio))
+            if (double.TryParse(oProducto.PrecioTexto, NumberStyles.AllowDecimalPoint, new CultureInfo("es-AR"), out precio))
                 oProducto.Precio = precio;
             else
                 return Json(new { operacionExitosa = false, mensaje = "El formato del precio debe ser ##.##" },JsonRequestBehavior.AllowGet);
 
-            //-->Significa que es un nuevo producto y se tiene que registrar
             if (oProducto.IDProducto == 0)
             {
                 int idProductoGenerado = new CN_Productos().RegistrarDato(oProducto, out mensaje);
 
                 if (idProductoGenerado != 0)
-                    oProducto.IDProducto = idProductoGenerado;//-->Toma el id generado
+                    oProducto.IDProducto = idProductoGenerado; // --> Toma el id generado
                 else
                     operacionExitosa = false;
             }
             else
                 operacionExitosa = new CN_Productos().EditarDato(oProducto, out mensaje);
+
+            // --> Reemplazar la coma por un punto en el precio antes de guardarlo
+            oProducto.PrecioTexto = oProducto.PrecioTexto.Replace(",", ".");
 
             //-->Logica para registrar la imagen:
             if (operacionExitosa)

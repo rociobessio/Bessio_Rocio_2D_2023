@@ -62,11 +62,11 @@
                     <div class="col-sm-3">
                         <div class=" mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" id="txtNombre" name="nombre" placeholder="Ej: Televisor" />
+                            <input type="text" class="form-control" id="txtNombre" name="nombre" placeholder="Ej: Televisor" autocomplete="off" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Descripcion</label>
-                            <textarea type="text" class="form-control" id="txtDescripcion" name="descripcion" style="height:125px; resize:none"></textarea>
+                            <textarea type="text" class="form-control" id="txtDescripcion" name="descripcion" style="height:125px; resize:none" autocomplete="off"></textarea>
                         </div>
                     </div>
 
@@ -90,7 +90,7 @@
                     <div class="col-sm-3">
                         <div class=" mb-3">
                             <label class="form-label">Stock</label>
-                            <input type="number" class="form-control" id="txtStock" name="stock" placeholder="Ej: 1200" />
+                            <input type="number" class="form-control" id="txtStock" name="stock" placeholder="Ej: 1200" autocomplete="off" />
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Activo</label>
@@ -219,10 +219,11 @@
             }
         });
 
-        //--> Validacion de ingreso de datos <---
+        // --> Validacion de ingreso de datos <---
         jQuery.validator.addMethod("preciodecimal", function (value, element) {
-            return this.optional(element) || /^\d{0,4}(\. \d{0,2})?$/i.test(value);//-->Si no se cumple esta regla...
-        }, "- El formato correcto del precio es ##.##");//-->Lanzo el siguiente mensaje de aviso.
+            return this.optional(element) || /^\d{0,4}(\.\d{1,2})?$/i.test(value); // --> Permitir el formato ##.##
+        }, "- El formato correcto del precio es ##,##"); // --> Lanzo el siguiente mensaje de aviso.
+
 
         $("#contenedor").validate({
             rules: {
@@ -255,7 +256,7 @@
             },
             errorElement: "div",
             errorLabelContainer: ".alert-danger"
-        }); 
+        });
 
         //--> Metodo para abrir formulario nuevo, recibe un OBJETO LLAMADO JSON <--
         function abrirModal(json) {
@@ -281,6 +282,33 @@
                 $("#cbMarca").val($(json.oMarca.IDMarca));//-->Mostrara la opcion 'SELECCIONAR'
                 $("#cbCategoria").val($(json.oCategoria.IDCategoria));
                 $("#cbActivo").val(json.Activo == true ? 1 : 0);//-->Si es true entonces 1 (SI) : sino (else) es 0 (NO)
+
+                //--> Logica para mostrar la imagen <--
+                jQuery.ajax({
+                    url: '@Url.Action("ImagenProducto", "Mantenedor")',
+                    type: "POST",
+                    data: JSON.stringify({ idProducto: json.IDProducto }), // Corrección en el nombre del parámetro
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8", // Corrección en el charset
+                    success: function (data) {
+                        if (data.conversion) {
+                            $("#img_producto").attr({
+                                "src": "data:image/" + data.extension + ";base64," + data.txtBase64 // Corrección en la URL
+                            });
+                        }
+                        $("#img_producto").LoadingOverlay("hide"); // Ocultar el loading overlay en caso de éxito.
+                    },
+                    error: function (error) {
+                        $("#img_producto").LoadingOverlay("hide");
+                        $("#mensajeError").show();
+                        $("#mensajeError").text("Error al intentar mostrar la imagen.");
+                    },
+                    beforeSend: function () {
+                        $("#img_producto").LoadingOverlay("show"); //-->Mientras carga la imagen
+                    }
+                });
+
+
             }
             $("#FormModal").modal("show");//--> #FormModal referencio al modal
         };
@@ -334,11 +362,11 @@
 
             //--> Que imprima un error al guardar, si las reglas del formulario no se cumplen.
             if (!$("#contenedor").valid())
-                return;  
+                return;
 
             var ImagenSeleccionada = $("#fileProducto")[0].files[0];//-->Primer archivo edl control
 
-            var producto = {//-->Creo mi objeto producto
+            var producto = {
                 IDProducto: $("#txtID").val(),
                 Descripcion: $("#txtDescripcion").val(),
                 Nombre: $("#txtNombre").val(),
@@ -350,8 +378,8 @@
                     IDCategoria: $("#cbCategoria option:selected").val(),
                     Descripcion: $("#cbCategoria option:selected").text()
                 },
-                PrecioTexto: $("#txtPrecio").val(),
-                Precio: $("#txtPrecio").val(),
+                PrecioTexto: $("#txtPrecio").val().replace(",", "."), // --> Reemplazar la coma por un punto
+                Precio: $("#txtPrecio").val().replace(",", "."), // --> También reemplazar la coma por un punto
                 Stock: $("#txtStock").val(),
                 Activo: $("#cbActivo").val() == 1 ? true : false,
             }
