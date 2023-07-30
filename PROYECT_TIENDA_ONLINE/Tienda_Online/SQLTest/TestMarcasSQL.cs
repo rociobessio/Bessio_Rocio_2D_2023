@@ -18,6 +18,21 @@ namespace SQLTest
     public class TestMarcasSQL
     {
         /// <summary>
+        /// Este metodo me permitira retornar una Marca cargado 
+        /// de esta forma no se repetira codigo instanciandola
+        /// en todos los metodos de test unitarios de la clase.
+        /// </summary>
+        /// <returns></returns>
+        private Marca CrearMarcaPrueba()
+        {
+            return new Marca()//-->Instancio una nueva Marca
+            {
+                Descripcion = "Unit Testing Marcas",
+                Activo = true
+            };
+        }
+
+        /// <summary>
         /// Me permite verificar si el metodo
         /// ObtenerLista de la clase MarcasDAO
         /// retorna al menos un elemento en la lista.
@@ -25,9 +40,8 @@ namespace SQLTest
         [TestMethod]
         public void ObtenerListaMarcas_OK()
         {
-            //-->Arrange preparar variables
-            MarcasDAO marcaDAO = new MarcasDAO();
-            List<Marca> listaCategorias = marcaDAO.ObtenerLista();
+            //-->Arrange preparar variables 
+            List<Marca> listaCategorias = new MarcasDAO().ObtenerLista();
 
             //-->Act verifico que cargue en la lista
             bool esValido = listaCategorias.Count > 0;
@@ -44,19 +58,19 @@ namespace SQLTest
         public void RegistrarMarca_OK()
         {
             //-->Arrange
-            string mss = string.Empty;
-            MarcasDAO marcaDAO = new MarcasDAO();
-            Marca marcaNueva = new Marca()//-->Instancio una nueva categoria
-            {
-                Descripcion = "Testing 02",
-                Activo = true
-            };
+            string mss = string.Empty; 
+            Marca marcaNueva = this.CrearMarcaPrueba();
+
+            List<Marca> listaMarcas = new MarcasDAO().ObtenerLista();
+            Marca ultimaMarcaRegistrada = listaMarcas.Last();
+            int ultimoID = ultimaMarcaRegistrada.IDMarca;
 
             //-->Act, llamo al metodo a testear.
-            int idAutoGenerado = marcaDAO.RegistrarDato(marcaNueva, out mss);
+            int idAutoGenerado = new MarcasDAO().RegistrarDato(marcaNueva, out mss);
 
             //-->Assert verifico
-            Assert.AreEqual(6, idAutoGenerado);
+            new MarcasDAO().DeleteDato(idAutoGenerado,out mss);//--> Ya lo registre, lo elimino y evito errores.
+            Assert.AreEqual(idAutoGenerado, ultimoID + 1);
         }
 
         /// <summary>
@@ -68,18 +82,14 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            MarcasDAO marcaDAO = new MarcasDAO();
-            Marca MarcaEditar = new Marca()//-->Instancio el usuario
-            {
-                IDMarca = 6,
-                Descripcion = "Editar test",
-                Activo = false
-            }; 
+            Marca MarcaEditar = this.CrearMarcaPrueba();
+            int id = new MarcasDAO().RegistrarDato(MarcaEditar,out mss);
 
             //-->Act, llamo al metodo a testear.
-            bool pudoEditar = marcaDAO.UpdateDato(MarcaEditar, out mss);
+            bool pudoEditar = new MarcasDAO().UpdateDato(MarcaEditar, out mss);
 
             //-->Assert verifico si pudo editar
+            new MarcasDAO().DeleteDato(id, out mss);//--> Ya lo registre, lo elimino y evito errores.
             Assert.IsTrue(pudoEditar);
         }
 

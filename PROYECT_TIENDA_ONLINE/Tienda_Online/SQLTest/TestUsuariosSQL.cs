@@ -13,6 +13,24 @@ namespace SQLTest
     public class TestUsuariosSQL
     {
         /// <summary>
+        /// Este metodo me permitira retornar un usuario cargado 
+        /// de esta forma no se repetira codigo instanciandolo
+        /// en todos los metodos de test unitarios de la clase.
+        /// </summary>
+        /// <returns></returns>
+        private Usuario CrearUsuarioPrueba()
+        {
+            return new Usuario()//-->Instancio un nuevo usuario
+            { 
+                Nombres = "Usuario de Test",
+                Apellidos = "Unit Testing",
+                Correo = "userTest@hotmail.com.ar",
+                Clave = "dasdasddasddasdad",
+                Activo = true
+            };
+        }
+
+        /// <summary>
         /// Me permite verificar si el metodo
         /// ObtenerLista de la clase UsuariosDAO
         /// retorna al menos un elemento en la lista.
@@ -20,9 +38,8 @@ namespace SQLTest
         [TestMethod]
         public void ObtenerListaUsuarios_OK()
         {
-            //-->Arrange preparar variables
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            List<Usuario> usuarios = usuariosDAO.ObtenerLista();
+            //-->Arrange preparar variables 
+            List<Usuario> usuarios = new UsuariosDAO().ObtenerLista();
 
             //-->Act verifico que cargue en la lista
             bool esValido = usuarios.Count > 0;
@@ -38,24 +55,19 @@ namespace SQLTest
         [TestMethod]
         public void RegistrarUsuario_OK()
         {
-            //-->Arrange
+            //-->Arrange, prerparo las variables
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            Usuario usuarioNuevo = new Usuario()//-->Instancio un nuevo usuario
-            {
-                IDUsuario = 5,
-                Nombres = "Maximiliano Ignacio",
-                Apellidos = "De Paul",
-                Correo = "maxipaul@hotmail.com.ar",
-                Clave = "114bd151f8fb0c58642d2170da4ae7d7c57977260ac2cc8905306cab6b2acabc",
-                Activo = true
-            };
+            Usuario usuarioNuevo = this.CrearUsuarioPrueba();
+            List<Usuario> listaUsuarios = new UsuariosDAO().ObtenerLista();
+            Usuario ultimoUser = listaUsuarios.Last();//-->Obtengo el ultimo de la lista
+            int ultimoID = ultimoUser.IDUsuario;
 
             //-->Act, llamo al metodo a testear.
-            int idAutoGenerado = usuariosDAO.RegistrarDato(usuarioNuevo,out mss);
+            int idAutoGenerado = new UsuariosDAO().RegistrarDato(usuarioNuevo,out mss);
 
             //-->Assert verifico
-            Assert.AreEqual(5,idAutoGenerado);
+            new UsuariosDAO().DeleteDato(usuarioNuevo.IDUsuario,out mss);//-->Elimino para evitar errores
+            Assert.AreEqual(idAutoGenerado, ultimoID + 1);
         }
 
         /// <summary>
@@ -67,21 +79,16 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            Usuario usuarioEditar = new Usuario()//-->Instancio el usuario
-            {
-                IDUsuario = 4,
-                Nombres = "Carla",
-                Apellidos = "Bologne",
-                Correo = "carbol@gmail.com",
-                Clave = "cebe3d9d614ba5c19f633566104315854a11353a333bf96f16b5afa0e90abdc4",
-                Activo = false
-            };
+            Usuario usuarioEditar = this.CrearUsuarioPrueba();
+            int id = new UsuariosDAO().RegistrarDato(usuarioEditar, out mss);//-->Lo registro.
 
             //-->Act, llamo al metodo a testear.
-            bool pudoEditar = usuariosDAO.UpdateDato(usuarioEditar,out mss);
+            usuarioEditar.IDUsuario = id;
+            usuarioEditar.Nombres = "Cambiandole el usuario en Unit Test";
+            bool pudoEditar = new UsuariosDAO().UpdateDato(usuarioEditar,out mss);
 
             //-->Assert verifico si pudo editar
+            new UsuariosDAO().DeleteDato(usuarioEditar.IDUsuario, out mss);//-->Elimino para evitar errores
             Assert.IsTrue(pudoEditar);
         }
 
@@ -94,19 +101,14 @@ namespace SQLTest
         {
             //-->Arrange
             string mss = string.Empty;
-            UsuariosDAO usuariosDAO = new UsuariosDAO();
-            Usuario usuarioAEliminar = new Usuario()//-->Instancio un nuevo usuario para luego eliminarlo
-            {  
-                Nombres = "Pepito",
-                Apellidos = "El Grillo",
-                Correo = "pepge@yahoo.com.ar",
-                Clave = "f8fbd159d4e3e913a2db46923c74d69dbf93136935b5c964b9c752db257bb11c",
-                Activo = true
-            };
+            Usuario usuarioAEliminar = this.CrearUsuarioPrueba();
 
             //-->Act testeo los metodos
-            usuariosDAO.RegistrarDato(usuarioAEliminar, out mss);//-->Primero lo registro
-            bool pudoEliminar = usuariosDAO.DeleteDato(usuarioAEliminar.IDUsuario, out mss);
+            int id = new UsuariosDAO().RegistrarDato(usuarioAEliminar, out mss);//-->Lo registro.
+
+            //-->Act, llamo al metodo a testear.
+            usuarioAEliminar.IDUsuario = id;
+            bool pudoEliminar = new UsuariosDAO().DeleteDato(usuarioAEliminar.IDUsuario, out mss);
 
             //-->Assert verifico que devolvio.
             Assert.IsTrue(pudoEliminar);
