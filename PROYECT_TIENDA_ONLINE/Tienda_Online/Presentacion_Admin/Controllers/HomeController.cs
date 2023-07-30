@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services.Description;
 using Entidades;
 using Negocio;
 
@@ -14,6 +15,8 @@ namespace Presentacion_Admin.Controllers
     /// </summary>
     public class HomeController : Controller
     {
+        //++++++++++++++++++++++++++++++++++++++++ PANEL ++++++++++++++++++++++++++++++++++++++++ 
+        #region PANEL DE CONTROL
         /// <summary>
         /// Será del tipo ActionResult y
         /// referencia al apartado 'Inicio'.
@@ -24,6 +27,16 @@ namespace Presentacion_Admin.Controllers
             return View();
         }
 
+        [HttpGet]
+        public JsonResult VisualizarPanelControl()
+        {
+            PanelControl panelControl = new CN_Reporte().VerPanelControl();
+            return Json(new { resultado = panelControl}, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        //++++++++++++++++++++++++++++++++++++++++ USUARIOS ++++++++++++++++++++++++++++++++++++++++ 
+        #region USUARIOS
         /// <summary>
         /// 2. Me paro sobre el nombre del metodo
         ///    y agrego la VISTA.
@@ -82,5 +95,6 @@ namespace Presentacion_Admin.Controllers
 
             return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
+        #endregion
     }
 }

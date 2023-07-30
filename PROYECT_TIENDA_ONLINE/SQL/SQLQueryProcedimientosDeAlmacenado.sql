@@ -1,0 +1,13 @@
+USE db_Carrito;
+GO;
+
+CREATE PROC sp_ReportePanel
+AS
+BEGIN
+	SELECT 
+	(SELECT COUNT(*) FROM CLIENTES) [TotalClientes], 
+	(SELECT ISNULL (SUM(CANTIDAD),0) FROM DETALLE_VENTAS) [TotalVentas], 
+	(SELECT COUNT(*) FROM PRODUCTOS) [TotalProductos]
+END
+
+EXEC sp_ReportePanel;

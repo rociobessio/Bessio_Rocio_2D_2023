@@ -184,6 +184,7 @@
     <Compile Include="AccesoABaseDatos.cs" />
     <Compile Include="CategoriasDAO.cs" />
     <Compile Include="MarcasDAO.cs" />
+    <Compile Include="PanelDAO.cs" />
     <Compile Include="ProductosDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UsuariosDAO.cs" />
