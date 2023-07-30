@@ -26,7 +26,7 @@ GO
 CREATE TABLE PRODUCTOS(
 	IDProducto INT PRIMARY KEY IDENTITY,
 	Nombre VARCHAR (250),
-	Descripcion VARCHAR (300),
+	Descripcion VARCHAR (1000),
 	IDMarca int references MARCAS(IDMarca),/*Hago referencia al IDMarca de la tabla MARCA*/
 	IDCategoria int references CATEGORIAS(IDCategoria),/*Hago referencia a IDCategoria de la tabla CATEGORIA*/
 	Precio FLOAT DEFAULT 0,/*Tipo float y default 0*/

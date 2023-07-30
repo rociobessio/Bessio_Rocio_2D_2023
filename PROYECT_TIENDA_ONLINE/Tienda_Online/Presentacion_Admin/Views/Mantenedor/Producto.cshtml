@@ -324,30 +324,30 @@
 
         //--> Accion para ELIMINAR un PRODUCTOS <--
         $("#tabla tbody").on("click", '.btn-eliminar', function () {
-            var marcaSeleccionada = $(this).closest("tr");
-            var data = tablaData.row(marcaSeleccionada).data();
+            var productoEliminar = $(this).closest("tr");
+            var data = tablaData.row(productoEliminar).data();
             swal({
                 title: "¿Está seguro?",
-                text: "¿Desea eliminar la marca?",
+                text: "¿Desea eliminar el producto seleccionado?",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
-                confirmButtonText: "Si, deseo eliminarla!",
+                confirmButtonText: "Si, deseo eliminarlo!",
                 closeOnConfirm: false
             },
             function () {
                 jQuery.ajax({
-                    url: '@Url.Action("EliminarMarca","Mantenedor")',
+                    url: '@Url.Action("EliminarProducto","Mantenedor")',
                     type: "POST",
-                    data: JSON.stringify({ id: data.IDMarca }),
+                    data: JSON.stringify({ id: data.IDProducto }),
                     dataType: "json",
                     contentType: "application/json; charset=itf-8",
                     success: function (data) {
                         if (data.resultado) {
-                            tablaData.row(marcaSeleccionada).remove().draw();
-                            swal("Eliminada!", "La marca seleccionada ha sido eliminada.", "success");
+                            tablaData.row(productoEliminar).remove().draw();
+                            swal("Eliminado!", "El producto seleccionado ha sido eliminado.", "success");
                         } else {
-                            swal("No se pudo eliminar la marca seleccionada.", data.mensaje, "error");
+                            swal("No se pudo eliminar el producto seleccionado.", data.mensaje, "error");
                         }
                     },
                     error: function (error) { // Cambio aquí

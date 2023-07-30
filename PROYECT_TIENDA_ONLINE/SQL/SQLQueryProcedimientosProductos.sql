@@ -2,7 +2,7 @@ USE db_Carrito;
 
 CREATE PROC sp_RegistrarProducto(
 	@Nombre VARCHAR (100),
-	@Descripcion VARCHAR (100),
+	@Descripcion VARCHAR (1000),
 	@IDMarca VARCHAR (100),
 	@IDCategoria VARCHAR (100),
 	@Precio FLOAT ,
@@ -28,7 +28,7 @@ END
 CREATE PROC sp_EditarProducto(
 	@IDProducto INT,
 	@Nombre VARCHAR (100),
-	@Descripcion VARCHAR (100),
+	@Descripcion VARCHAR (1000),
 	@IDMarca VARCHAR (100),
 	@IDCategoria VARCHAR (100),
 	@Precio FLOAT ,
