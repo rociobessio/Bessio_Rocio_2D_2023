@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Services.Description;
+using ClosedXML.Excel;
 using Entidades;
 using Negocio;
 
@@ -40,6 +43,56 @@ namespace Presentacion_Admin.Controllers
             List<Reporte> olista = new List<Reporte>();
             olista = new CN_Reporte().ObtenerVentas(fechaInicio,fechaFin,IDTransaccion);
             return Json(new { data = olista }, JsonRequestBehavior.AllowGet);
+        }
+
+        /// <summary>
+        /// Me permitirá exportar un XML con las
+        /// ventas realizadas durante Xs fechas
+        /// </summary>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaFin"></param>
+        /// <param name="IDTransaccion"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public FileResult ExportarVentas(string fechaInicio, string fechaFin, string IDTransaccion)
+        {
+            List<Reporte> listaReportes = new CN_Reporte().ObtenerVentas(fechaInicio,fechaFin,IDTransaccion);
+            DataTable dataTable = new DataTable();
+
+            dataTable.Locale = new System.Globalization.CultureInfo("es-PE");
+            dataTable.Columns.Add("Fecha Venta",typeof(string));
+            dataTable.Columns.Add("Cliente", typeof(string));
+            dataTable.Columns.Add("Producto", typeof(string));
+            dataTable.Columns.Add("Precio", typeof(double));
+            dataTable.Columns.Add("Cantidad", typeof(int));
+            dataTable.Columns.Add("Total", typeof(double));
+            dataTable.Columns.Add("ID Transaccion", typeof(string));
+
+            foreach (Reporte reporte in listaReportes)
+            {
+                dataTable.Rows.Add(new object[]
+                {
+                    reporte.FechaVenta,
+                    reporte.Cliente,
+                    reporte.Producto,
+                    reporte.Precio,
+                    reporte.Cantidad,
+                    reporte.Total,
+                    reporte.IDTransaccion
+                });
+            }
+            dataTable.TableName = "Datos";
+
+            using (XLWorkbook wb = new XLWorkbook())
+            {
+                wb.Worksheets.Add(dataTable);
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    wb.SaveAs(ms);
+                    return File(ms.ToArray(), "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "ReporteVenta" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".xlsx");
+                }
+            }
         }
         #endregion
 

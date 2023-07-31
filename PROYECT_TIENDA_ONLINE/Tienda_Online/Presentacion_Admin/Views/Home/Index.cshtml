@@ -61,7 +61,7 @@
         <i class="fas fa-tags me-1"></i>
         Historial de Ventas realizadas
     </div>
-    <form>
+    <form action="@Url.Action("ExportarVentas","Home")" method="post">
         <div class="card-body">
             <div class="row align-items-end">
                 <div class="col-sm-2">
@@ -129,26 +129,71 @@
     
     <script>
 
-        //--> Logica para mostrar las fechas de ventas <---
-        $("#txtFechaInicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);//-->Ni bien comienza que muestre la fecha actual
-        $("#txtFechaFin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);
+        //--> Para que la pagina cargue con todos sus elementos y ejecute lo que sigue una vez finalizado.
+        $(document).ready(function () {
 
-        //--> Logica para obtener los VALORES de la cant. Clientes, Productos y Ventas <---
-        jQuery.ajax({
-            url: '@Url.Action("VisualizarPanelControl", "Home")',
-            type: "GET",
-            data: null,
-            dataType: "json",
-            contentType: "application/json; charset=utf-8", // Corrección en el charset
-            success: function (data) {
-                var objeto = data.resultado;//--> Recibo el Objeto PanelControl
-                $("#totalProductos").text(objeto.TotalProductos);//-->De lo q recibo que pinte en las cartas
-                $("#totalVentas").text(objeto.TotalVentas);
-                $("#totalClientes").text(objeto.TotalClientes);
-            },
-            error: function (error) {
-                console.log(error); // Muestra el error en la consola para depuración
-            }
+            //--> Logica para mostrar las fechas de ventas <---
+            $("#txtFechaInicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);//-->Ni bien comienza que muestre la fecha actual
+            $("#txtFechaFin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);
+
+            //--> Logica para obtener los VALORES de la cant. Clientes, Productos y Ventas <---
+            jQuery.ajax({
+                url: '@Url.Action("VisualizarPanelControl", "Home")',
+                type: "GET",
+                data: null,
+                dataType: "json",
+                contentType: "application/json; charset=utf-8", // Corrección en el charset
+                success: function (data) {
+                    var objeto = data.resultado;//--> Recibo el Objeto PanelControl
+                    $("#totalProductos").text(objeto.TotalProductos);//-->De lo q recibo que pinte en las cartas
+                    $("#totalVentas").text(objeto.TotalVentas);
+                    $("#totalClientes").text(objeto.TotalClientes);
+                },
+                error: function (error) {
+                    console.log(error); // Muestra el error en la consola para depuración
+                }
+            });
+
+            //--> Logica para poder mostrar los reportes
+            var Url = '@Url.Action("ListarReportes", "Home")' +
+                "?fechaInicio=" + $("#txtFechaInicio").val() +
+                "&fechaFin=" + $("#txtFechaFin").val() +
+                "&IDTransaccion=" + $("#txtIDTransaccion").val();
+
+            tablaData = $("#tabla").DataTable({
+
+                responsive: true,
+                ordering: false,
+                "ajax": {
+                    url: Url,
+                    type: "GET",
+                    dataType: "json"
+                },
+                "columns": [
+                    {"data":"FechaVenta"},//-->Data es el de HomeController
+                    { "data": "Cliente"},
+                    { "data": "Producto" },
+                    { "data": "Precio" },
+                    { "data": "Cantidad" },
+                    { "data": "Total" },
+                    { "data": "IDTransaccion" }
+                ],//-->Cambiar idioma d datatable a español:
+                "language": {
+                    "url":"https://cdn.datatables.net/plug-ins/1.13.5/i18n/es-ES.json"
+                }
+
+            });//-->llamo a la tabla id hago referencia
+        })
+
+        //--> Logica para que al presionar el boton buscar me encuentre
+       // las ventas realizadas con las fechas indicadas y el id.
+        $("#btnBuscar").on("click", function () {
+            var nuevaUrl = '@Url.Action("ListarReportes", "Home")' +
+                "?fechaInicio=" + $("#txtFechaInicio").val() +
+                "&fechaFin=" + $("#txtFechaFin").val() +
+                "&IDTransaccion=" + $("#txtIDTransaccion").val();
+
+            tablaData.ajax.url(nuevaUrl).load();//--> Que actualice con los nuevos datos
         });
 
     </script>     
