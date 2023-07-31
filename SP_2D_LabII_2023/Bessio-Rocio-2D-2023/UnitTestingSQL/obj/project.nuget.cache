@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "WwnyUXqg2zJukSnrZX/ZtoR93THwtRCKzQKXMFtiHf/zgkp8Q631VveP18ocRcFXMDV3rcC7kZ/mDLzv9tGmLQ==",
+  "dgSpecHash": "TB1IITOznxrrzuZLF2Yd5NpScSiaI9tJ/10Fnherf8FZKx149TxPhY7IK1i7xme2GfyDmg/KnAUi/9uzBoa6gA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\UnitTestingSQL\\UnitTestings.csproj",
+  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Proyectos Propios con C#\\Repositorio\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\UnitTestingSQL\\UnitTestings.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rocio\\.nuget\\packages\\coverlet.collector\\3.1.2\\coverlet.collector.3.1.2.nupkg.sha512",
     "C:\\Users\\Rocio\\.nuget\\packages\\microsoft.codecoverage\\17.1.0\\microsoft.codecoverage.17.1.0.nupkg.sha512",

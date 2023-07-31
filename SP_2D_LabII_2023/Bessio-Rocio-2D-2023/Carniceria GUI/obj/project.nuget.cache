@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p7/bHWo/xeJZ/t5EC4ClaCxMB+0FfPmRx894FjfwwN8QO06Ewntv3TKcRV7XtzwlpTwdRgFuoQisZSvZdO4ZTw==",
+  "dgSpecHash": "Cb9tqy4bugRLGslg2hQRZd4JQJbZjDaGJ/GxBHviFccjWGIFYandcQokfOIQQmBu6hxD2NPseEU9GEziE/G5+A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Carniceria GUI\\Carniceria GUI.csproj",
+  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Proyectos Propios con C#\\Repositorio\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Carniceria GUI\\Carniceria GUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rocio\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Rocio\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

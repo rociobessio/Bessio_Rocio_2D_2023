@@ -26,6 +26,24 @@ namespace Negocio
             CN_Reporte.panelDAO = new PanelDAO();
             return CN_Reporte.panelDAO.VerPanelControl();
         }
+
+        /// <summary>
+        /// Este metodo me permite retornar
+        /// una lista de reportes sobre
+        /// las ventas realizadas con la
+        /// fecha de inicio y fin indicadas
+        /// y que a su vez tienen ese ID
+        /// de transaccion.
+        /// </summary>
+        /// <param name="fechaInicio"></param>
+        /// <param name="fechaFin"></param>
+        /// <param name="IDTransaccion"></param>
+        /// <returns></returns>
+        public List<Reporte> ObtenerVentas(string fechaInicio, string fechaFin, string IDTransaccion)
+        {
+            CN_Reporte.panelDAO = new PanelDAO();
+            return CN_Reporte.panelDAO.ObtenerVentas(fechaInicio, fechaFin, IDTransaccion);
+        }
         #endregion
     }
 }

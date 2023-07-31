@@ -69,5 +69,28 @@ namespace SQLTest
             //-->Assert compruebo que el resultado sea el esperado
             Assert.IsTrue(esValido);
         }
+
+        /// <summary>
+        /// Me permite verificar si el metodo
+        /// ObtenerVentas de la clase PanelDAO
+        /// retorna al menos un elemento en la lista.
+        /// </summary>
+        [TestMethod]
+        public void ObtenerVentas_OK()
+        {
+            //-->Arrange preparar variables  
+            //--> Proximamente instanciar VENTAS
+
+            string fechaInicio = "24/10/2023";
+            string fechaFin = "24/12/2023";
+            string idTransaccion = "JDSADP12";
+
+            //-->Act verifico que cargue en la lista
+            List<Reporte> listaReportes = new PanelDAO().ObtenerVentas(fechaInicio,fechaFin,idTransaccion);
+            bool retorno = listaReportes.Count > 0;
+
+            //-->Assert compruebo que el resultado sea el esperado
+            Assert.IsTrue(retorno);
+        }
     }
 }

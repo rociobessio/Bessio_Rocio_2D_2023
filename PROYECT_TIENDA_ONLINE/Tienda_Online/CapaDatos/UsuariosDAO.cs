@@ -54,14 +54,7 @@ namespace CapaDatos
             catch
             {
                 listaUsuarios = new List<Usuario>();//-->Retorno lista vacia
-            }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
+            } 
             return listaUsuarios;
         }
 
@@ -106,14 +99,7 @@ namespace CapaDatos
             {
                 idAutoGenerado = 0;
                 mss = ex.Message;//-->Atrapo la excepcion.
-            }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
+            } 
             return idAutoGenerado;
         }
 
@@ -158,14 +144,7 @@ namespace CapaDatos
             {
                 pudoEditar = false;
                 mss = ex.Message;//-->Atrapo la excepcion.
-            }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
+            } 
             return pudoEditar;
         }
 
@@ -199,14 +178,7 @@ namespace CapaDatos
             {
                 pudoEliminar = false;
                 mss = ex.Message;//-->Atrapo la excepcion.
-            }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
+            } 
             return pudoEliminar;
         }
         #endregion

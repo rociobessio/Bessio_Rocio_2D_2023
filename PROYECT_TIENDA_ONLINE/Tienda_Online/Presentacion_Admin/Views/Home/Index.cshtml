@@ -128,6 +128,11 @@
 @section scripts{
     
     <script>
+
+        //--> Logica para mostrar las fechas de ventas <---
+        $("#txtFechaInicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);//-->Ni bien comienza que muestre la fecha actual
+        $("#txtFechaFin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date);
+
         //--> Logica para obtener los VALORES de la cant. Clientes, Productos y Ventas <---
         jQuery.ajax({
             url: '@Url.Action("VisualizarPanelControl", "Home")',

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "4yydKJSn05D34ZL6b/UCeihZ8Wvda2HGeJe7uwNGx+aIwBSt+/zEOjqQ78IrMN4OgzrdltBOInTFCL30+AanDw==",
+  "dgSpecHash": "Atbn7/GvS0X0WCnxy9vwEzj+w38MEBJlGzI/xNbWZTg3ADTsSJHLcR0EjYTZKUqWoT8D5wULbcpvdsaMlAu+pg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Laboratorio II Parciales 2023\\PP_2D_LabII_2023\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Entidades\\Entidades.csproj",
+  "projectFilePath": "C:\\Users\\Rocio\\Desktop\\Proyectos Propios con C#\\Repositorio\\SP_2D_LabII_2023\\Bessio-Rocio-2D-2023\\Entidades\\Entidades.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Rocio\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\Rocio\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",

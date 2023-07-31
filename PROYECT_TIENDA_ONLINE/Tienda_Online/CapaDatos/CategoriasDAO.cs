@@ -55,14 +55,7 @@ namespace CapaDatos
             catch
             {
                 listaCategorias = new List<Categoria>();//-->Retorno lista vacia
-            }
-            finally
-            {
-                if (base._conexion.State == ConnectionState.Open)//-->Chequeo si la conexion esta abierta
-                {
-                    base._conexion.Close();//-->La cierro
-                }
-            }
+            } 
             return listaCategorias;
         }
 

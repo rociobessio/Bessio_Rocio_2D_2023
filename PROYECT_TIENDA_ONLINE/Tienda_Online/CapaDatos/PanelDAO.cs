@@ -51,6 +51,54 @@ namespace CapaDatos
             } 
             return panelDeControl;
         }
+
+        /// <summary>
+        /// Me permite obtener la lista de reportes de la base de datos.
+        /// </summary>
+        /// <returns></returns>  
+        public List<Reporte> ObtenerVentas(string fechaInicio,string fechaFin,string IDTransaccion)
+        {
+            List<Reporte> listaReportes = new List<Reporte>();
+            try
+            {
+                using (base._conexion = new SqlConnection())
+                {
+                    base._conexion.ConnectionString = AccesoABaseDatos.CadenaDeConexion; 
+                    base._comando = new SqlCommand("sp_ReporteVentas", base._conexion);//-->Le paso la query y la conexion
+                    base._comando.Parameters.AddWithValue("fechaInicio", fechaInicio);
+                    base._comando.Parameters.AddWithValue("fechaFin", fechaFin);
+                    base._comando.Parameters.AddWithValue("IDTransaccion", IDTransaccion);
+                    base._comando.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    base._conexion.Open();//-->Abro conexion.
+
+                    using (base._lector = base._comando.ExecuteReader())
+                    {
+                        while (base._lector.Read())
+                        {
+                            listaReportes.Add(
+                                new Reporte()
+                                {
+                                    FechaVenta = Convert.ToString(base._lector["FechaVenta"]),
+                                    Cliente = Convert.ToString(base._lector["Cliente"]),
+                                    Producto = Convert.ToString(base._lector["Producto"]),
+                                    Precio = Convert.ToDouble(base._lector["Precio"]),
+                                    Cantidad = Convert.ToInt32(base._lector["Cantidad"]),
+                                    Total = Convert.ToDouble(base._lector["Total"]),
+                                    IDTransaccion = Convert.ToString(base._lector["IDTransaccion"])
+                                }
+                            );
+                        }
+                    }
+                    base._conexion.Close();//-->Cierro conexion.
+                }
+            }
+            catch
+            {
+                listaReportes = new List<Reporte>();//-->Retorno lista vacia
+            }
+            return listaReportes;
+        }
         #endregion
     }
 }

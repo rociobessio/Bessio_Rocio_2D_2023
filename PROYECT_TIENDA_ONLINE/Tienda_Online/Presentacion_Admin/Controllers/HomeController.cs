@@ -33,6 +33,14 @@ namespace Presentacion_Admin.Controllers
             PanelControl panelControl = new CN_Reporte().VerPanelControl();
             return Json(new { resultado = panelControl}, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult ListarReportes(string fechaInicio, string fechaFin, string IDTransaccion)
+        {
+            List<Reporte> olista = new List<Reporte>();
+            olista = new CN_Reporte().ObtenerVentas(fechaInicio,fechaFin,IDTransaccion);
+            return Json(new { data = olista }, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         //++++++++++++++++++++++++++++++++++++++++ USUARIOS ++++++++++++++++++++++++++++++++++++++++ 
