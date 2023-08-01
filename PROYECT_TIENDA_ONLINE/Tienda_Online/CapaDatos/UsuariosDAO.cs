@@ -181,6 +181,77 @@ namespace CapaDatos
             } 
             return pudoEliminar;
         }
+
+
+        /// <summary>
+        /// Me permitirá cambiar
+        /// la clave de un usuario,
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <param name="nuevaClave"></param>
+        /// <param name="mss"></param>
+        /// <returns></returns>
+        public bool CambiarClave(int idUsuario, string nuevaClave,out string mss)
+        {
+            bool pudoCambiar = false;
+            mss = string.Empty;
+
+            try
+            {
+                using (base._conexion = new SqlConnection())
+                {
+                    base._conexion.ConnectionString = AccesoABaseDatos.CadenaDeConexion;
+                    base._comando = new SqlCommand("UPDATE USUARIOS SET Clave = @nuevaClave , reestablecer = 0 WHERE IDUsuario = @ID", base._conexion);
+                    base._comando.Parameters.AddWithValue("@ID", idUsuario);
+                    base._comando.Parameters.AddWithValue("@nuevaClave", nuevaClave);
+                    base._comando.CommandType = CommandType.Text;
+
+                    base._conexion.Open();//-->Abro la conexion.
+                    pudoCambiar = base._comando.ExecuteNonQuery() > 0 ? true : false;//-->Verifico si pudo eliminar.
+                }
+            }
+            catch (Exception ex)
+            {
+                pudoCambiar = false;
+                mss = ex.Message;//-->Atrapo la excepcion.
+            }
+            return pudoCambiar;
+        }
+
+        /// <summary>
+        /// Me permitirá reestablecer la clave
+        /// de un usuario.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <param name="nuevaClave"></param>
+        /// <param name="mss"></param>
+        /// <returns></returns>
+        public bool ReestablecerClave(int idUsuario, string nuevaClave, out string mss)
+        {
+            bool pudoReestablecer = false;
+            mss = string.Empty;
+
+            try
+            {
+                using (base._conexion = new SqlConnection())
+                {
+                    base._conexion.ConnectionString = AccesoABaseDatos.CadenaDeConexion;
+                    base._comando = new SqlCommand("UPDATE USUARIOS SET Clave = @Clave , reestablecer = 1 WHERE IDUsuario = @ID", base._conexion);
+                    base._comando.Parameters.AddWithValue("@ID", idUsuario);
+                    base._comando.Parameters.AddWithValue("@nuevaClave", nuevaClave);
+                    base._comando.CommandType = CommandType.Text;
+
+                    base._conexion.Open();//-->Abro la conexion.
+                    pudoReestablecer = base._comando.ExecuteNonQuery() > 0 ? true : false;//-->Verifico si pudo eliminar.
+                }
+            }
+            catch (Exception ex)
+            {
+                pudoReestablecer = false;
+                mss = ex.Message;//-->Atrapo la excepcion.
+            }
+            return pudoReestablecer;
+        }
         #endregion
     }
 }

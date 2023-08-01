@@ -109,6 +109,59 @@ namespace Negocio
             CN_Usuarios.usuariosDAO = new UsuariosDAO();
             return CN_Usuarios.usuariosDAO.DeleteDato(id, out mss);
         }
+
+        /// <summary>
+        /// Intermediario entre la capa de negocios,
+        /// los metodos de la base y el objeto.
+        /// Cambio la clave de un usuario existente.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="mss"></param>
+        /// <returns></returns>
+        public bool CambiarClave(int idUsuario, string nuevaClave, out string mss)
+        {
+            CN_Usuarios.usuariosDAO = new UsuariosDAO();
+            return CN_Usuarios.usuariosDAO.CambiarClave(idUsuario, nuevaClave,out mss);
+        }
+
+        /// <summary>
+        /// El intermediario que permitira
+        /// reestablecer la clave del usuario.
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <param name="correo"></param>
+        /// <param name="mss"></param>
+        /// <returns></returns>
+        public bool ReestablecerClave(int idUsuario, string correo, out string mss)
+        {
+            mss = string.Empty;
+            CN_Usuarios.usuariosDAO = new UsuariosDAO(); 
+            string clave = CN_Recursos.GenerarClaveAutomatica();//-->Devuelve una clave 
+            bool resultado = CN_Usuarios.usuariosDAO.ReestablecerClave(idUsuario,CN_Recursos.EncriptarClavesSha256(clave), out mss);
+
+            if (resultado)
+            {
+                string asunto = "Contraseña reestablecida.";
+                //-->Formato HTML del mensaje
+                string mensajeCorreo = $"<h3>Su cuenta fue reestablecida correctamente</h3></br>Su contraseña para acceder actualmente es: {clave}</p>";
+                bool pudoEnviarCorreo = CN_Recursos.EnviarCorreo(correo, asunto, mensajeCorreo);
+
+                if (pudoEnviarCorreo)
+                { 
+                    return true;
+                }
+                else
+                {
+                    mss = "No se ha podido enviar el correo.";
+                    return false;
+                }
+            }
+            else
+            {
+                mss = "No se ha podido reestablecer la clave.";
+                return false;
+            } 
+        }
         #endregion
     }
 }
