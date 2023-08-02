@@ -39,16 +39,56 @@ namespace Presentacion_Admin.Controllers
 
             if(usuario == null)
             {
-                ViewBag.Error = "Correo o contraseña incorrectos.";
+                ViewBag.Error = "Correo o contraseña incorrectos!";//-->Guarda información
                 return View();
             }
             else
             {
+                if (usuario.Reestablecer)//-->Primera vez que ingresará al sistema
+                {
+                    TempData["IDUsuario"] = usuario.IDUsuario;//-->TempData guarad info y la comparte dentro de distintas vistas d un mismo controlador
+                    return RedirectToAction("CambiarClave");//-->Nuevo formulario que le dejará registrarse 
+                }
+
                 ViewBag.Error = null;
                 return RedirectToAction("Index","Home");
-            }
+            } 
+        }
 
-            return View();
+        [HttpPost]
+        public ActionResult CambiarClave(string idUsuario,string claveActual,string nuevaClave, string confirmarClave)
+        {
+            string mensaje = string.Empty;
+            Usuario usuario = new Usuario();
+            usuario = new CN_Usuarios().Listar().Where(u => u.IDUsuario == int.Parse(idUsuario)).FirstOrDefault();//-->Filtro el usuario
+
+            if(usuario.Clave != CN_Recursos.EncriptarClavesSha256(claveActual))//--> Si las contraseñas NO coinciden!
+            {
+                TempData["IDUsuario"] = idUsuario;
+                ViewBag.Error = "Contraseña actual es incorrecta!";//-->Lanzo un mensaje
+                ViewData["vClave"] = string.Empty;//-->En caso de ingresar mal, limpio el txt de contraseña actual.
+                return View();
+            }
+            else if(nuevaClave != confirmarClave)
+            {
+                TempData["IDUsuario"] = idUsuario;
+                ViewData["vClave"] = claveActual;//-->Contraseña correcta la mantengo asi no vuelve a ingresarla.
+                ViewBag.Error = "Las contraseñas NO coinciden!";//-->Lanzo un mensaje 
+                return View();
+            } 
+            ViewData["vClave"] = string.Empty;
+
+            nuevaClave = CN_Recursos.EncriptarClavesSha256(nuevaClave);
+            bool respuesta = new CN_Usuarios().CambiarClave(int.Parse(idUsuario), nuevaClave, out mensaje);//-->Actualizo la clave
+
+            if (respuesta)
+                return RedirectToAction("Index");
+            else
+            {
+                TempData["IDUsuario"] = idUsuario;
+                ViewBag.Error = mensaje;
+                return View();
+            } 
         }
     }
 }
